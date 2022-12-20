@@ -1,0 +1,46 @@
+{
+  "occasions": {
+    "pascha": {
+      "name": "Holy Pascha"
+    },
+    "holy.cross": {
+      "name": "Exaltation of the Cross"
+    },
+    "christmas": {
+      "name": "Christmas Day"
+    },
+    "theophany": {
+      "name": "Theophany"
+    },
+    "palm.sunday": {
+      "name": "Palm Sunday"
+    },
+    "ascension": {
+      "name": "Ascension"
+    },
+    "pentecost": {
+      "name": "Pentecost"
+    },
+    "transfiguration": {
+      "name": "Transfiguration"
+    },
+    "nativity.theotokos": {
+      "name": "Nativity of the Theotokos"
+    },
+    "presentation.theotokos": {
+      "name": "Presentation of the Theotokos"
+    },
+    "dormition.theotokos": {
+      "name": "Dormition of the Theotokos"
+    },
+    "presentation.christ": {
+      "name": "Presentation of Christ"
+    },
+    "annunciation": {
+      "name": "Annunciation"
+    },
+    "peter.paul": {
+      "name": "Ss Peter and Paul"
+    }
+  }
+}

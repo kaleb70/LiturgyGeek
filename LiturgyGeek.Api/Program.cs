@@ -1,3 +1,6 @@
+using LiturgyGeek.Api.Data;
+using LiturgyGeek.Framework.Calendars;
+
 namespace LiturgyGeek.Api
 {
     public class Program
@@ -13,6 +16,17 @@ namespace LiturgyGeek.Api
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddSingleton<IChurchCalendarProvider, ChurchCalendarProvider>();
+            builder.Services.AddSingleton<CalendarEvaluator>();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                                      {
+                                          policy.WithOrigins("https://localhost:4200");
+                                      });
+            });
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -23,6 +37,8 @@ namespace LiturgyGeek.Api
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors();
 
             app.UseAuthorization();
 

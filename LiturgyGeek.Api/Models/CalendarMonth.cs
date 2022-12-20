@@ -14,14 +14,14 @@ namespace LiturgyGeek.Api.Models
         public string? MonthName { get; set; }
 
         [Required]
-        public CalendarDaySummary[][]? Days { get; set; }
+        public CalendarWeekSummary[]? Weeks { get; set; }
 
-        public CalendarMonth(int year, int month, string monthName, CalendarDaySummary[][] days)
+        public CalendarMonth(int year, int month, string monthName, CalendarWeekSummary[] weeks)
         {
             Year = year;
             Month = month;
             MonthName = monthName;
-            Days = days;
+            Weeks = weeks;
         }
     }
 }

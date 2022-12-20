@@ -1,0 +1,521 @@
+{
+  "name": "Orthodox (New Calendar)",
+  "traditionCode": "byzantine",
+  "calendarCode": "oca",
+
+  "solarReckoning": "revisedJulian",
+  "paschalReckoning": "julian",
+
+  //###########################################################################
+  // Rules
+
+  "ruleCategories": {
+    "fast": {
+
+      //---------------------------------------------------------------------------
+      // Fasting
+
+      "_monthViewHeadline": true,
+      "rules": {
+        "fast.none": {
+          "description": "No Fast",
+          "_showOnDates": [ "Wednesday", "Friday" ]
+        },
+        "fast.dairy": {
+          "description": "Fast 🧀🐟🏺🍷",
+          "details": "Dairy, Fish, Oil, and Wine Permitted"
+        },
+        "fast.fish": {
+          "description": "Fast 🐟🏺🍷",
+          "details": "Fish, Oil, and Wine Permitted"
+        },
+        "fast.caviar": {
+          "description": "Fast 🥄🏺🍷",
+          "details": "Caviar, Oil, and Wine Permitted"
+        },
+        "fast.oil": {
+          "description": "Fast 🏺🍷",
+          "details": "Oil and Wine Permitted"
+        },
+        "fast.wine": {
+          "description": "Fast 🍷",
+          "details": "Wine Permitted"
+        },
+        "fast.strict": {
+          "description": "Fast",
+          "details": "Strict Fast"
+        }
+      }
+    }
+  },
+
+  //###########################################################################
+  // Event Ranks
+
+  "eventRanks": {
+    "great.feast": {
+      "precedence": 1,
+      "_monthViewContent": true
+    },
+    "patron": {
+      "precedence": 2,
+      "_monthViewContent": true
+    },
+    "vigil": {
+      "precedence": 3,
+      "_monthViewContent": true
+    },
+    "polyeleos": {
+      "precedence": 4
+    },
+    "doxology": {
+      "precedence": 5
+    },
+    "six.stichera": {
+      "precedence": 6
+    },
+    "named.day": {
+      "precedence": 99,
+      "_monthViewContent": true
+    }
+  },
+
+  //###########################################################################
+  // Seasons
+
+  "seasons": {
+
+    //---------------------------------------------------------------------------
+    // Ordinary Time
+
+    "ordinary": {
+      "startDate": "1/1",
+      "endDate": "12/31",
+      "isDefault": true,
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Wednesday", "Friday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "great.feast", "patron", "vigil" ],
+          "ruleCode": "fast.fish"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Advent
+
+    "advent": {
+      "startDate": "11/15",
+      "endDate": "12/24",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "endDate": "12/19", // except nativity forefeast
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "12/20", // nativity forefeast
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Monday", "Wednesday", "Friday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Tuesday", "Thursday" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "endDate": "12/19", // except nativity forefeast
+          "includeRanks": [ "great.feast", "patron", "vigil" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "endDate": "12/19", // except nativity forefeast
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+          "ruleCode": "fast.fish"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Christmas
+
+    "christmas": {
+      "startDate": "12/25",
+      "endDate": "1/5",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "ruleCode": "fast.none"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Week of the Publican & Pharisee
+
+    "publican.pharisee": {
+      "startDate": "-10/Sunday",
+      "endDate": "-10/Saturday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "ruleCode": "fast.none"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Cheesefare Week
+
+    "cheesefare": {
+      "startDate": "-8/Monday",
+      "endDate": "-7/Sunday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "ruleCode": "fast.dairy"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Lent
+
+    "lent": {
+      "startDate": "-7/Monday",
+      "endDate": "-2/Saturday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "endDate": "-7/Friday", // Canon of St Andrew
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-7/Saturday", // after Canon of St Andrew
+          "includeDates": [ "Sunday", "Saturday" ],
+          "excludeDates": [ "-2/Saturday" ], // except Lazarus Saturday
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "-2/Saturday" ], // Lazarus Saturday
+          "ruleCode": "fast.caviar"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-7/Saturday", // after Canon of St Andrew
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-7/Saturday", // after Canon of St Andrew
+          "includeRanks": [ "great.feast", "patron" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-7/Saturday", // after Canon of St Andrew
+          "includeRanks": [ "vigil", "polyeleos" ],
+          "ruleCode": "fast.oil"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Holy Week
+
+    "holy.week": {
+      "startDate": "-1/Sunday",
+      "endDate": "-1/Saturday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "endDate": "-1/Friday", // through Holy Friday
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "-1/Saturday" ], // Holy Saturday
+          "ruleCode": "fast.wine"
+        },
+        {
+          "categoryCode": "fast",
+          "endDate": "-1/Thursday", // through Holy Thursday
+          "includeRanks": [ "great.feast" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-1/Friday", // starting at Holy Friday
+          "includeRanks": [ "great.feast" ],
+          "ruleCode": "fast.wine"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Pascha
+
+    "pascha": {
+      "startDate": "1/Sunday",
+      "endDate": "7/Saturday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "endDate": "1/Saturday", // Bright Week
+          "ruleCode": "fast.none"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "2/Sunday", // after Bright Week
+          "includeDates": [ "Wednesday", "Friday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "2/Sunday", // after Bright Week
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "great.feast", "patron", "vigil" ],
+          "ruleCode": "fast.fish"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Pentecost Week
+
+    "pentecost": {
+      "startDate": "8/Sunday",
+      "endDate": "8/Saturday",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "ruleCode": "fast.none"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Apostles Fast
+
+    "peter.paul": {
+      "startDate": "9/Monday",
+      "endDate": "6/28",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Monday", "Wednesday", "Friday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Tuesday", "Thursday" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "includeRanks": [ "great.feast", "patron", "vigil" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+          "ruleCode": "fast.fish"
+        }
+      ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Dormition Fast
+
+    "dormition.theotokos": {
+      "startDate": "8/1",
+      "endDate": "8/14",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.strict"
+        },
+        {
+          "categoryCode": "fast",
+          "includeRanks": [ "great.feast", "patron" ],
+          "ruleCode": "fast.fish"
+        },
+        {
+          "categoryCode": "fast",
+          "startDate": "-7/Saturday",
+          "includeRanks": [ "vigil", "polyeleos" ],
+          "ruleCode": "fast.oil"
+        }
+      ]
+    }
+  },
+
+  "events": [
+
+    //###########################################################################
+    // Great Feasts
+
+    {
+      "occasionKey": "pascha",
+      "dates": [ "1/Sunday" ],
+      "eventRankKey": "great.feast",
+      "_monthViewHeadline": true
+    },
+    {
+      "occasionKey": "holy.cross",
+      "dates": [ "9/14" ],
+      "eventRankKey": "great.feast",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.oil"
+        },
+        {
+          "categoryCode": "fast",
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fast.strict"
+        }
+      ]
+    },
+    {
+      "occasionKey": "christmas",
+      "dates": [ "12/25" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "theophany",
+      "dates": [ "1/6" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "palm.sunday",
+      "dates": [ "-1/Sunday" ],
+      "eventRankKey": "great.feast",
+      "ruleCriteria": [
+        {
+          "categoryCode": "fast",
+          "ruleCode": "fast.fish"
+        }
+      ]
+    },
+    {
+      "occasionKey": "ascension",
+      "dates": [ "6/Thursday" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "pentecost",
+      "dates": [ "8/Sunday" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "transfiguration",
+      "dates": [ "8/6" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "nativity.theotokos",
+      "dates": [ "9/8" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "presentation.theotokos",
+      "dates": [ "11/21" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "dormition.theotokos",
+      "dates": [ "8/15" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "presentation.christ",
+      "dates": [ "2/2" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "annunciation",
+      "dates": [ "3/25" ],
+      "eventRankKey": "great.feast"
+    },
+    {
+      "occasionKey": "peter.paul",
+      "dates": [ "6/29" ],
+      "eventRankKey": "great.feast"
+    }
+
+    //###########################################################################
+    // Movable Feasts: Before Pascha
+
+    //###########################################################################
+    // Movable Feasts: After Pascha
+
+    //###########################################################################
+    // Fixed Feasts: January
+
+    //###########################################################################
+    // Fixed Feasts: February
+
+    //###########################################################################
+    // Fixed Feasts: March
+
+    //###########################################################################
+    // Fixed Feasts: April
+
+    //###########################################################################
+    // Fixed Feasts: May
+
+    //###########################################################################
+    // Fixed Feasts: June
+
+    //###########################################################################
+    // Fixed Feasts: July
+
+    //###########################################################################
+    // Fixed Feasts: August
+
+    //###########################################################################
+    // Fixed Feasts: September
+
+    //###########################################################################
+    // Fixed Feasts: October
+
+    //###########################################################################
+    // Fixed Feasts: November
+
+    //###########################################################################
+    // Fixed Feasts: December
+  ]
+}

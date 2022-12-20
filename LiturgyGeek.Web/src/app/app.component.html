@@ -1,0 +1,64 @@
+
+<ng-container *ngIf="month">
+  <h1 id="tableLabel">{{ month.monthName }} {{ month.year }}</h1>
+
+  <div *ngIf="month" class="cal-OCA">
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th>Sunday</th>
+          <th>Monday</th>
+          <th>Tuesday</th>
+          <th>Wednesday</th>
+          <th>Thursday</th>
+          <th>Friday</th>
+          <th>Saturday</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let week of month.weeks">
+          <tr>
+            <td *ngFor="let day of week.days" class="calendar-cell-heading">
+              {{ day.day }}
+            </td>
+          </tr>
+          <tr *ngIf="week.hasHeadlines">
+            <ng-container *ngFor="let day of week.days">
+              <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines">
+                <div *ngFor="let headline of day.headlines" class="calendar-cell-headline">
+                  {{ headline }}
+                </div>
+              </td>
+              <td *ngIf="day.headlines.length == 0 && day.content.length > 0" rowspan="2" class="calendar-cell-items">
+                <div *ngFor="let contentLine of day.content" class="calendar-cell-item">
+                  {{ contentLine }}
+                </div>
+              </td>
+              <td *ngIf="day.headlines.length == 0 && day.content.length == 0" rowspan="2" class="calendar-cell-filler">
+                &nbsp;
+              </td>
+            </ng-container>
+          </tr>
+          <tr>
+            <ng-container *ngFor="let day of week.days">
+              <ng-container *ngIf="!week.hasHeadlines || day.headlines.length > 0">
+                <td *ngIf="day.content.length > 0" class="calendar-cell-items">
+                  <div *ngFor="let contentLine of day.content" class="calendar-cell-item">
+                    {{ contentLine }}
+                  </div>
+                </td>
+                <td *ngIf="day.content.length == 0" class="calendar-cell-filler">
+                  &nbsp;
+                </td>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="!month">
+  <p>An error occurred while loading the calendar. Please try refreshing this page.</p>
+</ng-container>

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 using LiturgyGeek.Framework.Globalization;
 using LiturgyGeek.Framework.Calendars;
+using System.Text.Json;
+using System.Reflection;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,6 +14,13 @@ namespace LiturgyGeek.Api.Controllers
     [ApiController]
     public class CalendarController : ControllerBase
     {
+        private readonly CalendarEvaluator calendarEvaluator;
+
+        public CalendarController(CalendarEvaluator calendarEvaluator)
+        {
+            this.calendarEvaluator = calendarEvaluator;
+        }
+
         // GET <CalendarController>/OrthodoxNC/2022/10
         [HttpGet("{custom}/{year}/{month}")]
         public CalendarMonth Get(string custom, int year, int month)
@@ -20,18 +29,32 @@ namespace LiturgyGeek.Api.Controllers
             var firstOfMonth = new DateTime(year, month, 1);
             var firstDayOfWeek = firstOfMonth.DayOfWeek;
 
-            var days = new List<CalendarDaySummary[]>();
+            var weeks = new List<CalendarWeekSummary>();
             var date = firstOfMonth.AddDays(-(int)firstDayOfWeek);
+            var weeksShown = ((firstOfMonth.AddMonths(1) - date).Days + 6) / 7;
+            var liturgicalMonth = calendarEvaluator.Evaluate(custom, date, date.AddDays(weeksShown * 7));
+
             while (date < firstOfMonth.AddMonths(1))
             {
-                var week = new CalendarDaySummary[7];
+                var days = new CalendarDaySummary[7];
                 for (int weekday = 0; weekday < 7; weekday++, date = date.AddDays(1))
-                    week[weekday] = new CalendarDaySummary(date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1]);
+                {
+                    var liturgicalDay = liturgicalMonth.Single(d => d.Date == date);
+                    days[weekday] = new CalendarDaySummary(date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1])
+                    {
+                        Headlines = liturgicalDay.Events.Where(e => (e._MonthViewHeadline ?? false) && e.Name != null)
+                                        .Select(e => e.Name!)
+                                        .ToArray(),
+                        Content = liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false) && e.Name != null)
+                                    .Select(e => e.Name!)
+                                    .ToArray(),
+                    };
+                }
 
-                days.Add(week);
+                weeks.Add(new CalendarWeekSummary { Days = days });
             }
 
-            return new CalendarMonth(year, month, cultureInfo.DateTimeFormat.MonthNames[month - 1], days.ToArray());
+            return new CalendarMonth(year, month, cultureInfo.DateTimeFormat.MonthNames[month - 1], weeks.ToArray());
         }
     }
 }
