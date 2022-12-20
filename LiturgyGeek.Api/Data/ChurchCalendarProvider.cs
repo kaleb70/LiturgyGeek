@@ -12,10 +12,10 @@ namespace LiturgyGeek.Api.Data
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
         };
 
-        public ChurchCalendar GetCalendar(string churchCalendarCode)
+        public ChurchCalendar GetCalendar(string calendarKey)
         {
-            return Deserialize<ChurchCalendar>($@"Data\{churchCalendarCode}.json")
-                    ?? throw new KeyNotFoundException($"Calendar not found or invalid: {churchCalendarCode}");
+            return Deserialize<ChurchCalendar>($@"Data\{calendarKey}.json")
+                    ?? throw new KeyNotFoundException($"Calendar not found or invalid: {calendarKey}");
         }
 
         public ChurchCommon GetCommon()

@@ -1,7 +1,7 @@
 {
   "name": "Orthodox (New Calendar)",
-  "traditionCode": "byzantine",
-  "calendarCode": "oca",
+  "traditionKey": "byzantine",
+  "calendarKey": "oca",
 
   "solarReckoning": "revisedJulian",
   "paschalReckoning": "julian",
@@ -9,7 +9,7 @@
   //###########################################################################
   // Rules
 
-  "ruleCategories": {
+  "ruleGroups": {
     "fast": {
 
       //---------------------------------------------------------------------------
@@ -18,32 +18,32 @@
       "_monthViewHeadline": true,
       "rules": {
         "fast.none": {
-          "description": "No Fast",
-          "_showOnDates": [ "Wednesday", "Friday" ]
+          "summary": "No Fast",
+          "_visibilityIncludeDates": [ "Wednesday", "Friday" ]
         },
         "fast.dairy": {
-          "description": "Fast 🧀🐟🏺🍷",
-          "details": "Dairy, Fish, Oil, and Wine Permitted"
+          "summary": "Fast 🧀🐟🏺🍷",
+          "elaboration": "Dairy, Fish, Oil, and Wine Permitted"
         },
         "fast.fish": {
-          "description": "Fast 🐟🏺🍷",
-          "details": "Fish, Oil, and Wine Permitted"
+          "summary": "Fast 🐟🏺🍷",
+          "elaboration": "Fish, Oil, and Wine Permitted"
         },
         "fast.caviar": {
-          "description": "Fast 🥄🏺🍷",
-          "details": "Caviar, Oil, and Wine Permitted"
+          "summary": "Fast 🥄🏺🍷",
+          "elaboration": "Caviar, Oil, and Wine Permitted"
         },
         "fast.oil": {
-          "description": "Fast 🏺🍷",
-          "details": "Oil and Wine Permitted"
+          "summary": "Fast 🏺🍷",
+          "elaboration": "Oil and Wine Permitted"
         },
         "fast.wine": {
-          "description": "Fast 🍷",
-          "details": "Wine Permitted"
+          "summary": "Fast 🍷",
+          "elaboration": "Wine Permitted"
         },
         "fast.strict": {
-          "description": "Fast",
-          "details": "Strict Fast"
+          "summary": "Fast",
+          "elaboration": "Strict Fast"
         }
       }
     }
@@ -92,19 +92,19 @@
       "startDate": "1/1",
       "endDate": "12/31",
       "isDefault": true,
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Wednesday", "Friday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Wednesday", "Friday" ],
-          "includeRanks": [ "great.feast", "patron", "vigil" ],
-          "ruleCode": "fast.fish"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "great.feast", "patron", "vigil" ],
+            "ruleKey": "fast.fish"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -113,43 +113,39 @@
     "advent": {
       "startDate": "11/15",
       "endDate": "12/24",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "endDate": "12/19", // except nativity forefeast
-          "includeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "12/20", // nativity forefeast
-          "includeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Monday", "Wednesday", "Friday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Tuesday", "Thursday" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "endDate": "12/19", // except nativity forefeast
-          "includeRanks": [ "great.feast", "patron", "vigil" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "endDate": "12/19", // except nativity forefeast
-          "includeRanks": [ "polyeleos", "doxology" ],
-          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
-          "ruleCode": "fast.fish"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "endDate": "12/19", // except nativity forefeast
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "startDate": "12/20", // nativity forefeast
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "includeDates": [ "Monday", "Wednesday", "Friday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "includeDates": [ "Tuesday", "Thursday" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "endDate": "12/19", // except nativity forefeast
+            "includeRanks": [ "great.feast", "patron", "vigil" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "endDate": "12/19", // except nativity forefeast
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+            "ruleKey": "fast.fish"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -158,12 +154,13 @@
     "christmas": {
       "startDate": "12/25",
       "endDate": "1/5",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "ruleCode": "fast.none"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleKey": "fast.none"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -172,12 +169,13 @@
     "publican.pharisee": {
       "startDate": "-10/Sunday",
       "endDate": "-10/Saturday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "ruleCode": "fast.none"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleKey": "fast.none"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -186,12 +184,13 @@
     "cheesefare": {
       "startDate": "-8/Monday",
       "endDate": "-7/Sunday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "ruleCode": "fast.dairy"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleKey": "fast.dairy"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -200,43 +199,39 @@
     "lent": {
       "startDate": "-7/Monday",
       "endDate": "-2/Saturday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "endDate": "-7/Friday", // Canon of St Andrew
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-7/Saturday", // after Canon of St Andrew
-          "includeDates": [ "Sunday", "Saturday" ],
-          "excludeDates": [ "-2/Saturday" ], // except Lazarus Saturday
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "-2/Saturday" ], // Lazarus Saturday
-          "ruleCode": "fast.caviar"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-7/Saturday", // after Canon of St Andrew
-          "excludeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-7/Saturday", // after Canon of St Andrew
-          "includeRanks": [ "great.feast", "patron" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-7/Saturday", // after Canon of St Andrew
-          "includeRanks": [ "vigil", "polyeleos" ],
-          "ruleCode": "fast.oil"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "endDate": "-7/Friday", // Canon of St Andrew
+            "ruleKey": "fast.strict"
+          },
+          {
+            "startDate": "-7/Saturday", // after Canon of St Andrew
+            "includeDates": [ "Sunday", "Saturday" ],
+            "excludeDates": [ "-2/Saturday" ], // except Lazarus Saturday
+            "ruleKey": "fast.oil"
+          },
+          {
+            "includeDates": [ "-2/Saturday" ], // Lazarus Saturday
+            "ruleKey": "fast.caviar"
+          },
+          {
+            "startDate": "-7/Saturday", // after Canon of St Andrew
+            "excludeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "startDate": "-7/Saturday", // after Canon of St Andrew
+            "includeRanks": [ "great.feast", "patron" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "startDate": "-7/Saturday", // after Canon of St Andrew
+            "includeRanks": [ "vigil", "polyeleos" ],
+            "ruleKey": "fast.oil"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -245,30 +240,28 @@
     "holy.week": {
       "startDate": "-1/Sunday",
       "endDate": "-1/Saturday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "endDate": "-1/Friday", // through Holy Friday
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "-1/Saturday" ], // Holy Saturday
-          "ruleCode": "fast.wine"
-        },
-        {
-          "categoryCode": "fast",
-          "endDate": "-1/Thursday", // through Holy Thursday
-          "includeRanks": [ "great.feast" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-1/Friday", // starting at Holy Friday
-          "includeRanks": [ "great.feast" ],
-          "ruleCode": "fast.wine"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "endDate": "-1/Friday", // through Holy Friday
+            "ruleKey": "fast.strict"
+          },
+          {
+            "includeDates": [ "-1/Saturday" ], // Holy Saturday
+            "ruleKey": "fast.wine"
+          },
+          {
+            "endDate": "-1/Thursday", // through Holy Thursday
+            "includeRanks": [ "great.feast" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "startDate": "-1/Friday", // starting at Holy Friday
+            "includeRanks": [ "great.feast" ],
+            "ruleKey": "fast.wine"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -277,26 +270,25 @@
     "pascha": {
       "startDate": "1/Sunday",
       "endDate": "7/Saturday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "endDate": "1/Saturday", // Bright Week
-          "ruleCode": "fast.none"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "2/Sunday", // after Bright Week
-          "includeDates": [ "Wednesday", "Friday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "2/Sunday", // after Bright Week
-          "includeDates": [ "Wednesday", "Friday" ],
-          "includeRanks": [ "great.feast", "patron", "vigil" ],
-          "ruleCode": "fast.fish"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "endDate": "1/Saturday", // Bright Week
+            "ruleKey": "fast.none"
+          },
+          {
+            "startDate": "2/Sunday", // after Bright Week
+            "includeDates": [ "Wednesday", "Friday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "startDate": "2/Sunday", // after Bright Week
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "great.feast", "patron", "vigil" ],
+            "ruleKey": "fast.fish"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -305,12 +297,13 @@
     "pentecost": {
       "startDate": "8/Sunday",
       "endDate": "8/Saturday",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "ruleCode": "fast.none"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleKey": "fast.none"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -319,34 +312,31 @@
     "peter.paul": {
       "startDate": "9/Monday",
       "endDate": "6/28",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Monday", "Wednesday", "Friday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Tuesday", "Thursday" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "includeRanks": [ "great.feast", "patron", "vigil" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "includeRanks": [ "polyeleos", "doxology" ],
-          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
-          "ruleCode": "fast.fish"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "includeDates": [ "Monday", "Wednesday", "Friday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "includeDates": [ "Tuesday", "Thursday" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "includeRanks": [ "great.feast", "patron", "vigil" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+            "ruleKey": "fast.fish"
+          }
+        ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -355,29 +345,27 @@
     "dormition.theotokos": {
       "startDate": "8/1",
       "endDate": "8/14",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "excludeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.strict"
-        },
-        {
-          "categoryCode": "fast",
-          "includeRanks": [ "great.feast", "patron" ],
-          "ruleCode": "fast.fish"
-        },
-        {
-          "categoryCode": "fast",
-          "startDate": "-7/Saturday",
-          "includeRanks": [ "vigil", "polyeleos" ],
-          "ruleCode": "fast.oil"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "excludeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.strict"
+          },
+          {
+            "includeRanks": [ "great.feast", "patron" ],
+            "ruleKey": "fast.fish"
+          },
+          {
+            "startDate": "-7/Saturday",
+            "includeRanks": [ "vigil", "polyeleos" ],
+            "ruleKey": "fast.oil"
+          }
+        ]
+      }
     }
   },
 
@@ -396,18 +384,18 @@
       "occasionKey": "holy.cross",
       "dates": [ "9/14" ],
       "eventRankKey": "great.feast",
-      "ruleCriteria": [
-        {
-          "categoryCode": "fast",
-          "includeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.oil"
-        },
-        {
-          "categoryCode": "fast",
-          "excludeDates": [ "Sunday", "Saturday" ],
-          "ruleCode": "fast.strict"
-        }
-      ]
+      "ruleCriteria": {
+        "fast": [
+          {
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.oil"
+          },
+          {
+            "excludeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "fast.strict"
+          }
+        ]
+      }
     },
     {
       "occasionKey": "christmas",
@@ -425,8 +413,8 @@
       "eventRankKey": "great.feast",
       "ruleCriteria": [
         {
-          "categoryCode": "fast",
-          "ruleCode": "fast.fish"
+          "ruleGroupKey": "fast",
+          "ruleKey": "fast.fish"
         }
       ]
     },
