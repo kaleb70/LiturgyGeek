@@ -15,37 +15,37 @@
   --noFast-background: white;
 }
 
-.calendar-cell-heading.fast_fish {
-  color: var(--fish-color);
-  background-color: var(--fish-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_fish {
+    color: var(--fish-color);
+    background-color: var(--fish-background);
+  }
 
-.calendar-cell-heading.fast_strict {
-  color: var(--strictFast-color);
-  background-color: var(--strictFast-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_strict {
+    color: var(--strictFast-color);
+    background-color: var(--strictFast-background);
+  }
 
-.calendar-cell-heading.fast_oil {
-  color: var(--oil-color);
-  background-color: var(--oil-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_oil {
+    color: var(--oil-color);
+    background-color: var(--oil-background);
+  }
 
-.calendar-cell-heading.fast_wine {
-  color: var(--wine-color);
-  background-color: var(--wine-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_wine {
+    color: var(--wine-color);
+    background-color: var(--wine-background);
+  }
 
-.calendar-cell-heading.fast_dairy {
-  color: var(--dairy-color);
-  background-color: var(--dairy-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_dairy {
+    color: var(--dairy-color);
+    background-color: var(--dairy-background);
+  }
 
-.calendar-cell-heading.fast_caviar {
-  color: var(--caviar-color);
-  background-color: var(--caviar-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_caviar {
+    color: var(--caviar-color);
+    background-color: var(--caviar-background);
+  }
 
-.calendar-cell-heading.fast_none {
-  color: var(--noFast-color);
-  background-color: var(--noFast-background);
-}
+  .rubrics.easternOrthodox .calendar-cell-heading.fast_none {
+    color: var(--noFast-color);
+    background-color: var(--noFast-background);
+  }

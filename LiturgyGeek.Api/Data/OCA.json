@@ -104,6 +104,11 @@
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "greatFeast", "patron", "vigil" ],
             "ruleKey": "fish"
+          },
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "ruleKey": "oil"
           }
         ]
       }
@@ -145,7 +150,18 @@
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeDates": [ "Monday", "Tuesday", "Thursday" ],
             "ruleKey": "fish"
+          },
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "ruleKey": "oil"
+          },
+          {
+            "startDate": "12/20", // nativity forefeast
+            "includeRanks": [ "greatFeast", "patron", "vigil", "polyeleos", "doxology" ],
+            "ruleKey": "oil"
           }
+
         ]
       }
     },
@@ -337,6 +353,11 @@
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeDates": [ "Monday", "Tuesday", "Thursday" ],
             "ruleKey": "fish"
+          },
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "ruleKey": "oil"
           }
         ]
       }
