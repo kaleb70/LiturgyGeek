@@ -1,34 +1,34 @@
-.calendar-cell-heading .fast.fish {
+.calendar-cell-heading.fast_fish {
     color: black;
-    background-color: aqua;
+    background-color: skyblue;
 }
 
-.calendar-cell-heading .fast.strict {
+.calendar-cell-heading.fast_strict {
     color: white;
     background-color: darkviolet;
 }
 
-.calendar-cell-heading .fast.oil {
+.calendar-cell-heading.fast_oil {
     color: white;
     background-color: #bab86c;
 }
 
-.calendar-cell-heading .fast.wine {
+.calendar-cell-heading.fast_wine {
     color: white;
     background-color: #990012;
 }
 
-.calendar-cell-heading .fast.dairy {
+.calendar-cell-heading.fast_dairy {
     color: black;
     background-color: #fbdb65;
 }
 
-.calendar-cell-heading .fast.caviar {
+.calendar-cell-heading.fast_caviar {
     color: black;
     background-color: #ffa07a;
 }
 
-.calendar-cell-heading .fast.none {
+.calendar-cell-heading.fast_none {
     color: black;
     background-color: white;
 }

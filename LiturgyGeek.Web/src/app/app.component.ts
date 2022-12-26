@@ -37,6 +37,6 @@ interface CalendarDaySummary {
   day: number;
   monthName: string;
   headlines: string[];
-  content: string[];
-  headingClasses: string[];
+  items: string[];
+  headingClass: string;
 }

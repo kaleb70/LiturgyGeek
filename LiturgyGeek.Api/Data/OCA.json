@@ -19,7 +19,9 @@
       "rules": {
         "none": {
           "summary": "No Fast",
-          "_showOnDates": [ "Wednesday", "Friday" ]
+          "_visibilityCriteria": {
+            "includeDates": [ "Wednesday", "Friday" ]
+          }
         },
         "dairy": {
           "summary": "Fast 🧀🐟🏺🍷",
@@ -166,7 +168,7 @@
     //---------------------------------------------------------------------------
     // Week of the Publican & Pharisee
 
-    "publican_pharisee": {
+    "publican-pharisee": {
       "startDate": "-10/Sunday",
       "endDate": "-10/Saturday",
       "ruleCriteria": {
@@ -310,7 +312,7 @@
     //---------------------------------------------------------------------------
     // Apostles Fast
 
-    "peter_paul": {
+    "peter-paul": {
       "startDate": "9/Monday",
       "endDate": "6/28",
       "ruleCriteria": {
@@ -474,7 +476,7 @@
       "eventRankKey": "greatFeast"
     },
     {
-      "occasionKey": "peter_paul",
+      "occasionKey": "peter-paul",
       "dates": [ "6/29" ],
       "eventRankKey": "greatFeast"
     },

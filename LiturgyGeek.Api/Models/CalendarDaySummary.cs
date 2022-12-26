@@ -18,9 +18,9 @@ namespace LiturgyGeek.Api.Models
 
         public string[]? Headlines { get; set; }
 
-        public string[]? Content { get; set; }
+        public string[]? Items { get; set; }
 
-        public string[]? HeadingClasses { get; set; }
+        public string? HeadingClass { get; set; }
 
         public CalendarDaySummary(int year, int month, int day, string monthName)
         {
