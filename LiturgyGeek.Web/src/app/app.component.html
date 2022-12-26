@@ -19,7 +19,12 @@
         <ng-container *ngFor="let week of month.weeks">
           <tr>
             <td *ngFor="let day of week.days" class="calendar-cell-heading">
-              {{ day.day }}
+              <ng-container *ngIf="day.headingClasses.length == 0">
+                <div class="calendar-cell-text">{{ day.day }}</div>
+              </ng-container>
+              <div *ngIf="day.headingClasses.length > 0" class="{{ day.headingClasses[0] }}">
+                <div class="calendar-cell-text">{{ day.day }}</div>
+              </div>
             </td>
           </tr>
           <tr *ngIf="week.hasHeadlines">

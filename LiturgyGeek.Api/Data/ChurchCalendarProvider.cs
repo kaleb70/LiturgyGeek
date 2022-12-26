@@ -9,7 +9,7 @@ namespace LiturgyGeek.Api.Data
         private JsonSerializerOptions jsonSerializerOptions = new()
         {
             ReadCommentHandling = JsonCommentHandling.Skip,
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNamingPolicy = JsonNamingPolicyEx.CamelCaseEx,
         };
 
         public ChurchCalendar GetCalendar(string calendarKey)
@@ -28,11 +28,7 @@ namespace LiturgyGeek.Api.Data
         {
             using (var stream = File.OpenRead(path))
             {
-                return JsonSerializer.Deserialize<T>(stream, options ?? new()
-                {
-                    ReadCommentHandling = JsonCommentHandling.Skip,
-                    PropertyNamingPolicy = JsonNamingPolicyEx.CamelCaseEx,
-                });
+                return JsonSerializer.Deserialize<T>(stream, options ?? jsonSerializerOptions);
             }
         }
     }

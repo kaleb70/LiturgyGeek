@@ -3,7 +3,7 @@
     "pascha": {
       "name": "Holy Pascha"
     },
-    "holy.cross": {
+    "holyCross": {
       "name": "Exaltation of the Cross"
     },
     "christmas": {
@@ -12,7 +12,7 @@
     "theophany": {
       "name": "Theophany"
     },
-    "palm.sunday": {
+    "palmSunday": {
       "name": "Palm Sunday"
     },
     "ascension": {
@@ -24,22 +24,22 @@
     "transfiguration": {
       "name": "Transfiguration"
     },
-    "nativity.theotokos": {
+    "nativityTheotokos": {
       "name": "Nativity of the Theotokos"
     },
-    "presentation.theotokos": {
+    "presentationTheotokos": {
       "name": "Presentation of the Theotokos"
     },
-    "dormition.theotokos": {
+    "dormitionTheotokos": {
       "name": "Dormition of the Theotokos"
     },
-    "presentation.christ": {
+    "presentationChrist": {
       "name": "Presentation of Christ"
     },
     "annunciation": {
       "name": "Annunciation"
     },
-    "peter.paul": {
+    "peter_paul": {
       "name": "Ss Peter and Paul"
     }
   }

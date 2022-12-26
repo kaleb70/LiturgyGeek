@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LiturgyGeek.Framework" Version="0.1.0-alpha.8389.36817" />
+    <PackageReference Include="LiturgyGeek.Framework" Version="0.1.0-alpha.8395.14039" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 

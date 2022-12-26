@@ -17,21 +17,29 @@
   border-bottom: 1px solid #aaa;
   font-weight: bold;
   text-align: right;
+  padding: 0;
 }
 
 .calendar-cell-headlines {
   border: 1px solid #000;
   text-align: center;
+  padding: 0;
 }
 
 .calendar-cell-items {
   border: 1px solid #000;
   height: 5em;
   text-align: center;
+  padding: 0;
+}
+
+.calendar-cell-text {
+  padding: 1px;
 }
 
 .calendar-cell-filler {
   border: 1px solid #000;
   height: 5em;
   text-align: center;
+  padding: 0;
 }

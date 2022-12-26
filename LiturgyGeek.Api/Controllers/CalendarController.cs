@@ -40,14 +40,23 @@ namespace LiturgyGeek.Api.Controllers
                 for (int weekday = 0; weekday < 7; weekday++, date = date.AddDays(1))
                 {
                     var liturgicalDay = liturgicalMonth.Single(d => d.Date == date);
+
                     days[weekday] = new CalendarDaySummary(date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1])
                     {
-                        Headlines = liturgicalDay.Events.Where(e => (e._MonthViewHeadline ?? false) && e.Name != null)
-                                        .Select(e => e.Name!)
-                                        .ToArray(),
+                        Headlines = liturgicalDay.Rules.Where(r => r.RuleGroup.Value._MonthViewHeadline
+                                                                    && r.Rule.Value.Summary != null)
+                                        .Select(r => r.Rule.Value.Summary)
+                                    .Concat(liturgicalDay.Events.Where(e => (e._MonthViewHeadline ?? false)
+                                                                            && e.Name != null)
+                                            .Select(e => e.Name!))
+                                    .ToArray(),
                         Content = liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false) && e.Name != null)
                                     .Select(e => e.Name!)
                                     .ToArray(),
+
+                        HeadingClasses = liturgicalDay.Rules
+                                            .Select(r => r.RuleGroup.Key + " " + r.Rule.Key)
+                                            .ToArray(),
                     };
                 }
 

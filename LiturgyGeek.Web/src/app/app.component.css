@@ -1,0 +1,34 @@
+.calendar-cell-heading .fast.fish {
+    color: black;
+    background-color: aqua;
+}
+
+.calendar-cell-heading .fast.strict {
+    color: white;
+    background-color: darkviolet;
+}
+
+.calendar-cell-heading .fast.oil {
+    color: white;
+    background-color: #bab86c;
+}
+
+.calendar-cell-heading .fast.wine {
+    color: white;
+    background-color: #990012;
+}
+
+.calendar-cell-heading .fast.dairy {
+    color: black;
+    background-color: #fbdb65;
+}
+
+.calendar-cell-heading .fast.caviar {
+    color: black;
+    background-color: #ffa07a;
+}
+
+.calendar-cell-heading .fast.none {
+    color: black;
+    background-color: white;
+}
