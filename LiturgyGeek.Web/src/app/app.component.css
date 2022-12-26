@@ -1,34 +1,35 @@
-.calendar-cell-heading.fast_fish {
-    color: black;
-    background-color: skyblue;
+.calendar-table {
+  font-family: sans-serif;
+  table-layout: fixed;
+  border: none;
+  border-color: #000;
+  border-spacing: 0;
+  border-collapse: collapse;
+  display: table;
+  width: 100%;
+  font-size: 80%;
 }
 
-.calendar-cell-heading.fast_strict {
-    color: white;
-    background-color: darkviolet;
+.calendar-cell-heading {
+  border: 1px solid #000;
+  border-bottom: 1px solid #aaa;
+  font-weight: bold;
+  text-align: right;
 }
 
-.calendar-cell-heading.fast_oil {
-    color: white;
-    background-color: #bab86c;
+.calendar-cell-headlines {
+  border: 1px solid #000;
+  text-align: center;
 }
 
-.calendar-cell-heading.fast_wine {
-    color: white;
-    background-color: #990012;
+.calendar-cell-items {
+  border: 1px solid #000;
+  height: 5em;
+  text-align: center;
 }
 
-.calendar-cell-heading.fast_dairy {
-    color: black;
-    background-color: #fbdb65;
-}
-
-.calendar-cell-heading.fast_caviar {
-    color: black;
-    background-color: #ffa07a;
-}
-
-.calendar-cell-heading.fast_none {
-    color: black;
-    background-color: white;
+.calendar-cell-filler {
+  border: 1px solid #000;
+  height: 5em;
+  text-align: center;
 }

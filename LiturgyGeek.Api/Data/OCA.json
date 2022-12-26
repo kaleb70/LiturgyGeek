@@ -1,6 +1,6 @@
 {
   "name": "Orthodox (New Calendar)",
-  "traditionKey": "byzantine",
+  "traditionKey": "easternOrthodox",
   "calendarKey": "oca",
 
   "solarReckoning": "revisedJulian",
@@ -487,6 +487,7 @@
     {
       "occasionKey": "lazarus",
       "dates": [ "-2/Saturday" ],
+      "name": "Lazarus Saturday",
       "eventRankKey": "ordinary",
       "ruleCriteria": {
         "fast": [
