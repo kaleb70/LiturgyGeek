@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(http: HttpClient) {
     //http.get<WeatherForecast[]>('/weatherforecast').subscribe(result => {
-    http.get<CalendarMonth>('https://localhost:7246/Calendar/oca/2023/4').subscribe(result => {
+    http.get<CalendarMonth>('https://localhost:7246/Calendar/oca/2023/1').subscribe(result => {
       this.month = result;
     }, error => console.error(error));
   }

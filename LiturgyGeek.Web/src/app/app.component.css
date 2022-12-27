@@ -28,6 +28,10 @@
   text-align: center;
 }
 
+.calendar-cell-item:not(:first-child) {
+  border-top: 1px solid #000;
+}
+
 .calendar-cell-filler {
   border: 1px solid #000;
   height: 5em;

@@ -41,6 +41,37 @@
     },
     "peter-paul": {
       "name": "Ss Peter and Paul"
+    },
+    "christCircumcision": {
+      "name": "Circumcision of Our Lord",
+      "longName": "The Circumcision of Our Lord and Savior Jesus Christ"
+    },
+    "basilGreat": {
+      "name": "St Basil the Great",
+      "longName": "St Basil the Great, Archbishop of Caesarea in Cappadocia"
+    },
+    "basilAncyra": {
+      "name": "Martyr Basil of Ancyra"
+    },
+    "theogenesParium": {
+      "name": "Hieromartyr Theogenes of Parium",
+      "longName": "Hierormartyr Theogenes, Bishop of Parium on the Hellespont"
+    },
+    "seraphimSarov": {
+      "name": "Ven. Seraphim of Sarov",
+      "longName": "Repose of Ven. Seraphim, Wonderworker of Sarov"
+    },
+    "sylvesterRome": {
+      "name": "St Sylvester",
+      "longName": "St Sylvester, Pope of Rome"
+    },
+    "sylvesterKiev": {
+      "name": "Ven. Sylvester of the Caves",
+      "longName": "Ven. Sylvesgter of the Kiev Caves"
+    },
+    "julianaLazarevo": {
+      "name": "Righteous Juliana of Lazarévo"
     }
+
   }
 }
