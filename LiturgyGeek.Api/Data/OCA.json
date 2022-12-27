@@ -432,18 +432,6 @@
       "eventRankKey": "greatFeast"
     },
     {
-      "occasionKey": "theophany",
-      "dates": [ "1/6" ],
-      "eventRankKey": "greatFeast",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "ruleKey": "none"
-          }
-        ]
-      }
-    },
-    {
       "occasionKey": "palmSunday",
       "dates": [ "-1/Sunday" ],
       "eventRankKey": "greatFeast",
@@ -498,11 +486,6 @@
     {
       "occasionKey": "peter-paul",
       "dates": [ "6/29" ],
-      "eventRankKey": "greatFeast"
-    },
-    {
-      "occasionKey": "christCircumcision",
-      "dates": [ "1/1" ],
       "eventRankKey": "greatFeast"
     },
 
@@ -575,10 +558,15 @@
 
     {
       "occasionKey": "theophanySundayBefore",
-      "dates": [ "1/1/Sunday/6", "1/1/Monday/1" ],
+      "dates": [ "1/1/Sunday/5", "1/1/Monday/1", "1/1/Tuesday/1" ],
       "eventRankKey": "ordinary",
       "name": "Sunday Before the Theophany",
       "_monthViewContent": true
+    },
+    {
+      "occasionKey": "circumcisionChrist",
+      "dates": [ "1/1" ],
+      "eventRankKey": "greatFeast"
     },
     {
       "occasionKey": "basilGreat",
@@ -619,6 +607,148 @@
     {
       "occasionKey": "julianaLazarevo",
       "dates": [ "1/2" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "malachi",
+      "dates": [ "1/3" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true
+    },
+
+    //---------------------------------------------------------------------------
+    // January 3
+
+    {
+      "occasionKey": "gordiusCaesarea",
+      "dates": [ "1/3" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "genevieveParis",
+      "dates": [ "1/3" ],
+      "eventRankKey": "ordinary"
+    },
+
+    //---------------------------------------------------------------------------
+    // January 4
+
+    {
+      "occasionKey": "synaxisSeventy",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "theoctistusCucomo",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "zosimus-athanasius",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "eustathiusISerbiaRepose",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "euthymius-twelve",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "aquilaCaves",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "onuphriusChilandari",
+      "dates": [ "1/4" ],
+      "eventRankKey": "ordinary"
+    },
+
+    //---------------------------------------------------------------------------
+    // January 5
+
+    {
+      "occasionKey": "theophanyEve",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true,
+      "ruleCriteria": {
+        "fast": [
+          {
+            "excludeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "strict"
+          },
+          {
+            "includeDates": [ "Sunday", "Saturday" ],
+            "ruleKey": "oil"
+          }
+        ]
+      }
+    },
+    {
+      "occasionKey": "theopemptus-theonas",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "syncleticaAlexandria",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "micah",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "apollinarisEgypt",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "phosteriusHermit",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "menasSinai",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "gregoryCrete",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+    {
+      "occasionKey": "romanos",
+      "dates": [ "1/5" ],
+      "eventRankKey": "ordinary"
+    },
+
+    //---------------------------------------------------------------------------
+    // January 6
+
+    {
+      "occasionKey": "theophany",
+      "dates": [ "1/6" ],
+      "eventRankKey": "greatFeast",
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleKey": "none"
+          }
+        ]
+      }
+    },
+    {
+      "occasionKey": "macariusMtAthos",
+      "dates": [ "1/6" ],
       "eventRankKey": "ordinary"
     }
 

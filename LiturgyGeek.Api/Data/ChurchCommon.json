@@ -10,7 +10,8 @@
       "name": "Christmas Day"
     },
     "theophany": {
-      "name": "Theophany"
+      "name": "The Theophany of Our Lord",
+      "longName": "The Holy Theophany of Our Lord and Savior Jesus Christ"
     },
     "palmSunday": {
       "name": "Palm Sunday"
@@ -42,7 +43,7 @@
     "peter-paul": {
       "name": "Ss Peter and Paul"
     },
-    "christCircumcision": {
+    "circumcisionChrist": {
       "name": "Circumcision of Our Lord",
       "longName": "The Circumcision of Our Lord and Savior Jesus Christ"
     },
@@ -71,6 +72,75 @@
     },
     "julianaLazarevo": {
       "name": "Righteous Juliana of Lazarévo"
+    },
+    "malachi": {
+      "name": "Prophet Malachi",
+      "longName": "Holy Prophet Malachi"
+    },
+    "gordiusCaesarea": {
+      "name": "Martyr Gordius at Caesarea",
+      "longName": "Martyr Gordius at Caesarea in Cappadocia"
+    },
+    "genevieveParis": {
+      "name": "Ven. Genevieve of Paris"
+    },
+    "synaxisSeventy": {
+      "name": "Synaxis of the Seventy Apostles"
+    },
+    "theoctistusCucomo": {
+      "name": "Ven. Theoctistus of Cucomo",
+      "longName": "Ven. Theoctistus, Abbot at Cucomo, in Sicily"
+    },
+    "zosimus-athanasius": {
+      "name": "Zosimus and Athanasius of Cilicia",
+      "longName": "Martyrs Zosimus the Hermit and Athanasius the Commentarisius (Superintendent of Prisoners), Anchorites, of Cilicia"
+    },
+    "eustathiusISerbiaRepose": {
+      "name": "St Eustathius I of Serbia (Repose)",
+      "longName": "Repose of St Eustathius I, Archbishop of Serbia"
+    },
+    "euthymius-twelve": {
+      "name": "Ven. Euthymius and twelve other monks",
+      "longName": "Ven. Euthymius and twelve other monks, martyred at Vatopedi"
+    },
+    "aquilaCaves": {
+      "name": "St Aquila of the Caves",
+      "longName": "St Aquila, Deacon, of the Kiev Caves"
+    },
+    "onuphriusChilandari": {
+      "name": "Ven. Onuphrius of Chilandari",
+      "longName": "Ven. Monk-Martyr Onuphrius of Chilandari"
+    },
+    "theophanyEve": {
+      "name": "Eve of the Theophany"
+    },
+    "theopemptus-theonas": {
+      "name": "Theopemptus of Nicomedia, and Theonas",
+      "longName": "Hieromartyr Theopemptus, Bishop of Nicomedia, and Martyr Theonas"
+    },
+    "syncleticaAlexandria": {
+      "name": "Ven. Syncletica of Alexandria"
+    },
+    "micah": {
+      "name": "Prophet Micah"
+    },
+    "apollinarisEgypt": {
+      "name": "Virgin Apollinaris of Egypt"
+    },
+    "phosteriusHermit": {
+      "name": "Ven. Phosterius the Hermit"
+    },
+    "menasSinai": {
+      "name": "Ven. Menas of Sinai"
+    },
+    "gregoryCrete": {
+      "name": "Ven. Gregory of Crete"
+    },
+    "romanos": {
+      "name": "Ven. Martyr Romanos"
+    },
+    "MacariusMtAthos": {
+      "name": "Ven. Macarius of Mt. Athos"
     }
 
   }
