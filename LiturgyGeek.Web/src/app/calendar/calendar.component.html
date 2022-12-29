@@ -1,8 +1,8 @@
 
-<ng-container *ngIf="month">
-  <h1 id="tableLabel">{{ month.monthName }} {{ month.year }}</h1>
+<ng-container *ngIf="result">
+  <h1 id="tableLabel">{{ result.monthName }} {{ result.year }}</h1>
 
-  <div *ngIf="month" class="rubrics easternOrthodox OCA">
+  <div *ngIf="result" class="rubrics easternOrthodox OCA">
     <table class="calendar-table">
       <thead>
         <tr>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        <ng-container *ngFor="let week of month.weeks">
+        <ng-container *ngFor="let week of result.weeks">
           <tr>
             <td *ngFor="let day of week.days" class="calendar-cell-heading {{ day.headingClass }}">
               {{ day.day }}
@@ -59,6 +59,6 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="!month">
+<ng-container *ngIf="!result">
   <p>An error occurred while loading the calendar. Please try refreshing this page.</p>
 </ng-container>

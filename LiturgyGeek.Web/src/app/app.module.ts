@@ -8,6 +8,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   { path: 'calendar', component: CalendarComponent },
+  { path: 'calendar/:calendarKey/:year/:month', component: CalendarComponent },
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
 ]
 
