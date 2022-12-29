@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router'
 
@@ -8,22 +8,33 @@ import { ActivatedRoute } from '@angular/router'
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent {
-  public calendarKey: string;
-  public year: number;
-  public month: number;
+  public calendarKey: string = "";
+  public year: number = 0;
+  public month: number = 0;
 
   public result?: CalendarMonth;
 
   constructor(http: HttpClient, route: ActivatedRoute) {
-    const now = new Date();
-    //http.get<WeatherForecast[]>('/weatherforecast').subscribe(result => {
-    this.calendarKey = route.snapshot.paramMap.get('calendarKey') ?? 'oca';
-    this.year = +(route.snapshot.paramMap.get("year") ?? now.getFullYear());
-    this.month = +(route.snapshot.paramMap.get("month") ?? now.getMonth() + 1);
+    //const now = new Date();
+    ////http.get<WeatherForecast[]>('/weatherforecast').subscribe(result => {
+    //this.calendarKey = route.snapshot.paramMap.get('calendarKey') ?? 'oca';
+    //this.year = +(route.snapshot.paramMap.get('year') ?? now.getFullYear());
+    //this.month = +(route.snapshot.paramMap.get('month') ?? now.getMonth() + 1);
 
-    http.get<CalendarMonth>(`https://localhost:7246/Calendar/${this.calendarKey}/${this.year}/${this.month}`).subscribe(result => {
-      this.result = result;
-    }, error => console.error(error));
+    route.params.subscribe(params => {
+      const now = new Date();
+      this.calendarKey = params['calendarKey'] ?? 'oca';
+      this.year = +(params['year'] ?? now.getFullYear());
+      this.month = +(params['month'] ?? now.getMonth() + 1);
+
+      http.get<CalendarMonth>(`https://localhost:7246/Calendar/${this.calendarKey}/${this.year}/${this.month}`).subscribe(result => {
+        this.result = result;
+      }, error => console.error(error));
+    });
+
+    //http.get<CalendarMonth>(`https://localhost:7246/Calendar/${this.calendarKey}/${this.year}/${this.month}`).subscribe(result => {
+    //  this.result = result;
+    //}, error => console.error(error));
   }
 
   title = 'LiturgyGeek.Web';

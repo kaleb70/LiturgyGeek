@@ -1,6 +1,12 @@
 
 <ng-container *ngIf="result">
-  <h1 id="tableLabel">{{ result.monthName }} {{ result.year }}</h1>
+  <h1 id="tableLabel">
+    <a class="button" routerLink="/calendar/{{calendarKey}}/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}">&lt;</a>
+    
+    <a class="button" routerLink="/calendar/{{calendarKey}}/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}">&gt;</a>
+    &nbsp;&nbsp;
+    {{ result.monthName }} {{ result.year }}
+  </h1>
 
   <div *ngIf="result" class="rubrics easternOrthodox OCA">
     <table class="calendar-table">
