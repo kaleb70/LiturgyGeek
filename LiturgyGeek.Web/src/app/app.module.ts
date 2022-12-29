@@ -1,15 +1,23 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component';
+import { CalendarComponent } from './calendar/calendar.component';
+
+const routes: Routes = [
+  { path: 'calendar', component: CalendarComponent },
+  { path: '', redirectTo: '/calendar', pathMatch: 'full' },
+]
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CalendarComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule
+    BrowserModule, HttpClientModule, RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]
