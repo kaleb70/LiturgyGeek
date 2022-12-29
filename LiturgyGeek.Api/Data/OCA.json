@@ -1,7 +1,8 @@
 {
-  "name": "Orthodox (New Calendar)",
+  "name": "Orthodox Church in America",
   "traditionKey": "easternOrthodox",
-  "calendarKey": "oca",
+  "jurisdictionKey":  "oca",
+  "calendarKey": "stTikhonsMonastery",
 
   "solarReckoning": "revisedJulian",
   "paschalReckoning": "julian",
