@@ -16,9 +16,9 @@ namespace LiturgyGeek.Api.Models
         [Required]
         public string MonthName { get; set; }
 
-        public string[]? Headlines { get; set; }
+        public CalendarDayLineItem[]? Headlines { get; set; }
 
-        public string[]? Items { get; set; }
+        public CalendarDayLineItem[]? Items { get; set; }
 
         public string? HeadingClass { get; set; }
 

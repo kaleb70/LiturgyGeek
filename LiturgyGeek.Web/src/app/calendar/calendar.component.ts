@@ -69,7 +69,13 @@ interface CalendarDaySummary {
   month: number;
   day: number;
   monthName: string;
-  headlines: string[];
-  items: string[];
+  headlines: CalendarDayLineItem[];
+  items: CalendarDayLineItem[];
   headingClass: string;
+}
+
+interface CalendarDayLineItem {
+  summary: string;
+  elaboration: string;
+  class: string;
 }

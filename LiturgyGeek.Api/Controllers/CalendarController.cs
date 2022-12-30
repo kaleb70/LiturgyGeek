@@ -46,19 +46,19 @@ namespace LiturgyGeek.Api.Controllers
                         Headlines = liturgicalDay.Rules.Where(r => r.RuleGroup.Value._MonthViewHeadline
                                                                     && r.Rule.Value.Summary != null
                                                                     && r.Show)
-                                        .Select(r => r.Rule.Value.Summary)
+                                        .Select(r => new CalendarDayLineItem(r))
                                     .Concat(liturgicalDay.Events.Where(e => (e._MonthViewHeadline ?? false)
                                                                             && e.Name != null)
-                                            .Select(e => e.Name!))
+                                            .Select(e => new CalendarDayLineItem(e)))
                                     .ToArray(),
 
                         Items = liturgicalDay.Rules.Where(r => r.RuleGroup.Value._MonthViewContent
                                                                 && r.Rule.Value.Summary != null
                                                                 && r.Show)
-                                        .Select(r => r.Rule.Value.Summary)
+                                        .Select(r => new CalendarDayLineItem(r))
                                     .Concat(liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false)
                                                                             && e.Name != null)
-                                            .Select(e => e.Name!))
+                                            .Select(e => new CalendarDayLineItem(e)))
                                     .ToArray(),
 
                         HeadingClass = string.Join(
