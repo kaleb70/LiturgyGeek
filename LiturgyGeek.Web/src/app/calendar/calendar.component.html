@@ -1,9 +1,14 @@
 
 <ng-container *ngIf="result">
   <h1 id="tableLabel">
-    <a class="button" routerLink="/calendar/{{calendarKey}}/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}">&lt;</a>
-    
-    <a class="button" routerLink="/calendar/{{calendarKey}}/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}">&gt;</a>
+    <span class="btn-group" style="width:4em">
+      <a routerLink="/calendar/{{calendarKey}}/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}" class="btn btn-outline-dark">
+        <i class="bi bi-chevron-left"></i>
+      </a>
+      <a routerLink="/calendar/{{calendarKey}}/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}" class="btn btn-outline-dark">
+        <i class="bi bi-chevron-right"></i>
+      </a>
+    </span>
     &nbsp;&nbsp;
     {{ result.monthName }} {{ result.year }}
   </h1>
