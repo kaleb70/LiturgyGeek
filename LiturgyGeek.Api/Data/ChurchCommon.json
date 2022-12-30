@@ -140,8 +140,29 @@
     "romanos": {
       "name": "Ven. Martyr Romanos"
     },
-    "MacariusMtAthos": {
+    "macariusMtAthos": {
       "name": "Ven. Macarius of Mt. Athos"
+    },
+    "johnBaptistSynaxis": {
+      "name": "Synaxis of St John the Baptist",
+      "longName": "Synaxis of the Holy Glorious Prophet, Forerunner and Baptist John"
+    },
+    "georgeChozebite": {
+      "name": "Ven. George the Chozebite, Abbot"
+    },
+    "domnicaConstantinople": {
+      "name": "Ven. Domnica of Constantinople"
+    },
+    "polyeuctusMelitene": {
+      "name": "Martyr Polyeuctus of Melitene",
+      "longName": "Martyr Polyectus of Melitene in Armenia"
+    },
+    "paulObnora": {
+      "name": "Ven. Paul, Abbot of Obnora"
+    },
+    "theophanRecluse": {
+      "name": "St Theophan the Recluse",
+      "longName": "St Theophan the Recluse, Bishop of Tambov"
     }
 
   }

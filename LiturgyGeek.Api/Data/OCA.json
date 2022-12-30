@@ -751,6 +751,76 @@
       "occasionKey": "macariusMtAthos",
       "dates": [ "1/6" ],
       "eventRankKey": "ordinary"
+    },
+
+    //---------------------------------------------------------------------------
+    // January 7
+
+    {
+      "occasionKey": "theophanySundayAfter",
+      "dates": [ "1/7/Sunday" ],
+      "eventRankKey": "ordinary",
+      "name": "Sunday After the Theophany",
+      "_monthViewContent": true
+    },
+    {
+      "occasionKey": "theophanySaturdayAfter",
+      "dates": [ "1/7/Saturday" ],
+      "eventRankKey": "ordinary",
+      "name": "Saturday After the Theophany",
+      "_monthViewContent": true
+    },
+    {
+      "occasionKey": "johnBaptistSynaxis",
+      "dates": [ "1/7" ],
+      "eventRankKey": "doxology",
+      "_monthViewContent": true
+    },
+
+    //---------------------------------------------------------------------------
+    // January 8
+
+    {
+      "occasionKey": "georgeChozebite",
+      "dates": [ "1/8" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true
+    },
+    {
+      "occasionKey": "domnicaConstantinople",
+      "dates": [ "1/8" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true
+    },
+
+    //---------------------------------------------------------------------------
+    // January 9
+
+    {
+      "occasionKey": "polyeuctusMelitene",
+      "dates": [ "1/9" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true
+    },
+
+    //---------------------------------------------------------------------------
+    // January 10
+
+    {
+      "occasionKey": "dometianMelitene",
+      "dates": [ "1/10" ],
+      "eventRankKey": "ordinary",
+      "_monthViewContent": true
+    },
+    {
+      "occasionKey": "paulObnora",
+      "dates": [ "1/10" ],
+      "eventRankKey": "sixStichera"
+    },
+    {
+      "occasionKey": "theophanRecluse",
+      "dates": [ "1/10" ],
+      "eventRankKey": "polyeleos"
     }
 
     //###########################################################################
