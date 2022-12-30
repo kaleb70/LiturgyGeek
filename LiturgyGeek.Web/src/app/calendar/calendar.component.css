@@ -37,3 +37,11 @@
   height: 5em;
   text-align: center;
 }
+
+.calendar-cell-outside-month {
+    background-color: #e4e4e4;
+}
+
+.calendar-cell-today {
+  background-color: #ffffc2;
+}

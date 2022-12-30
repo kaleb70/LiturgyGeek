@@ -37,6 +37,18 @@ export class CalendarComponent {
     //}, error => console.error(error));
   }
 
+  getDateClasses(day: CalendarDaySummary): string {
+    const now = new Date();
+
+    if (day.year == now.getFullYear() && day.month == now.getMonth() + 1 && day.day == now.getDate())
+      return "calendar-cell-today";
+
+    if (day.year != this.year || day.month != this.month)
+      return "calendar-cell-outside-month";
+
+    return "";
+  }
+
   title = 'LiturgyGeek.Web';
 }
 
