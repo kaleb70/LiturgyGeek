@@ -9,4 +9,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor(http: HttpClient) {
   }
+
+  title = 'LiturgyGeek.Web';
 }

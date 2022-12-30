@@ -1,11 +1,20 @@
 {
   "name": "Orthodox Church in America",
   "traditionKey": "easternOrthodox",
-  "jurisdictionKey":  "oca",
+  "jurisdictionKey": "oca",
   "calendarKey": "stTikhonsMonastery",
 
   "solarReckoning": "revisedJulian",
   "paschalReckoning": "julian",
+
+  //###########################################################################
+  // Custom Flag Behaviors
+
+  "customFlagBehaviors": {
+    "highlight": {
+      "_monthViewContent": true
+    }
+  },
 
   //###########################################################################
   // Rules
@@ -58,15 +67,15 @@
   "eventRanks": {
     "greatFeast": {
       "precedence": 1,
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     "patron": {
       "precedence": 2,
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     "vigil": {
       "precedence": 3,
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     "polyeleos": {
       "precedence": 4
@@ -108,6 +117,7 @@
           {
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "polyeleos", "doxology" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           }
         ]
@@ -149,16 +159,24 @@
             "endDate": "12/19", // except nativity forefeast
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "fish"
           },
           {
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "polyeleos", "doxology" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           },
           {
             "startDate": "12/20", // nativity forefeast
-            "includeRanks": [ "greatFeast", "patron", "vigil", "polyeleos", "doxology" ],
+            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "ruleKey": "oil"
+          },
+          {
+            "startDate": "12/20", // nativity forefeast
+            "includeRanks": [ "polyeleos", "doxology" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           }
 
@@ -241,6 +259,7 @@
           {
             "startDate": "-7/Saturday", // after Canon of St Andrew
             "includeRanks": [ "vigil", "polyeleos" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           }
         ]
@@ -352,11 +371,13 @@
           {
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "fish"
           },
           {
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "polyeleos", "doxology" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           }
         ]
@@ -384,8 +405,8 @@
             "ruleKey": "fish"
           },
           {
-            "startDate": "-7/Saturday",
             "includeRanks": [ "vigil", "polyeleos" ],
+            "includeCustomFlags": [ "highlight" ],
             "ruleKey": "oil"
           }
         ]
@@ -562,7 +583,7 @@
       "dates": [ "1/1/Sunday/5", "1/1/Monday/1", "1/1/Tuesday/1" ],
       "eventRankKey": "ordinary",
       "name": "Sunday Before the Theophany",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "circumcisionChrist",
@@ -573,7 +594,7 @@
       "occasionKey": "basilGreat",
       "dates": [ "1/1" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "basilAncyra",
@@ -593,7 +614,7 @@
       "occasionKey": "seraphimSarov",
       "dates": [ "1/2" ],
       "eventRankKey": "polyeleos",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "sylvesterRome",
@@ -614,7 +635,7 @@
       "occasionKey": "malachi",
       "dates": [ "1/3" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
 
     //---------------------------------------------------------------------------
@@ -677,7 +698,7 @@
       "occasionKey": "theophanyEve",
       "dates": [ "1/5" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true,
+      "customFlags": [ "highlight" ],
       "ruleCriteria": {
         "fast": [
           {
@@ -761,20 +782,20 @@
       "dates": [ "1/7/Sunday" ],
       "eventRankKey": "ordinary",
       "name": "Sunday After the Theophany",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "theophanySaturdayAfter",
       "dates": [ "1/7/Saturday" ],
       "eventRankKey": "ordinary",
       "name": "Saturday After the Theophany",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "johnBaptistSynaxis",
       "dates": [ "1/7" ],
       "eventRankKey": "doxology",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
 
     //---------------------------------------------------------------------------
@@ -784,13 +805,13 @@
       "occasionKey": "georgeChozebite",
       "dates": [ "1/8" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "domnicaConstantinople",
       "dates": [ "1/8" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
 
     //---------------------------------------------------------------------------
@@ -800,7 +821,7 @@
       "occasionKey": "polyeuctusMelitene",
       "dates": [ "1/9" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
 
     //---------------------------------------------------------------------------
@@ -810,7 +831,7 @@
       "occasionKey": "dometianMelitene",
       "dates": [ "1/10" ],
       "eventRankKey": "ordinary",
-      "_monthViewContent": true
+      "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "paulObnora",
