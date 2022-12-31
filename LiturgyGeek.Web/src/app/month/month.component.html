@@ -1,10 +1,10 @@
 <ng-container *ngIf="result">
   <h1 id="tableLabel">
     <span class="btn-group">
-      <a routerLink="/calendar/{{calendarKey}}/month/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}" class="btn btn-outline-dark btn-sm">
+      <a routerLink="/calendar/{{calendarKey}}/month/{{ prevMonth.getFullYear() }}/{{ prevMonth.getMonth() + 1 }}" class="btn btn-outline-dark btn-sm">
         <i class="bi bi-chevron-left"></i>
       </a>
-      <a routerLink="/calendar/{{calendarKey}}/month/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}" class="btn btn-outline-dark btn-sm">
+      <a routerLink="/calendar/{{calendarKey}}/month/{{ nextMonth.getFullYear() }}/{{ nextMonth.getMonth() + 1 }}" class="btn btn-outline-dark btn-sm">
         <i class="bi bi-chevron-right"></i>
       </a>
     </span>
@@ -31,25 +31,29 @@
       <tbody>
         <ng-container *ngFor="let week of result.weeks">
           <tr>
-            <td *ngFor="let day of week.days" class="calendar-cell-heading {{ day.headingClass }}">
+            <td *ngFor="let day of week.days" class="calendar-cell-heading {{ day.headingClass }}"
+                routerLink="{{getDayRouterLink(day)}}">
               {{ day.day }}
             </td>
           </tr>
           <tr *ngIf="week.hasHeadlines">
             <ng-container *ngFor="let day of week.days">
-              <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines calendar-cell-content {{ getDateClasses(day) }}">
+              <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines calendar-cell-content {{ getDateClasses(day) }}"
+                  routerLink="{{getDayRouterLink(day)}}">
                 <div *ngFor="let headline of day.headlines" class="calendar-cell-headline {{ headline.class }}"
                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ headline.elaboration }}">
                   {{ headline.summary }}
                 </div>
               </td>
-              <td *ngIf="day.headlines.length == 0 && day.items.length > 0" rowspan="2" class="calendar-cell-items {{ getDateClasses(day) }}">
+              <td *ngIf="day.headlines.length == 0 && day.items.length > 0" rowspan="2" class="calendar-cell-items {{ getDateClasses(day) }}"
+                  routerLink="{{getDayRouterLink(day)}}">
                 <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
                   {{ item.summary }}
                 </div>
               </td>
-              <td *ngIf="day.headlines.length == 0 && day.items.length == 0" rowspan="2" class="calendar-cell-filler {{ getDateClasses(day) }}">
+              <td *ngIf="day.headlines.length == 0 && day.items.length == 0" rowspan="2" class="calendar-cell-filler {{ getDateClasses(day) }}"
+                  routerLink="{{getDayRouterLink(day)}}">
                 &nbsp;
               </td>
             </ng-container>
@@ -57,13 +61,15 @@
           <tr>
             <ng-container *ngFor="let day of week.days">
               <ng-container *ngIf="!week.hasHeadlines || day.headlines.length > 0">
-                <td *ngIf="day.items.length > 0" class="calendar-cell-items calendar-cell-content {{ getDateClasses(day) }}">
+                <td *ngIf="day.items.length > 0" class="calendar-cell-items calendar-cell-content {{ getDateClasses(day) }}"
+                    routerLink="{{getDayRouterLink(day)}}">
                   <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
-                     data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
+                       data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
                     {{ item.summary }}
                   </div>
                 </td>
-                <td *ngIf="day.items.length == 0" class="calendar-cell-filler calendar-cell-content {{ getDateClasses(day) }}">
+                <td *ngIf="day.items.length == 0" class="calendar-cell-filler calendar-cell-content {{ getDateClasses(day) }}"
+                   routerLink="{{getDayRouterLink(day)}}">
                   &nbsp;
                 </td>
               </ng-container>

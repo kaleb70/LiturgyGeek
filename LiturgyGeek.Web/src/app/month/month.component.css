@@ -10,6 +10,18 @@
   font-size: 80%;
 }
 
+  .calendar-table th {
+      text-align: center;
+      font-weight: bold;
+  }
+
+.calendar-cell-heading,
+.calendar-cell-headlines,
+.calendar-cell-items,
+.calendar-cell-filler {
+  cursor: pointer;
+}
+
 .calendar-cell-heading {
   border: 1px solid #000;
   border-bottom: 1px solid #aaa;
