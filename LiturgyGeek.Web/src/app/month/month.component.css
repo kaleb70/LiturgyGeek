@@ -1,5 +1,5 @@
 .calendar-table {
-  font-family: sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   table-layout: fixed;
   border: none;
   border-color: #000;
@@ -7,7 +7,7 @@
   border-collapse: collapse;
   display: table;
   width: 100%;
-  font-size: 80%;
+  font-size: 70%;
 }
 
   .calendar-table th {
@@ -24,28 +24,32 @@
 
 .calendar-cell-heading {
   border: 1px solid #000;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #bbb;
   font-weight: bold;
   text-align: right;
 }
 
 .calendar-cell-headlines {
   border: 1px solid #000;
+  border-top: #bbb;
+  border-bottom: 1px solid #bbb;
   text-align: center;
 }
 
 .calendar-cell-items {
   border: 1px solid #000;
+  border-top: #bbb;
   height: 5em;
   text-align: center;
 }
 
 .calendar-cell-item:not(:first-child) {
-  border-top: 1px solid #000;
+  border-top: 1px solid #bbb;
 }
 
 .calendar-cell-filler {
   border: 1px solid #000;
+  border-top: #bbb;
   height: 5em;
   text-align: center;
 }

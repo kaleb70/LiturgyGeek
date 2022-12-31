@@ -38,9 +38,9 @@
           </tr>
           <tr *ngIf="week.hasHeadlines">
             <ng-container *ngFor="let day of week.days">
-              <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines calendar-cell-content {{ getDateClasses(day) }}"
+              <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines {{ getDateClasses(day) }}"
                   routerLink="{{getDayRouterLink(day)}}">
-                <div *ngFor="let headline of day.headlines" class="calendar-cell-headline {{ headline.class }}"
+                <div *ngFor="let headline of day.headlines" class="calendar-cell-headline calendar-cell-content {{ headline.class }}"
                      data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ headline.elaboration }}">
                   {{ headline.summary }}
                 </div>

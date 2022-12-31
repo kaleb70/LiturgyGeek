@@ -82,7 +82,8 @@ namespace LiturgyGeek.Api.Controllers
 
                         HeadingClass = string.Join(
                                         " ",
-                                        liturgicalDay.Rules.Select(r => r.RuleGroup.Key + "_" + r.Rule.Key)),
+                                        liturgicalDay.Rules.Select(r => $"rule_{r.RuleGroup.Key}_{r.Rule.Key}")
+                                            .Concat(liturgicalDay.Rules.Select(r => $"rule_{r.RuleGroup.Key}").Distinct())),
                     };
                 }
 

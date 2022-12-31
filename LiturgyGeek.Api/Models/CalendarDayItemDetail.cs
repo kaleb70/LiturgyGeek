@@ -21,7 +21,7 @@ namespace LiturgyGeek.Api.Models
         {
             Title = churchRuleResult.Rule.Value.Summary;
             Elaboration = churchRuleResult.Rule.Value.Elaboration;
-            Class = churchRuleResult.RuleGroup.Key + "_" + churchRuleResult.Rule.Key;
+            Class = $"rule_{churchRuleResult.RuleGroup.Key} rule_{churchRuleResult.RuleGroup.Key}_{churchRuleResult.Rule.Key}";
         }
 
         public CalendarDayItemDetail(ChurchEvent churchEvent)
