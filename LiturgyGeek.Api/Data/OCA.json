@@ -91,6 +91,8 @@
     }
   },
 
+  "defaultEventRank": "ordinary",
+
   //###########################################################################
   // Seasons
 
@@ -517,7 +519,7 @@
       "occasionKey": "lazarus",
       "dates": [ "-2/Saturday" ],
       "name": "Lazarus Saturday",
-      "eventRankKey": "ordinary",
+      "customFlags": [ "highlight" ],
       "ruleCriteria": {
         "fast": [
           {
@@ -537,7 +539,6 @@
     {
       "occasionKey": "brightMonday",
       "dates": [ "1/Monday" ],
-      "eventRankKey": "ordinary",
       "transfers": [
         {
           "includeRanks": [ "patron", "vigil" ],
@@ -545,31 +546,11 @@
         }
       ]
     },
-    {
-      "occasionKey": "brightTuesday",
-      "dates": [ "1/Tuesday" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "brightWednesday",
-      "dates": [ "1/Wednesday" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "brightThursday",
-      "dates": [ "1/Thursday" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "brightFriday",
-      "dates": [ "1/Friday" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "brightSaturday",
-      "dates": [ "1/Saturday" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "brightTuesday", "d": "1/Tuesday" },
+    { "o": "brightWednesday", "d": "1/Wednesday" },
+    { "o": "brightThursday", "d": "1/Thursday" },
+    { "o": "brightFriday", "d": "1/Friday" },
+    { "o": "brightSaturday", "d": "1/Saturday" },
 
     //###########################################################################
     // Fixed Events: January
@@ -580,7 +561,6 @@
     {
       "occasionKey": "theophanySundayBefore",
       "dates": [ "1/1/Sunday/5", "1/1/Monday/1", "1/1/Tuesday/1" ],
-      "eventRankKey": "ordinary",
       "name": "Sunday Before the Theophany",
       "customFlags": [ "highlight" ]
     },
@@ -589,106 +569,40 @@
       "dates": [ "1/1" ],
       "eventRankKey": "greatFeast"
     },
-    {
-      "occasionKey": "basilGreat",
-      "dates": [ "1/1" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
-    {
-      "occasionKey": "basilAncyra",
-      "dates": [ "1/1" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "basilGreat", "d": "1/1", "f": "highlight" },
+    { "o": "basilAncyra", "d": "1/1" },
 
     //---------------------------------------------------------------------------
     // January 2
 
-    {
-      "occasionKey": "theogenes",
-      "dates": [ "1/2" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "theogenes", "d": "1/2" },
     {
       "occasionKey": "seraphimSarov",
       "dates": [ "1/2" ],
       "eventRankKey": "polyeleos",
       "customFlags": [ "highlight" ]
     },
-    {
-      "occasionKey": "sylvesterRome",
-      "dates": [ "1/2" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "sylvesterCaves",
-      "dates": [ "1/2" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "julianaLazarevo",
-      "dates": [ "1/2" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "malachi",
-      "dates": [ "1/3" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
+    { "o": "sylvesterRome", "d": "1/2" },
+    { "o": "sylvesterCaves", "d": "1/2" },
+    { "o": "julianaLazarevo", "d": "1/2" },
 
     //---------------------------------------------------------------------------
     // January 3
 
-    {
-      "occasionKey": "gordiusCaesarea",
-      "dates": [ "1/3" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "genevieveParis",
-      "dates": [ "1/3" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "malachi", "d": "1/3", "f": "highlight" },
+    { "o": "gordiusCaesarea", "d": "1/3" },
+    { "o": "genevieveParis", "d" : "1/3" },
 
     //---------------------------------------------------------------------------
     // January 4
 
-    {
-      "occasionKey": "synaxisSeventy",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "theoctistusCucomo",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "zosimus-athanasius",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "eustathiusISerbiaRepose",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "euthymius-twelve",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "aquilaCaves",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "onuphriusChilandari",
-      "dates": [ "1/4" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "synaxisSeventy", "d": "1/4" },
+    { "o": "theoctistusCucomo", "d": "1/4" },
+    { "o": "zosimus-athanasius", "d": "1/4" },
+    { "o": "eustathius1SerbiaRepose", "d": "1/4" },
+    { "o": "euthymius-twelve", "d": "1/4" },
+    { "o": "aquilaCaves", "d": "1/4" },
+    { "o": "onuphriusChilandari", "d": "1/4" },
 
     //---------------------------------------------------------------------------
     // January 5
@@ -696,7 +610,6 @@
     {
       "occasionKey": "theophanyEve",
       "dates": [ "1/5" ],
-      "eventRankKey": "ordinary",
       "customFlags": [ "highlight" ],
       "ruleCriteria": {
         "fast": [
@@ -711,46 +624,14 @@
         ]
       }
     },
-    {
-      "occasionKey": "theopemptus-theonas",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "syncleticaAlexandria",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "micah",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "apollinarisEgypt",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "phosteriusHermit",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "menasSinai",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "gregoryCrete",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
-    {
-      "occasionKey": "romanos",
-      "dates": [ "1/5" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "theopemptus-theonas", "d": "1/5" },
+    { "o": "syncleticaAlexandria", "d": "1/5" },
+    { "o": "micah", "d": "1/5" },
+    { "o": "apollinarisEgypt", "d": "1/5" },
+    { "o": "phosteriusHermit", "d": "1/5" },
+    { "o": "menasSinai", "d": "1/5" },
+    { "o": "gregoryCrete", "d": "1/5" },
+    { "o": "romanos", "d": "1/5" },
 
     //---------------------------------------------------------------------------
     // January 6
@@ -767,11 +648,7 @@
         ]
       }
     },
-    {
-      "occasionKey": "macariusMtAthos",
-      "dates": [ "1/6" ],
-      "eventRankKey": "ordinary"
-    },
+    { "o": "macariusMtAthos", "d": "1/6" },
 
     //---------------------------------------------------------------------------
     // January 7
@@ -779,14 +656,12 @@
     {
       "occasionKey": "theophanySundayAfter",
       "dates": [ "1/7/Sunday" ],
-      "eventRankKey": "ordinary",
       "name": "Sunday After the Theophany",
       "customFlags": [ "highlight" ]
     },
     {
       "occasionKey": "theophanySaturdayAfter",
       "dates": [ "1/7/Saturday" ],
-      "eventRankKey": "ordinary",
       "name": "Saturday After the Theophany",
       "customFlags": [ "highlight" ]
     },
@@ -800,38 +675,18 @@
     //---------------------------------------------------------------------------
     // January 8
 
-    {
-      "occasionKey": "georgeChozebite",
-      "dates": [ "1/8" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
-    {
-      "occasionKey": "domnicaConstantinople",
-      "dates": [ "1/8" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
+    { "o": "georgeChozebite", "d": "1/8", "f": "highlight" },
+    { "o": "domnicaConstantinople", "d": "1/8", "f": "highlight" },
 
     //---------------------------------------------------------------------------
     // January 9
 
-    {
-      "occasionKey": "polyeuctusMelitene",
-      "dates": [ "1/9" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
+    { "o": "polyeuctusMelitene", "d": "1/9", "f": "highlight" },
 
     //---------------------------------------------------------------------------
     // January 10
 
-    {
-      "occasionKey": "dometianMelitene",
-      "dates": [ "1/10" ],
-      "eventRankKey": "ordinary",
-      "customFlags": [ "highlight" ]
-    },
+    { "o": "dometianMelitene", "d": "1/10", "f": "highlight" },
     {
       "occasionKey": "paulObnora",
       "dates": [ "1/10" ],
