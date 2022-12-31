@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { DayComponent } from './day/day.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DayComponent,
   ],
   imports: [
     BrowserModule,

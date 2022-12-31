@@ -2,31 +2,31 @@
 
 namespace LiturgyGeek.Api.Models
 {
-    public class CalendarDayLineItem
+    public class CalendarDayItemDetail
     {
-        public string Summary { get; set; }
+        public string Title { get; set; }
 
         public string? Elaboration { get; set; }
 
         public string Class { get; set; }
 
-        public CalendarDayLineItem(string summary, string elaboration, string @class)
+        public CalendarDayItemDetail(string title, string elaboration, string @class)
         {
-            Summary = summary;
+            Title = title;
             Elaboration = elaboration;
             Class = @class;
         }
 
-        public CalendarDayLineItem(ChurchRuleResult churchRuleResult)
+        public CalendarDayItemDetail(ChurchRuleResult churchRuleResult)
         {
-            Summary = churchRuleResult.Rule.Value.Summary;
+            Title = churchRuleResult.Rule.Value.Summary;
             Elaboration = churchRuleResult.Rule.Value.Elaboration;
             Class = churchRuleResult.RuleGroup.Key + "_" + churchRuleResult.Rule.Key;
         }
 
-        public CalendarDayLineItem(ChurchEvent churchEvent)
+        public CalendarDayItemDetail(ChurchEvent churchEvent)
         {
-            Summary = churchEvent.Name ?? churchEvent.LongName ?? churchEvent.OccasionKey ?? "[missing name]"; ;
+            Title = churchEvent.LongName ?? churchEvent.Name ?? churchEvent.OccasionKey ?? "[missing name]"; ;
             Class = (churchEvent.EventRankKey ?? "")
                     + " "
                     + (churchEvent.OccasionKey ?? "")

@@ -2,27 +2,19 @@
 
 namespace LiturgyGeek.Api.Models
 {
-    public class CalendarDaySummary
+    public class CalendarDay
     {
-        [Required]
         public int Year { get; set; }
 
-        [Required]
         public int Month { get; set; }
 
-        [Required]
         public int Day { get; set; }
 
-        [Required]
         public string MonthName { get; set; }
 
-        public CalendarDaySummaryItem[]? Headlines { get; set; }
+        public CalendarDayItemDetail[]? Items { get; set; }
 
-        public CalendarDaySummaryItem[]? Items { get; set; }
-
-        public string? HeadingClass { get; set; }
-
-        public CalendarDaySummary(int year, int month, int day, string monthName)
+        public CalendarDay(int year, int month, int day, string monthName)
         {
             Year = year;
             Month = month;

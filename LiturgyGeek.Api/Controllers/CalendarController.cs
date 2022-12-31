@@ -21,7 +21,26 @@ namespace LiturgyGeek.Api.Controllers
             this.calendarEvaluator = calendarEvaluator;
         }
 
-        // GET <CalendarController>/OrthodoxNC/2022/10
+        // GET <CalendarController>/oca/2022/12/25
+        [HttpGet("{custom}/{year}/{month}/{day}")]
+        public CalendarDay Get(string custom, int year, int month, int day)
+        {
+            var cultureInfo = CultureInfo.InvariantCulture;
+
+            var date = new DateTime(year, month, day);
+            var liturgicalDay = calendarEvaluator.Evaluate(custom, date, date.AddDays(1)).Single();
+
+            return new CalendarDay(date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1])
+            {
+                Items = liturgicalDay.Rules.Where(r => r.Rule.Value.Summary != null && r.Show)
+                                        .Select(r => new CalendarDayItemDetail(r))
+                                    .Concat(liturgicalDay.Events.Where(e => e.Name != null)
+                                            .Select(e => new CalendarDayItemDetail(e)))
+                                    .ToArray(),
+            };
+        }
+
+        // GET <CalendarController>/oca/2022/12
         [HttpGet("{custom}/{year}/{month}")]
         public CalendarMonth Get(string custom, int year, int month)
         {
@@ -46,19 +65,19 @@ namespace LiturgyGeek.Api.Controllers
                         Headlines = liturgicalDay.Rules.Where(r => r.RuleGroup.Value._MonthViewHeadline
                                                                     && r.Rule.Value.Summary != null
                                                                     && r.Show)
-                                        .Select(r => new CalendarDayLineItem(r))
+                                        .Select(r => new CalendarDaySummaryItem(r))
                                     .Concat(liturgicalDay.Events.Where(e => (e._MonthViewHeadline ?? false)
                                                                             && e.Name != null)
-                                            .Select(e => new CalendarDayLineItem(e)))
+                                            .Select(e => new CalendarDaySummaryItem(e)))
                                     .ToArray(),
 
                         Items = liturgicalDay.Rules.Where(r => r.RuleGroup.Value._MonthViewContent
                                                                 && r.Rule.Value.Summary != null
                                                                 && r.Show)
-                                        .Select(r => new CalendarDayLineItem(r))
+                                        .Select(r => new CalendarDaySummaryItem(r))
                                     .Concat(liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false)
                                                                             && e.Name != null)
-                                            .Select(e => new CalendarDayLineItem(e)))
+                                            .Select(e => new CalendarDaySummaryItem(e)))
                                     .ToArray(),
 
                         HeadingClass = string.Join(

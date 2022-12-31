@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, Component } from '@angular/core';
+import { AfterViewChecked, Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router'
 import { Tooltip } from 'bootstrap';
@@ -83,12 +83,12 @@ interface CalendarDaySummary {
   month: number;
   day: number;
   monthName: string;
-  headlines: CalendarDayLineItem[];
-  items: CalendarDayLineItem[];
+  headlines: CalendarDaySummaryItem[];
+  items: CalendarDaySummaryItem[];
   headingClass: string;
 }
 
-interface CalendarDayLineItem {
+interface CalendarDaySummaryItem {
   summary: string;
   elaboration: string;
   class: string;
