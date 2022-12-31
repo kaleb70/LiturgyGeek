@@ -6,7 +6,7 @@ import { RouterModule, Routes, UrlMatchResult, UrlSegment } from '@angular/route
 import { AppComponent } from './app.component';
 import { MonthComponent } from './month/month.component';
 
-const calendarMatcher = (segments: UrlSegment[]): UrlMatchResult => {
+const monthMatcher = (segments: UrlSegment[]): UrlMatchResult => {
 
   if (segments.length > 0
       && segments[0].path.toLowerCase() == "calendar"
@@ -41,7 +41,7 @@ const calendarMatcher = (segments: UrlSegment[]): UrlMatchResult => {
 }
 
 const routes: Routes = [
-  { matcher: calendarMatcher, component: MonthComponent },
+  { matcher: monthMatcher, component: MonthComponent },
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
 ]
 

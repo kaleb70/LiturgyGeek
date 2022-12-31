@@ -44,7 +44,7 @@ export class MonthComponent implements AfterViewChecked {
   ngAfterViewChecked(): void {
     if (this.tooltipsInvalid) {
       var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-      var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      tooltipTriggerList.map(function (tooltipTriggerEl) {
         return new Tooltip(tooltipTriggerEl);
       });
       this.tooltipsInvalid = false;
