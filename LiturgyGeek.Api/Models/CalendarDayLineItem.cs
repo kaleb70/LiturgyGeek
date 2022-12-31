@@ -27,7 +27,6 @@ namespace LiturgyGeek.Api.Models
         public CalendarDayLineItem(ChurchEvent churchEvent)
         {
             Summary = churchEvent.Name ?? churchEvent.LongName ?? churchEvent.OccasionKey ?? "[missing name]"; ;
-            Elaboration = churchEvent.LongName;
             Class = (churchEvent.EventRankKey ?? "")
                     + " "
                     + (churchEvent.OccasionKey ?? "")
