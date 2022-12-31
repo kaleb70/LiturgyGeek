@@ -4,28 +4,35 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes, UrlMatchResult, UrlSegment } from '@angular/router'
 
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './calendar/calendar.component';
+import { MonthComponent } from './month/month.component';
 
 const calendarMatcher = (segments: UrlSegment[]): UrlMatchResult => {
-  if (segments.length >= 1 && segments[0].path == 'calendar') {
+
+  if (segments.length > 0
+      && segments[0].path.toLowerCase() == "calendar"
+      && (segments.length <= 2 || segments[2].path.toLowerCase() == "month")) {
+
     switch (segments.length) {
       case 1:
         return {
           consumed: segments,
           posParams: {}
-        }
+        };
+
       case 2:
+      case 3:
         return {
           consumed: segments,
           posParams: { calendarKey: segments[1] }
-        }
-      case 4:
+        };
+
+      case 5:
         return {
           consumed: segments,
           posParams: {
             calendarKey: segments[1],
-            year: segments[2],
-            month: segments[3]
+            year: segments[3],
+            month: segments[4]
           }
         }
     }
@@ -34,14 +41,14 @@ const calendarMatcher = (segments: UrlSegment[]): UrlMatchResult => {
 }
 
 const routes: Routes = [
-  { matcher: calendarMatcher, component: CalendarComponent },
+  { matcher: calendarMatcher, component: MonthComponent },
   { path: '', redirectTo: '/calendar', pathMatch: 'full' },
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    MonthComponent
   ],
   imports: [
     BrowserModule, HttpClientModule, RouterModule.forRoot(routes)

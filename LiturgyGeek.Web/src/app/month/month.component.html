@@ -1,10 +1,10 @@
 <ng-container *ngIf="result">
   <h1 id="tableLabel">
     <span class="btn-group">
-      <a routerLink="/calendar/{{calendarKey}}/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}" class="btn btn-outline-dark btn-sm">
+      <a routerLink="/calendar/{{calendarKey}}/month/{{month == 1 ? year - 1 : year}}/{{month == 1 ? 12 : month - 1}}" class="btn btn-outline-dark btn-sm">
         <i class="bi bi-chevron-left"></i>
       </a>
-      <a routerLink="/calendar/{{calendarKey}}/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}" class="btn btn-outline-dark btn-sm">
+      <a routerLink="/calendar/{{calendarKey}}/month/{{month == 12 ? year + 1 : year}}/{{month == 12 ? 1 : month + 1}}" class="btn btn-outline-dark btn-sm">
         <i class="bi bi-chevron-right"></i>
       </a>
     </span>

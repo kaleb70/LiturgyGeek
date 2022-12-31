@@ -5,10 +5,10 @@ import { Tooltip } from 'bootstrap';
 
 @Component({
   selector: 'app-calendar',
-  templateUrl: './calendar.component.html',
-  styleUrls: ['./calendar.component.css']
+  templateUrl: './month.component.html',
+  styleUrls: ['./month.component.css']
 })
-export class CalendarComponent implements AfterViewChecked {
+export class MonthComponent implements AfterViewChecked {
   public calendarKey: string = "";
   public year: number = 0;
   public month: number = 0;
