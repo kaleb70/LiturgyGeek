@@ -423,7 +423,6 @@
       "occasionKey": "pascha",
       "dates": [ "1/Sunday" ],
       "eventRankKey": "greatFeast",
-      "_monthViewHeadline": true,
       "transfers": [
         {
           "includeRanks": [ "patron", "vigil" ],

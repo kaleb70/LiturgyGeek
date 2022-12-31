@@ -12,6 +12,9 @@
     {{ result.monthName }} {{ result.year }}
   </h1>
 
+  <script>
+  </script>
+
   <div *ngIf="result" class="rubrics easternOrthodox OCA">
     <table class="calendar-table">
       <thead>
@@ -35,12 +38,14 @@
           <tr *ngIf="week.hasHeadlines">
             <ng-container *ngFor="let day of week.days">
               <td *ngIf="day.headlines.length > 0" class="calendar-cell-headlines calendar-cell-content {{ getDateClasses(day) }}">
-                <div *ngFor="let headline of day.headlines" class="calendar-cell-headline {{ headline.class }}">
+                <div *ngFor="let headline of day.headlines" class="calendar-cell-headline {{ headline.class }}"
+                     data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ headline.elaboration }}">
                   {{ headline.summary }}
                 </div>
               </td>
               <td *ngIf="day.headlines.length == 0 && day.items.length > 0" rowspan="2" class="calendar-cell-items {{ getDateClasses(day) }}">
-                <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}">
+                <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
+                     data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
                   {{ item.summary }}
                 </div>
               </td>
@@ -53,7 +58,8 @@
             <ng-container *ngFor="let day of week.days">
               <ng-container *ngIf="!week.hasHeadlines || day.headlines.length > 0">
                 <td *ngIf="day.items.length > 0" class="calendar-cell-items calendar-cell-content {{ getDateClasses(day) }}">
-                  <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}">
+                  <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
+                     data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
                     {{ item.summary }}
                   </div>
                 </td>
