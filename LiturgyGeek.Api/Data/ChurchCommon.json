@@ -154,12 +154,88 @@
     "domnicaConstantinople": {
       "name": "Ven. Domnica of Constantinople"
     },
+    "carteriusCaesarea": {
+      "name": "Carterius of Caesarea",
+      "longName": "Hieromartyr Carteriusof Caesarea in Cappadocia"
+    },
+    "julian-basilissa": {
+      "name": "Martyrs Julian and Basilissa",
+      "longName": "Martyrs Julian and his wife, Basilissa, and with them Marcionilla, her son Celsus, Anthony, Anastasius, 7 children and 20 soldiers, at Antinoë in Egypt"
+    },
+    "eliasHermit": {
+      "name": "Ven. Elias the Hermit",
+      "longName": "Ven. Elias the Hermit, of Egypt"
+    },
+    "theophilus-helladius": {
+      "name": "Martyrs Theophilus and Helladius",
+      "longName": "Martyrs Theophilus the Deacon, and Helladius, in Libya"
+    },
+    "aboPerfumer": {
+      "name": "Martyr Abo the Perfumer",
+      "longName": "Martyr Abo the Perfumer, of Tiflis, Georgia"
+    },
+    "emilianConfessor": {
+      "name": "St Emilian the Confessor",
+      "longName": "St Emilian the Confessor, Bishop of Cyzicus"
+    },
+    "gregoryWonderworker": {
+      "name": "Ven. Gregory, Wonderworker",
+      "longName": "Ven. Gregory, Wonderworker of the Kiev Near Caves"
+    },
+    "gregoryRecluse": {
+      "name": "Ven. Gregory the Recluse",
+      "longName": "Ven. Gregory the Recluse, of the Kiev Far Caves"
+    },
+    "isidoreYuriev": {
+      "name": "Hieromartyr Isidor at Yuriev",
+      "longName": "Hiermartyr Isidor and 72 others at Yuriev, Estonia"
+    },
+    "paisiusUglich": {
+      "name": "St Paisius of Uglich"
+    },
     "polyeuctusMelitene": {
       "name": "Martyr Polyeuctus of Melitene",
       "longName": "Martyr Polyectus of Melitene in Armenia"
     },
+    "shemaiah": {
+      "name": "Prophet Shemaiah"
+    },
+    "peterSebaste": {
+      "name": "St Peter of Sebaste",
+      "longName": "St Peter, Bishop of Sebaste in Armenia"
+    },
+    "eustratiusWonderworker": {
+      "name": "St Eustratius the Wonderworker"
+    },
+    "philipMoscow": {
+      "name": "Hieromartyr Philip of Moscow",
+      "longName": "Hieromartyr Philip, Metropolitan of Moscow and All Russia"
+    },
+    "gregoryNyssa": {
+      "name": "St Gregory of Nyssa",
+      "longName": "St Gregory, Bishop of Nyssa"
+    },
+    "theosebiaDeaconness": {
+      "name": "Bl. Theosebia the Deaconess",
+      "longName": "Bl. Theosebia the Deaconess, sister of Ss Basil the Great and Gregory of Nyssa"
+    },
+    "marcianPresbyter": {
+      "name": "St Marcian the Presbyter",
+      "longName": "St Marcian the Presbyter, of Constantinople"
+    },
+    "dometianMelitene": {
+      "name": "St Dometian of Melitene",
+      "longName": "St Dometian, Bishop of Melitene"
+    },
+    "macariusPisma": {
+      "name": "Ven. Macarius of Pisma",
+      "longName": "Ven. Macarius, Abbot, of Pisma"
+    },
     "paulObnora": {
       "name": "Ven. Paul, Abbot of Obnora"
+    },
+    "antipasAthonite": {
+      "name": "Ven. Antipas the Athonite"
     },
     "theophanRecluse": {
       "name": "St Theophan the Recluse",

@@ -1,3 +1,8 @@
+@font-face {
+  font-family: typicon;
+  src: url(Typicon-Regular.otf);
+}
+
 .rubrics.easternOrthodox {
   --fish-color: black;
   --fish-background: skyblue;
@@ -61,4 +66,34 @@
   .rubrics.easternOrthodox .day-item-detail.rule_fast,
   .rubrics.easternOrthodox .day-item-detail.highlight {
     font-weight: bold;
+  }
+
+  .rubrics.easternOrthodox .day-item-detail.greatFeast::before {
+    font-family: typicon;
+    color: red;
+    content: "6";
+  }
+
+  .rubrics.easternOrthodox .day-item-detail.vigil::before {
+    font-family: typicon;
+    color: red;
+    content: "5";
+  }
+
+  .rubrics.easternOrthodox .day-item-detail.polyeleos::before {
+    font-family: typicon;
+    color: red;
+    content: "4";
+  }
+
+  .rubrics.easternOrthodox .day-item-detail.doxology::before {
+    font-family: typicon;
+    color: red;
+    content: "3";
+  }
+
+  .rubrics.easternOrthodox .day-item-detail.sixStichera::before {
+    font-family: typicon;
+    color: black;
+    content: "2";
   }
