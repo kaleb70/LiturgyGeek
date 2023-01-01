@@ -240,6 +240,193 @@
     "theophanRecluse": {
       "name": "St Theophan the Recluse",
       "longName": "St Theophan the Recluse, Bishop of Tambov"
+    },
+    "theodosiusAntioch": {
+      "name": "St Theodosius of Antioch"
+    },
+    "theodosiusGreat": {
+      "name": "Ven. Theodosius the Great",
+      "longName": "Ven. Theodosius the Great, the Cenobiarch"
+    },
+    "theodosiusTrebizond": {
+      "name": "Ven. Theodosius of Trebizond",
+      "longName": "Ven. Thodosius, Metropolitan of Trebizond"
+    },
+    "michaelKlops": {
+      "name": "Ven. Michael of Klops Monastery",
+      "longName": "Ven. Michael of Klops Monastery, Fool-for-Christ"
+    },
+    "eletskayaIcon": {
+      "name": "The Elétskaya Icon",
+      "longName": "The Elétskaya Icon of the Most Holy Theotokos"
+    },
+    "tatianaRome": {
+      "name": "Martyr Titiana of Rome",
+      "longName": "Martyr Titiana of Rome and those who suffered with her"
+    },
+    "mertiusMauretania": {
+      "name": "Martyr Mertius of Mauretania"
+    },
+    "peterApselamus": {
+      "name": "Martyr Peter Apselamus",
+      "longName": "Martyr Peter Apselamus of Palestine"
+    },
+    "eupraxiaTabenna": {
+      "name": "Ven. Eupraxia of Tabenna",
+      "longName": "Ven. Eupraxia of Tabenna, in Egypt"
+    },
+    "benedictBiscup": {
+      "name": "Ven. Benedict Biscup",
+      "longName": "Ven. Benedict Biscup, Abbot of Wearmouth"
+    },
+    "sava1Serbia": {
+      "name": "St Sava I of Serbia",
+      "longName": "St Sava I, first Archbishop of Serbia"
+    },
+    "martinianBelozersk": {
+      "name": "Ven. Martinian of Belozérsk",
+      "longName": "Ven. Martinian, Abbot of Belozérsk"
+    },
+    "akathist-milkgiver": {
+      "name": "Akathist and Milkgiver Icons",
+      "longName": "The Akathist and Milkgiver Icons of the Most Holy Theotokos"
+    },
+    "hermylus-stratonicus": {
+      "name": "Martyrs Hermylus and Stratonicus",
+      "longName": "Martyrs Hermylus and Stratonicus of Belgrade"
+    },
+    "peterAnium": {
+      "name": "Martyr Peter of Anium",
+      "longName": "Martyr Peter of Anium at Hieropolis"
+    },
+    "jamesNisibis": {
+      "name": "St James of Nisibis",
+      "longName": "St James (Jacob), Bishop of Nisibis"
+    },
+    "hilaryPoitiers": {
+      "name": "St Hilary of Poitiers",
+      "longName": "St Hilary, Bishop of Poitiers"
+    },
+    "maximusKavsokalyvites": { "name": "Ven. Maximus Kavsokalyvites" },
+    "irenarchusRostov": {
+      "name": "Ven. Irenarchus of Rostov",
+      "longName": "Ven. Irenarchus, Recluse, of Rostov"
+    },
+    "eleazarAnzersk": { "name": "Ven. Eleazar of Anzersk Island" },
+    "theophanyLeavetaking": { "name": "Leavetaking of the Theophany" },
+    "sinai-raithu": {
+      "name": "Holy Fathers slain at Sinai and Raithu",
+      "longName": "The Holy Fathers slain at Sinai and Raithu: Isaiah, Sabbas, Moses and his disciple Moses, Jeremiah, Paul, Adam, Sergius, Domnus, Proclus, Hypatius, Isaac, Macarius, Mark, Benjamin, Eusebius, Elias, and others"
+    },
+    "nina": {
+      "name": "St Nina, Enlightener of the Georgians",
+      "longName": "St Nina (Nino), Equal-to-the-Apostles and Enlightener of the Georgians"
+    },
+    "josephAnalytinus": {
+      "name": "St Joseph Analytinus",
+      "longName": "St Joseph Analytinus of Raithu"
+    },
+    "theodulusSinai": {
+      "name": "Ven. Theodulus of Sinai",
+      "longName": "Ven. Theodulus, son of Ven. Nilus of Sinai"
+    },
+    "stephenChenolaklos": {
+      "name": "Ven. Stephen of Chenolaklos Monastery",
+      "longName": "Ven. Stephen, Abbot of Chenolaklos Monastery near Chalcedon"
+    },
+    "paulThebes": { "name": "Ven. Paul of Thebes" },
+    "johnCalabytes": {
+      "name": "Ven. John Calabytes",
+      "longName": "Ven. John Calabytes, \"the Hut-dweller\""
+    },
+    "pansophiusAlexandria": {
+      "name": "Ven. Pansophius of Alexandria",
+      "longName": "Ven. Monk-Martyr Pansophius of Alexandria"
+    },
+    "prochorusVranski": {
+      "name": "Ven. Prochorus in the Vranski",
+      "longName": "Ven. Prochorus, Abbot, in the Vranski wilderness on the River Pshina in Bulgaria"
+    },
+    "gabrielLesnovo": {
+      "name": "Ven. Gabriel of Lesnovo Monastery",
+      "longName": "Ven. Gabriel, founder of Lesnovo Monastery in Bulgaria"
+    },
+    "peterChains": {
+      "name": "Chains of the Apostle Peter",
+      "longName": "Veneration of the Precious Chains of the Holy and All-glorious Apostle Peter"
+    },
+    "martyrsCappadocia": {
+      "name": "Martyrs of Cappadocia",
+      "longName": "Bl. Martyrs Speusippus, Eleusippus, and Meleusippus, brothers, their grandmother, Leonilla, and with them Neon, Turbo, and the woman, Jonilla (Vovilla), in Cappadocia"
+    },
+    "danaxReader": {
+      "name": "Martyr Danax the Reader",
+      "longName": "Martyr Danax the reader, in Macedonia"
+    },
+    "honoratusArles": {
+      "name": "St Honoratus of Arles",
+      "longName": "St Hnoratus, Archbishop of Arles and founder of the Abbey of Lérins"
+    },
+    "maximTotma": {
+      "name": "Maxim of Tot'ma",
+      "longName": "Maxim of Tot'ma, Fool-for-Christ"
+    },
+    "damasceneChilandari": { "name": "Hieromartyr Damascene of Chilandari" },
+    "anthonyGreat": {
+      "name": "Ven. Anthony the Great",
+      "longName": "Venerable and Godbearing Father Anthony the Great"
+    },
+    "anthonyDymsk": { "name": "Ven. Anthony of Dymsk" },
+    "anthonyChernoezersk": { "name": "Ven. Anthony of Chernoezérsk" },
+    "athanasius-cyril": {
+      "name": "Ss Athanasius the Great and Cyril",
+      "longName": "Ss Athanasius the Great and Cyril, Archbishops of Alexandria"
+    },
+    "marcianCyrrhus": {
+      "name": "Ven. Marcian of Cyrrhus",
+      "longName": "Ven. Marcian of Cyrrhus in Syria"
+    },
+    "afanasiiSyandemsk": {
+      "name": "Ven. Afanásii of Syandémsk",
+      "longName": "Ven. Afanásii (Athanasius), Abbot of Syandémsk"
+    },
+    "afanasiiNovolotsk": {
+      "name": "Righteous Afanásii of Novolótsk",
+      "longName": "Righteous Afanásii of Novolótsk, Monk"
+    },
+    "macariusGreat": {
+      "name": "Ven. Macarius the Great",
+      "longName": "Ven. Macarius the Great of Egypt"
+    },
+    "euphrasiaNicomedia": { "name": "Virgin-Martyr Euphrasia of Nicomedia" },
+    "makaryStylite": {
+      "name": "St Makáry the Stylite",
+      "longName": "St Makáry the Stylite, of Martkopsk"
+    },
+    "arseniusKerkyra": {
+      "name": "St Arsenius of Kerkyra",
+      "longName": "St Arsenius, Archbishop of Kerkyra"
+    },
+    "makaryFaster": {
+      "name": "Ven. Makáry the Faster",
+      "longName": "Ven. Makáry the Faster, of the Kiev Near Caves"
+    },
+    "theodoreNovgorod": {
+      "name": "Righteous Theodore of Novgorod",
+      "longName": "Righteous Theodore of Novgorod, Fool-for-Christ"
+    },
+    "makaryDeacon": {
+      "name": "Ven. Makáry the Deacon",
+      "longName": "Ven. Makáry the Deacon, of the Kiev Far Caves"
+    },
+    "markEphesus": {
+      "name": "St Mark of Ephesus",
+      "longName": "St Mark, Archbishop of Ephesus"
+    },
+    "macariusRoman": { "name": "Ven. Macarius the Roman of Novgorod" },
+    "savvaRelicsOpening": {
+      "name": "Opening of Relics, Savva of Storozhévsk",
+      "longName": "Opening of the Relics of Ven. Savva (Sabbas) of Storozhévsk and Zvenígorod"
     }
 
   }

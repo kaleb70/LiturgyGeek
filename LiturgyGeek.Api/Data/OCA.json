@@ -704,7 +704,125 @@
     {
       "_": "theophanRecluse 1/10",
       "eventRankKey": "polyeleos"
-    }
+    },
+
+    //---------------------------------------------------------------------------
+    // January 11
+
+    { "_": "theodosiusAntioch 1/11" },
+    {
+      "_": "theodosiusGreat 1/11 highlight",
+      "eventRankKey": "polyeleos"
+    },
+    { "_": "theodosiusTrebizond 1/11" },
+    {
+      "_": "michaelKlops 1/11",
+      "eventRankKey": "sixStichera"
+    },
+    { "_": "eletskayaIcon 1/11" },
+
+    //---------------------------------------------------------------------------
+    // January 12
+
+    { "_": "tatianaRome 1/12" },
+    { "_": "mertiusMauretania 1/12" },
+    { "_": "peterApselamus 1/12" },
+    { "_": "eupraxiaTabenna 1/12" },
+    { "_": "benedictBiscup 1/12" },
+    {
+      "_": "sava1Serbia 1/12",
+      "eventRankKey": "doxology"
+    },
+    { "_": "martinianBelozersk 1/12" },
+    { "_": "akathist-milkgiver 1/12" },
+
+    //---------------------------------------------------------------------------
+    // January 12
+
+    { "_": "hermylus-stratonicus 1/13" },
+    { "_": "peterAnium 1/13" },
+    { "_": "jamesNisibis 1/13" },
+    { "_": "hilaryPoitiers 1/13" },
+    { "_": "maximusKavsokalyvites 1/13" },
+    { "_": "irenarchusRostov 1/13" },
+    { "_": "eleazarAnzersk 1/13" },
+
+    //---------------------------------------------------------------------------
+    // January 14
+
+    { "_": "theophanyLeavetaking 1/14 highlight" },
+    { "_": "sinai-raithu 1/14" },
+    {
+      "_": "nina 1/14",
+      "eventRankKey": "polyeleos"
+    },
+    { "_": "josephAnalytinus 1/14" },
+    { "_": "theodulusSinai 1/14" },
+    { "_": "stephenChenolaklos 1/14" },
+
+    //---------------------------------------------------------------------------
+    // January 15
+
+    {
+      "_": "paulThebes 1/15 highlight",
+      "eventRankKey": "sixStichera"
+    },
+    { "_": "johnCalabytes 1/15 highlight" },
+    { "_": "pansophiusAlexandria 1/15" },
+    { "_": "prochorusVranski 1/15" },
+    { "_": "gabrielLesnovo 1/15" },
+
+    //---------------------------------------------------------------------------
+    // January 16
+
+    {
+      "_": "peterChains 1/16 highlight",
+      "eventRankKey": "sixStichera"
+    },
+    { "_": "martyrsCappadocia 1/16" },
+    { "_": "danaxReader 1/16" },
+    { "_": "honoratusArles 1/16" },
+    { "_": "maximTotma 1/16" },
+    { "_": "damasceneChilandari 1/16" },
+
+    //---------------------------------------------------------------------------
+    // January 17
+
+    {
+      "_": "anthonyGreat 1/17 highlight",
+      "eventRankKey": "vigil"
+    },
+    { "_": "anthonyDymsk 1/17" },
+    { "_": "anthonyChernoezersk 1/17" },
+
+    //---------------------------------------------------------------------------
+    // January 18
+
+    {
+      "_": "athanasius-cyril 1/18",
+      "eventRankKey": "sixStichera"
+    },
+    { "_": "marcianCyrrhus 1/18" },
+    { "_": "afanasiiSyandemsk 1/18" },
+    { "_": "afanasiiNovolotsk 1/18" },
+
+    //---------------------------------------------------------------------------
+    // January 19
+
+    {
+      "_": "macariusGreat 1/19",
+      "eventRankKey": "sixStichera"
+    },
+    { "_": "euphrasiaNicomedia 1/19" },
+    { "_": "makaryStylite 1/19" },
+    { "_": "arseniusKerkyra 1/19" },
+    { "_": "makaryFaster 1/19" },
+    { "_": "theodoreNovgorod 1/19" },
+    { "_": "makaryDeacon 1/19" },
+    { "_": "markEphesus 1/19" },
+    { "_": "macariusRoman 1/19" },
+    { "_": "savvaRelicsOpening 1/19" }
+
 
     //###########################################################################
     // Fixed Events: February
