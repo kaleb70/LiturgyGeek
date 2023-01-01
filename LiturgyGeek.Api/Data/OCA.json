@@ -476,6 +476,7 @@
       "dates": [ "8/Sunday" ],
       "eventRankKey": "greatFeast"
     },
+    { "_": "holyTrinity 8/Sunday highlight" },
     {
       "occasionKey": "transfiguration",
       "dates": [ "8/6" ],
@@ -822,7 +823,6 @@
     { "_": "markEphesus 1/19" },
     { "_": "macariusRoman 1/19" },
     { "_": "savvaRelicsOpening 1/19" }
-
 
     //###########################################################################
     // Fixed Events: February

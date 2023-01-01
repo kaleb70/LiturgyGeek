@@ -1,0 +1,323 @@
+{
+  "name": "Lutheran Service Book: 3-Year Lectionary",
+  "traditionKey": "lutheran",
+  "jurisdictionKey": "lcms",
+  "calendarKey": "lsb3",
+
+  "solarReckoning": "gregorian",
+  "paschalReckoning": "gregorian",
+
+  //###########################################################################
+  // Rules
+
+  "ruleGroups": {
+
+    //---------------------------------------------------------------------------
+    // Color
+
+    "color": {
+      "rules": {
+        "blue": { "summary": "Blue" },
+        "black": { "summary": "Black" },
+        "green": { "summary": "Green" },
+        "gold": { "summary": "Gold" },
+        "red": { "summary": "Red" },
+        "scarlet": { "summary": "Scarlet" },
+        "violet": { "summary": "Violet" },
+        "white": { "summary": "White" }
+      }
+    }
+  },
+
+  //###########################################################################
+  // Event Ranks
+
+  "eventRanks": {
+    "greatFeast": { "precedence": 1 },
+    "festival": { "precedence": 2 },
+    "occasion": { "precedence": 3 },
+    "commemoration": { "precedence": 4 }
+  },
+
+  "defaultEventRank": "commemoration",
+
+  //###########################################################################
+  // Seasons
+
+  "seasons": {
+
+    //---------------------------------------------------------------------------
+    // Ordinary Time
+
+    "ordinary": {
+      "startDate": "1/1",
+      "endDate": "12/31",
+      "isDefault": true,
+      "ruleCriteria": {
+        "color": [
+          { "ruleKey": "green" },
+          {
+            "includeRanks": [ "greatFeast", "festival" ],
+            "ruleKey": "white"
+          },
+          {
+            "includeCustomFlags": [ "martyr", "church" ],
+            "ruleKey": "red"
+          },
+          {
+            "includeCustomFlags": [ "repentance" ],
+            "ruleKey": "violet"
+          }
+        ]
+      }
+    },
+
+    //---------------------------------------------------------------------------
+    // Advent
+
+    "advent": {
+      "startDate": "11/27/Sunday",
+      "endDate": "12/24",
+      "ruleCriteria": {
+        "color": [
+          { "ruleKey": "blue" },
+          {
+            "includeRanks": [ "greatFeast", "festival" ],
+            "ruleKey": "white"
+          },
+          {
+            "includeCustomFlags": [ "martyr", "church" ],
+            "ruleKey": "red"
+          },
+          {
+            "includeCustomFlags": [ "repentance" ],
+            "ruleKey": "violet"
+          }
+        ]
+      }
+    },
+
+    //---------------------------------------------------------------------------
+    // Christmas
+
+    "christmas": {
+      "startDate": "12/25",
+      "endDate": "1/5",
+      "ruleCriteria": {
+        "color": [
+          { "ruleKey": "white" },
+          {
+            "includeCustomFlags": [ "martyr", "church" ],
+            "ruleKey": "red"
+          },
+          {
+            "includeCustomFlags": [ "repentance" ],
+            "ruleKey": "violet"
+          }
+        ]
+      }
+    },
+
+    //---------------------------------------------------------------------------
+    // Lent
+
+    "lent": {
+      "startDate": "-7/Wednesday",
+      "endDate": "-1/Saturday",
+      "ruleCriteria": {
+        "color": [
+          { "ruleKey": "violet" },
+          {
+            "includeRanks": [ "greatFeast", "festival" ],
+            "ruleKey": "white"
+          },
+          {
+            "includeCustomFlags": [ "martyr", "church" ],
+            "ruleKey": "red"
+          }
+        ]
+      }
+    },
+
+    //---------------------------------------------------------------------------
+    // Easter
+
+    "pascha": {
+      "startDate": "1/Sunday",
+      "endDate": "7/Saturday",
+      "ruleCriteria": {
+        "color": [
+          { "ruleKey": "white" },
+          {
+            "includeCustomFlags": [ "martyr", "church" ],
+            "ruleKey": "red"
+          },
+          {
+            "includeCustomFlags": [ "repentance" ],
+            "ruleKey": "violet"
+          }
+        ]
+      }
+    }
+  },
+
+  "events": [
+
+    //###########################################################################
+    // Movable Events: Before Easter
+
+    {
+      "_": "transfiguration -7/Sunday",
+      "eventRankKey": "greatFeast"
+    },
+    {
+      "_": "ashWednesday -7/Wednesday",
+      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+    },
+    {
+      "_": "palmSunday -1/Sunday",
+      "eventRankKey": "greatFeast",
+      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+    },
+    {
+      "_": "holyMonday -1/Monday",
+      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+    },
+    {
+      "_": "holyTuesday -1/Tuesday",
+      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+    },
+    {
+      "_": "holyWednesday -1/Wednesday",
+      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+    },
+    {
+      "_": "holyThursday -1/Thursday",
+      "ruleCriteria": { "color": [ { "ruleKey": "white" } ] }
+    },
+    {
+      "_": "holyFriday -1/Friday",
+      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+    },
+    {
+      "_": "holySaturday -1/Saturday",
+      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+    },
+
+    //###########################################################################
+    // Movable Events: After Easter
+
+    {
+      "_": "pascha 1/Sunday",
+      "eventRankKey": "greatFeast",
+      "name": "Easter",
+      "longName": "The Resurrection of Our Lord and Savior Jesus Christ"
+    },
+    {
+      "_": "ascension 6/Thursday",
+      "eventRankKey": "greatFeast"
+    },
+    {
+      "_": "pentecost 8/Sunday church",
+      "eventRankKey": "greatFeast"
+    },
+    {
+      "_": "holyTrinity 9/Sunday",
+      "eventRankKey": "greatFeast"
+    },
+
+    //###########################################################################
+    // Fixed Events: January
+
+    {
+      "_": "circumcisionChrist 1/1",
+      "eventRankKey": "greatFeast"
+    },
+    { "_": "wilhelmLoehe 1/2" },
+    {
+      "_": "epiphany 1/6",
+      "eventRankKey": "greatFeast"
+    },
+    {
+      "_": "theophany 1/7/Sunday",
+      "eventRankKey": "greatFeast",
+      "name": "The Baptism of Our Lord",
+      "longName": "The Baptism of Our Lord and Savior Jesus Christ"
+    },
+    { "_": "cappadocianFathers 1/10" },
+    {
+      "_": "peterConfession 1/18",
+      "eventRankKey": "festival"
+    },
+    { "_": "sarah 1/20" },
+    {
+      "_": "timothy 1/24",
+      "eventRankKey": "festival"
+    },
+    {
+      "_": "paulConversion 1/25",
+      "eventRankKey": "festival"
+    },
+    {
+      "_": "titus 1/26",
+      "eventRankKey": "festival"
+    },
+    { "_": "johnChrysostom 1/27" },
+
+    //###########################################################################
+    // Fixed Events: February
+
+    {
+      "_": "presentation 2/2",
+      "eventRankKey": "greatFeast",
+      "name": "The Purification of Mary and the Presentation of Our Lord",
+      "longName": "The Purification of Mary and the Presentation of Our Lord and Savior Jesus Christ, in the Temple"
+    },
+    { "_": "jacob 2/5" },
+    { "_": "silas 2/10" },
+    { "_": "aquila-priscilla-apollos 2/13" },
+    { "_": "valentineTerni 2/14" },
+    { "_": "philemon-onesimus 2/15" },
+    { "_": "philippMelanchthon 2/16" },
+    {
+      "_": "martinLuther 2/18",
+      "name": "Martin Luther, Doctor and Confessor"
+    },
+    { "_": "polycarpSmyrna 2/23" },
+    {
+      "_": "matthias 2/24 martyr",
+      "eventRankKey": "festival"
+    }
+
+    //###########################################################################
+    // Fixed Events: March
+
+    //###########################################################################
+    // Fixed Events: April
+
+    //###########################################################################
+    // Fixed Events: May
+
+    //###########################################################################
+    // Fixed Events: June
+
+    //###########################################################################
+    // Fixed Events: July
+
+    //###########################################################################
+    // Fixed Events: August
+
+    //###########################################################################
+    // Fixed Events: September
+
+    //###########################################################################
+    // Fixed Events: October
+
+    //###########################################################################
+    // Fixed Events: November
+
+    //###########################################################################
+    // Fixed Events: December
+  ]
+
+}

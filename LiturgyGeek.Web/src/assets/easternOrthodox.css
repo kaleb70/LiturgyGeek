@@ -1,8 +1,3 @@
-@font-face {
-  font-family: typicon;
-  src: url(Typicon-Regular.otf);
-}
-
 .rubrics.easternOrthodox {
   --fish-color: black;
   --fish-background: skyblue;

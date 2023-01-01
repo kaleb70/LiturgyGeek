@@ -1,7 +1,8 @@
 {
   "occasions": {
     "pascha": {
-      "name": "Holy Pascha"
+      "name": "Holy Pascha",
+      "longName": "The Resurrection of Our Lord and Savior Jesus Christ"
     },
     "holyCross": {
       "name": "Exaltation of the Cross"
@@ -15,16 +16,18 @@
       "longName": "The Holy Theophany of Our Lord and Savior Jesus Christ"
     },
     "palmSunday": {
-      "name": "Palm Sunday"
+      "name": "Palm Sunday",
+      "longName": "The Entry of Our Lord Into Jerusalem"
     },
     "ascension": {
-      "name": "Ascension"
+      "name": "The Ascension of Our Lord"
     },
     "pentecost": {
-      "name": "Pentecost"
+      "name": "Holy Pentecost"
     },
     "transfiguration": {
-      "name": "Transfiguration"
+      "name": "The Transfiguration of Our Lord",
+      "longName": "The Holy Transfiguration of Our Lord, God, and Savior Jesus Christ"
     },
     "nativityTheotokos": {
       "name": "Nativity of the Theotokos"
@@ -427,7 +430,68 @@
     "savvaRelicsOpening": {
       "name": "Opening of Relics, Savva of Storozhévsk",
       "longName": "Opening of the Relics of Ven. Savva (Sabbas) of Storozhévsk and Zvenígorod"
+    },
+    "trinity": { "name": "Feast of the Holy Trinity" },
+    "ashWednesday": { "name": "Ash Wednesday" },
+    "holyMonday": { "name": "Holy Monday" },
+    "holyTuesday": { "name": "Holy Tuesday" },
+    "holyWednesday": { "name": "Holy Wednesday" },
+    "holyThursday": { "name": "Holy Thursday" },
+    "holyFriday": { "name": "Holy Friday" },
+    "holySaturday": { "name": "Holy Saturday" },
+    "cappadocianFathers": {
+      "name": "The Cappadocian Fathers",
+      "longName": "Ss Basil the Great of Caesarea, Gregory of Nazianzus, and Gregory of Nyssa"
+    },
+    "wilhelmLoehe": { "name": "J.K. Wilhelm Loehe, Pastor" },
+    "sarah": { "name": "Righteous Sarah" },
+    "johnChrysostom": {
+      "name": "St John Chrysostom",
+      "longName": "St John Chrysostom, Archbishop of Constantinople"
+    },
+    "timothy": {
+      "name": "St Timothy",
+      "longName": "Apostle Timothy of the Seventy"
+    },
+    "paulConversion": { "name": "The Conversion of St Paul" },
+    "titus": {
+      "name": "St Titus",
+      "longName": "Apostle Titus of the Seventy and Bishop of Crete"
+    },
+    "epiphany": {
+      "name": "The Epiphany of Our Lord",
+      "longName": "The Holy Epiphany of Our Lord and Savior Jesus Christ"
+    },
+    "jacob": { "name": "Righteous Jacob the Patriarch" },
+    "silas": {
+      "name": "St Silas",
+      "longName": "Apostle Silas of the Seventy"
+    },
+    "aquila-priscilla-apollos": {
+      "name": "Ss Aquila, Priscilla, and Apollos",
+      "longName": "Apostle Aquila and his wife Priscilla, and Apostle Apollos, of the Seventy"
+    },
+    "valentineTerni": {
+      "name": "St Valentine of Terni",
+      "longName": "Hieromartyr Valentine, Bishop of Interamna (Terni) in Italy"
+    },
+    "philemon-onesimus": {
+      "name": "Ss Philemon and Onesimus",
+      "longName": "Ss Philemon of the Seventy, and Onesimus"
+    },
+    "philippMelanchthon": { "name": "Philipp Melanchthon, Confessor" },
+    "martinLuther": { "name": "Martin Luther, Confessor" },
+    "polycarpSmyrna": {
+      "name": "St Polycarp of Smyrna",
+      "longName": "Hieromartyr Polycarp, Bishop of Smyrna"
+    },
+    "presentation": {
+      "name": "The Meeting of Our Lord",
+      "longName": "The Meeting of our Lord and Savior, Jesus Christ, in the Temple"
+    },
+    "matthias": {
+      "name": "St Matthias",
+      "longName": "Apostle Matthias of the Seventy"
     }
-
   }
 }
