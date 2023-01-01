@@ -5,6 +5,12 @@ namespace LiturgyGeek.Api.Models
     public class CalendarMonth
     {
         [Required]
+        public string TraditionKey { get; set; }
+
+        [Required]
+        public string CalendarKey { get; set; }
+
+        [Required]
         public int Year { get; set; }
 
         [Required]
@@ -16,8 +22,10 @@ namespace LiturgyGeek.Api.Models
         [Required]
         public CalendarWeekSummary[]? Weeks { get; set; }
 
-        public CalendarMonth(int year, int month, string monthName, CalendarWeekSummary[] weeks)
+        public CalendarMonth(string traditionKey, string calendarKey, int year, int month, string monthName, CalendarWeekSummary[] weeks)
         {
+            TraditionKey = traditionKey;
+            CalendarKey = calendarKey;
             Year = year;
             Month = month;
             MonthName = monthName;

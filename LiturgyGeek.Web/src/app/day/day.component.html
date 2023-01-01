@@ -19,7 +19,7 @@
   <script>
   </script>
 
-  <div *ngIf="result" class="rubrics easternOrthodox OCA">
+  <div *ngIf="result" class="rubrics  {{result.traditionKey}} {{result.calendarKey}}">
     <div>
       <div *ngFor="let item of result.items" class="day-item-detail {{ item.class }}"
             data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">

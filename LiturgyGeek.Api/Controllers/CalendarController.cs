@@ -27,10 +27,12 @@ namespace LiturgyGeek.Api.Controllers
         {
             var cultureInfo = CultureInfo.InvariantCulture;
 
+            var calendar = calendarEvaluator.GetCalendar(custom);
+
             var date = new DateTime(year, month, day);
             var liturgicalDay = calendarEvaluator.Evaluate(custom, date, date.AddDays(1)).Single();
 
-            return new CalendarDay(date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1])
+            return new CalendarDay(calendar.TraditionKey, calendar.CalendarKey, date.Year, date.Month, date.Day, cultureInfo.DateTimeFormat.MonthNames[date.Month - 1])
             {
                 Items = liturgicalDay.Rules.Where(r => r.Rule.Value.Summary != null && r.Show)
                                         .Select(r => new CalendarDayItemDetail(r))
@@ -47,6 +49,8 @@ namespace LiturgyGeek.Api.Controllers
             var cultureInfo = CultureInfo.InvariantCulture;
             var firstOfMonth = new DateTime(year, month, 1);
             var firstDayOfWeek = firstOfMonth.DayOfWeek;
+
+            var calendar = calendarEvaluator.GetCalendar(custom);
 
             var weeks = new List<CalendarWeekSummary>();
             var date = firstOfMonth.AddDays(-(int)firstDayOfWeek);
@@ -94,7 +98,7 @@ namespace LiturgyGeek.Api.Controllers
                 weeks.Add(new CalendarWeekSummary { Days = days });
             }
 
-            return new CalendarMonth(year, month, cultureInfo.DateTimeFormat.MonthNames[month - 1], weeks.ToArray());
+            return new CalendarMonth(calendar.TraditionKey, calendar.CalendarKey, year, month, cultureInfo.DateTimeFormat.MonthNames[month - 1], weeks.ToArray());
         }
     }
 }

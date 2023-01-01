@@ -69,6 +69,8 @@ export class DayComponent implements AfterViewChecked {
 }
 
 interface CalendarDay {
+  traditionKey: string;
+  calendarKey: string;
   year: number;
   month: number;
   day: number;

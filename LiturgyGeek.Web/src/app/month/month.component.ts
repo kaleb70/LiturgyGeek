@@ -81,6 +81,8 @@ export class MonthComponent implements AfterViewChecked {
 }
 
 interface CalendarMonth {
+  traditionKey: string;
+  calendarKey: string;
   year: number;
   month: number;
   monthName: string;
