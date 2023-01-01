@@ -75,8 +75,12 @@ namespace LiturgyGeek.Api.Controllers
                                                                 && r.Rule.Value.Summary != null
                                                                 && r.Show)
                                         .Select(r => new CalendarDaySummaryItem(r))
-                                    .Concat(liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false)
-                                                                            && e.Name != null)
+                                    .Concat((liturgicalDay.Events.Any(e => (e._MonthViewHeadline ?? false)
+                                                                            || (e._MonthViewContent ?? false))
+                                                ? liturgicalDay.Events.Where(e => (e._MonthViewContent ?? false)
+                                                                                    && e.Name != null)
+                                                : liturgicalDay.Events.Where(e => e.Name != null)
+                                                                        .Take(1))
                                             .Select(e => new CalendarDaySummaryItem(e)))
                                     .ToArray(),
 
