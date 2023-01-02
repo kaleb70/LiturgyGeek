@@ -295,7 +295,7 @@
       "longName": "The Akathist and Milkgiver Icons of the Most Holy Theotokos"
     },
     "hermylus-stratonicus": {
-      "name": "Martyrs Hermylus and Stratonicus",
+      "name": "St Hermylus and Stratonicus",
       "longName": "Martyrs Hermylus and Stratonicus of Belgrade"
     },
     "peterAnium": {
@@ -310,12 +310,18 @@
       "name": "St Hilary of Poitiers",
       "longName": "St Hilary, Bishop of Poitiers"
     },
-    "maximusKavsokalyvites": { "name": "Ven. Maximus Kavsokalyvites" },
+    "maximusKavsokalyvites": {
+      "name": "St Maximus Kavsokalyvites",
+      "longName": "Ven. Maximus Kavsokalyvites"
+    },
     "irenarchusRostov": {
-      "name": "Ven. Irenarchus of Rostov",
+      "name": "St Irenarchus of Rostov",
       "longName": "Ven. Irenarchus, Recluse, of Rostov"
     },
-    "eleazarAnzersk": { "name": "Ven. Eleazar of Anzersk Island" },
+    "eleazarAnzersk": {
+      "name": "St Eleazar of Anzersk Island",
+      "longName": "Ven. Eleazar of Anzersk Island"
+    },
     "theophanyLeavetaking": { "name": "Leavetaking of the Theophany" },
     "sinai-raithu": {
       "name": "Holy Fathers slain at Sinai and Raithu",
@@ -330,28 +336,31 @@
       "longName": "St Joseph Analytinus of Raithu"
     },
     "theodulusSinai": {
-      "name": "Ven. Theodulus of Sinai",
+      "name": "St Theodulus of Sinai",
       "longName": "Ven. Theodulus, son of Ven. Nilus of Sinai"
     },
     "stephenChenolaklos": {
-      "name": "Ven. Stephen of Chenolaklos Monastery",
+      "name": "St Stephen of Chenolaklos Monastery",
       "longName": "Ven. Stephen, Abbot of Chenolaklos Monastery near Chalcedon"
     },
-    "paulThebes": { "name": "Ven. Paul of Thebes" },
+    "paulThebes": {
+      "name": "St Paul of Thebes",
+      "longName": "Ven. Paul of Thebes"
+    },
     "johnCalabytes": {
-      "name": "Ven. John Calabytes",
+      "name": "St John Calabytes",
       "longName": "Ven. John Calabytes, \"the Hut-dweller\""
     },
     "pansophiusAlexandria": {
-      "name": "Ven. Pansophius of Alexandria",
+      "name": "St Pansophius of Alexandria",
       "longName": "Ven. Monk-Martyr Pansophius of Alexandria"
     },
     "prochorusVranski": {
-      "name": "Ven. Prochorus in the Vranski",
+      "name": "St Prochorus in the Vranski",
       "longName": "Ven. Prochorus, Abbot, in the Vranski wilderness on the River Pshina in Bulgaria"
     },
     "gabrielLesnovo": {
-      "name": "Ven. Gabriel of Lesnovo Monastery",
+      "name": "St Gabriel of Lesnovo Monastery",
       "longName": "Ven. Gabriel, founder of Lesnovo Monastery in Bulgaria"
     },
     "peterChains": {
@@ -371,26 +380,32 @@
       "longName": "St Hnoratus, Archbishop of Arles and founder of the Abbey of Lérins"
     },
     "maximTotma": {
-      "name": "Maxim of Tot'ma",
+      "name": "St Maxim of Tot'ma",
       "longName": "Maxim of Tot'ma, Fool-for-Christ"
     },
-    "damasceneChilandari": { "name": "Hieromartyr Damascene of Chilandari" },
+    "damasceneChilandari": {
+      "name": "St Damascene of Chilandari",
+      "longName": "Hieromartyr Damascene of Chilandari"
+    },
     "anthonyGreat": {
-      "name": "Ven. Anthony the Great",
+      "name": "St Anthony the Great",
       "longName": "Venerable and Godbearing Father Anthony the Great"
     },
-    "anthonyDymsk": { "name": "Ven. Anthony of Dymsk" },
-    "anthonyChernoezersk": { "name": "Ven. Anthony of Chernoezérsk" },
+    "anthonyDymsk": {
+      "name": "St Anthony of Dymsk",
+      "longName": "Ven. Anthony of Dymsk"
+    },
+    "anthonyChernoezersk": { "name": "St Anthony of Chernoezérsk" },
     "athanasius-cyril": {
       "name": "Ss Athanasius the Great and Cyril",
       "longName": "Ss Athanasius the Great and Cyril, Archbishops of Alexandria"
     },
     "marcianCyrrhus": {
-      "name": "Ven. Marcian of Cyrrhus",
+      "name": "St Marcian of Cyrrhus",
       "longName": "Ven. Marcian of Cyrrhus in Syria"
     },
     "afanasiiSyandemsk": {
-      "name": "Ven. Afanásii of Syandémsk",
+      "name": "St Afanásii of Syandémsk",
       "longName": "Ven. Afanásii (Athanasius), Abbot of Syandémsk"
     },
     "afanasiiNovolotsk": {
@@ -398,10 +413,13 @@
       "longName": "Righteous Afanásii of Novolótsk, Monk"
     },
     "macariusGreat": {
-      "name": "Ven. Macarius the Great",
+      "name": "St Macarius the Great",
       "longName": "Ven. Macarius the Great of Egypt"
     },
-    "euphrasiaNicomedia": { "name": "Virgin-Martyr Euphrasia of Nicomedia" },
+    "euphrasiaNicomedia": {
+      "name": "St Euphrasia of Nicomedia",
+      "longName": "Virgin-Martyr Euphrasia of Nicomedia"
+    },
     "makaryStylite": {
       "name": "St Makáry the Stylite",
       "longName": "St Makáry the Stylite, of Martkopsk"
@@ -426,7 +444,10 @@
       "name": "St Mark of Ephesus",
       "longName": "St Mark, Archbishop of Ephesus"
     },
-    "macariusRoman": { "name": "Ven. Macarius the Roman of Novgorod" },
+    "macariusRoman": {
+      "name": "St Macarius the Roman of Novgorod",
+      "longName": "Ven. Macarius the Roman of Novgorod"
+    },
     "savvaRelicsOpening": {
       "name": "Opening of Relics, Savva of Storozhévsk",
       "longName": "Opening of the Relics of Ven. Savva (Sabbas) of Storozhévsk and Zvenígorod"
@@ -448,10 +469,6 @@
     "johnChrysostom": {
       "name": "St John Chrysostom",
       "longName": "St John Chrysostom, Archbishop of Constantinople"
-    },
-    "timothy": {
-      "name": "St Timothy",
-      "longName": "Apostle Timothy of the Seventy"
     },
     "paulConversion": { "name": "The Conversion of St Paul" },
     "titus": {
@@ -492,6 +509,86 @@
     "matthias": {
       "name": "St Matthias",
       "longName": "Apostle Matthias of the Seventy"
+    },
+    "euthymiusGreat": {
+      "name": "St Euthymius the Great",
+      "longName": "Venerable Euthymius the Great"
+    },
+    "innas-pinnas-rimmas": {
+      "name": "Ss Innas, Pinnas, and Rimmas",
+      "longName": "Martyrs Innas, Pinnas, and Rimmas, disciples of the Apostle Andrew, in Scythia"
+    },
+    "bassus-eusebius-euthychius-basilides": {
+      "name": "Ss Bassus, Eusebius, Euthychius, and Basilides",
+      "longName": "Martyrs Bassus, Eusebius, Euthychius, and Basilides, at Nicomedia"
+    },
+    "evfimii-lavrentii": {
+      "name": "Ss Evfímii and Lavrentii",
+      "longName": "Ven. Evfímii (Euthymius), Schema-Monk, and Lavrentii (Lawrence) the Recluse, of the Kiev Far Caves"
+    },
+    "evfimiiSyanzhemsk": {
+      "name": "St Evfimii of Syanzhémsk",
+      "longName": "Ven. Evfimii of Syanzhémsk"
+    },
+    "eptimosConfessor": {
+      "name": "St Eptimos the Confessor",
+      "longName": "Eptimos the Confessor, in Georgia"
+    },
+    "maximusConfessor": {
+      "name": "St Maximus the Confessor",
+      "longName": "Ven. Maximus the Confessor"
+    },
+    "neophytusNicaea": {
+      "name": "St Neophytus of Nicaea",
+      "longName": "Martyr Neophytus of Nicaea"
+    },
+    "eugene-candidus-valerian-aquila": {
+      "name": "Ss Eugene, Candidus, Valerian, and Aquila",
+      "longName": "Martyrs Eugene, Candidus, Valerian, and Aquila, at Trebizond"
+    },
+    "agnesRome": {
+      "name": "St Agnes of Rome",
+      "longName": "Virgin-Martyr Agnes of Rome"
+    },
+    "anastasius--maximus": {
+      "name": "St Anastasius, disciple of Maximus",
+      "longName": "Martyr Anastasius, disciple of Ven. Maximus the Confessor"
+    },
+    "neophytusVatopedi": {
+      "name": "St Neophytus of Vatopedi",
+      "longName": "Ven. Neophytus of Vatopedi (Mt. Athos)"
+    },
+    "maximGreek": {
+      "name": "St Maxim the Greek",
+      "longName": "Ven. Maxim the Greek"
+    },
+    "joyConsolationIcon": {
+      "name": "The \"Joy and Consolation\" Icon",
+      "longName": "The \"Joy and Consolation\" Icon of the Most Holy Theotokos at Vatopedi Monastery"
+    },
+    "newMartyrsRussia": {
+      "name": "New Martyrs and Confessors of Russia",
+      "longName": "Synaxis of the Holy New Martyrs and Confessors of Russia"
+    },
+    "timothy": {
+      "name": "St Timothy",
+      "longName": "Apostle Timothy of the Seventy"
+    },
+    "anastasiusPersian": {
+      "name": "St Anastasius the Persian",
+      "longName": "Monk-Martyr Anastasius the Persian"
+    },
+    "martyrCompanionsBulgaria": {
+      "name": "Hiero-martyrs and 377 companions in Bulgaria",
+      "longName": "Hiero-martyrs Manuel, George, Peter, and Leontius, Bishops; Sionius, Gabriel, John, Leontius, and Parodus, Presbyters; and 377 companions in Bulgaria"
+    },
+    "anastasiiCaves": {
+      "name": "St Anastásii of the Kiev Near Caves",
+      "longName": "Monk-Martyr Anastásii, Deacon, of the Kiev Near Caves"
+    },
+    "makaryZhabynsk": {
+      "name": "St Makáry of Zhabynsk",
+      "longName": "Ven. Makáry of Zhabynsk, Wonderworker"
     }
   }
 }

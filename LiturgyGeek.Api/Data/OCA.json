@@ -826,7 +826,45 @@
     { "_": "makaryDeacon 1/19" },
     { "_": "markEphesus 1/19" },
     { "_": "macariusRoman 1/19" },
-    { "_": "savvaRelicsOpening 1/19" }
+    { "_": "savvaRelicsOpening 1/19" },
+
+    //---------------------------------------------------------------------------
+    // January 20
+
+    {
+      "_": "euthymiusGreat 1/20 highlight",
+      "eventRankKey": "vigil"
+    },
+    { "_": "innas-pinnas-rimmas 1/20" },
+    { "_": "bassus-eusebius-euthychius-basilides 1/20" },
+    { "_": "evfimii-lavrentii 1/20" },
+    { "_": "evfimiiSyanzhemsk 1/20" },
+    { "_": "eptimosConfessor 1/20" },
+
+    //---------------------------------------------------------------------------
+    // January 21
+
+    { "_": "maximusConfessor 1/21" },
+    { "_": "neophytusNicaea 1/21" },
+    { "_": "eugene-candidus-valerian-aquila 1/21" },
+    { "_": "agnesRome 1/21" },
+    { "_": "anastasius--maximus 1/21" },
+    { "_": "neophytusVatopedi 1/21" },
+    { "_": "maximGreek 1/21" },
+    { "_": "joyConsolationIcon 1/21" },
+
+    //---------------------------------------------------------------------------
+    // January 22
+
+    {
+      "_": "newMartyrsRussia 1/22/Sunday highlight",
+      "eventRankKey": "vigil"
+    },
+    { "_": "timothy 1/22" },
+    { "_": "anastasiusPersian 1/22" },
+    { "_": "martyrCompanionsBulgaria 1/22" },
+    { "_": "anastasiiCaves 1/22" },
+    { "_": "makaryZhabynsk 1/22" }
 
     //###########################################################################
     // Fixed Events: February
