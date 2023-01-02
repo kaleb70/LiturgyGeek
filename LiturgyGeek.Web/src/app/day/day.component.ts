@@ -41,7 +41,7 @@ export class DayComponent implements AfterViewChecked {
       this.prevDay = queryDate.addDays(-1);
       this.nextDay = queryDate.addDays(1);
 
-      http.get<CalendarDay>(`https://localhost:7246/Calendar/${this.calendarKey}/${this.year}/${this.month}/${this.day}`).subscribe(result => {
+      http.get<CalendarDay>(`/api/Calendar/${this.calendarKey}/${this.year}/${this.month}/${this.day}`).subscribe(result => {
         this.result = result;
         this.tooltipsInvalid = true;
       }, error => console.error(error));

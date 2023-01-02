@@ -43,7 +43,7 @@ export class MonthComponent implements AfterViewChecked {
       this.prevMonth = this.dateShown.addMonths(-1);
       this.nextMonth = this.dateShown.addMonths(1);
 
-      http.get<CalendarMonth>(`https://localhost:7246/Calendar/${this.calendarKey}/${this.year}/${this.month}`).subscribe(result => {
+      http.get<CalendarMonth>(`/api/Calendar/${this.calendarKey}/${this.year}/${this.month}`).subscribe(result => {
         this.result = result;
         this.tooltipsInvalid = true;
       }, error => console.error(error));

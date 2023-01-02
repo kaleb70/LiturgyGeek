@@ -19,6 +19,7 @@ namespace LiturgyGeek.Api
             builder.Services.AddSingleton<IChurchCalendarProvider, ChurchCalendarProvider>();
             builder.Services.AddSingleton<CalendarEvaluator>();
 
+#if DEBUG
             builder.Services.AddCors(options =>
             {
                 options.AddDefaultPolicy(policy =>
@@ -26,6 +27,7 @@ namespace LiturgyGeek.Api
                                           policy.WithOrigins("https://localhost:4200");
                                       });
             });
+#endif // DEBUG
 
             var app = builder.Build();
 

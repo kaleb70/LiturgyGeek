@@ -2,8 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
+	<Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+	<AspNetCoreHostingModel>OutofProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
