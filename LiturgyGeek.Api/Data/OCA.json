@@ -13,6 +13,9 @@
   "customFlagBehaviors": {
     "highlight": {
       "_monthViewContent": true
+    },
+    "patron": {
+      "_monthViewContent": true
     }
   },
 
@@ -69,22 +72,18 @@
       "precedence": 1,
       "customFlags": [ "highlight" ]
     },
-    "patron": {
+    "vigil": {
       "precedence": 2,
       "customFlags": [ "highlight" ]
     },
-    "vigil": {
-      "precedence": 3,
-      "customFlags": [ "highlight" ]
-    },
     "polyeleos": {
-      "precedence": 4
+      "precedence": 3
     },
     "doxology": {
-      "precedence": 5
+      "precedence": 4
     },
     "sixStichera": {
-      "precedence": 6
+      "precedence": 5
     },
     "ordinary": {
       "precedence": 99
@@ -113,14 +112,20 @@
           },
           {
             "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "includeRanks": [ "greatFeast" ],
             "ruleKey": "fish"
           },
           {
             "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "polyeleos", "doxology" ],
+            "includeRanks": [ "vigil", "polyeleos" ],
             "includeCustomFlags": [ "highlight" ],
+            "excludeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
+          },
+          {
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeCustomFlags": [ "patron" ],
+            "ruleKey": "fish"
           }
         ]
       }
@@ -154,7 +159,12 @@
           },
           {
             "endDate": "12/19", // except nativity forefeast
-            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "includeRanks": [ "greatFeast", "vigil" ],
+            "ruleKey": "fish"
+          },
+          {
+            "enddate": "12/19", // except nativity forefeast
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "fish"
           },
           {
@@ -168,11 +178,17 @@
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeCustomFlags": [ "highlight" ],
+            "excludeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
           },
           {
             "startDate": "12/20", // nativity forefeast
-            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "includeRanks": [ "greatFeast", "vigil" ],
+            "ruleKey": "oil"
+          },
+          {
+            "startDate": "12/20", // nativity forefeast
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
           },
           {
@@ -255,13 +271,19 @@
           },
           {
             "startDate": "-7/Saturday", // after Canon of St Andrew
-            "includeRanks": [ "greatFeast", "patron" ],
+            "includeRanks": [ "greatFeast" ],
+            "ruleKey": "fish"
+          },
+          {
+            "startDate": "-7/Saturday", // after Canon of St Andrew
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "fish"
           },
           {
             "startDate": "-7/Saturday", // after Canon of St Andrew
             "includeRanks": [ "vigil", "polyeleos" ],
             "includeCustomFlags": [ "highlight" ],
+            "excludeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
           }
         ]
@@ -297,7 +319,11 @@
         ],
         "transfer": [
           {
-            "includeRanks": [ "patron", "vigil" ],
+            "includeRanks": [ "vigil" ],
+            "ruleKey": "after"
+          },
+          {
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "after"
           }
         ]
@@ -324,7 +350,12 @@
           {
             "startDate": "2/Sunday", // after Bright Week
             "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "includeRanks": [ "greatFeast", "vigil" ],
+            "ruleKey": "fish"
+          },
+          {
+            "startDate": "2/Sunday", // after Bright Week
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "fish"
           }
         ]
@@ -367,7 +398,11 @@
             "ruleKey": "oil"
           },
           {
-            "includeRanks": [ "greatFeast", "patron", "vigil" ],
+            "includeRanks": [ "greatFeast", "vigil" ],
+            "ruleKey": "fish"
+          },
+          {
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "fish"
           },
           {
@@ -380,6 +415,7 @@
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "polyeleos", "doxology" ],
             "includeCustomFlags": [ "highlight" ],
+            "excludeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
           }
         ]
@@ -403,12 +439,17 @@
             "ruleKey": "strict"
           },
           {
-            "includeRanks": [ "greatFeast", "patron" ],
+            "includeRanks": [ "greatFeast" ],
+            "ruleKey": "fish"
+          },
+          {
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "fish"
           },
           {
             "includeRanks": [ "vigil", "polyeleos" ],
             "includeCustomFlags": [ "highlight" ],
+            "excludeCustomFlags": [ "patron" ],
             "ruleKey": "oil"
           }
         ]
@@ -428,7 +469,11 @@
       "ruleCriteria": {
         "transfer": [
           {
-            "includeRanks": [ "patron", "vigil" ],
+            "includeRanks": [ "vigil" ],
+            "ruleKey": "after"
+          },
+          {
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "after"
           }
         ]
@@ -530,7 +575,11 @@
           },
           {
             "ruleKey": "fish",
-            "includeRanks": [ "greatFeast", "patron" ]
+            "includeRanks": [ "greatFeast" ]
+          },
+          {
+            "ruleKey": "fish",
+            "includeCustomFlags": [ "patron" ]
           }
         ]
       }
@@ -545,7 +594,11 @@
       "ruleCriteria": {
         "transfer": [
           {
-            "includeRanks": [ "patron", "vigil" ],
+            "includeRanks": [ "vigil" ],
+            "ruleKey": "after"
+          },
+          {
+            "includeCustomFlags": [ "patron" ],
             "ruleKey": "after"
           }
         ]
