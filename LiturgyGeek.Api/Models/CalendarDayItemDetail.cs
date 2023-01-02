@@ -24,14 +24,17 @@ namespace LiturgyGeek.Api.Models
             Class = $"rule_{churchRuleResult.RuleGroup.Key} rule_{churchRuleResult.RuleGroup.Key}_{churchRuleResult.Rule.Key}";
         }
 
-        public CalendarDayItemDetail(ChurchEvent churchEvent)
+        public CalendarDayItemDetail(ChurchEventResult churchEventResult)
         {
-            Title = churchEvent.LongName ?? churchEvent.Name ?? churchEvent.OccasionKey ?? "[missing name]"; ;
-            Class = (churchEvent.EventRankKey ?? "")
+            Title = churchEventResult.Event.LongName ?? churchEventResult.Event.Name
+                    ?? churchEventResult.Event.OccasionKey ?? "[missing name]";
+            Class = (churchEventResult.Event.EventRankKey ?? "")
                     + " "
-                    + (churchEvent.OccasionKey ?? "")
+                    + (churchEventResult.Event.OccasionKey ?? "")
                     + " "
-                    + string.Join(' ', churchEvent.CustomFlags);
+                    + (churchEventResult.TransferredFrom.HasValue ? "transferred" : "")
+                    + " "
+                    + string.Join(' ', churchEventResult.Event.CustomFlags);
         }
     }
 }

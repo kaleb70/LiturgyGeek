@@ -55,6 +55,13 @@
   content: "4";
 }
 
+.rubrics.lsb3 .day-item-detail.transferred::after,
+.rubrics.lsb3 .calendar-cell-content.transferred::after {
+    color: red;
+    font-weight: bold;
+    content: "*";
+}
+
 .rubrics.lsb3 .calendar-cell-content.greatFeast,
 .rubrics.lsb3 .calendar-cell-content.festival,
 .rubrics.lsb3 .day-item-detail.greatFeast {

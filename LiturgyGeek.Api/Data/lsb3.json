@@ -172,36 +172,100 @@
     },
     {
       "_": "ashWednesday -7/Wednesday",
-      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "black" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "before"
+          }
+        ]
+      }
     },
     {
       "_": "palmSunday -1/Sunday",
       "eventRankKey": "greatFeast",
-      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "scarlet" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holyMonday -1/Monday",
-      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "scarlet" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holyTuesday -1/Tuesday",
-      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "scarlet" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holyWednesday -1/Wednesday",
-      "ruleCriteria": { "color": [ { "ruleKey": "scarlet" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "scarlet" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holyThursday -1/Thursday",
-      "ruleCriteria": { "color": [ { "ruleKey": "white" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "white" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holyFriday -1/Friday",
-      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "black" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "holySaturday -1/Saturday",
-      "ruleCriteria": { "color": [ { "ruleKey": "black" } ] }
+      "ruleCriteria": {
+        "color": [ { "ruleKey": "black" } ],
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
 
     //###########################################################################
@@ -211,7 +275,27 @@
       "_": "pascha 1/Sunday",
       "eventRankKey": "greatFeast",
       "name": "Easter",
-      "longName": "The Resurrection of Our Lord and Savior Jesus Christ"
+      "longName": "The Resurrection of Our Lord and Savior Jesus Christ",
+      "ruleCriteria": {
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
+    },
+    {
+      "_": "paschaMonday 1/Monday",
+      "name": "Easter Monday",
+      "ruleCriteria": {
+        "transfer": [
+          {
+            "includeRanks": [ "festival" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "_": "ascension 6/Thursday",

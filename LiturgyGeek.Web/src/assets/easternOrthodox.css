@@ -92,3 +92,10 @@
     color: black;
     content: "2";
   }
+
+  .rubrics.easternOrthodox .day-item-detail.transferred::after,
+  .rubrics.easternOrthodox .calendar-cell-content.transferred::after {
+    color: red;
+    font-weight: bold;
+    content: "*";
+  }

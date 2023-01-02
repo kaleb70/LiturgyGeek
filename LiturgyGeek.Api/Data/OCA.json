@@ -294,14 +294,14 @@
             "includeRanks": [ "greatFeast" ],
             "ruleKey": "wine"
           }
+        ],
+        "transfer": [
+          {
+            "includeRanks": [ "patron", "vigil" ],
+            "ruleKey": "after"
+          }
         ]
-      },
-      "transfers": [
-        {
-          "includeRanks": [ "patron", "vigil" ],
-          "placement": "after"
-        }
-      ]
+      }
     },
 
     //---------------------------------------------------------------------------
@@ -425,12 +425,14 @@
       "occasionKey": "pascha",
       "dates": [ "1/Sunday" ],
       "eventRankKey": "greatFeast",
-      "transfers": [
-        {
-          "includeRanks": [ "patron", "vigil" ],
-          "placement": "after"
-        }
-      ]
+      "ruleCriteria": {
+        "transfer": [
+          {
+            "includeRanks": [ "patron", "vigil" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     {
       "occasionKey": "holyCross",
@@ -540,12 +542,14 @@
     {
       "occasionKey": "brightMonday",
       "dates": [ "1/Monday" ],
-      "transfers": [
-        {
-          "includeRanks": [ "patron", "vigil" ],
-          "placement": "after"
-        }
-      ]
+      "ruleCriteria": {
+        "transfer": [
+          {
+            "includeRanks": [ "patron", "vigil" ],
+            "ruleKey": "after"
+          }
+        ]
+      }
     },
     { "_": "brightTuesday 1/Tuesday" },
     { "_": "brightWednesday 1/Wednesday" },
