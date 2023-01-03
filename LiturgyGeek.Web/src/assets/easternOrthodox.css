@@ -57,6 +57,11 @@
     background-color: var(--noFast-background);
   }
 
+  .rubrics.easternOrthodox .calendar-cell-content.rule_fast_none,
+  .rubrics.easternOrthodox .day-item-detail.rule_fast_none {
+    font-style: italic;
+  }
+
   .rubrics.easternOrthodox .calendar-cell-content.rule_fast,
   .rubrics.easternOrthodox .day-item-detail.rule_fast,
   .rubrics.easternOrthodox .day-item-detail.highlight {
