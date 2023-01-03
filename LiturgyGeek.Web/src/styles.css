@@ -6,3 +6,11 @@
 @import url("assets/rubrics.css");
 @import url("assets/easternOrthodox.css");
 @import url("assets/lsb3Year.css");
+
+.page-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  inset: 0 0 0 0;
+  position: absolute;
+}

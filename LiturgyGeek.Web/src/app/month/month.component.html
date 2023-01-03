@@ -59,6 +59,7 @@
   </div>
 </ng-container>
 
-<ng-container *ngIf="!result">
-  <p>An error occurred while loading the calendar. Please try refreshing this page.</p>
-</ng-container>
+<div *ngIf="!result" class="page-center">
+  <strong>Loading...&nbsp;&nbsp;</strong>
+  <div class="spinner-border" role="status" aria-hidden="true"></div>
+</div>
