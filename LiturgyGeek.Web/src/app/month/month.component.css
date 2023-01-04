@@ -36,13 +36,16 @@
   .calendar-table td {
     border: 1px solid #000;
     height: 8em;
-    cursor: pointer;
     padding: 0;
   }
+}
 
-    .calendar-table td:hover {
-      text-decoration: underline;
-    }
+.calendar-table td {
+  cursor: pointer;
+}
+
+.calendar-table td:hover {
+  text-decoration: underline;
 }
 
 .calendar-cell {
