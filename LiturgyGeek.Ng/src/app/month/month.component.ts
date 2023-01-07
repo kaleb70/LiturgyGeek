@@ -6,7 +6,7 @@ import { CalendarService, CalendarMonth, CalendarDaySummary } from '../services/
 @Component({
   selector: 'app-month',
   templateUrl: './month.component.html',
-  styleUrls: ['./month.component.css'],
+  styleUrls: ['./month.component.scss'],
 })
 export class MonthComponent {
   public calendarKey: string = "";
@@ -32,11 +32,11 @@ export class MonthComponent {
       this.year = +(params['year'] ?? this.today.getFullYear());
       this.month = +(params['month'] ?? this.today.getMonth() + 1);
 
-      this.isDefaultDate = params['year'] == null;
+        this.isDefaultDate = params['year'] == null;
 
-      this.dateShown = new Date(this.year, this.month - 1, 1);
-      this.prevMonth = this.dateShown.addMonths(-1);
-      this.nextMonth = this.dateShown.addMonths(1);
+        this.dateShown = new Date(this.year, this.month - 1, 1);
+        this.prevMonth = this.dateShown.addMonths(-1);
+        this.nextMonth = this.dateShown.addMonths(1);
 
       calendarService.getMonth(this.calendarKey, this.year, this.month).subscribe(result => {
         this.result = result;
