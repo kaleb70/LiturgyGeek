@@ -26,11 +26,19 @@ export class MonthComponent {
   constructor(route: ActivatedRoute, calendarService: CalendarService) {
 
     route.params.subscribe(params => {
-      this.today = new Date().asDateOnly();
 
-      this.calendarKey = params['calendarKey'] ?? 'oca';
-      this.year = +(params['year'] ?? this.today.getFullYear());
-      this.month = +(params['month'] ?? this.today.getMonth() + 1);
+      var today = new Date().asDateOnly();
+
+      var calendarKey = params['calendarKey'] ?? 'oca';
+      var year = +(params['year'] ?? this.today.getFullYear());
+      var month = +(params['month'] ?? this.today.getMonth() + 1);
+
+      calendarService.getMonth(calendarKey, year, month).subscribe(result => {
+        this.today = today;
+
+        this.calendarKey = calendarKey;
+        this.year = year;
+        this.month = month;
 
         this.isDefaultDate = params['year'] == null;
 
@@ -38,7 +46,6 @@ export class MonthComponent {
         this.prevMonth = this.dateShown.addMonths(-1);
         this.nextMonth = this.dateShown.addMonths(1);
 
-      calendarService.getMonth(this.calendarKey, this.year, this.month).subscribe(result => {
         this.result = result;
       }, error => console.error(error));
     });
