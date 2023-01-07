@@ -1,0 +1,139 @@
+
+.calendar-nav-bar {
+  display: table;
+}
+
+.calendar-nav-element {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+  .calendar-nav-element + .calendar-nav-element {
+      padding-left: 1em;
+  }
+
+.calendar-table {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 70%;
+  margin: auto;
+}
+
+.calendar-heading-row,
+.calendar-row {
+  display: flex;
+  flex-flow: row;
+}
+
+.calendar-heading-sizer,
+.calendar-cell-sizer {
+  flex: 0 0;
+  width: 0px;
+}
+
+.calendar-heading {
+  flex: 1 0;
+  width: 14.28%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.calendar-cell {
+  flex: 1 0;
+  cursor: pointer;
+  display: flex;
+  flex-flow: column;
+}
+
+  .calendar-cell:hover {
+    text-decoration: underline;
+  }
+
+@media (max-width: 575.98px) {
+
+  .calendar-heading-row:not(.compact) {
+    display: none;
+  }
+
+  .calendar-heading,
+  .calendar-cell {
+    border: none;
+    padding: 2px;
+    background-color: #ddd;
+  }
+
+  .calendar-cell-today {
+    border: 3px solid black;
+    padding: 1px;
+    background-color: white;
+  }
+
+  .calendar-cell {
+    background-color: white;
+  }
+
+  .calendar-cell-heading {
+    flex: 1 1 auto;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+  }
+
+  .calendar-cell-body {
+    display: none;
+  }
+}
+
+@media (min-width: 576px) {
+
+  .calendar-heading-row.compact {
+    display: none;
+  }
+
+  .calendar-cell {
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    padding: 0;
+  }
+
+    .calendar-cell:last-child {
+      border-right: 2px solid black;
+    }
+
+  .calendar-row:last-child .calendar-cell {
+    border-bottom: 2px solid black;
+  }
+
+  .calendar-cell-heading {
+    flex: 0 1 auto;
+    border-bottom: 1px solid #bbb;
+    font-weight: bold;
+    text-align: right;
+  }
+
+  .calendar-cell-headlines {
+    flex: 0 1 auto;
+    border-bottom: 1px solid #bbb;
+    text-align: center;
+  }
+
+  .calendar-cell-filler {
+    flex: 1 1 auto;
+  }
+
+  .calendar-cell-items {
+    flex: 0 1 auto;
+    text-align: center;
+  }
+
+  .calendar-cell-item:not(:last-child) {
+    border-bottom: 1px solid #bbb;
+  }
+
+  .calendar-cell-outside-month .calendar-cell-body {
+    background-color: #e4e4e4;
+  }
+
+  .calendar-cell-today .calendar-cell-body {
+    background-color: #ffffc2;
+  }
+}
