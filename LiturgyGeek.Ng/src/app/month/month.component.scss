@@ -16,7 +16,8 @@
 
 .calendar-table {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 70%;
+  line-height: 1.42857143;
+  font-size: 80%;
   margin: auto;
   min-width: 300px;
 }
@@ -56,28 +57,10 @@
   font-weight: bold;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media (max-width: $XSmall - .02px) {
 
   .calendar-table {
-      background-color: #e0e0e0;
+    background-color: #e0e0e0;
   }
 
   .calendar-heading-row:not(.compact) {
@@ -109,8 +92,8 @@
   }
 
   .calendar-cell-today {
-      background-color: black;
-      padding: 3px;
+    background-color: black;
+    padding: 3px;
   }
 }
 

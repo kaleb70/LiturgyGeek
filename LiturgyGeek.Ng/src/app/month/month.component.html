@@ -1,16 +1,14 @@
 <section *ngIf="result">
   <h1 class="calendar-nav-bar">
     <div class="calendar-nav-element">
+      <a mat-icon-button routerLink="/calendar/{{calendarKey}}">
+        <mat-icon>today</mat-icon>
+      </a>
       <a mat-icon-button routerLink="/calendar/{{calendarKey}}/month/{{ prevMonth.getFullYear() }}/{{ prevMonth.getMonth() + 1 }}" aria-label="Previous day">
         <mat-icon>chevron_left</mat-icon>
       </a>
       <a mat-icon-button routerLink="/calendar/{{calendarKey}}/month/{{ nextMonth.getFullYear() }}/{{ nextMonth.getMonth() + 1 }}" aria-label="Next day">
         <mat-icon>chevron_right</mat-icon>
-      </a>
-    </div>
-    <div class="calendar-nav-element">
-      <a mat-stroked-button routerLink="/calendar/{{calendarKey}}">
-        Today
       </a>
     </div>
     <div class="calendar-nav-element">
@@ -41,14 +39,14 @@
         <div class="calendar-heading">Saturday</div>
       </div>
       <div *ngFor="let week of result.weeks" class="calendar-row">
-        <div class="calendar-cell-sizer"><br/><br/><br/><br/><br/></div>
+        <div class="calendar-cell-sizer"><br/><br/><br/><br/><br/><br/></div>
         <div *ngFor="let day of week.days" routerLink="{{getDayRouterLink(day)}}" class="{{getDateClasses(day)}} calendar-cell">
           <div class="calendar-cell-heading {{ day.headingClass }}">
             {{ day.day }}
           </div>
           <div *ngIf="day.headlines.length > 0" class="calendar-cell-body calendar-cell-headlines">
             <div *ngFor="let headline of day.headlines" class="calendar-cell-headline calendar-cell-content {{ headline.class }}"
-                  matTooltip="{{ headline.elaboration }}">
+                 matTooltip="{{ headline.elaboration }}">
               {{ headline.summary }}
             </div>
           </div>
@@ -56,7 +54,7 @@
           </div>
           <div *ngIf="day.items.length > 0" class="calendar-cell-body calendar-cell-items">
             <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
-                  matTooltip="{{ item.elaboration }}">
+                 matTooltip="{{ item.elaboration }}">
               {{ item.summary }}
             </div>
           </div>
