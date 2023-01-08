@@ -51,7 +51,7 @@
           </div>
           <div *ngIf="day.headlines.length > 0" class="calendar-cell-body calendar-cell-headlines">
             <div *ngFor="let headline of day.headlines" class="calendar-cell-headline calendar-cell-content {{ headline.class }}"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ headline.elaboration }}">
+                  matTooltip="{{ headline.elaboration }}">
               {{ headline.summary }}
             </div>
           </div>
@@ -59,7 +59,7 @@
           </div>
           <div *ngIf="day.items.length > 0" class="calendar-cell-body calendar-cell-items">
             <div *ngFor="let item of day.items" class="calendar-cell-item calendar-cell-content {{ item.class }}"
-                  data-bs-toggle="tooltip" data-bs-placement="bottom" title="{{ item.elaboration }}">
+                  matTooltip="{{ item.elaboration }}">
               {{ item.summary }}
             </div>
           </div>

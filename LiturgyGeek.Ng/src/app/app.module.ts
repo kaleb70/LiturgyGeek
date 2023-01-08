@@ -7,6 +7,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,6 +27,7 @@ import { RouterModule } from '@angular/router';
     MatGridListModule,
     MatIconModule,
     MatButtonModule,
+    MatTooltipModule,
     AppRoutingModule,
     RouterModule
   ],
