@@ -1,0 +1,74 @@
+
+.rubrics.lutheran .day-item-detail.rule_color {
+  display: none
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_blue {
+  color: white;
+  background-color: royalblue;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_black {
+  color: white;
+  background-color: black;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_green {
+  color: white;
+  background-color: green;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_gold {
+  color: black;
+  background-color: gold;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_red {
+  color: white;
+  background-color: red;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_scarlet {
+  color: white;
+  background-color: #ff2400;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_violet {
+  color: white;
+  background-color: darkviolet;
+}
+
+.rubrics.lutheran .calendar-cell-heading.rule_color_white {
+  color: black;
+  background-color: white;
+}
+
+.rubrics.lsb3 .day-item-detail.greatFeast::before {
+  font-family: typicon;
+  color: red;
+  content: "6 ";
+}
+
+.rubrics.lsb3 .day-item-detail.festival::before {
+  font-family: typicon;
+  color: red;
+  content: "4 ";
+}
+
+.rubrics.lsb3 .day-item-detail.transferred::after,
+.rubrics.lsb3 .calendar-cell-content.transferred::after {
+    color: red;
+    font-weight: bold;
+    content: "*";
+}
+
+.rubrics.lsb3 .calendar-cell-content.greatFeast,
+.rubrics.lsb3 .calendar-cell-content.festival,
+.rubrics.lsb3 .day-item-detail.greatFeast {
+  font-weight: bold;
+}
+
+.rubrics.lsb3 .calendar-cell-content.greatFeast {
+  text-transform: uppercase;
+  font-size: 95%;
+}

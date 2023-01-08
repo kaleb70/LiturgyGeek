@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Api", "LiturgyGeek.Api\LiturgyGeek.Api.csproj", "{1E2AD68F-F330-4388-BE1D-B6580E4815D1}"
 EndProject
-Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "LiturgyGeek.Web", "LiturgyGeek.Web\LiturgyGeek.Web.esproj", "{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}"
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "LiturgyGeek.Ng", "LiturgyGeek.Ng\LiturgyGeek.Ng.esproj", "{E52E23E9-A6C1-4499-9530-07013EE66CCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +17,12 @@ Global
 		{1E2AD68F-F330-4388-BE1D-B6580E4815D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E2AD68F-F330-4388-BE1D-B6580E4815D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E2AD68F-F330-4388-BE1D-B6580E4815D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9E3BCDAB-C9BD-4AEC-B99D-2AFC66A32FAF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E52E23E9-A6C1-4499-9530-07013EE66CCC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
