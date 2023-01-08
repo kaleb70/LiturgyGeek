@@ -20,6 +20,7 @@
   font-size: 80%;
   margin: auto;
   min-width: 300px;
+  background-color: #e0e0e0;
 }
 
 .calendar-heading-row,
@@ -28,16 +29,15 @@
   flex-flow: row;
 }
 
-.calendar-heading-sizer,
-.calendar-cell-sizer {
-  flex: 0 0;
-  width: 0px;
+.calendar-heading-row.verbose {
+  display: none;
 }
 
 .calendar-heading {
   flex: 1 0;
   width: 14.28%;
   text-align: center;
+  font-size: medium;
   font-weight: bold;
 }
 
@@ -46,80 +46,87 @@
   cursor: pointer;
   display: flex;
   flex-flow: column;
+  padding: 2px;
 }
 
   .calendar-cell:hover {
     text-decoration: underline;
   }
 
-.calendar-cell-heading {
-  flex: 0 1 auto;
-  font-weight: bold;
+.calendar-heading-sizer,
+.calendar-cell-sizer,
+.calendar-cell-body {
+  display: none;
 }
 
-@media (max-width: $XSmall - .02px) {
+.calendar-cell-heading {
+  flex: 0 1 auto;
+  aspect-ratio: 1 / 1;
+  font-weight: bold;
+  font-size: xx-large;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+
+.calendar-cell-today {
+  background-color: black;
+  padding: 3px;
+}
+
+@media (min-width: $Small) {
 
   .calendar-table {
-    background-color: #e0e0e0;
+      background-color: unset;
   }
 
-  .calendar-heading-row:not(.compact) {
+  .calendar-heading-row {
     display: none;
   }
 
-  .calendar-cell {
-    padding: 2px;
-  }
-
-  .calendar-cell-heading {
-    aspect-ratio: 1 / 1;
-    font-size: xx-large;
-    text-align: center;
+  .calendar-heading-row.verbose {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-  }
-
-  .calendar-heading-sizer,
-  .calendar-cell-sizer,
-  .calendar-cell-body {
-    display: none;
   }
 
   .calendar-heading {
-    font-size: medium;
-  }
-
-  .calendar-cell-today {
-    background-color: black;
-    padding: 3px;
-  }
-}
-
-@media (min-width: $XSmall) {
-
-  .calendar-heading-row.compact {
-    display: none;
+    font-size: unset;
   }
 
   .calendar-row:last-child .calendar-cell {
     border-bottom: 2px solid black;
   }
 
-  .calendar-cell-heading {
-    text-align: right;
-    border-bottom: 1px solid #bbb;
+  .calendar-heading-sizer,
+  .calendar-cell-sizer {
+    flex: 0 0;
+    width: 0px;
+  }
+
+  .calendar-heading-sizer,
+  .calendar-cell-sizer,
+  .calendar-cell-body {
+    display: block;
   }
 
   .calendar-cell {
     border-top: 2px solid black;
     border-left: 2px solid black;
     padding: 0;
+    background-color: white;
   }
 
   .calendar-cell:last-child {
     border-right: 2px solid black;
+  }
+
+  .calendar-cell-heading {
+    aspect-ratio: unset;
+    display: block;
+    font-size: unset;
+    text-align: right;
+    border-bottom: 1px solid #bbb;
   }
 
   .calendar-cell-headlines {
