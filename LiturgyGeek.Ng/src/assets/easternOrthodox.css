@@ -71,31 +71,31 @@
   .rubrics.easternOrthodox .day-item-detail.greatFeast::before {
     font-family: typicon;
     color: red;
-    content: "6";
+    content: " 6 ";
   }
 
   .rubrics.easternOrthodox .day-item-detail.vigil::before {
     font-family: typicon;
     color: red;
-    content: "5";
+    content: " 5 ";
   }
 
   .rubrics.easternOrthodox .day-item-detail.polyeleos::before {
     font-family: typicon;
     color: red;
-    content: "4";
+    content: " 4 ";
   }
 
   .rubrics.easternOrthodox .day-item-detail.doxology::before {
     font-family: typicon;
     color: red;
-    content: "3";
+    content: " 3 ";
   }
 
   .rubrics.easternOrthodox .day-item-detail.sixStichera::before {
     font-family: typicon;
     color: black;
-    content: "2";
+    content: " 2 ";
   }
 
   .rubrics.easternOrthodox .day-item-detail.transferred::after,

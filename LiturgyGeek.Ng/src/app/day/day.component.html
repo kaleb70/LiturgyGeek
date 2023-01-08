@@ -1,0 +1,37 @@
+<section *ngIf="result">
+  <h1 class="calendar-nav-bar">
+    <div class="calendar-nav-element">
+      <a mat-icon-button routerLink="/calendar/{{calendarKey}}/day/{{ prevDay.getFullYear() }}/{{ prevDay.getMonth() + 1 }}/{{ prevDay.getDate() }}" aria-label="Previous day">
+        <mat-icon>chevron_left</mat-icon>
+      </a>
+      <a mat-icon-button routerLink="/calendar/{{calendarKey}}/day/{{ nextDay.getFullYear() }}/{{ nextDay.getMonth() + 1 }}/{{ nextDay.getDate() }}" aria-label="Next day">
+        <mat-icon>chevron_right</mat-icon>
+      </a>
+    </div>
+    <div class="calendar-nav-element">
+      <a mat-stroked-button routerLink="/calendar/{{calendarKey}}/day">
+        Today
+      </a>
+    </div>
+    <div class="calendar-nav-element">
+      {{ result.day }} {{ result.monthName }} {{ result.year }}
+    </div>
+    <div class="calendar-nav-filler">
+      &nbsp;
+    </div>
+    <div class="calendar-nav-element">
+      <a mat-icon-button routerLink="/calendar/{{calendarKey}}/month/{{result.year}}/{{result.month}}">
+        <mat-icon>calendar_month</mat-icon>
+      </a>
+    </div>
+  </h1>
+
+  <div class="rubrics {{result.traditionKey}} {{result.calendarKey}}">
+    <span *ngFor="let item of result.items" class="{{item.class}} day-item-detail">{{item.title}}</span>
+  </div>
+</section>
+
+<div *ngIf="!result" class="page-center">
+  <strong>Loading...&nbsp;&nbsp;</strong>
+  <div class="spinner-border" role="status" aria-hidden="true"></div>
+</div>

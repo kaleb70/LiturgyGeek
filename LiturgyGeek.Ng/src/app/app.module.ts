@@ -8,16 +8,19 @@ import { MatGridListModule } from '@angular/material/grid-list'
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatChipsModule } from '@angular/material/chips';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MonthComponent } from './month/month.component';
 import { RouterModule } from '@angular/router';
+import { DayComponent } from './day/day.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MonthComponent
+    MonthComponent,
+    DayComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatTooltipModule,
+    MatChipsModule,
     AppRoutingModule,
     RouterModule
   ],

@@ -13,6 +13,10 @@ export class CalendarService {
   getMonth(calendarKey: string, year: number, month: number): Observable<CalendarMonth> {
     return this.http.get<CalendarMonth>(`/api/Calendar/${calendarKey}/${year}/${month}`);
   }
+
+  getDay(calendarKey: string, year: number, month: number, day: number): Observable<CalendarDay> {
+    return this.http.get<CalendarDay>(`/api/Calendar/${calendarKey}/${year}/${month}/${day}`);
+  }
 }
 
 export interface CalendarMonth {
@@ -41,6 +45,23 @@ export interface CalendarDaySummary {
 
 export interface CalendarDaySummaryItem {
   summary: string;
+  elaboration: string;
+  class: string;
+}
+
+export interface CalendarDay {
+  traditionKey: string;
+  calendarKey: string;
+  year: number;
+  month: number;
+  day: number;
+  monthName: string;
+  items: CalendarDayItemDetail[];
+  headingClass: string;
+}
+
+export interface CalendarDayItemDetail {
+  title: string;
   elaboration: string;
   class: string;
 }
