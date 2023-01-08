@@ -1,3 +1,4 @@
+@import "/src/variables.scss";
 
 .calendar-nav-bar {
   display: table;
@@ -48,7 +49,7 @@
     text-decoration: underline;
   }
 
-@media (max-width: 575.98px) {
+@media (max-width: $XSmall - .02px) {
 
   .calendar-heading-row:not(.compact) {
     display: none;
@@ -83,7 +84,7 @@
   }
 }
 
-@media (min-width: 576px) {
+@media (min-width: $XSmall) {
 
   .calendar-heading-row.compact {
     display: none;
