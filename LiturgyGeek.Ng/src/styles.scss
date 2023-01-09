@@ -16,3 +16,11 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   inset: 0 0 0 0;
   position: absolute;
 }
+
+.toolbar-spacer-1 {
+  width: 1em !important;
+}
+
+.toolbar-filler {
+  flex: 1 1 auto;
+}

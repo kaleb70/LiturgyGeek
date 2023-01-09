@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
-import { CalendarService, CalendarDay, CalendarDayItemDetail } from '../services/calendar.service'
+import { MatDatepickerInputEvent } from '@angular/material/datepicker';
+import { Router, ActivatedRoute } from '@angular/router'
+import { CalendarService, CalendarDay } from '../services/calendar.service'
 
 @Component({
   selector: 'app-day',
@@ -15,7 +16,7 @@ export class DayComponent {
 
   public isDefaultDate: boolean = false;
 
-  private dateShown: Date = new Date();
+  public dateShown: Date = new Date();
   private today: Date = new Date().asDateOnly();
 
   public prevDay: Date = this.today.addDays(-1);
@@ -23,7 +24,7 @@ export class DayComponent {
 
   public result?: CalendarDay;
 
-  constructor(route: ActivatedRoute, calendarService: CalendarService) {
+  constructor(public router: Router, route: ActivatedRoute, calendarService: CalendarService) {
 
     route.params.subscribe(params => {
 
@@ -52,4 +53,9 @@ export class DayComponent {
       }, error => console.error(error));
     });
   }
+
+  public onDateChange(event: MatDatepickerInputEvent<Date>) {
+    this.router.navigate([`/calendar/${this.calendarKey}/day/${event.value!.getFullYear()}/${event.value!.getMonth() + 1}/${event.value!.getDate()}`]);
+  }
+
 }

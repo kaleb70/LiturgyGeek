@@ -1,22 +1,15 @@
 @import "/src/variables.scss";
 
-.calendar-nav-bar {
-  display: table;
+.calendar-navbar {
+    background-color: unset;
 }
 
-.calendar-nav-element {
-  display: table-cell;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.calendar-nav-filler {
-  display: table-cell;
-  width: 100%;
-}
-
-.calendar-nav-element + .calendar-nav-element {
-  padding-left: 1em;
+.calendar-nav-dateinput {
+  height: 100%;
+  width: 0px;
+  border: none;
+  margin: 0;
+  padding: 0;
 }
 
 .day-item-detail {
