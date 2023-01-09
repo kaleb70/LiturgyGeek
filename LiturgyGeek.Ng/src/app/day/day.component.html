@@ -1,7 +1,7 @@
 <section *ngIf="result">
   <mat-toolbar class="calendar-navbar">
     <a mat-icon-button routerLink="/calendar/{{calendarKey}}/day">
-      <mat-icon>calendar_today</mat-icon>
+      <mat-icon>today</mat-icon>
     </a>
     <a mat-icon-button routerLink="/calendar/{{calendarKey}}/day/{{ prevDay.getFullYear() }}/{{ prevDay.getMonth() + 1 }}/{{ prevDay.getDate() }}" aria-label="Previous day">
       <mat-icon>chevron_left</mat-icon>
@@ -9,14 +9,14 @@
     <a mat-icon-button routerLink="/calendar/{{calendarKey}}/day/{{ nextDay.getFullYear() }}/{{ nextDay.getMonth() + 1 }}/{{ nextDay.getDate() }}" aria-label="Next day">
       <mat-icon>chevron_right</mat-icon>
     </a>
-    <span style="width: 1em !important;"></span>
+    <span class="toolbar-spacer-1"></span>
     <input matInput formControlName="dateShownInput" [matDatepicker]="dateShownPicker" [value]="this.dateShown" (dateChange)="this.onDateChange($event);" class="calendar-nav-dateinput" />
     <span>{{result.day}} {{result.monthName}} {{result.year}}</span>
     <mat-datepicker #dateShownPicker></mat-datepicker>
     <a mat-icon-button (click)="dateShownPicker.open()">
-      <mat-icon>today</mat-icon>
+      <mat-icon>keyboard_arrow_down</mat-icon>
     </a>
-    <span style="flex: 1 1 auto;"></span>
+    <span class="toolbar-filler"></span>
     <a mat-icon-button routerLink="/calendar/{{calendarKey}}/month/{{result.year}}/{{result.month}}">
       <mat-icon>calendar_month</mat-icon>
     </a>
