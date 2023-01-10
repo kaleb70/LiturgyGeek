@@ -286,7 +286,7 @@
       }
     },
     {
-      "_": "paschaMonday 1/Monday",
+      "_": "brightMonday 1/Monday",
       "name": "Easter Monday",
       "ruleCriteria": {
         "transfer": [
