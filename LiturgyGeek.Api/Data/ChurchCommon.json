@@ -115,7 +115,7 @@
       "name": "Ven. Onuphrius of Chilandari",
       "longName": "Ven. Monk-Martyr Onuphrius of Chilandari"
     },
-    "theophanyEve": {
+    "theophany-eve": {
       "name": "Eve of the Theophany"
     },
     "theopemptus-theonas": {
@@ -322,7 +322,7 @@
       "name": "St Eleazar of Anzersk Island",
       "longName": "Ven. Eleazar of Anzersk Island"
     },
-    "theophanyLeavetaking": { "name": "Leavetaking of the Theophany" },
+    "theophany-leavetaking": { "name": "Leavetaking of the Theophany" },
     "sinai-raithu": {
       "name": "Holy Fathers slain at Sinai and Raithu",
       "longName": "The Holy Fathers slain at Sinai and Raithu: Isaiah, Sabbas, Moses and his disciple Moses, Jeremiah, Paul, Adam, Sergius, Domnus, Proclus, Hypatius, Isaac, Macarius, Mark, Benjamin, Eusebius, Elias, and others"

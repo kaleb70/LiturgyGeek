@@ -175,63 +175,6 @@
     },
 
     //---------------------------------------------------------------------------
-    // Christmas
-
-    "nativity-forefeast": {
-      "startDate": "12/20",
-      "endDate": "12/24",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "excludeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeRanks": [ "greatFeast", "vigil", "polyeleos", "doxology" ],
-            "ruleKey": "oil"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "oil"
-          }
-        ]
-      }
-    },
-
-    "nativity-afterfeast": {
-      "startDate": "12/25",
-      "endDate": "12/31",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "none"
-          }
-        ]
-      }
-    },
-
-    //---------------------------------------------------------------------------
-    // Theophany
-
-    "theophany-forefeast": {
-      "startDate": "1/1",
-      "endDate": "1/5",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "none"
-          }
-        ]
-      }
-    },
-
-    //---------------------------------------------------------------------------
     // Week of the Publican & Pharisee
 
     "publican-pharisee-week": {
@@ -346,87 +289,6 @@
     },
 
     //---------------------------------------------------------------------------
-    // Pascha
-
-    "bright-week": {
-      "startDate": "1/Monday",
-      "endDate": "1/Saturday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "none"
-          }
-        ]
-      }
-    },
-
-    "pascha-afterfeast": {
-      "startDate": "1/Monday",
-      "endDate": "6/Wednesday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "greatFeast", "vigil" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          }
-        ]
-      }
-    },
-
-    //---------------------------------------------------------------------------
-    // Ascension
-
-    "ascension-afterfeast": {
-      "startDate": "6/Friday",
-      "endDate": "7/Friday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "greatFeast", "vigil" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          }
-        ]
-      }
-    },
-
-    //---------------------------------------------------------------------------
-    // Pentecost
-
-    "pentecost-afterfeast": {
-      "startDate": "8/Monday",
-      "endDate": "8/Saturday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "none"
-          }
-        ]
-      }
-    },
-
-    //---------------------------------------------------------------------------
     // Apostles Fast
 
     "peter-paul": {
@@ -523,7 +385,66 @@
             "ruleKey": "after"
           }
         ]
-      }
+      },
+      "attachedSeasons": {
+        "bright-week": {
+          "startDate": "1/Monday",
+          "endDate": "1/Saturday",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "none"
+              }
+            ]
+          }
+        },
+        "pascha-afterfeast": {
+          "startDate": "1/Monday",
+          "endDate": "6/Wednesday",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "oil"
+              },
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "includeRanks": [ "greatFeast", "vigil" ],
+                "ruleKey": "fish"
+              },
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "includeCustomFlags": [ "patron" ],
+                "ruleKey": "fish"
+              }
+            ]
+          }
+        }
+      },
+      "attachedEvents": [
+        {
+          "occasionKey": "brightMonday",
+          "dates": [ "1/Monday" ],
+          "ruleCriteria": {
+            "transfer": [
+              {
+                "includeRanks": [ "vigil" ],
+                "ruleKey": "after"
+              },
+              {
+                "includeCustomFlags": [ "patron" ],
+                "ruleKey": "after"
+              }
+            ]
+          }
+        },
+        { "_": "brightTuesday 1/Tuesday" },
+        { "_": "brightWednesday 1/Wednesday" },
+        { "_": "brightThursday 1/Thursday" },
+        { "_": "brightFriday 1/Friday" },
+        { "_": "brightSaturday 1/Saturday" }
+      ]
     },
     {
       "occasionKey": "holyCross",
@@ -545,7 +466,45 @@
     {
       "occasionKey": "nativity",
       "dates": [ "12/25" ],
-      "eventRankKey": "greatFeast"
+      "eventRankKey": "greatFeast",
+      "attachedSeasons": {
+        "nativity-forefeast": {
+          "startDate": "12/20",
+          "endDate": "12/24",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Sunday", "Saturday" ],
+                "ruleKey": "oil"
+              },
+              {
+                "excludeDates": [ "Sunday", "Saturday" ],
+                "ruleKey": "strict"
+              },
+              {
+                "includeRanks": [ "greatFeast", "vigil", "polyeleos", "doxology" ],
+                "ruleKey": "oil"
+              },
+              {
+                "includeCustomFlags": [ "patron" ],
+                "ruleKey": "oil"
+              }
+            ]
+          }
+        },
+        "nativity-afterfeast": {
+          "startDate": "12/25",
+          "endDate": "12/31",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "none"
+              }
+            ]
+          }
+        }
+      }
     },
     {
       "occasionKey": "palmSunday",
@@ -562,12 +521,50 @@
     {
       "occasionKey": "ascension",
       "dates": [ "6/Thursday" ],
-      "eventRankKey": "greatFeast"
+      "eventRankKey": "greatFeast",
+      "attachedSeasons": {
+        "ascension-afterfeast": {
+          "startDate": "6/Friday",
+          "endDate": "7/Friday",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "oil"
+              },
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "includeRanks": [ "greatFeast", "vigil" ],
+                "ruleKey": "fish"
+              },
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "includeCustomFlags": [ "patron" ],
+                "ruleKey": "fish"
+              }
+            ]
+          }
+        }
+      }
     },
     {
       "occasionKey": "pentecost",
       "dates": [ "8/Sunday" ],
-      "eventRankKey": "greatFeast"
+      "eventRankKey": "greatFeast",
+      "attachedSeasons": {
+        "pentecost-afterfeast": {
+          "startDate": "8/Monday",
+          "endDate": "8/Saturday",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "none"
+              }
+            ]
+          }
+        }
+      }
     },
     { "_": "holyTrinity 8/Sunday highlight" },
     {
@@ -634,27 +631,6 @@
     //###########################################################################
     // Movable Events: After Pascha
 
-    {
-      "occasionKey": "brightMonday",
-      "dates": [ "1/Monday" ],
-      "ruleCriteria": {
-        "transfer": [
-          {
-            "includeRanks": [ "vigil" ],
-            "ruleKey": "after"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "after"
-          }
-        ]
-      }
-    },
-    { "_": "brightTuesday 1/Tuesday" },
-    { "_": "brightWednesday 1/Wednesday" },
-    { "_": "brightThursday 1/Thursday" },
-    { "_": "brightFriday 1/Friday" },
-    { "_": "brightSaturday 1/Saturday" },
 
     //###########################################################################
     // Fixed Events: January
@@ -708,21 +684,6 @@
     //---------------------------------------------------------------------------
     // January 5
 
-    {
-      "_": "theophanyEve 1/5 highlight",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "excludeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "oil"
-          }
-        ]
-      }
-    },
     { "_": "theopemptus-theonas 1/5" },
     { "_": "syncleticaAlexandria 1/5" },
     { "_": "micah 1/5" },
@@ -744,7 +705,39 @@
             "ruleKey": "none"
           }
         ]
-      }
+      },
+      "attachedSeasons": {
+        "theophany-forefeast": {
+          "startDate": "1/1",
+          "endDate": "1/5",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "includeDates": [ "Wednesday", "Friday" ],
+                "ruleKey": "none"
+              }
+            ]
+          }
+        }
+      },
+      "attachedEvents": [
+        {
+          "_": "theophany-eve 1/5 highlight",
+          "ruleCriteria": {
+            "fast": [
+              {
+                "excludeDates": [ "Sunday", "Saturday" ],
+                "ruleKey": "strict"
+              },
+              {
+                "includeDates": [ "Sunday", "Saturday" ],
+                "ruleKey": "oil"
+              }
+            ]
+          }
+        },
+        { "_": "theophany-leavetaking 1/14 highlight" }
+      ]
     },
     { "_": "macariusMtAthos 1/6" },
 
@@ -854,7 +847,6 @@
     //---------------------------------------------------------------------------
     // January 14
 
-    { "_": "theophanyLeavetaking 1/14 highlight" },
     { "_": "sinai-raithu 1/14" },
     {
       "_": "nina 1/14",
