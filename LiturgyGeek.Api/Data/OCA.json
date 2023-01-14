@@ -64,6 +64,80 @@
     }
   },
 
+  "commonRules": {
+
+    "strictFastSeason": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleKey": "oil"
+        },
+        {
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleKey": "strict"
+        },
+        {
+          "includeRanks": [ "greatFeast" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeCustomFlags": [ "patron" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeRanks": [ "vigil", "polyeleos" ],
+          "excludeCustomFlags": [ "patron" ],
+          "ruleKey": "oil"
+        }
+      ]
+    },
+
+    "relaxedFastSeason": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeDates": [ "Monday", "Wednesday", "Friday" ],
+          "ruleKey": "strict"
+        },
+        {
+          "includeDates": [ "Tuesday", "Thursday" ],
+          "ruleKey": "oil"
+        },
+        {
+          "includeRanks": [ "greatFeast", "vigil" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeCustomFlags": [ "patron" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+          "ruleKey": "fish"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "excludeCustomFlags": [ "patron" ],
+          "ruleKey": "oil"
+        }
+      ]
+    },
+
+    "noFast": {
+      "fast": [
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "ruleKey": "none"
+        }
+      ]
+    }
+  },
+
   //###########################################################################
   // Event Ranks
 
@@ -136,42 +210,7 @@
     "advent": {
       "startDate": "11/15",
       "endDate": "12/24",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Monday", "Wednesday", "Friday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeDates": [ "Tuesday", "Thursday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "includeRanks": [ "greatFeast", "vigil" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeRanks": [ "polyeleos", "doxology" ],
-            "includeDates": [ "Monday", "Tuesday", "Thursday" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "polyeleos", "doxology" ],
-            "excludeCustomFlags": [ "patron" ],
-            "ruleKey": "oil"
-          }
-
-        ]
-      }
+      "commonRules": [ "relaxedFastSeason" ]
     },
 
     //---------------------------------------------------------------------------
@@ -180,14 +219,7 @@
     "publican-pharisee-week": {
       "startDate": "-10/Sunday",
       "endDate": "-10/Saturday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "ruleKey": "none"
-          }
-        ]
-      }
+      "commonRules": [ "noFast" ]
     },
 
     //---------------------------------------------------------------------------
@@ -221,31 +253,7 @@
     "lent": {
       "startDate": "-7/Monday",
       "endDate": "-2/Friday",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "excludeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeRanks": [ "greatFeast" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeRanks": [ "vigil", "polyeleos" ],
-            "excludeCustomFlags": [ "patron" ],
-            "ruleKey": "oil"
-          }
-        ]
-      }
+      "commonRules": [ "strictFastSeason" ]
     },
 
     //---------------------------------------------------------------------------
@@ -294,41 +302,7 @@
     "peter-paul": {
       "startDate": "9/Monday",
       "endDate": "6/28",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Monday", "Wednesday", "Friday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeDates": [ "Tuesday", "Thursday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "includeRanks": [ "greatFeast", "vigil" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeRanks": [ "polyeleos", "doxology" ],
-            "includeDates": [ "Monday", "Tuesday", "Thursday" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeDates": [ "Wednesday", "Friday" ],
-            "includeRanks": [ "polyeleos", "doxology" ],
-            "excludeCustomFlags": [ "patron" ],
-            "ruleKey": "oil"
-          }
-        ]
-      }
+      "commonRules": [ "relaxedFastSeason" ]
     },
 
     //---------------------------------------------------------------------------
@@ -337,31 +311,7 @@
     "dormitionTheotokos": {
       "startDate": "8/1",
       "endDate": "8/14",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "includeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "oil"
-          },
-          {
-            "excludeDates": [ "Sunday", "Saturday" ],
-            "ruleKey": "strict"
-          },
-          {
-            "includeRanks": [ "greatFeast" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeCustomFlags": [ "patron" ],
-            "ruleKey": "fish"
-          },
-          {
-            "includeRanks": [ "vigil", "polyeleos" ],
-            "excludeCustomFlags": [ "patron" ],
-            "ruleKey": "oil"
-          }
-        ]
-      }
+      "commonRules": [ "strictFastSeason" ]
     }
   },
 
@@ -390,14 +340,7 @@
         "bright-week": {
           "startDate": "1/Monday",
           "endDate": "1/Saturday",
-          "ruleCriteria": {
-            "fast": [
-              {
-                "includeDates": [ "Wednesday", "Friday" ],
-                "ruleKey": "none"
-              }
-            ]
-          }
+          "commonRules": [ "noFast" ]
         },
         "pascha-afterfeast": {
           "startDate": "1/Monday",
@@ -467,6 +410,7 @@
       "occasionKey": "nativity",
       "dates": [ "12/25" ],
       "eventRankKey": "greatFeast",
+      "commonRules": [ "noFast" ],
       "attachedSeasons": {
         "nativity-forefeast": {
           "startDate": "12/20",
@@ -474,12 +418,12 @@
           "ruleCriteria": {
             "fast": [
               {
-                "includeDates": [ "Sunday", "Saturday" ],
-                "ruleKey": "oil"
+                "includeDates": [ "Monday", "Wednesday", "Friday" ],
+                "ruleKey": "strict"
               },
               {
-                "excludeDates": [ "Sunday", "Saturday" ],
-                "ruleKey": "strict"
+                "includeDates": [ "Sunday", "Tuesday", "Thursday", "Saturday" ],
+                "ruleKey": "oil"
               },
               {
                 "includeRanks": [ "greatFeast", "vigil", "polyeleos", "doxology" ],
@@ -495,14 +439,7 @@
         "nativity-afterfeast": {
           "startDate": "12/25",
           "endDate": "12/31",
-          "ruleCriteria": {
-            "fast": [
-              {
-                "includeDates": [ "Wednesday", "Friday" ],
-                "ruleKey": "none"
-              }
-            ]
-          }
+          "commonRules": [ "noFast" ]
         }
       }
     },
@@ -555,14 +492,7 @@
         "pentecost-afterfeast": {
           "startDate": "8/Monday",
           "endDate": "8/Saturday",
-          "ruleCriteria": {
-            "fast": [
-              {
-                "includeDates": [ "Wednesday", "Friday" ],
-                "ruleKey": "none"
-              }
-            ]
-          }
+          "commonRules": [ "noFast" ]
         }
       }
     },
@@ -646,7 +576,8 @@
     },
     {
       "_": "circumcisionChrist 1/1",
-      "eventRankKey": "greatFeast"
+      "eventRankKey": "greatFeast",
+      "commonRules": [ "noFast" ]
     },
     { "_": "basilGreat 1/1 highlight" },
     { "_": "basilAncyra 1/1" },
@@ -699,25 +630,12 @@
     {
       "_": "theophany 1/6",
       "eventRankKey": "greatFeast",
-      "ruleCriteria": {
-        "fast": [
-          {
-            "ruleKey": "none"
-          }
-        ]
-      },
+      "commonRules": [ "noFast" ],
       "attachedSeasons": {
         "theophany-forefeast": {
           "startDate": "1/1",
           "endDate": "1/5",
-          "ruleCriteria": {
-            "fast": [
-              {
-                "includeDates": [ "Wednesday", "Friday" ],
-                "ruleKey": "none"
-              }
-            ]
-          }
+          "commonRules": [ "noFast" ]
         }
       },
       "attachedEvents": [
