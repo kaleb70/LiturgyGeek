@@ -1,5 +1,7 @@
 using LiturgyGeek.Api.Data;
+using LiturgyGeek.Data;
 using LiturgyGeek.Framework.Calendars;
+using Microsoft.EntityFrameworkCore;
 
 namespace LiturgyGeek.Api
 {
@@ -18,6 +20,9 @@ namespace LiturgyGeek.Api
 
             builder.Services.AddSingleton<IChurchCalendarProvider, ChurchCalendarProvider>();
             builder.Services.AddSingleton<CalendarEvaluator>();
+
+            builder.Services.AddDbContext<LiturgyGeekContext>(options =>
+                    options.UseSqlServer("Server=dawn-treader-sql;Database=liturgygeek3_dev;User Id=sa;Password=devpw;TrustServerCertificate=True;"));
 
 #if DEBUG
             builder.Services.AddCors(options =>
