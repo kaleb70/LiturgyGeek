@@ -1,4 +1,4 @@
-﻿using LiturgyGeek.Common.Data;
+﻿using LiturgyGeek.Common.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using System;

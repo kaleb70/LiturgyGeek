@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiturgyGeek.Common.Data
+namespace LiturgyGeek.Common.EFCore
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public abstract class ColumnConfigurationAttribute : Attribute

@@ -8,7 +8,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace LiturgyGeek.Common.Data
+namespace LiturgyGeek.Common.EFCore
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public sealed class JsonColumnAttribute<T> : ColumnConfigurationAttribute

@@ -1,4 +1,4 @@
-﻿using LiturgyGeek.Common.Data;
+﻿using LiturgyGeek.Common.EFCore;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

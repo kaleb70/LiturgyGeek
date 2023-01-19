@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LiturgyGeek.Common.Data
+namespace LiturgyGeek.Common.EFCore
 {
     public class DbContextEx : DbContext
     {
