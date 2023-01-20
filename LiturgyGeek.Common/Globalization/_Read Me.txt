@@ -1,0 +1,5 @@
+﻿
+Pascha date calculation based on:
+
+https://www.tondering.dk/claus/cal/easter.php
+https://web.archive.org/web/20220723142249/https://www.tondering.dk/claus/cal/easter.php

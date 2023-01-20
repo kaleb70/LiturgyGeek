@@ -9,7 +9,13 @@ Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "LiturgyGeek.Ng", "LiturgyGe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Data", "LiturgyGeek.Data\LiturgyGeek.Data.csproj", "{D3FED1ED-7B87-45B2-A4D2-2476D4341117}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Common", "LiturgyGeek.Common\LiturgyGeek.Common.csproj", "{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Common", "LiturgyGeek.Common\LiturgyGeek.Common.csproj", "{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Common.Test", "LiturgyGeek.Common.Test\LiturgyGeek.Common.Test.csproj", "{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars", "LiturgyGeek.Calendars\LiturgyGeek.Calendars.csproj", "{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars.Test", "LiturgyGeek.Calendars.Test\LiturgyGeek.Calendars.Test.csproj", "{4281B9F9-2457-44FD-992D-B768A11C8B60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +41,18 @@ Global
 		{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

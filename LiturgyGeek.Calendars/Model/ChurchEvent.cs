@@ -1,0 +1,52 @@
+﻿using LiturgyGeek.Calendars.Dates;
+using LiturgyGeek.Common;
+using LiturgyGeek.Common.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
+using System.Threading.Tasks;
+
+namespace LiturgyGeek.Calendars.Model
+{
+    public class ChurchEvent : ICloneable<ChurchEvent>
+    {
+        public required string OccasionCode { get; set; }
+
+        public List<ChurchDate> Dates { get; set; } = new List<ChurchDate>();
+
+        public string? Name { get; set; }
+
+        public string? EventRankCode { get; set; }
+
+        public HashSet<string> Flags { get; set; } = new HashSet<string>();
+
+        public HashSet<string> CommonRules { get; set; } = new HashSet<string>();
+
+        public Dictionary<string, ChurchRuleCriteria[]> RuleCriteria { get; set; } = new Dictionary<string, ChurchRuleCriteria[]>();
+
+        public Dictionary<string, ChurchSeason> AttachedSeasons { get; set; } = new Dictionary<string, ChurchSeason>();
+
+        public List<ChurchEvent> AttachedEvents { get; set; } = new List<ChurchEvent>();
+
+        public ChurchEvent Clone()
+        {
+            return new ChurchEvent()
+            {
+                OccasionCode = OccasionCode,
+                Dates = new(Dates),
+                Name = Name,
+                EventRankCode = EventRankCode,
+                Flags = new(Flags),
+                CommonRules = new(CommonRules),
+                RuleCriteria = new(RuleCriteria),
+                AttachedSeasons = new(AttachedSeasons.WithValues(e => e.Value.Clone())),
+                AttachedEvents = new(AttachedEvents.Select(e => e.Clone())),
+            };
+        }
+
+        object ICloneable.Clone() => Clone();
+    }
+}
