@@ -51,7 +51,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             var result = new ChurchEvent()
             {
-                OccasionCode = parts[0],
+                OccasionId = parts[0],
             };
 
             do

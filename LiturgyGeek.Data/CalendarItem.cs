@@ -8,15 +8,17 @@ namespace LiturgyGeek.Data
     [PrimaryKey(nameof(CalendarId), nameof(Date), nameof(DisplayOrder))]
     public class CalendarItem
     {
-        public required long CalendarId { get; set; }
-        public required Calendar Calendar { get; set; }
+        [StringLength(10)]
+        public required string CalendarId { get; set; }
+        public Calendar? Calendar { get; set; }
 
         [DateColumn]
         public required DateTime Date { get; set; }
 
         public required int DisplayOrder { get; set; }
 
-        public long? OccasionId { get; set; }
+        [StringLength(20)]
+        public string? OccasionId { get; set; }
         public Occasion? Occasion { get; set; }
 
         [DateColumn]

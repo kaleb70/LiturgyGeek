@@ -13,13 +13,13 @@ namespace LiturgyGeek.Calendars.Model
 {
     public class ChurchEvent : ICloneable<ChurchEvent>
     {
-        public required string OccasionCode { get; set; }
+        public required string OccasionId { get; set; }
 
         public List<ChurchDate> Dates { get; set; } = new List<ChurchDate>();
 
         public string? Name { get; set; }
 
-        public string? EventRankCode { get; set; }
+        public string? EventRankId { get; set; }
 
         public HashSet<string> Flags { get; set; } = new HashSet<string>();
 
@@ -35,10 +35,10 @@ namespace LiturgyGeek.Calendars.Model
         {
             return new ChurchEvent()
             {
-                OccasionCode = OccasionCode,
+                OccasionId = OccasionId,
                 Dates = new(Dates),
                 Name = Name,
-                EventRankCode = EventRankCode,
+                EventRankId = EventRankId,
                 Flags = new(Flags),
                 CommonRules = new(CommonRules),
                 RuleCriteria = new(RuleCriteria),

@@ -1,7 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Dates;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -11,7 +10,7 @@ namespace LiturgyGeek.Calendars.Model
 {
     public class ChurchRuleCriteria
     {
-        public string RuleCode { get; private init; }
+        public string RuleId { get; private init; }
 
         public ChurchDate? StartDate { get; private init; }
 
@@ -28,7 +27,7 @@ namespace LiturgyGeek.Calendars.Model
         public IReadOnlyList<ChurchDate> ExcludeDates { get; private init; }
 
         [JsonConstructor]
-        public ChurchRuleCriteria(string ruleCode,
+        public ChurchRuleCriteria(string ruleId,
                                     ChurchDate? startDate,
                                     ChurchDate? endDate,
                                     IReadOnlyList<string>? includeCustomFlags,
@@ -37,7 +36,7 @@ namespace LiturgyGeek.Calendars.Model
                                     IReadOnlyList<string>? excludeCustomFlags,
                                     IReadOnlyList<ChurchDate>? excludeDates)
         {
-            RuleCode = ruleCode;
+            RuleId = ruleId;
             StartDate = startDate;
             EndDate = endDate;
             IncludeCustomFlags = includeCustomFlags ?? new List<string>();

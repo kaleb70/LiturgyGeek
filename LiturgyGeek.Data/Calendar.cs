@@ -11,14 +11,10 @@ using System.Threading.Tasks;
 namespace LiturgyGeek.Data
 {
     [PrimaryKey(nameof(CalendarId))]
-    [Index(nameof(CalendarCode), IsUnique = true)]
     public class Calendar
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public required long CalendarId { get; set; }
-        public required ICollection<CalendarItem> CalendarItems { get; set; }
-
         [StringLength(10)]
-        public required string CalendarCode { get; set; }
+        public required string CalendarId { get; set; }
+        public required ICollection<CalendarItem> CalendarItems { get; set; }
     }
 }

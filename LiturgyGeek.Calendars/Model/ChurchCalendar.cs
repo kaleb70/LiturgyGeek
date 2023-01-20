@@ -14,9 +14,9 @@ namespace LiturgyGeek.Framework.Clcs.Model
     {
         public required string Name { get; set; }
 
-        public required string TraditionCode { get; set; }
+        public required string TraditionId { get; set; }
 
-        public required string CalendarCode { get; set; }
+        public required string CalendarId { get; set; }
 
         public CalendarReckoning SolarReckoning { get; set; }
 
@@ -40,8 +40,8 @@ namespace LiturgyGeek.Framework.Clcs.Model
             var result = new ChurchCalendar()
             {
                 Name = Name,
-                TraditionCode = TraditionCode,
-                CalendarCode = CalendarCode,
+                TraditionId = TraditionId,
+                CalendarId = CalendarId,
                 SolarReckoning = SolarReckoning,
                 PaschalReckoning = PaschalReckoning,
                 RuleGroups = new(RuleGroups.WithValues(e => e.Value.Clone())),
