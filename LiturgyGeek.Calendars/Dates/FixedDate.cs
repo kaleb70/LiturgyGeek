@@ -125,16 +125,14 @@ namespace LiturgyGeek.Calendars.Dates
                 Array.Fill(_allowedDaysOfWeek, true);
             }
 
-            unchecked
-            {
-                hashCode = 17;
-                hashCode = hashCode * 23 + Month.GetHashCode();
-                hashCode = hashCode * 23 + Day.GetHashCode();
-                hashCode = hashCode * 23 + AbsoluteDayOfWeek.GetHashCode();
-                hashCode = hashCode * 23 + Window.GetHashCode();
-                for (int i = 0; i < 7; i++)
-                    hashCode = hashCode * 23 + _allowedDaysOfWeek[i].GetHashCode();
-            }
+            var hash = new HashCode();
+            hash.Add(Month);
+            hash.Add(Day);
+            hash.Add(AbsoluteDayOfWeek);
+            hash.Add(Window);
+            for (int i = 0; i < 7; i++)
+                hash.Add(_allowedDaysOfWeek[i]);
+            hashCode = hash.ToHashCode();
         }
 
         public override bool Equals(object? obj)

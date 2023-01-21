@@ -37,12 +37,7 @@ namespace LiturgyGeek.Calendars.Dates
             Day = day;
             DayOfWeek = dayOfWeek;
 
-            unchecked
-            {
-                hashCode = 17;
-                hashCode = hashCode * 23 + Day.GetHashCode();
-                hashCode = hashCode * 23 + DayOfWeek.GetHashCode();
-            }
+            hashCode = HashCode.Combine(Day, DayOfWeek);
         }
 
         public override bool Equals(object? obj)
