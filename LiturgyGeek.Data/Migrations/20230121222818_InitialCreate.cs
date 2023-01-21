@@ -15,7 +15,9 @@ namespace LiturgyGeek.Data.Migrations
                 name: "Calendars",
                 columns: table => new
                 {
-                    CalendarId = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
+                    CalendarId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CalendarCode = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -26,7 +28,9 @@ namespace LiturgyGeek.Data.Migrations
                 name: "Occasions",
                 columns: table => new
                 {
-                    OccasionId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    OccasionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    OccasionCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     DefaultName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -38,10 +42,10 @@ namespace LiturgyGeek.Data.Migrations
                 name: "CalendarItems",
                 columns: table => new
                 {
-                    CalendarId = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
+                    CalendarId = table.Column<int>(type: "int", nullable: false),
                     Date = table.Column<DateTime>(type: "date", nullable: false),
                     DisplayOrder = table.Column<int>(type: "int", nullable: false),
-                    OccasionId = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    OccasionId = table.Column<int>(type: "int", nullable: true),
                     TransferredFrom = table.Column<DateTime>(type: "date", nullable: true),
                     CustomFlags = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -65,6 +69,18 @@ namespace LiturgyGeek.Data.Migrations
                 name: "IX_CalendarItems_OccasionId",
                 table: "CalendarItems",
                 column: "OccasionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Calendars_CalendarCode",
+                table: "Calendars",
+                column: "CalendarCode",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Occasions_OccasionCode",
+                table: "Occasions",
+                column: "OccasionCode",
+                unique: true);
         }
 
         /// <inheritdoc />

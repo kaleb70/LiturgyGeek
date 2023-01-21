@@ -8,8 +8,7 @@ namespace LiturgyGeek.Data
     [PrimaryKey(nameof(CalendarId), nameof(Date), nameof(DisplayOrder))]
     public class CalendarItem
     {
-        [StringLength(10)]
-        public required string CalendarId { get; set; }
+        public int CalendarId { get; set; }
         public Calendar? Calendar { get; set; }
 
         [DateColumn]
@@ -17,8 +16,7 @@ namespace LiturgyGeek.Data
 
         public required int DisplayOrder { get; set; }
 
-        [StringLength(20)]
-        public string? OccasionId { get; set; }
+        public int? OccasionId { get; set; }
         public Occasion? Occasion { get; set; }
 
         [DateColumn]

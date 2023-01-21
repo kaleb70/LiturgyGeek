@@ -59,7 +59,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             var result = new ChurchEvent()
             {
-                OccasionId = parts[0],
+                OccasionCode = parts[0],
             };
 
             do
@@ -81,7 +81,7 @@ namespace LiturgyGeek.Calendars.Engine
                         break;
 
                     case '+':
-                        result.EventRankId = parts[0].Substring(1);
+                        result.EventRankCode = parts[0].Substring(1);
                         break;
                 }
 

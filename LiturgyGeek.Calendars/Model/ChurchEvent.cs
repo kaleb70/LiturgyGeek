@@ -13,13 +13,13 @@ namespace LiturgyGeek.Calendars.Model
 {
     public sealed class ChurchEvent : ICloneable<ChurchEvent>, IEquatable<ChurchEvent>
     {
-        public required string OccasionId { get; set; }
+        public required string OccasionCode { get; set; }
 
         public List<ChurchDate> Dates { get; set; } = new List<ChurchDate>();
 
         public string? Name { get; set; }
 
-        public string? EventRankId { get; set; }
+        public string? EventRankCode { get; set; }
 
         public HashSet<string> Flags { get; set; } = new HashSet<string>();
 
@@ -35,10 +35,10 @@ namespace LiturgyGeek.Calendars.Model
         {
             return new ChurchEvent()
             {
-                OccasionId = OccasionId,
+                OccasionCode = OccasionCode,
                 Dates = new(Dates),
                 Name = Name,
-                EventRankId = EventRankId,
+                EventRankCode = EventRankCode,
                 Flags = new(Flags),
                 CommonRules = new(CommonRules),
                 RuleCriteria = new(RuleCriteria),
@@ -53,10 +53,10 @@ namespace LiturgyGeek.Calendars.Model
         {
             return (other == this)
                     || (other != null
-                        && OccasionId == other.OccasionId
+                        && OccasionCode == other.OccasionCode
                         && Dates.SequenceEqual(other.Dates)
                         && Name == other.Name
-                        && EventRankId == other.EventRankId
+                        && EventRankCode == other.EventRankCode
                         && Flags.SetEquals(other.Flags)
                         && CommonRules.SetEquals(other.CommonRules)
                         && RuleCriteria.DictionaryEquals(other.RuleCriteria)
@@ -69,10 +69,10 @@ namespace LiturgyGeek.Calendars.Model
         public override int GetHashCode()
         {
             var result = new HashCode();
-            result.Add(OccasionId);
+            result.Add(OccasionCode);
             result.AddList(Dates);
             result.Add(Name);
-            result.Add(EventRankId);
+            result.Add(EventRankCode);
             result.AddSet(Flags);
             result.AddSet(CommonRules);
             result.AddDictionary(RuleCriteria);

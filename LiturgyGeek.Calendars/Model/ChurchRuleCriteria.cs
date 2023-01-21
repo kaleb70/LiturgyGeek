@@ -11,7 +11,7 @@ namespace LiturgyGeek.Calendars.Model
 {
     public sealed class ChurchRuleCriteria : IEquatable<ChurchRuleCriteria>
     {
-        public string RuleId { get; private init; }
+        public string RuleCode { get; private init; }
 
         public ChurchDate? StartDate { get; private init; }
 
@@ -30,7 +30,7 @@ namespace LiturgyGeek.Calendars.Model
         private readonly int hashCode;
 
         [JsonConstructor]
-        public ChurchRuleCriteria(string ruleId,
+        public ChurchRuleCriteria(string ruleCode,
                                     ChurchDate? startDate,
                                     ChurchDate? endDate,
                                     IReadOnlyList<string>? includeCustomFlags,
@@ -39,7 +39,7 @@ namespace LiturgyGeek.Calendars.Model
                                     IReadOnlyList<string>? excludeCustomFlags,
                                     IReadOnlyList<ChurchDate>? excludeDates)
         {
-            RuleId = ruleId;
+            RuleCode = ruleCode;
             StartDate = startDate;
             EndDate = endDate;
             IncludeCustomFlags = includeCustomFlags ?? new List<string>();
@@ -49,7 +49,7 @@ namespace LiturgyGeek.Calendars.Model
             ExcludeDates = excludeDates ?? new List<ChurchDate>();
 
             var result = new HashCode();
-            result.Add(RuleId);
+            result.Add(RuleCode);
             result.Add(StartDate);
             result.Add(EndDate);
             result.AddList(IncludeCustomFlags);
@@ -64,7 +64,7 @@ namespace LiturgyGeek.Calendars.Model
         {
             return this == other
                     || (other != null
-                        && RuleId == other.RuleId
+                        && RuleCode == other.RuleCode
                         && StartDate == other.StartDate
                         && EndDate == other.EndDate
                         && IncludeCustomFlags.SequenceEqual(other.IncludeCustomFlags)

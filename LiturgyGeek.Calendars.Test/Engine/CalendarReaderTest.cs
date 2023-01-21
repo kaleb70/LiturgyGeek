@@ -25,32 +25,32 @@ namespace LiturgyGeek.Calendars.Test.Engine
             Assert.AreEqual(
                 new ChurchEvent()
                 {
-                    OccasionId = "pascha",
+                    OccasionCode = "pascha",
                     Dates = new() { new MovableDate(1, DayOfWeek.Sunday) },
-                    EventRankId = "greatFeast",
+                    EventRankCode = "greatFeast",
                 },
                 testCalendar.Events[0]);
             Assert.AreEqual(
                 new ChurchEvent()
                 {
-                    OccasionId = "john",
+                    OccasionCode = "john",
                     Dates = new() { new FixedDate(5, 8) },
-                    EventRankId = "vigil",
+                    EventRankCode = "vigil",
                 },
                 testCalendar.Events[1]);
             Assert.AreEqual(
                 new ChurchEvent()
                 {
-                    OccasionId = "crossExaltation",
+                    OccasionCode = "crossExaltation",
                     Dates = new() { new FixedDate(9, 14) },
-                    EventRankId = "greatFeast",
+                    EventRankCode = "greatFeast",
                     CommonRules = new() { "strictFastDay" },
                 },
                 testCalendar.Events[2]);
             Assert.AreEqual(
                 new ChurchEvent()
                 {
-                    OccasionId = "basilGreat",
+                    OccasionCode = "basilGreat",
                     Dates = new() { new FixedDate(1, 1) },
                     Flags = new() { "highlight" },
                 },
@@ -58,7 +58,7 @@ namespace LiturgyGeek.Calendars.Test.Engine
             Assert.AreEqual(
                 new ChurchEvent()
                 {
-                    OccasionId = "theophanySundayBefore",
+                    OccasionCode = "theophanySundayBefore",
                     Dates = new()
                     {
                         new FixedDate(1, 1, DayOfWeek.Sunday, 5),

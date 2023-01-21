@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiturgyGeek.Data.Migrations
 {
     [DbContext(typeof(LiturgyGeekContext))]
-    [Migration("20230120040120_InitialCreate")]
+    [Migration("20230121222818_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -27,20 +27,29 @@ namespace LiturgyGeek.Data.Migrations
 
             modelBuilder.Entity("LiturgyGeek.Data.Calendar", b =>
                 {
-                    b.Property<string>("CalendarId")
+                    b.Property<int>("CalendarId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CalendarId"));
+
+                    b.Property<string>("CalendarCode")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.HasKey("CalendarId");
+
+                    b.HasIndex("CalendarCode")
+                        .IsUnique();
 
                     b.ToTable("Calendars");
                 });
 
             modelBuilder.Entity("LiturgyGeek.Data.CalendarItem", b =>
                 {
-                    b.Property<string>("CalendarId")
-                        .HasMaxLength(10)
-                        .HasColumnType("nvarchar(10)");
+                    b.Property<int>("CalendarId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("date");
@@ -52,9 +61,8 @@ namespace LiturgyGeek.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("OccasionId")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int?>("OccasionId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("TransferredFrom")
                         .HasColumnType("date");
@@ -68,15 +76,25 @@ namespace LiturgyGeek.Data.Migrations
 
             modelBuilder.Entity("LiturgyGeek.Data.Occasion", b =>
                 {
-                    b.Property<string>("OccasionId")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<int>("OccasionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OccasionId"));
 
                     b.Property<string>("DefaultName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("OccasionCode")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
                     b.HasKey("OccasionId");
+
+                    b.HasIndex("OccasionCode")
+                        .IsUnique();
 
                     b.ToTable("Occasions");
                 });

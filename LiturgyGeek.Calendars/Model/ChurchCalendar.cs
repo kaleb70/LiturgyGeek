@@ -13,9 +13,9 @@ namespace LiturgyGeek.Calendars.Model
     {
         public required string Name { get; set; }
 
-        public required string TraditionId { get; set; }
+        public required string TraditionCode { get; set; }
 
-        public required string CalendarId { get; set; }
+        public required string CalendarCode { get; set; }
 
         public CalendarReckoning SolarReckoning { get; set; }
 
@@ -25,7 +25,7 @@ namespace LiturgyGeek.Calendars.Model
 
         public Dictionary<string, ChurchEventRank> EventRanks { get; set; } = new Dictionary<string, ChurchEventRank>();
 
-        public required string DefaultEventRank { get; set; }
+        public required string DefaultEventRankCode { get; set; }
 
         public Dictionary<string, Dictionary<string, ChurchRuleCriteria[]>> CommonRules { get; set; }
             = new Dictionary<string, Dictionary<string, ChurchRuleCriteria[]>>();
@@ -39,13 +39,13 @@ namespace LiturgyGeek.Calendars.Model
             var result = new ChurchCalendar()
             {
                 Name = Name,
-                TraditionId = TraditionId,
-                CalendarId = CalendarId,
+                TraditionCode = TraditionCode,
+                CalendarCode = CalendarCode,
                 SolarReckoning = SolarReckoning,
                 PaschalReckoning = PaschalReckoning,
                 RuleGroups = new(RuleGroups.WithValues(e => e.Value.Clone())),
                 EventRanks = new(EventRanks.WithValues(e => e.Value.Clone())),
-                DefaultEventRank = DefaultEventRank,
+                DefaultEventRankCode = DefaultEventRankCode,
                 CommonRules = new(CommonRules.WithValues(e => new(e.Value))),
                 Seasons = new(Seasons.WithValues(e => e.Value.Clone())),
                 Events = new(Events.Select(e => e.Clone())),
@@ -60,13 +60,13 @@ namespace LiturgyGeek.Calendars.Model
             return other == this
                     || (other != null
                         && Name == other.Name
-                        && TraditionId == other.TraditionId
-                        && CalendarId == other.CalendarId
+                        && TraditionCode == other.TraditionCode
+                        && CalendarCode == other.CalendarCode
                         && SolarReckoning == other.SolarReckoning
                         && PaschalReckoning == other.PaschalReckoning
                         && RuleGroups.DictionaryEquals(other.RuleGroups)
                         && EventRanks.DictionaryEquals(other.EventRanks)
-                        && DefaultEventRank == other.DefaultEventRank
+                        && DefaultEventRankCode == other.DefaultEventRankCode
                         && CommonRules.DictionaryEquals(other.CommonRules)
                         && Seasons.DictionaryEquals(other.Seasons)
                         && Events.SequenceEqual(other.Events));
@@ -78,13 +78,13 @@ namespace LiturgyGeek.Calendars.Model
         {
             var result = new HashCode();
             result.Add(Name);
-            result.Add(TraditionId);
-            result.Add(CalendarId);
+            result.Add(TraditionCode);
+            result.Add(CalendarCode);
             result.Add(SolarReckoning);
             result.Add(PaschalReckoning);
             result.AddDictionary(RuleGroups);
             result.AddDictionary(EventRanks);
-            result.Add(DefaultEventRank);
+            result.Add(DefaultEventRankCode);
             result.AddDictionary(CommonRules);
             result.AddDictionary(Seasons);
             result.AddList(Events);
