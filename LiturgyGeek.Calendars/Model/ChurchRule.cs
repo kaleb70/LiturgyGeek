@@ -34,11 +34,18 @@ namespace LiturgyGeek.Calendars.Model
                     || (other != null
                         && Summary == other.Summary
                         && Elaboration == other.Elaboration
-                        && Flags.SequenceEqual(other.Flags));
+                        && Flags.SetEquals(other.Flags));
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchRule);
 
-        public override int GetHashCode() => HashCode.Combine(Summary, Elaboration, Flags);
+        public override int GetHashCode()
+        {
+            var result = new HashCode();
+            result.Add(Summary);
+            result.Add(Elaboration);
+            result.AddSet(Flags);
+            return result.ToHashCode();
+        }
     }
 }

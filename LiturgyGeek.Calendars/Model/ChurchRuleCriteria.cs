@@ -1,4 +1,5 @@
 ﻿using LiturgyGeek.Calendars.Dates;
+using LiturgyGeek.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,8 @@ namespace LiturgyGeek.Calendars.Model
 
         public IReadOnlyList<ChurchDate> ExcludeDates { get; private init; }
 
+        private readonly int hashCode;
+
         [JsonConstructor]
         public ChurchRuleCriteria(string ruleId,
                                     ChurchDate? startDate,
@@ -44,6 +47,17 @@ namespace LiturgyGeek.Calendars.Model
             IncludeRanks = includeRanks ?? new List<string>();
             ExcludeCustomFlags = excludeCustomFlags ?? new List<string>();
             ExcludeDates = excludeDates ?? new List<ChurchDate>();
+
+            var result = new HashCode();
+            result.Add(RuleId);
+            result.Add(StartDate);
+            result.Add(EndDate);
+            result.AddList(IncludeCustomFlags);
+            result.AddList(IncludeDates);
+            result.AddList(IncludeRanks);
+            result.AddList(ExcludeCustomFlags);
+            result.AddList(ExcludeDates);
+            hashCode = result.ToHashCode();
         }
 
         public bool Equals(ChurchRuleCriteria? other)
@@ -60,9 +74,6 @@ namespace LiturgyGeek.Calendars.Model
                         && ExcludeDates.SequenceEqual(other.ExcludeDates));
         }
 
-        public override int GetHashCode()
-            => HashCode.Combine(RuleId, StartDate, EndDate,
-                                IncludeCustomFlags, IncludeDates, IncludeRanks,
-                                ExcludeCustomFlags, ExcludeDates);
+        public override int GetHashCode() => hashCode;
     }
 }

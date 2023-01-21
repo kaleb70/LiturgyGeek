@@ -19,10 +19,15 @@ namespace LiturgyGeek.Common.Collections
             => new(dictionary.Select(e => new KeyValuePair<TKey, TValue[]>(e.Key, e.Value.Select(i => i.Clone()).ToArray())));
 
         public static IEnumerable<KeyValuePair<TKey, TValue>> WithValues<TKey, TValue>(
-                this Dictionary<TKey, TValue> dictionary,
+                this IDictionary<TKey, TValue> dictionary,
                 Func<KeyValuePair<TKey, TValue>, TValue> valueSelector)
         {
             return dictionary.Select(e => new KeyValuePair<TKey, TValue>(e.Key, valueSelector(e)));
+        }
+
+        public static bool DictionaryEquals<TKey, TValue>(this IDictionary<TKey, TValue> x, IDictionary<TKey, TValue> y)
+        {
+            return x.OrderBy(x => x.Key).SequenceEqual(y.OrderBy(y => y.Key));
         }
     }
 }

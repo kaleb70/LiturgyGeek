@@ -64,11 +64,11 @@ namespace LiturgyGeek.Calendars.Model
                         && CalendarId == other.CalendarId
                         && SolarReckoning == other.SolarReckoning
                         && PaschalReckoning == other.PaschalReckoning
-                        && RuleGroups.SequenceEqual(other.RuleGroups)
-                        && EventRanks.SequenceEqual(other.EventRanks)
+                        && RuleGroups.DictionaryEquals(other.RuleGroups)
+                        && EventRanks.DictionaryEquals(other.EventRanks)
                         && DefaultEventRank == other.DefaultEventRank
-                        && CommonRules.SequenceEqual(other.CommonRules)
-                        && Seasons.SequenceEqual(other.Seasons)
+                        && CommonRules.DictionaryEquals(other.CommonRules)
+                        && Seasons.DictionaryEquals(other.Seasons)
                         && Events.SequenceEqual(other.Events));
         }
 
@@ -82,12 +82,12 @@ namespace LiturgyGeek.Calendars.Model
             result.Add(CalendarId);
             result.Add(SolarReckoning);
             result.Add(PaschalReckoning);
-            result.Add(RuleGroups);
-            result.Add(EventRanks);
+            result.AddDictionary(RuleGroups);
+            result.AddDictionary(EventRanks);
             result.Add(DefaultEventRank);
-            result.Add(CommonRules);
-            result.Add(Seasons);
-            result.Add(Events);
+            result.AddDictionary(CommonRules);
+            result.AddDictionary(Seasons);
+            result.AddList(Events);
             return result.ToHashCode();
         }
     }

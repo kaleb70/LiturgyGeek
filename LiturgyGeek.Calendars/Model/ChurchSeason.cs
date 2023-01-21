@@ -43,13 +43,21 @@ namespace LiturgyGeek.Calendars.Model
                         && StartDate == other.StartDate
                         && EndDate == other.EndDate
                         && IsDefault == other.IsDefault
-                        && CommonRules.SequenceEqual(other.CommonRules)
-                        && RuleCriteria.SequenceEqual(other.RuleCriteria));
+                        && CommonRules.SetEquals(other.CommonRules)
+                        && RuleCriteria.DictionaryEquals(other.RuleCriteria));
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchSeason);
 
         public override int GetHashCode()
-            => HashCode.Combine(StartDate, EndDate, IsDefault, CommonRules, RuleCriteria);
+        {
+            var result = new HashCode();
+            result.Add(StartDate);
+            result.Add(EndDate);
+            result.Add(IsDefault);
+            result.AddSet(CommonRules);
+            result.AddDictionary(RuleCriteria);
+            return result.ToHashCode();
+        }
     }
 }

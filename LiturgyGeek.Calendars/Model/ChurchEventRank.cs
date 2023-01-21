@@ -30,11 +30,17 @@ namespace LiturgyGeek.Calendars.Model
             return other == this
                     || (other != null
                         && Precedence == other.Precedence
-                        && Flags.SequenceEqual(other.Flags));
+                        && Flags.SetEquals(other.Flags));
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchEventRank);
 
-        public override int GetHashCode() => HashCode.Combine(Precedence, Flags);
+        public override int GetHashCode()
+        {
+            var result = new HashCode();
+            result.Add(Precedence);
+            result.AddSet(Flags);
+            return result.ToHashCode();
+        }
     }
 }

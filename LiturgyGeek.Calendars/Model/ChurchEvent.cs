@@ -57,10 +57,10 @@ namespace LiturgyGeek.Calendars.Model
                         && Dates.SequenceEqual(other.Dates)
                         && Name == other.Name
                         && EventRankId == other.EventRankId
-                        && Flags.SequenceEqual(other.Flags)
-                        && CommonRules.SequenceEqual(other.CommonRules)
-                        && RuleCriteria.SequenceEqual(other.RuleCriteria)
-                        && AttachedSeasons.SequenceEqual(other.AttachedSeasons)
+                        && Flags.SetEquals(other.Flags)
+                        && CommonRules.SetEquals(other.CommonRules)
+                        && RuleCriteria.DictionaryEquals(other.RuleCriteria)
+                        && AttachedSeasons.DictionaryEquals(other.AttachedSeasons)
                         && AttachedEvents.SequenceEqual(other.AttachedEvents));
         }
 
@@ -70,14 +70,14 @@ namespace LiturgyGeek.Calendars.Model
         {
             var result = new HashCode();
             result.Add(OccasionId);
-            result.Add(Dates);
+            result.AddList(Dates);
             result.Add(Name);
             result.Add(EventRankId);
-            result.Add(Flags);
-            result.Add(CommonRules);
-            result.Add(RuleCriteria);
-            result.Add(AttachedSeasons);
-            result.Add(AttachedEvents);
+            result.AddSet(Flags);
+            result.AddSet(CommonRules);
+            result.AddDictionary(RuleCriteria);
+            result.AddDictionary(AttachedSeasons);
+            result.AddList(AttachedEvents);
             return result.ToHashCode();
         }
     }

@@ -1,4 +1,5 @@
-﻿using LiturgyGeek.Common.Globalization;
+﻿using LiturgyGeek.Common;
+using LiturgyGeek.Common.Globalization;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -51,6 +52,7 @@ namespace LiturgyGeek.Calendars.Dates
         public FixedDate(int month, int day, DayOfWeek dayOfWeek, int window) : this(month, day, (DayOfWeek?)dayOfWeek, default, window)
         {
         }
+
         internal FixedDate(int month, int day, DayOfWeek? startDayOfWeek, DayOfWeek? endDayOfWeek, int? window)
         {
             AllowedDaysOfWeek = new DayOfWeekFlags(this);
@@ -130,8 +132,7 @@ namespace LiturgyGeek.Calendars.Dates
             hash.Add(Day);
             hash.Add(AbsoluteDayOfWeek);
             hash.Add(Window);
-            for (int i = 0; i < 7; i++)
-                hash.Add(_allowedDaysOfWeek[i]);
+            hash.AddArray(_allowedDaysOfWeek);
             hashCode = hash.ToHashCode();
         }
 
