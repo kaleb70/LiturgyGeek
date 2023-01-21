@@ -1,6 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Dates;
 using LiturgyGeek.Calendars.Model;
-using LiturgyGeek.Framework.Clcs.Model;
+using LiturgyGeek.Common.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +10,18 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Engine
 {
-    public class CalendarReader : ICalendarReader
+    public class CalendarReader
     {
+        private static readonly JsonSerializerOptions jsonOptions = new()
+        {
+            ReadCommentHandling = JsonCommentHandling.Skip,
+            PropertyNamingPolicy = JsonNamingPolicyEx.CamelCaseEx,
+            IgnoreReadOnlyFields = true,
+        };
+
         public ChurchCalendar Read(Stream jsonStream, Stream? lineStream = null)
         {
-            var calendar = JsonSerializer.Deserialize<ChurchCalendar>(jsonStream)!;
+            var calendar = JsonSerializer.Deserialize<ChurchCalendar>(jsonStream, jsonOptions)!;
             if (lineStream != null)
             {
                 using (var lineReader  = new StreamReader(lineStream))
@@ -25,10 +32,10 @@ namespace LiturgyGeek.Calendars.Engine
 
         public ChurchCalendar Read(string json, string? lines = null)
         {
-            var calendar = JsonSerializer.Deserialize<ChurchCalendar>(json)!;
+            var calendar = JsonSerializer.Deserialize<ChurchCalendar>(json, jsonOptions)!;
             if (lines != null)
             {
-                using (var lineReader = new StreamReader(lines))
+                using (var lineReader = new StringReader(lines))
                     ApplyLines(calendar, lineReader);
             }
             return calendar;
@@ -37,9 +44,10 @@ namespace LiturgyGeek.Calendars.Engine
         private void ApplyLines(ChurchCalendar calendar, TextReader lineReader)
         {
             string? line;
-            while ((line = lineReader.ReadLine()) != null)
+            while ((line = lineReader.ReadLine()?.Trim()) != null)
             {
-                calendar.Events.Add(ParseLineEvent(line));
+                if (line.Length > 0 && !line.StartsWith(';'))
+                    calendar.Events.Add(ParseLineEvent(line));
             }
         }
 
@@ -70,6 +78,10 @@ namespace LiturgyGeek.Calendars.Engine
 
                     case '#':
                         result.Flags.Add(parts[0].Substring(1));
+                        break;
+
+                    case '+':
+                        result.EventRankId = parts[0].Substring(1);
                         break;
                 }
 

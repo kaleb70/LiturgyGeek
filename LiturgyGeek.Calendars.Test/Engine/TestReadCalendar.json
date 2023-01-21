@@ -1,0 +1,123 @@
+{
+  "name": "TestReadCalendar",
+  "traditionId": "easternOrthodox",
+  "calendarId": "testReadC",
+  "solarReckoning": "revisedJulian",
+  "paschalReckoning": "julian",
+  "ruleGroups": {
+    "fast": {
+      "flags": [ "headline" ],
+      "rules": {
+        "strict": {
+          "summary": "Fast",
+          "elaboration": "Strict Fast"
+        },
+        "oil": {
+          "summary": "Fast (oil/wine)",
+          "elaboration": "Oil and Wine Permitted"
+        },
+        "fish": {
+          "summary": "Fast (fish)",
+          "elaboration": "Fish, Oil, and Wine Permitted"
+        },
+        "none": {
+          "summary": "No Fast",
+          "flags": [ "emphasis" ]
+        }
+      }
+    },
+    "colors": {
+      "rules": {
+        "green": {
+          "summary": "Green"
+        }
+      }
+    }
+  },
+  "eventRanks": {
+    "greatFeast": {
+      "precedence": 1,
+      "flags": [ "highlight", "alwaysShow" ]
+    },
+    "vigil": {
+      "precedence": 3,
+      "flags": [ "highlight" ]
+    },
+    "ordinary": {
+      "precedence": 99
+    }
+  },
+  "defaultEventRank": "ordinary",
+  "commonRules": {
+    "strictFast": {
+      "fast": [
+        {
+          "ruleId": "oil",
+          "includeDates": [ "Sunday", "Saturday" ]
+        },
+        {
+          "ruleId": "strict",
+          "excludeDates": [ "Sunday", "Saturday" ]
+        }
+      ]
+    }
+  },
+  "seasons": {
+    "ordinary": {
+      "startDate": "1/1",
+      "endDate": "12/31",
+      "isDefault": true,
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleId": "strict",
+            "includeDates": [ "Wednesday", "Friday" ]
+          },
+          {
+            "ruleId": "fish",
+            "includeDates": [ "Wednesday", "Friday" ],
+            "includeRanks": [ "greatFeast", "patron", "vigil" ]
+          }
+        ]
+      }
+    },
+    "advent": {
+      "startDate": "11/15",
+      "endDate": "12/24",
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleId": "strict",
+            "excludeDates": [ "Sunday", "Saturday" ]
+          },
+          {
+            "ruleId": "fish",
+            "includeDates": [ "Sunday", "Saturday" ]
+          }
+        ]
+      }
+    },
+
+    "theotokosEntrance-afterfeast": {
+      "startDate": "11/22",
+      "endDate": "11/25"
+    },
+
+    "nativity-forefeast": {
+      "startDate": "12/20",
+      "endDate": "12/24",
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleId": "strict",
+            "excludeDates": [ "Sunday", "Saturday" ]
+          },
+          {
+            "ruleId": "oil",
+            "includeDates": [ "Sunday", "Saturday" ]
+          }
+        ]
+      }
+    }
+  }
+}

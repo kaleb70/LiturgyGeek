@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchSeason : ICloneable<ChurchSeason>
+    public sealed class ChurchSeason : ICloneable<ChurchSeason>, IEquatable<ChurchSeason>
     {
         public required ChurchDate StartDate { get; set; }
 
@@ -35,5 +35,21 @@ namespace LiturgyGeek.Calendars.Model
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchSeason? other)
+        {
+            return this == other
+                    || (other != null
+                        && StartDate == other.StartDate
+                        && EndDate == other.EndDate
+                        && IsDefault == other.IsDefault
+                        && CommonRules.SequenceEqual(other.CommonRules)
+                        && RuleCriteria.SequenceEqual(other.RuleCriteria));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchSeason);
+
+        public override int GetHashCode()
+            => HashCode.Combine(StartDate, EndDate, IsDefault, CommonRules, RuleCriteria);
     }
 }

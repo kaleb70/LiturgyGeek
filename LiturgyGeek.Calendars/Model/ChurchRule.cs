@@ -8,15 +8,13 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchRule : ICloneable<ChurchRule>
+    public sealed class ChurchRule : ICloneable<ChurchRule>, IEquatable<ChurchRule>
     {
         public required string Summary { get; set; }
 
         public string? Elaboration { get; set; }
 
         public HashSet<string> Flags { get; set; } = new HashSet<string>();
-
-        public HashSet<string> RemoveFlags { get; set; } = new HashSet<string>();
 
         public ChurchRule Clone()
         {
@@ -25,10 +23,22 @@ namespace LiturgyGeek.Calendars.Model
                 Summary = Summary,
                 Elaboration = Elaboration,
                 Flags = new(Flags),
-                RemoveFlags = new(RemoveFlags),
             };
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchRule? other)
+        {
+            return this == other
+                    || (other != null
+                        && Summary == other.Summary
+                        && Elaboration == other.Elaboration
+                        && Flags.SequenceEqual(other.Flags));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchRule);
+
+        public override int GetHashCode() => HashCode.Combine(Summary, Elaboration, Flags);
     }
 }

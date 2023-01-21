@@ -1,0 +1,8 @@
+﻿pascha @1/Sunday +greatFeast
+john @5/8 +vigil
+crossExaltation @9/14 +greatFeast $strictFastDay
+
+;test
+
+basilGreat @1/1 #highlight
+theophanySundayBefore @1/1/Sunday/5 @1/1/Monday/1 @1/1/Tuesday/1 #highlight

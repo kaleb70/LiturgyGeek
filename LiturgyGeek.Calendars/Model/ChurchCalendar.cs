@@ -1,5 +1,4 @@
-﻿using LiturgyGeek.Calendars.Model;
-using LiturgyGeek.Common;
+﻿using LiturgyGeek.Common;
 using LiturgyGeek.Common.Collections;
 using System;
 using System.Collections.Generic;
@@ -8,9 +7,9 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace LiturgyGeek.Framework.Clcs.Model
+namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchCalendar : ICloneable<ChurchCalendar>
+    public sealed class ChurchCalendar : ICloneable<ChurchCalendar>, IEquatable<ChurchCalendar>
     {
         public required string Name { get; set; }
 
@@ -55,5 +54,41 @@ namespace LiturgyGeek.Framework.Clcs.Model
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchCalendar? other)
+        {
+            return other == this
+                    || (other != null
+                        && Name == other.Name
+                        && TraditionId == other.TraditionId
+                        && CalendarId == other.CalendarId
+                        && SolarReckoning == other.SolarReckoning
+                        && PaschalReckoning == other.PaschalReckoning
+                        && RuleGroups.SequenceEqual(other.RuleGroups)
+                        && EventRanks.SequenceEqual(other.EventRanks)
+                        && DefaultEventRank == other.DefaultEventRank
+                        && CommonRules.SequenceEqual(other.CommonRules)
+                        && Seasons.SequenceEqual(other.Seasons)
+                        && Events.SequenceEqual(other.Events));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchCalendar);
+
+        public override int GetHashCode()
+        {
+            var result = new HashCode();
+            result.Add(Name);
+            result.Add(TraditionId);
+            result.Add(CalendarId);
+            result.Add(SolarReckoning);
+            result.Add(PaschalReckoning);
+            result.Add(RuleGroups);
+            result.Add(EventRanks);
+            result.Add(DefaultEventRank);
+            result.Add(CommonRules);
+            result.Add(Seasons);
+            result.Add(Events);
+            return result.ToHashCode();
+        }
     }
 }

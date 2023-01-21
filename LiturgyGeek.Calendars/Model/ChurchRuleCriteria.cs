@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchRuleCriteria
+    public sealed class ChurchRuleCriteria : IEquatable<ChurchRuleCriteria>
     {
         public string RuleId { get; private init; }
 
@@ -45,5 +45,24 @@ namespace LiturgyGeek.Calendars.Model
             ExcludeCustomFlags = excludeCustomFlags ?? new List<string>();
             ExcludeDates = excludeDates ?? new List<ChurchDate>();
         }
+
+        public bool Equals(ChurchRuleCriteria? other)
+        {
+            return this == other
+                    || (other != null
+                        && RuleId == other.RuleId
+                        && StartDate == other.StartDate
+                        && EndDate == other.EndDate
+                        && IncludeCustomFlags.SequenceEqual(other.IncludeCustomFlags)
+                        && IncludeDates.SequenceEqual(other.IncludeDates)
+                        && IncludeRanks.SequenceEqual(other.IncludeRanks)
+                        && ExcludeCustomFlags.SequenceEqual(other.ExcludeCustomFlags)
+                        && ExcludeDates.SequenceEqual(other.ExcludeDates));
+        }
+
+        public override int GetHashCode()
+            => HashCode.Combine(RuleId, StartDate, EndDate,
+                                IncludeCustomFlags, IncludeDates, IncludeRanks,
+                                ExcludeCustomFlags, ExcludeDates);
     }
 }

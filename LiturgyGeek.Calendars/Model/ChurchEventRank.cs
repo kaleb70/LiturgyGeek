@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchEventRank : ICloneable<ChurchEventRank>
+    public sealed class ChurchEventRank : ICloneable<ChurchEventRank>, IEquatable<ChurchEventRank>
     {
         public int Precedence { get; set; }
 
@@ -24,5 +24,17 @@ namespace LiturgyGeek.Calendars.Model
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchEventRank? other)
+        {
+            return other == this
+                    || (other != null
+                        && Precedence == other.Precedence
+                        && Flags.SequenceEqual(other.Flags));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchEventRank);
+
+        public override int GetHashCode() => HashCode.Combine(Precedence, Flags);
     }
 }

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchEvent : ICloneable<ChurchEvent>
+    public sealed class ChurchEvent : ICloneable<ChurchEvent>, IEquatable<ChurchEvent>
     {
         public required string OccasionId { get; set; }
 
@@ -48,5 +48,37 @@ namespace LiturgyGeek.Calendars.Model
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchEvent? other)
+        {
+            return (other == this)
+                    || (other != null
+                        && OccasionId == other.OccasionId
+                        && Dates.SequenceEqual(other.Dates)
+                        && Name == other.Name
+                        && EventRankId == other.EventRankId
+                        && Flags.SequenceEqual(other.Flags)
+                        && CommonRules.SequenceEqual(other.CommonRules)
+                        && RuleCriteria.SequenceEqual(other.RuleCriteria)
+                        && AttachedSeasons.SequenceEqual(other.AttachedSeasons)
+                        && AttachedEvents.SequenceEqual(other.AttachedEvents));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchEvent);
+
+        public override int GetHashCode()
+        {
+            var result = new HashCode();
+            result.Add(OccasionId);
+            result.Add(Dates);
+            result.Add(Name);
+            result.Add(EventRankId);
+            result.Add(Flags);
+            result.Add(CommonRules);
+            result.Add(RuleCriteria);
+            result.Add(AttachedSeasons);
+            result.Add(AttachedEvents);
+            return result.ToHashCode();
+        }
     }
 }

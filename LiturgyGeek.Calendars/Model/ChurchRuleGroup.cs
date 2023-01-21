@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LiturgyGeek.Calendars.Model
 {
-    public class ChurchRuleGroup : ICloneable<ChurchRuleGroup>
+    public sealed class ChurchRuleGroup : ICloneable<ChurchRuleGroup>, IEquatable<ChurchRuleGroup>
     {
         public HashSet<string> Flags { get; set; } = new HashSet<string>();
 
@@ -24,5 +24,17 @@ namespace LiturgyGeek.Calendars.Model
         }
 
         object ICloneable.Clone() => Clone();
+
+        public bool Equals(ChurchRuleGroup? other)
+        {
+            return this == other
+                    || (other != null
+                        && Flags.SequenceEqual(other.Flags)
+                        && Rules.SequenceEqual(other.Rules));
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ChurchRuleGroup);
+
+        public override int GetHashCode() => HashCode.Combine(Flags, Rules);
     }
 }
