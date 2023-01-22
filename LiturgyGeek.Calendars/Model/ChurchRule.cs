@@ -14,7 +14,9 @@ namespace LiturgyGeek.Calendars.Model
 
         public string? Elaboration { get; set; }
 
-        public HashSet<string> Flags { get; set; } = new HashSet<string>();
+        public HashSet<string> RuleFlags { get; set; } = new HashSet<string>();
+
+        public HashSet<string> EventFlags { get; set; } = new HashSet<string>();
 
         public ChurchRule Clone()
         {
@@ -22,7 +24,7 @@ namespace LiturgyGeek.Calendars.Model
             {
                 Summary = Summary,
                 Elaboration = Elaboration,
-                Flags = new(Flags),
+                RuleFlags = new(RuleFlags),
             };
         }
 
@@ -34,7 +36,7 @@ namespace LiturgyGeek.Calendars.Model
                     || (other != null
                         && Summary == other.Summary
                         && Elaboration == other.Elaboration
-                        && Flags.SetEquals(other.Flags));
+                        && RuleFlags.SetEquals(other.RuleFlags));
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchRule);
@@ -44,7 +46,7 @@ namespace LiturgyGeek.Calendars.Model
             var result = new HashCode();
             result.Add(Summary);
             result.Add(Elaboration);
-            result.AddSet(Flags);
+            result.AddSet(RuleFlags);
             return result.ToHashCode();
         }
     }

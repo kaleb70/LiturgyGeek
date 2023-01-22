@@ -9,11 +9,6 @@ namespace LiturgyGeek.Calendars.Engine
 {
     internal static class EvaluationExtensions
     {
-        public static bool IsDisplayable(this ChurchEvent churchEvent)
-        {
-            return !churchEvent.Flags.Contains("hidden");
-        }
-
         public static bool IsDisplayable(this ChurchSeason season, IEnumerable<ChurchEvent> coincidingEvents)
         {
             return season.AttachedTo != null

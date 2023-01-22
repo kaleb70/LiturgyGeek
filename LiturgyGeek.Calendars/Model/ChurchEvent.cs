@@ -64,8 +64,8 @@ namespace LiturgyGeek.Calendars.Model
                         && CommonRules.SetEquals(other.CommonRules)
                         && RuleCriteria.DictionaryEquals(other.RuleCriteria)
                         && AttachedSeasons.SequenceEqual(other.AttachedSeasons)
-                        && AttachedEvents.SequenceEqual(other.AttachedEvents))
-                        && AttachedTo == other.AttachedTo;
+                        && AttachedEvents.SequenceEqual(other.AttachedEvents)
+                        && AttachedTo == other.AttachedTo);
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchEvent);

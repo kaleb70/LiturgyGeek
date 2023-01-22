@@ -90,15 +90,12 @@ namespace LiturgyGeek.Calendars.Engine
             };
             var dayInfo = calendarYear.Days[date.DayOfYear];
 
-            var movableEvents = dayInfo.MovableEvents.Select(e => churchCalendar.Events[e]).Where(EvaluationExtensions.IsDisplayable);
-            var fixedEvents = dayInfo.FixedEvents.Select(e => churchCalendar.Events[e]).Where(EvaluationExtensions.IsDisplayable);
-            IEnumerable<Data.CalendarItem> attachedSeasons = dayInfo.Seasons.Select(s => new
-                {
-                    calendarYear.Seasons[s].SeasonCode,
-                    Season = churchCalendar.Seasons[calendarYear.Seasons[s].SeasonCode],
-                })
-                .Where(s => s.Season.IsDisplayable(movableEvents.Concat(fixedEvents)))
-                .Select(s => GetCalendarItem(date, dataCalendar, s.SeasonCode, s.Season));
+            var movableEvents = dayInfo.MovableEvents.Where(e => e.IsDisplayable());
+            var fixedEvents = dayInfo.FixedEvents.Where(e => e.IsDisplayable());
+
+            IEnumerable<Data.CalendarItem> attachedSeasons = dayInfo.Seasons.Select(s => calendarYear.Seasons[s])
+                .Where(s => s.Season.IsDisplayable(movableEvents.Concat(fixedEvents).Select(e => e.Event)))
+                .Select(s => GetCalendarItem(date, dataCalendar, s));
 
             var result = movableEvents.Select(e => GetCalendarItem(date, dataCalendar, e))
                             .Concat(attachedSeasons)
@@ -111,7 +108,7 @@ namespace LiturgyGeek.Calendars.Engine
             return result;
         }
 
-        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, ChurchEvent churchEvent)
+        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, ChurchEventInfo info)
         {
             return new Data.CalendarItem()
             {
@@ -120,14 +117,14 @@ namespace LiturgyGeek.Calendars.Engine
                 DisplayOrder = 0,
                 Occasion = new Data.Occasion()
                 {
-                    OccasionCode = churchEvent.OccasionCode,
-                    DefaultName = churchEvent.OccasionCode,
+                    OccasionCode = info.Event.OccasionCode,
+                    DefaultName = info.Event.OccasionCode,
                 },
-                Class = churchEvent.Flags.ToList(),
+                Class = info.Event.Flags.ToList(),
             };
         }
 
-        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, string seasonCode, ChurchSeason season)
+        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, ChurchSeasonInfo info)
         {
             return new Data.CalendarItem()
             {
@@ -136,10 +133,10 @@ namespace LiturgyGeek.Calendars.Engine
                 DisplayOrder = 0,
                 Occasion = new Data.Occasion()
                 {
-                    OccasionCode = seasonCode,
-                    DefaultName = seasonCode,
+                    OccasionCode = info.SeasonCode,
+                    DefaultName = info.SeasonCode,
                 },
-                Class = season.Flags.ToList(),
+                Class = info.Season.Flags.ToList(),
             };
         }
 
@@ -159,7 +156,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             public DayInfo[] Days { get; private init; }
 
-            public List<SeasonInfo> Seasons { get; } = new List<SeasonInfo>();
+            public List<ChurchSeasonInfo> Seasons { get; } = new List<ChurchSeasonInfo>();
 
             public CalendarYear(int year)
             {
@@ -171,22 +168,61 @@ namespace LiturgyGeek.Calendars.Engine
 
         private class DayInfo
         {
-            public List<int> MovableEvents { get; } = new List<int>();
+            public List<ChurchEventInfo> MovableEvents { get; } = new List<ChurchEventInfo>();
 
-            public List<int> FixedEvents { get; } = new List<int>();
+            public List<ChurchEventInfo> FixedEvents { get; } = new List<ChurchEventInfo>();
 
             public List<int> Seasons { get; } = new List<int>();
         }
 
-        private class SeasonInfo
+        private struct ChurchEventInfo
         {
-            public required string SeasonCode { get; set; }
+            public required ChurchEvent Event { get; init; }
 
-            public required DateTime startDate { get; set; }
+            public required int BasisYear { get; init; }
 
-            public required DateTime endDate { get; set; }
+            public required Dictionary<string, ChurchRuleCriteriaInfo[]>? RuleCriteria { get; set; }
+
+            public bool IsDisplayable() => !Event.Flags.Contains("hidden");
+        }
+
+        private class ChurchSeasonInfo
+        {
+            public required string SeasonCode { get; init; }
+
+            public required ChurchSeason Season { get; init; }
+
+            public required int BasisYear { get; init; }
+
+            public required DateTime startDate { get; init; }
+
+            public required DateTime endDate { get; init; }
+
+            public required Dictionary<string, ChurchRuleCriteriaInfo[]>? RuleCriteria { get; set; }
 
             public int DaysInSeason => endDate.Subtract(startDate).Days + 1;
+
+            public bool IsDisplayable(IEnumerable<ChurchEventInfo> coincidingEvents)
+            {
+                var attachedTo = Season.AttachedTo;
+                return attachedTo != null
+                        && !Season.Flags.Contains("hidden")
+                        && !coincidingEvents.Any(e => e.Event.AttachedTo == attachedTo);
+            }
         }
+
+        private class ChurchRuleCriteriaInfo
+        {
+            public required ChurchRuleCriteria Criteria { get; init; }
+
+            public DateTime? StartDate { get; init; }
+
+            public DateTime? EndDate { get; init; }
+
+            public DateTime[] IncludeDates { get; init; } = { };
+
+            public DateTime[] ExcludeDates { get; init; } = { };
+        }
+
     }
 }

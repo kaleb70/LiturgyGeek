@@ -13,11 +13,11 @@
   "eventRanks": {
     "greatFeast": {
       "precedence": 1,
-      "customFlags": [ "highlight" ]
+      "flags": [ "highlight" ]
     },
     "vigil": {
       "precedence": 2,
-      "customFlags": [ "highlight" ]
+      "flags": [ "highlight" ]
     },
     "polyeleos": {
       "precedence": 3

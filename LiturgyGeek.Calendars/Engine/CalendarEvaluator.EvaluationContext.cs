@@ -24,8 +24,11 @@ namespace LiturgyGeek.Calendars.Engine
                 this.evaluator = evaluator;
             }
 
-            public DateInstanceContainer GetDateInstanceContainer(int basisYear, ChurchDate date, ChurchDate? priorDate = null)
+            public DateInstanceContainer GetDateInstanceContainer(int basisYear, ChurchDate? date, ChurchDate? priorDate = null)
             {
+                if (date == null)
+                    return default;
+
                 DateInstanceKey key = new DateInstanceKey(basisYear, date, priorDate);
                 if (!dateInstanceCache.TryGetValue(key, out var result))
                 {
@@ -57,7 +60,10 @@ namespace LiturgyGeek.Calendars.Engine
                 return result;
             }
 
-            public IEnumerable<DateTime> GetDateInstances(int basisYear, ChurchDate date, ChurchDate? priorDate = null)
+            public IEnumerable<DateTime> GetDateInstances(int basisYear, IEnumerable<ChurchDate> dates, ChurchDate? priorDate = null)
+                => dates.SelectMany(d => GetDateInstances(basisYear, d, priorDate));
+
+            public IEnumerable<DateTime> GetDateInstances(int basisYear, ChurchDate? date, ChurchDate? priorDate = null)
             {
                 var container = GetDateInstanceContainer(basisYear, date, priorDate);
                 return container.IsRecurring ? container.Recurring! : SingleOrNone();
@@ -69,8 +75,11 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
-            public DateTime? GetSingleDateInstance(int basisYear, ChurchDate date, ChurchDate? priorDate = null)
+            public DateTime? GetSingleDateInstance(int basisYear, ChurchDate? date, ChurchDate? priorDate = null)
             {
+                if (date == null)
+                    return null;
+
                 if (date.IsRecurring)
                     throw new InvalidOperationException($"Can't call GetSingleDateInstance() for recurring date {date}.");
 
