@@ -1,0 +1,192 @@
+﻿using LiturgyGeek.Calendars.Dates;
+using LiturgyGeek.Calendars.Model;
+using LiturgyGeek.Common.Globalization;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace LiturgyGeek.Calendars.Engine
+{
+    public partial class CalendarEvaluator
+    {
+        private readonly ChurchCalendar churchCalendar;
+        private readonly ChurchCalendarSystem calendarSystem;
+        private readonly CalendarReader calendarReader;
+
+        private readonly Dictionary<int, CalendarYear> calendarYears = new Dictionary<int, CalendarYear>();
+
+        public CalendarEvaluator(ChurchCalendar churchCalendar, CalendarReader calendarReader)
+        {
+            calendarSystem = new ChurchCalendarSystem(
+                churchCalendar.SolarReckoning switch
+                {
+                    CalendarReckoning.Julian => new JulianCalendar(),
+                    CalendarReckoning.Gregorian => new GregorianCalendar(),
+                    CalendarReckoning.RevisedJulian => new RevisedJulianCalendar(),
+                    _ => throw new NotSupportedException($"CalendarReckonining.{churchCalendar.SolarReckoning} is not supported for fixed dates."),
+                },
+                churchCalendar.PaschalReckoning switch
+                {
+                    CalendarReckoning.Julian => new JulianPaschalCalendar(),
+                    CalendarReckoning.Gregorian => new GregorianPaschalCalendar(),
+                    _ => throw new NotSupportedException($"CalendarReckoning.{churchCalendar.PaschalReckoning} is not supported for movable dates."),
+                });
+
+            this.churchCalendar = churchCalendar.Clone();
+            this.calendarReader = calendarReader;
+
+            FlattenCalendar();
+        }
+
+        private void FlattenCalendar()
+        {
+            var movableEventQueue = new List<ChurchEvent>();
+            var fixedEventQueue = new List<ChurchEvent>();
+
+            // we need this because this method modifies the Events collection
+            var topLevelEvents = churchCalendar.Events.ToArray();
+            foreach (var churchEvent in topLevelEvents)
+            {
+                foreach (var attachedSeasonLine in churchEvent.AttachedSeasons)
+                {
+                    calendarReader.ParseSeasonLine(attachedSeasonLine, out var attachedSeasonCode, out var attachedSeason);
+                    attachedSeason.AttachedTo = churchEvent.OccasionCode;
+
+                    churchCalendar.Seasons.Add(attachedSeasonCode, attachedSeason);
+                }    
+                churchEvent.AttachedSeasons.Clear();
+
+                foreach (var attachedEventLine in churchEvent.AttachedEvents.AsEnumerable())
+                {
+                    var attachedEvent = calendarReader.ParseEventLine(attachedEventLine);
+                    attachedEvent.AttachedTo = churchEvent.OccasionCode;
+
+                    if (attachedEvent.Dates[0].IsMovable)
+                        movableEventQueue.Add(attachedEvent);
+                    else
+                        fixedEventQueue.Add(attachedEvent);
+                }
+                // adding movable events at the end makes the attached movable events appear after standalone movable events
+                churchCalendar.Events.AddRange(movableEventQueue);
+                // inserting fixed events at the beginning makes the attached fixed events appear before standalone fixed events
+                churchCalendar.Events.InsertRange(0, fixedEventQueue);
+
+                churchEvent.AttachedEvents.Clear();
+                movableEventQueue.Clear();
+                fixedEventQueue.Clear();
+            }
+        }
+
+        public Data.CalendarItem[] GetCalendarItems(DateTime date)
+        {
+            var calendarYear = GetCalendarYear(date.Year);
+            var dataCalendar = new Data.Calendar()
+            {
+                CalendarCode = churchCalendar.CalendarCode,
+            };
+            var dayInfo = calendarYear.Days[date.DayOfYear];
+
+            var movableEvents = dayInfo.MovableEvents.Select(e => churchCalendar.Events[e]).Where(EvaluationExtensions.IsDisplayable);
+            var fixedEvents = dayInfo.FixedEvents.Select(e => churchCalendar.Events[e]).Where(EvaluationExtensions.IsDisplayable);
+            IEnumerable<Data.CalendarItem> attachedSeasons = dayInfo.Seasons.Select(s => new
+                {
+                    calendarYear.Seasons[s].SeasonCode,
+                    Season = churchCalendar.Seasons[calendarYear.Seasons[s].SeasonCode],
+                })
+                .Where(s => s.Season.IsDisplayable(movableEvents.Concat(fixedEvents)))
+                .Select(s => GetCalendarItem(date, dataCalendar, s.SeasonCode, s.Season));
+
+            var result = movableEvents.Select(e => GetCalendarItem(date, dataCalendar, e))
+                            .Concat(attachedSeasons)
+                            .Concat(fixedEvents.Select(e => GetCalendarItem(date, dataCalendar, e)))
+                            .ToArray();
+
+            for (int i = 0; i < result.Length; i++)
+                result[i].DisplayOrder = i;
+
+            return result;
+        }
+
+        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, ChurchEvent churchEvent)
+        {
+            return new Data.CalendarItem()
+            {
+                Calendar = dataCalendar,
+                Date = date,
+                DisplayOrder = 0,
+                Occasion = new Data.Occasion()
+                {
+                    OccasionCode = churchEvent.OccasionCode,
+                    DefaultName = churchEvent.OccasionCode,
+                },
+                Class = churchEvent.Flags.ToList(),
+            };
+        }
+
+        private Data.CalendarItem GetCalendarItem(DateTime date, Data.Calendar dataCalendar, string seasonCode, ChurchSeason season)
+        {
+            return new Data.CalendarItem()
+            {
+                Calendar = dataCalendar,
+                Date = date,
+                DisplayOrder = 0,
+                Occasion = new Data.Occasion()
+                {
+                    OccasionCode = seasonCode,
+                    DefaultName = seasonCode,
+                },
+                Class = season.Flags.ToList(),
+            };
+        }
+
+        private CalendarYear GetCalendarYear(int year) => GetCalendarYear(new EvaluationContext(this), year);
+
+        private CalendarYear GetCalendarYear(EvaluationContext context, int year)
+        {
+            if (!calendarYears.TryGetValue(year, out var result))
+                calendarYears.Add(year, result = new CalendarYearBuilder(this).GetCalendarYear(context, year));
+
+            return result;
+        }
+
+        private class CalendarYear
+        {
+            public int Year { get; private init; }
+
+            public DayInfo[] Days { get; private init; }
+
+            public List<SeasonInfo> Seasons { get; } = new List<SeasonInfo>();
+
+            public CalendarYear(int year)
+            {
+                Days = new DayInfo[new DateTime(year + 1, 1, 1).Subtract(new DateTime(year, 1, 1)).Days + 1];
+                for (int dayOfYear = 1; dayOfYear < Days.Length; dayOfYear++)
+                    Days[dayOfYear] = new DayInfo();
+            }
+        }
+
+        private class DayInfo
+        {
+            public List<int> MovableEvents { get; } = new List<int>();
+
+            public List<int> FixedEvents { get; } = new List<int>();
+
+            public List<int> Seasons { get; } = new List<int>();
+        }
+
+        private class SeasonInfo
+        {
+            public required string SeasonCode { get; set; }
+
+            public required DateTime startDate { get; set; }
+
+            public required DateTime endDate { get; set; }
+
+            public int DaysInSeason => endDate.Subtract(startDate).Days + 1;
+        }
+    }
+}

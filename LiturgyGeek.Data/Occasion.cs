@@ -11,7 +11,7 @@ namespace LiturgyGeek.Data
         public int OccasionId { get; set; }
         public ICollection<CalendarItem> CalendarItems { get; set; } = null!;
 
-        [StringLength(30)]
+        [StringLength(40)]
         public required string OccasionCode { get; set; }
 
         public required string DefaultName { get; set; }

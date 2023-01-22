@@ -47,19 +47,25 @@ namespace LiturgyGeek.Calendars.Engine
             while ((line = lineReader.ReadLine()?.Trim()) != null)
             {
                 if (line.Length > 0 && !line.StartsWith(';'))
-                    calendar.Events.Add(ParseLineEvent(line));
+                    calendar.Events.Add(ParseEventLine(line));
             }
         }
 
-        public void ParseLineSeason(string line, out string seasonCode, out ChurchSeason season)
+        public void ParseSeasonLine(string line, out string seasonCode, out ChurchSeason season)
         {
-            var parts = line.Split(new[] { ' ' }, 4);
-            if (parts.Length < 3)
+            var parts = line.Split(new[] { ' ' }, 2);
+            if (parts.Length < 2)
                 throw new InvalidDataException();
 
             seasonCode = parts[0];
-            var startDate = ChurchDate.Parse(parts[1]);
-            var endDate = ChurchDate.Parse(parts[2]);
+
+            parts = parts[1].Split(new[] { ' ' }, 2);
+            if (parts.Length < 2 || parts[0].Length < 1 || parts[0][0] != '@')
+                throw new InvalidDataException();
+
+            var dateParts = parts[0].Substring(1).Split("..", 2);
+            var startDate = ChurchDate.Parse(dateParts[0]);
+            var endDate = ChurchDate.Parse(dateParts[dateParts.Length - 1]);
 
             season = new ChurchSeason()
             {
@@ -67,28 +73,31 @@ namespace LiturgyGeek.Calendars.Engine
                 EndDate = endDate,
             };
 
-            do
+            if (parts.Length > 1)
             {
-                parts = parts[1].Split(new[] { ' ' }, 2);
-
-                switch (parts[0][0])
+                do
                 {
-                    case '$':
-                        season.CommonRules.Add(parts[0].Substring(1));
-                        break;
+                    parts = parts[1].Split(new[] { ' ' }, 2);
 
-                    case '#':
-                        season.Flags.Add(parts[0].Substring(1));
-                        break;
+                    switch (parts[0][0])
+                    {
+                        case '$':
+                            season.CommonRules.Add(parts[0].Substring(1));
+                            break;
 
-                    default:
-                        throw new InvalidDataException();
-                }
+                        case '#':
+                            season.Flags.Add(parts[0].Substring(1));
+                            break;
 
-            } while (parts.Length > 1);
+                        default:
+                            throw new InvalidDataException();
+                    }
+
+                } while (parts.Length > 1);
+            }
         }
 
-        public ChurchEvent ParseLineEvent(string line)
+        public ChurchEvent ParseEventLine(string line)
         {
             var parts = line.Split(new[] { ' ' }, 2);
             if (parts.Length < 2)
@@ -97,6 +106,7 @@ namespace LiturgyGeek.Calendars.Engine
             var result = new ChurchEvent()
             {
                 OccasionCode = parts[0],
+                Dates = new(),
             };
 
             do

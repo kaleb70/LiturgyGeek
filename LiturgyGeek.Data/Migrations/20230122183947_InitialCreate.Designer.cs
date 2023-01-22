@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiturgyGeek.Data.Migrations
 {
     [DbContext(typeof(LiturgyGeekContext))]
-    [Migration("20230121222818_InitialCreate")]
+    [Migration("20230122183947_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -57,7 +57,7 @@ namespace LiturgyGeek.Data.Migrations
                     b.Property<int>("DisplayOrder")
                         .HasColumnType("int");
 
-                    b.Property<string>("CustomFlags")
+                    b.Property<string>("Class")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -88,8 +88,8 @@ namespace LiturgyGeek.Data.Migrations
 
                     b.Property<string>("OccasionCode")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.HasKey("OccasionId");
 

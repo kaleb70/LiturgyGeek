@@ -1,0 +1,172 @@
+﻿{
+  "name": "Orthodox Church in America",
+  "traditionCode": "easternOrthodox",
+  "jurisdictionCode": "oca",
+  "calendarCode": "oca",
+
+  "solarReckoning": "revisedJulian",
+  "paschalReckoning": "julian",
+
+  //###########################################################################
+  // Event Ranks
+
+  "eventRanks": {
+    "greatFeast": {
+      "precedence": 1,
+      "customFlags": [ "highlight" ]
+    },
+    "vigil": {
+      "precedence": 2,
+      "customFlags": [ "highlight" ]
+    },
+    "polyeleos": {
+      "precedence": 3
+    },
+    "doxology": {
+      "precedence": 4
+    },
+    "sixStichera": {
+      "precedence": 5
+    },
+    "ordinary": {
+      "precedence": 99
+    }
+  },
+
+  "defaultEventRankCode": "ordinary",
+
+  "events": [
+
+    {
+      "occasionCode": "palmSunday",
+      "dates": [ "-1/Sunday" ],
+      "eventRankCode": "greatFeast"
+    },
+    {
+      "occasionCode": "pascha",
+      "dates": [ "1/Sunday" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [ "pascha-afterfeast @1/Monday..7/Wednesday #hidden" ],
+      "attachedEvents": [ "pascha-leavetaking @6/Wednesday #highlight" ]
+    },
+    {
+      "occasionCode": "ascension",
+      "dates": [ "6/Thursday" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "ascension-forefeast @6/Wednesday #highlight",
+        "ascension-afterfeast @6/Friday..7/Friday #highlight"
+      ],
+      "attachedEvents": [ "ascension-leavetaking @7/Friday #highlight" ]
+    },
+    {
+      "occasionCode": "pentecost",
+      "dates": [ "8/Sunday" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [ "pentecost-afterfeast @8/Monday..8/Saturday #highlight" ],
+      "attachedEvents": [ "pentecost-leavetaking @8/Saturday #highlight" ]
+    },
+
+    {
+      "occasionCode": "christ-presentation",
+      "dates": [ "2/2" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "christ-presentation-forefeast @2/1 #highlight",
+        "christ-presentation-afterfeast @2/3..2/9 #highlight"
+      ],
+      "attachedEvents": [ "christ-presentation-leavetaking @2/9 #highlight" ]
+    },
+    {
+      "occasionCode": "theophany",
+      "dates": [ "1/6" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "theophany-forefeast @1/2..1/5 #highlight",
+        "theophany-afterfeast @1/7..1/14 #highlight"
+      ],
+      "attachedEvents": [
+        "theophany-eve @1/5 #highlight",
+        "theophany-leavetaking @1/14 #highlight"
+      ]
+    },
+    {
+      "occasionCode": "annunciation",
+      "dates": [ "3/25" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "annunciation-forefeast @3/24 #highlight",
+        "annunciation-afterfeast @3/26 #highlight"
+      ],
+      "attachedEvents": [ "annunciation-leavetaking @3/26 #highlight" ]
+    },
+    {
+      "occasionCode": "peter-paul",
+      "dates": [ "6/29" ],
+      "eventRankCode": "greatFeast"
+    },
+    {
+      "occasionCode": "transfiguration",
+      "dates": [ "8/6" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "transfiguration-forefeast @8/5 #highlight",
+        "transfiguration-afterfeast @8/7..8/13 #highlight"
+      ],
+      "attachedEvents": [ "transfiguration-leavetaking @8/13 #highlight" ]
+    },
+    {
+      "occasionCode": "theotokos-dormition",
+      "dates": [ "8/15" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "theotokos-dormition-forefeast @8/14 #highlight",
+        "theotokos-dormition-afterfeast @8/16..8/23 #highlight"
+      ],
+      "attachedEvents": [ "theotokos-dormition-afterfeast @8/23 #highlight" ]
+    },
+    {
+      "occasionCode": "theotokos-nativity",
+      "dates": [ "9/8" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "theotokos-nativity-forefeast @9/7 #highlight",
+        "theotokos-nativity-afterfeast @9/9..9/12 #highlight"
+      ],
+      "attachedEvents": [ "theotokos-afterfeast-leavetaking @9/12 #highlight" ]
+    },
+    {
+      "occasionCode": "cross-elevation",
+      "dates": [ "9/14" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "cross-elevation-forefeast @9/13 #highlight",
+        "cross-elevation-afterfeast @9/15..9/21 #highlight"
+      ],
+      "attachedEvents": [ "cross-elevation-leavetaking @9/21 #highlight" ]
+    },
+    {
+      "occasionCode": "theotokos-presentation",
+      "dates": [ "11/21" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "theotokos-presentation-forefeast @11/20 #highlight",
+        "theotokos-presentation-afterfeast @11/22..11/25 #highlight"
+      ],
+      "attachedEvents": [ "theotokos-presentation-leavetaking @11/25 #highlight" ]
+    },
+    {
+      "occasionCode": "nativity",
+      "dates": [ "12/25" ],
+      "eventRankCode": "greatFeast",
+      "attachedSeasons": [
+        "nativity-forefeast @12/20..12/24 #highlight",
+        "nativity-afterfeast @12/26..12/31 #highlight"
+      ],
+      "attachedEvents": [
+        "nativity-eve @12/24 #highlight",
+        "nativity-leavetaking @12/31 #highlight"
+      ]
+    }
+  ]
+}

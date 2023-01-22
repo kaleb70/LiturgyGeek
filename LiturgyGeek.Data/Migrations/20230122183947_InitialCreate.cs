@@ -30,7 +30,7 @@ namespace LiturgyGeek.Data.Migrations
                 {
                     OccasionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OccasionCode = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    OccasionCode = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false),
                     DefaultName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -47,7 +47,7 @@ namespace LiturgyGeek.Data.Migrations
                     DisplayOrder = table.Column<int>(type: "int", nullable: false),
                     OccasionId = table.Column<int>(type: "int", nullable: true),
                     TransferredFrom = table.Column<DateTime>(type: "date", nullable: true),
-                    CustomFlags = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Class = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

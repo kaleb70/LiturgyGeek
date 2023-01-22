@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Data", "Liturgy
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Common", "LiturgyGeek.Common\LiturgyGeek.Common.csproj", "{F5ADB1FF-B2D3-434D-8D16-0D174C6D5D9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Common.Test", "LiturgyGeek.Common.Test\LiturgyGeek.Common.Test.csproj", "{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Common.Test", "LiturgyGeek.Common.Test\LiturgyGeek.Common.Test.csproj", "{D1A71794-F5F0-4254-A5A9-0FAC5EF212B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars", "LiturgyGeek.Calendars\LiturgyGeek.Calendars.csproj", "{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Calendars", "LiturgyGeek.Calendars\LiturgyGeek.Calendars.csproj", "{C191ED72-BF17-43BE-BC1C-C1FDE27B795F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars.Test", "LiturgyGeek.Calendars.Test\LiturgyGeek.Calendars.Test.csproj", "{4281B9F9-2457-44FD-992D-B768A11C8B60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Calendars.Test", "LiturgyGeek.Calendars.Test\LiturgyGeek.Calendars.Test.csproj", "{4281B9F9-2457-44FD-992D-B768A11C8B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars.TestApp", "LiturgyGeek.Calendars.TestApp\LiturgyGeek.Calendars.TestApp.csproj", "{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4281B9F9-2457-44FD-992D-B768A11C8B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

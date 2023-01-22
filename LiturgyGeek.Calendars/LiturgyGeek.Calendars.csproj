@@ -8,6 +8,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LiturgyGeek.Common\LiturgyGeek.Common.csproj" />
+    <ProjectReference Include="..\LiturgyGeek.Data\LiturgyGeek.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sources\oca.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

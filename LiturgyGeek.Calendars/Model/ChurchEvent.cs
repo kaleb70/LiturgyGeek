@@ -15,7 +15,7 @@ namespace LiturgyGeek.Calendars.Model
     {
         public required string OccasionCode { get; set; }
 
-        public List<ChurchDate> Dates { get; set; } = new List<ChurchDate>();
+        public required List<ChurchDate> Dates { get; set; } = new List<ChurchDate>();
 
         public string? Name { get; set; }
 
@@ -31,6 +31,8 @@ namespace LiturgyGeek.Calendars.Model
 
         public List<string> AttachedEvents { get; set; } = new List<string>();
 
+        public string? AttachedTo { get; set; }
+
         public ChurchEvent Clone()
         {
             return new ChurchEvent()
@@ -44,6 +46,7 @@ namespace LiturgyGeek.Calendars.Model
                 RuleCriteria = new(RuleCriteria),
                 AttachedSeasons = new(AttachedSeasons),
                 AttachedEvents = new(AttachedEvents),
+                AttachedTo = AttachedTo,
             };
         }
 
@@ -61,7 +64,8 @@ namespace LiturgyGeek.Calendars.Model
                         && CommonRules.SetEquals(other.CommonRules)
                         && RuleCriteria.DictionaryEquals(other.RuleCriteria)
                         && AttachedSeasons.SequenceEqual(other.AttachedSeasons)
-                        && AttachedEvents.SequenceEqual(other.AttachedEvents));
+                        && AttachedEvents.SequenceEqual(other.AttachedEvents))
+                        && AttachedTo == other.AttachedTo;
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchEvent);
@@ -78,6 +82,7 @@ namespace LiturgyGeek.Calendars.Model
             result.AddDictionary(RuleCriteria);
             result.AddList(AttachedSeasons);
             result.AddList(AttachedEvents);
+            result.Add(AttachedTo);
             return result.ToHashCode();
         }
     }

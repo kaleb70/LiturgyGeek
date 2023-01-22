@@ -23,6 +23,6 @@ namespace LiturgyGeek.Data
         public DateTime? TransferredFrom { get; set; }
 
         [JsonArrayColumn<string>]
-        public required List<string> CustomFlags { get; set; } = new();
+        public required List<string> Class { get; set; } = new();
     }
 }

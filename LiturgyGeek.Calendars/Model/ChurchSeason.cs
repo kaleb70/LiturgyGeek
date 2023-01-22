@@ -24,6 +24,8 @@ namespace LiturgyGeek.Calendars.Model
 
         public HashSet<string> Flags { get; set; } = new HashSet<string>();
 
+        public string? AttachedTo { get; set; }
+
         public ChurchSeason Clone()
         {
             return new ChurchSeason()
@@ -34,6 +36,7 @@ namespace LiturgyGeek.Calendars.Model
                 CommonRules = new HashSet<string>(CommonRules),
                 RuleCriteria = new(RuleCriteria),
                 Flags = new HashSet<string>(Flags),
+                AttachedTo = AttachedTo,
             };
         }
 
@@ -48,7 +51,8 @@ namespace LiturgyGeek.Calendars.Model
                         && IsDefault == other.IsDefault
                         && CommonRules.SetEquals(other.CommonRules)
                         && RuleCriteria.DictionaryEquals(other.RuleCriteria)
-                        && Flags.SetEquals(other.Flags));
+                        && Flags.SetEquals(other.Flags)
+                        && AttachedTo == other.AttachedTo);
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchSeason);
@@ -62,6 +66,7 @@ namespace LiturgyGeek.Calendars.Model
             result.AddSet(CommonRules);
             result.AddDictionary(RuleCriteria);
             result.AddSet(Flags);
+            result.Add(AttachedTo);
             return result.ToHashCode();
         }
     }
