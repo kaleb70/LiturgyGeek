@@ -27,9 +27,9 @@ namespace LiturgyGeek.Calendars.Model
 
         public Dictionary<string, ChurchRuleCriteria[]> RuleCriteria { get; set; } = new Dictionary<string, ChurchRuleCriteria[]>();
 
-        public Dictionary<string, ChurchSeason> AttachedSeasons { get; set; } = new Dictionary<string, ChurchSeason>();
+        public List<string> AttachedSeasons { get; set; } = new List<string>();
 
-        public List<ChurchEvent> AttachedEvents { get; set; } = new List<ChurchEvent>();
+        public List<string> AttachedEvents { get; set; } = new List<string>();
 
         public ChurchEvent Clone()
         {
@@ -42,8 +42,8 @@ namespace LiturgyGeek.Calendars.Model
                 Flags = new(Flags),
                 CommonRules = new(CommonRules),
                 RuleCriteria = new(RuleCriteria),
-                AttachedSeasons = new(AttachedSeasons.WithValues(e => e.Value.Clone())),
-                AttachedEvents = new(AttachedEvents.Select(e => e.Clone())),
+                AttachedSeasons = new(AttachedSeasons),
+                AttachedEvents = new(AttachedEvents),
             };
         }
 
@@ -60,7 +60,7 @@ namespace LiturgyGeek.Calendars.Model
                         && Flags.SetEquals(other.Flags)
                         && CommonRules.SetEquals(other.CommonRules)
                         && RuleCriteria.DictionaryEquals(other.RuleCriteria)
-                        && AttachedSeasons.DictionaryEquals(other.AttachedSeasons)
+                        && AttachedSeasons.SequenceEqual(other.AttachedSeasons)
                         && AttachedEvents.SequenceEqual(other.AttachedEvents));
         }
 
@@ -76,7 +76,7 @@ namespace LiturgyGeek.Calendars.Model
             result.AddSet(Flags);
             result.AddSet(CommonRules);
             result.AddDictionary(RuleCriteria);
-            result.AddDictionary(AttachedSeasons);
+            result.AddList(AttachedSeasons);
             result.AddList(AttachedEvents);
             return result.ToHashCode();
         }

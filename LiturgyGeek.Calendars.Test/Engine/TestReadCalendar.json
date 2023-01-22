@@ -1,7 +1,7 @@
 {
   "name": "TestReadCalendar",
-  "traditionId": "easternOrthodox",
-  "calendarId": "testReadC",
+  "traditionCode": "easternOrthodox",
+  "calendarCode": "testReadC",
   "solarReckoning": "revisedJulian",
   "paschalReckoning": "julian",
   "ruleGroups": {
@@ -47,16 +47,16 @@
       "precedence": 99
     }
   },
-  "defaultEventRank": "ordinary",
+  "defaultEventRankCode": "ordinary",
   "commonRules": {
     "strictFast": {
       "fast": [
         {
-          "ruleId": "oil",
+          "ruleCode": "oil",
           "includeDates": [ "Sunday", "Saturday" ]
         },
         {
-          "ruleId": "strict",
+          "ruleCode": "strict",
           "excludeDates": [ "Sunday", "Saturday" ]
         }
       ]
@@ -70,11 +70,11 @@
       "ruleCriteria": {
         "fast": [
           {
-            "ruleId": "strict",
+            "ruleCode": "strict",
             "includeDates": [ "Wednesday", "Friday" ]
           },
           {
-            "ruleId": "fish",
+            "ruleCode": "fish",
             "includeDates": [ "Wednesday", "Friday" ],
             "includeRanks": [ "greatFeast", "patron", "vigil" ]
           }
@@ -87,11 +87,11 @@
       "ruleCriteria": {
         "fast": [
           {
-            "ruleId": "strict",
+            "ruleCode": "strict",
             "excludeDates": [ "Sunday", "Saturday" ]
           },
           {
-            "ruleId": "fish",
+            "ruleCode": "fish",
             "includeDates": [ "Sunday", "Saturday" ]
           }
         ]
@@ -109,11 +109,11 @@
       "ruleCriteria": {
         "fast": [
           {
-            "ruleId": "strict",
+            "ruleCode": "strict",
             "excludeDates": [ "Sunday", "Saturday" ]
           },
           {
-            "ruleId": "oil",
+            "ruleCode": "oil",
             "includeDates": [ "Sunday", "Saturday" ]
           }
         ]

@@ -51,7 +51,44 @@ namespace LiturgyGeek.Calendars.Engine
             }
         }
 
-        private ChurchEvent ParseLineEvent(string line)
+        public void ParseLineSeason(string line, out string seasonCode, out ChurchSeason season)
+        {
+            var parts = line.Split(new[] { ' ' }, 4);
+            if (parts.Length < 3)
+                throw new InvalidDataException();
+
+            seasonCode = parts[0];
+            var startDate = ChurchDate.Parse(parts[1]);
+            var endDate = ChurchDate.Parse(parts[2]);
+
+            season = new ChurchSeason()
+            {
+                StartDate = startDate,
+                EndDate = endDate,
+            };
+
+            do
+            {
+                parts = parts[1].Split(new[] { ' ' }, 2);
+
+                switch (parts[0][0])
+                {
+                    case '$':
+                        season.CommonRules.Add(parts[0].Substring(1));
+                        break;
+
+                    case '#':
+                        season.Flags.Add(parts[0].Substring(1));
+                        break;
+
+                    default:
+                        throw new InvalidDataException();
+                }
+
+            } while (parts.Length > 1);
+        }
+
+        public ChurchEvent ParseLineEvent(string line)
         {
             var parts = line.Split(new[] { ' ' }, 2);
             if (parts.Length < 2)
@@ -83,9 +120,15 @@ namespace LiturgyGeek.Calendars.Engine
                     case '+':
                         result.EventRankCode = parts[0].Substring(1);
                         break;
+
+                    default:
+                        throw new InvalidDataException();
                 }
 
             } while (parts.Length > 1);
+
+            if (result.Dates.Count == 0)
+                throw new InvalidDataException();
 
             return result;
         }
