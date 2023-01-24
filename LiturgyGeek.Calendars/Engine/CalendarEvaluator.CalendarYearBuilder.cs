@@ -39,7 +39,7 @@ namespace LiturgyGeek.Calendars.Engine
                         {
                             foreach (var date in context.GetDateInstances(basisYear, churchDate).Where(d => d.Year == year))
                             {
-                                var eventInfo = new ChurchEventInfo
+                                var eventEval = new ChurchEventEval
                                 {
                                     Event = churchEvent,
                                     BasisYear = basisYear,
@@ -47,9 +47,9 @@ namespace LiturgyGeek.Calendars.Engine
                                                             churchEvent.CommonRules, churchEvent.RuleCriteria),
                                 };
                                 if (churchDate.IsMovable)
-                                    calendarYear.Days[date.DayOfYear].MovableEvents.Add(eventInfo);
+                                    calendarYear.Days[date.DayOfYear].MovableEvents.Add(eventEval);
                                 else
-                                    calendarYear.Days[date.DayOfYear].FixedEvents.Add(eventInfo);
+                                    calendarYear.Days[date.DayOfYear].FixedEvents.Add(eventEval);
                             }
                         }
                     }
@@ -67,7 +67,7 @@ namespace LiturgyGeek.Calendars.Engine
 
                         if (startDate?.Year <= year && endDate?.Year >= year && startDate <= endDate)
                         {
-                            ChurchSeasonInfo info = new ChurchSeasonInfo()
+                            ChurchSeasonEval seasonEval = new ChurchSeasonEval()
                             {
                                 SeasonCode = season.Key,
                                 Season = season.Value,
@@ -78,12 +78,12 @@ namespace LiturgyGeek.Calendars.Engine
                                                         season.Value.CommonRules, season.Value.RuleCriteria,
                                                         season.Value.StartDate)
                             };
-                            calendarYear.Seasons.Add(info);
+                            calendarYear.Seasons.Add(seasonEval);
                         }
                     }
                 }
 
-                calendarYear.Seasons.Sort(Comparer<ChurchSeasonInfo>.Create((x, y) =>
+                calendarYear.Seasons.Sort(Comparer<ChurchSeasonEval>.Create((x, y) =>
                 {
                     return evaluator.churchCalendar.Seasons[x.SeasonCode].IsDefault ? +1
                             : evaluator.churchCalendar.Seasons[y.SeasonCode].IsDefault ? -1
@@ -102,7 +102,7 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
-            private Dictionary<string, ChurchRuleCriteriaInfo[]> Coalesce(
+            private Dictionary<string, ChurchRuleCriteriaEval[]> Coalesce(
                     EvaluationContext context,
                     int basisYear,
                     IEnumerable<string> commonCriteria,
@@ -118,7 +118,7 @@ namespace LiturgyGeek.Calendars.Engine
                         {
                             var startDate = context.GetSingleDateInstance(basisYear, c.StartDate, priorDate);
                             var endDate = context.GetSingleDateInstance(basisYear, c.EndDate, priorDate);
-                            ChurchRuleCriteriaInfo info = new ChurchRuleCriteriaInfo()
+                            ChurchRuleCriteriaEval criteriaEval = new ChurchRuleCriteriaEval()
                             {
                                 Criteria = c,
                                 StartDate = startDate,
@@ -126,7 +126,7 @@ namespace LiturgyGeek.Calendars.Engine
                                 IncludeDates = context.GetDateInstances(basisYear, c.IncludeDates, priorDate).ToArray(),
                                 ExcludeDates = context.GetDateInstances(basisYear, c.ExcludeDates, priorDate).ToArray(),
                             };
-                            return info;
+                            return criteriaEval;
                         }).ToArray());
             }
         }
