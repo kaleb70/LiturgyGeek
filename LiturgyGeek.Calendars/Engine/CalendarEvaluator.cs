@@ -175,7 +175,7 @@ namespace LiturgyGeek.Calendars.Engine
             public List<int> Seasons { get; } = new List<int>();
         }
 
-        private struct ChurchEventEval
+        private class ChurchEventEval
         {
             public required ChurchEvent Event { get; init; }
 
