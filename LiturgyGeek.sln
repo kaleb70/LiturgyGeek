@@ -7,6 +7,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Api", "LiturgyG
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "LiturgyGeek.Ng", "LiturgyGeek.Ng\LiturgyGeek.Ng.esproj", "{E52E23E9-A6C1-4499-9530-07013EE66CCC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D921CF13-D32C-4243-BAD9-EDE6500E785B}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
