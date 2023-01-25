@@ -145,7 +145,7 @@ namespace LiturgyGeek.Calendars.Engine
         private CalendarYear GetCalendarYear(EvaluationContext context, int year)
         {
             if (!calendarYears.TryGetValue(year, out var result))
-                calendarYears.Add(year, result = new CalendarYearBuilder(this).GetCalendarYear(context, year));
+                calendarYears.Add(year, result = new CalendarYearBuilder(this, context).GetCalendarYear(year));
 
             return result;
         }

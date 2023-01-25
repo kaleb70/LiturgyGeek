@@ -14,22 +14,25 @@ namespace LiturgyGeek.Calendars.Engine
         {
             private readonly CalendarEvaluator evaluator;
 
-            public CalendarYearBuilder(CalendarEvaluator evaluator)
+            private readonly EvaluationContext context;
+
+            public CalendarYearBuilder(CalendarEvaluator evaluator, EvaluationContext context)
             {
                 this.evaluator = evaluator;
+                this.context = context;
             }
 
-            public CalendarYear GetCalendarYear(EvaluationContext context, int year)
+            public CalendarYear GetCalendarYear(int year)
             {
                 var result = new CalendarYear(year);
 
-                FindAllSeasons(context, result);
-                FindAllEvents(context, result);
+                FindAllSeasons(result);
+                FindAllEvents(result);
 
                 return result;
             }
 
-            private void FindAllEvents(EvaluationContext context, CalendarYear calendarYear)
+            private void FindAllEvents(CalendarYear calendarYear)
             {
                 foreach (var churchEvent in evaluator.churchCalendar.Events)
                 {
@@ -44,8 +47,8 @@ namespace LiturgyGeek.Calendars.Engine
                                 {
                                     Event = churchEvent,
                                     BasisYear = basisYear,
-                                    RuleCriteria = Coalesce(context, basisYear,
-                                                            churchEvent.CommonRules, churchEvent.RuleCriteria),
+                                    RuleCriteria = Coalesce(basisYear, churchEvent.CommonRules,
+                                                            churchEvent.RuleCriteria),
                                 };
                                 if (churchDate.IsMovable)
                                     calendarYear.Days[date.DayOfYear].MovableEvents.Add(eventEval);
@@ -57,7 +60,7 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
-            private void FindAllSeasons(EvaluationContext context, CalendarYear calendarYear)
+            private void FindAllSeasons(CalendarYear calendarYear)
             {
                 foreach (var season in evaluator.churchCalendar.Seasons)
                 {
@@ -76,9 +79,8 @@ namespace LiturgyGeek.Calendars.Engine
                                 BasisYear = basisYear,
                                 startDate = startDate.Value,
                                 endDate = endDate.Value,
-                                RuleCriteria = Coalesce(context, basisYear,
-                                                        season.Value.CommonRules, season.Value.RuleCriteria,
-                                                        season.Value.StartDate)
+                                RuleCriteria = Coalesce(basisYear, season.Value.CommonRules,
+                                                        season.Value.RuleCriteria, season.Value.StartDate)
                             };
                             calendarYear.Seasons.Add(seasonEval);
                         }
@@ -109,7 +111,6 @@ namespace LiturgyGeek.Calendars.Engine
             }
 
             private Dictionary<string, ChurchRuleCriteriaEval[]> Coalesce(
-                    EvaluationContext context,
                     int basisYear,
                     IEnumerable<string> commonCriteria,
                     IEnumerable<KeyValuePair<string, ChurchRuleCriteria[]>> ruleCriteria,
