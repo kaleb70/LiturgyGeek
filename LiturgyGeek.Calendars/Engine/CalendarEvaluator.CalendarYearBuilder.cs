@@ -23,21 +23,22 @@ namespace LiturgyGeek.Calendars.Engine
             {
                 var result = new CalendarYear(year);
 
-                FindAllSeasons(context, year, result);
-                FindAllEvents(context, year, result);
+                FindAllSeasons(context, result);
+                FindAllEvents(context, result);
 
                 return result;
             }
 
-            private void FindAllEvents(EvaluationContext context, int year, CalendarYear calendarYear)
+            private void FindAllEvents(EvaluationContext context, CalendarYear calendarYear)
             {
                 foreach (var churchEvent in evaluator.churchCalendar.Events)
                 {
                     foreach (var churchDate in churchEvent.Dates)
                     {
-                        for (int basisYear = year - 1; basisYear <= year + 1; basisYear++)
+                        for (int basisYear = calendarYear.Year - 1; basisYear <= calendarYear.Year + 1; basisYear++)
                         {
-                            foreach (var date in context.GetDateInstances(basisYear, churchDate).Where(d => d.Year == year))
+                            foreach (var date in context.GetDateInstances(basisYear, churchDate)
+                                                    .Where(d => d.Year == calendarYear.Year))
                             {
                                 var eventEval = new ChurchEventEval
                                 {
@@ -56,16 +57,17 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
-            private void FindAllSeasons(EvaluationContext context, int year, CalendarYear calendarYear)
+            private void FindAllSeasons(EvaluationContext context, CalendarYear calendarYear)
             {
                 foreach (var season in evaluator.churchCalendar.Seasons)
                 {
-                    for (int basisYear = year - 1; basisYear <= year + 1; basisYear++)
+                    for (int basisYear = calendarYear.Year - 1; basisYear <= calendarYear.Year + 1; basisYear++)
                     {
                         var startDate = context.GetSingleDateInstance(basisYear, season.Value.StartDate);
                         var endDate = context.GetSingleDateInstance(basisYear, season.Value.EndDate);
 
-                        if (startDate?.Year <= year && endDate?.Year >= year && startDate <= endDate)
+                        if (startDate?.Year <= calendarYear.Year && endDate?.Year >= calendarYear.Year
+                                && startDate <= endDate)
                         {
                             ChurchSeasonEval seasonEval = new ChurchSeasonEval()
                             {
@@ -94,8 +96,12 @@ namespace LiturgyGeek.Calendars.Engine
                 {
                     var season = calendarYear.Seasons[seasonIndex];
 
-                    var minDay = season.startDate.Year < year ? 1 : season.startDate.DayOfYear;
-                    var maxDay = season.endDate.Year > year ? calendarYear.Days.Length : season.endDate.DayOfYear + 1;
+                    var minDay = season.startDate.Year < calendarYear.Year
+                                    ? 1
+                                    : season.startDate.DayOfYear;
+                    var maxDay = season.endDate.Year > calendarYear.Year
+                                    ? calendarYear.Days.Length
+                                    : season.endDate.DayOfYear + 1;
 
                     for (int dayOfYear = minDay; dayOfYear < maxDay; dayOfYear++)
                         calendarYear.Days[dayOfYear].Seasons.Add(seasonIndex);
