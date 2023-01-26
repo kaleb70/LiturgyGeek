@@ -16,8 +16,6 @@ namespace LiturgyGeek.Calendars.Model
 
         public HashSet<string> RuleFlags { get; set; } = new HashSet<string>();
 
-        public HashSet<string> EventFlags { get; set; } = new HashSet<string>();
-
         public ChurchRule Clone()
         {
             return new ChurchRule()
