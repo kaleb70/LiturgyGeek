@@ -1,5 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Dates;
 using LiturgyGeek.Common;
+using LiturgyGeek.Common.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,11 +43,11 @@ namespace LiturgyGeek.Calendars.Model
             RuleCode = ruleCode;
             StartDate = startDate;
             EndDate = endDate;
-            IncludeCustomFlags = includeCustomFlags ?? new List<string>();
-            IncludeDates = includeDates ?? new List<ChurchDate>();
-            IncludeRanks = includeRanks ?? new List<string>();
-            ExcludeCustomFlags = excludeCustomFlags ?? new List<string>();
-            ExcludeDates = excludeDates ?? new List<ChurchDate>();
+            IncludeCustomFlags = includeCustomFlags ?? ReadOnlyListEx<string>.Empty;
+            IncludeDates = includeDates ?? ReadOnlyListEx<ChurchDate>.Empty;
+            IncludeRanks = includeRanks ?? ReadOnlyListEx<string>.Empty;
+            ExcludeCustomFlags = excludeCustomFlags ?? ReadOnlyListEx<string>.Empty;
+            ExcludeDates = excludeDates ?? ReadOnlyListEx<ChurchDate>.Empty;
 
             var result = new HashCode();
             result.Add(RuleCode);

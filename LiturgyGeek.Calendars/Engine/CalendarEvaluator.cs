@@ -1,5 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Dates;
 using LiturgyGeek.Calendars.Model;
+using LiturgyGeek.Common.Collections;
 using LiturgyGeek.Common.Globalization;
 using System;
 using System.Collections.Generic;
@@ -181,7 +182,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             public required int BasisYear { get; init; }
 
-            public required Dictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; set; }
+            public required IReadOnlyDictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; init; }
 
             public bool IsDisplayable() => !Event.Flags.Contains("hidden");
         }
@@ -198,7 +199,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             public required DateTime endDate { get; init; }
 
-            public required Dictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; set; }
+            public required IReadOnlyDictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; init; }
 
             public int DaysInSeason => endDate.Subtract(startDate).Days + 1;
 
@@ -219,9 +220,9 @@ namespace LiturgyGeek.Calendars.Engine
 
             public DateTime? EndDate { get; init; }
 
-            public DateTime[] IncludeDates { get; init; } = { };
+            public IReadOnlyList<DateTime> IncludeDates { get; init; } = ReadOnlyListEx<DateTime>.Empty;
 
-            public DateTime[] ExcludeDates { get; init; } = { };
+            public IReadOnlyList<DateTime> ExcludeDates { get; init; } = ReadOnlyListEx<DateTime>.Empty;
         }
 
     }
