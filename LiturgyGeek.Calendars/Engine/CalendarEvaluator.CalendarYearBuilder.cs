@@ -16,10 +16,13 @@ namespace LiturgyGeek.Calendars.Engine
 
             private readonly EvaluationContext context;
 
+            private readonly ChurchCalendar churchCalendar;
+
             public CalendarYearBuilder(CalendarEvaluator evaluator, EvaluationContext context)
             {
                 this.evaluator = evaluator;
                 this.context = context;
+                churchCalendar = evaluator.churchCalendar;
             }
 
             public CalendarYear GetCalendarYear(int year)
@@ -28,13 +31,14 @@ namespace LiturgyGeek.Calendars.Engine
 
                 FindAllSeasons(result);
                 FindAllEvents(result);
+                FindAllRules(result);
 
                 return result;
             }
 
             private void FindAllEvents(CalendarYear calendarYear)
             {
-                foreach (var churchEvent in evaluator.churchCalendar.Events)
+                foreach (var churchEvent in churchCalendar.Events)
                 {
                     foreach (var churchDate in churchEvent.Dates)
                     {
@@ -62,7 +66,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             private void FindAllSeasons(CalendarYear calendarYear)
             {
-                foreach (var season in evaluator.churchCalendar.Seasons)
+                foreach (var season in churchCalendar.Seasons)
                 {
                     for (int basisYear = calendarYear.Year - 1; basisYear <= calendarYear.Year + 1; basisYear++)
                     {
@@ -89,8 +93,8 @@ namespace LiturgyGeek.Calendars.Engine
 
                 calendarYear.Seasons.Sort(Comparer<ChurchSeasonEval>.Create((x, y) =>
                 {
-                    return evaluator.churchCalendar.Seasons[x.SeasonCode].IsDefault ? +1
-                            : evaluator.churchCalendar.Seasons[y.SeasonCode].IsDefault ? -1
+                    return churchCalendar.Seasons[x.SeasonCode].IsDefault ? +1
+                            : churchCalendar.Seasons[y.SeasonCode].IsDefault ? -1
                             : x.DaysInSeason - y.DaysInSeason;
                 }));
 
@@ -110,13 +114,53 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
+            private void FindAllRules(CalendarYear calendarYear)
+            {
+                for (int dayOfYear = 1; dayOfYear < calendarYear.Days.Length; dayOfYear++)
+                {
+                    var dayEval = calendarYear.Days[dayOfYear];
+                    var date = new DateTime(calendarYear.Year, 1, 1).AddDays(dayOfYear - 1);
+
+                    // Make a flattened collection of all rule criteria for this day, sorted so that the
+                    // first match for each rule group wins, according to the following precedence rules:
+                    //
+                    // 1. Events before Seasons
+                    // 2. Event Rank Precedence
+                    // 3. Movable Events before Fixed
+                    // 4. Criteria Specificity
+
+                    var allEvents = dayEval.MovableEvents.Concat(dayEval.FixedEvents);
+                    var allCriteria = allEvents
+                                        .OrderBy(e => churchCalendar.EventRanks[e.Event.EventRankCode!].Precedence)
+                                        .Select(e => e.RuleCriteria)
+                                        .Concat(dayEval.Seasons.Select(s => calendarYear.Seasons[s].RuleCriteria))
+                                        .SelectMany(c => c!)
+                                        .SelectMany(e => e.Value.OrderByDescending(c => c.Specificity),
+                                                    (e, Criteria) => new { RuleGroupCode = e.Key, Criteria });
+
+                    // Where() and GroupBy() are both guaranteed to preserve original order,
+                    // so that the sorting code above still does its job.
+                    var matchingCriteria = allCriteria
+                                            .Where(c => MeetsCriteria(c.Criteria, date, allEvents))
+                                            .GroupBy(c => c.RuleGroupCode,
+                                                        (RuleGroupCode, c) => new
+                                                        {
+                                                            RuleGroupCode,
+                                                            c.First().Criteria.Criteria.RuleCode,
+                                                        });
+
+                    foreach (var match in matchingCriteria)
+                        dayEval.Rules.Add(match.RuleGroupCode, match.RuleCode);
+                }
+            }
+
             private Dictionary<string, ChurchRuleCriteriaEval[]> Coalesce(
                     int basisYear,
                     IEnumerable<string> commonCriteria,
                     IEnumerable<KeyValuePair<string, ChurchRuleCriteria[]>> ruleCriteria,
                     ChurchDate? priorDate = null)
             {
-                var allCriteria = commonCriteria.SelectMany(c => evaluator.churchCalendar.CommonRules[c])
+                var allCriteria = commonCriteria.SelectMany(c => churchCalendar.CommonRules[c])
                                     .Concat(ruleCriteria);
                 return allCriteria
                         .Reverse()
@@ -125,6 +169,19 @@ namespace LiturgyGeek.Calendars.Engine
                         {
                             var startDate = context.GetSingleDateInstance(basisYear, c.StartDate, priorDate);
                             var endDate = context.GetSingleDateInstance(basisYear, c.EndDate, priorDate);
+
+                            var specificity = ChurchRuleCriteriaSpecificity.None;
+                            if (c.StartDate != null || c.EndDate != null || c.ExcludeDates.Count > 0)
+                                specificity |= ChurchRuleCriteriaSpecificity.ExcludeDates;
+                            if (c.ExcludeFlags.Count > 0)
+                                specificity |= ChurchRuleCriteriaSpecificity.ExcludeFlags;
+                            if (c.IncludeDates.Count > 0)
+                                specificity |= ChurchRuleCriteriaSpecificity.IncludeDates;
+                            if (c.IncludeRanks.Count > 0)
+                                specificity |= ChurchRuleCriteriaSpecificity.IncludeRanks;
+                            if (c.IncludeFlags.Count > 0)
+                                specificity |= ChurchRuleCriteriaSpecificity.IncludeFlags;
+
                             ChurchRuleCriteriaEval criteriaEval = new ChurchRuleCriteriaEval()
                             {
                                 Criteria = c,
@@ -132,10 +189,55 @@ namespace LiturgyGeek.Calendars.Engine
                                 EndDate = endDate,
                                 IncludeDates = context.GetDateInstances(basisYear, c.IncludeDates, priorDate).ToArray(),
                                 ExcludeDates = context.GetDateInstances(basisYear, c.ExcludeDates, priorDate).ToArray(),
+                                Specificity = specificity,
                             };
                             return criteriaEval;
                         }).ToArray());
             }
+
+            public bool MeetsCriteria(ChurchRuleCriteriaEval criteria,
+                                        DateTime date,
+                                        IEnumerable<ChurchEventEval> events)
+            {
+                if (criteria.StartDate.HasValue && criteria.StartDate > date)
+                    return false;
+
+                if (criteria.EndDate.HasValue && criteria.EndDate < date)
+                    return false;
+
+                if (criteria.IncludeDates.Count > 0 && !criteria.IncludeDates.Contains(date))
+                    return false;
+
+                if (criteria.Criteria.IncludeRanks.Count > 0
+                        && !criteria.Criteria.IncludeRanks.Contains(
+                                events.OrderBy(e => churchCalendar.EventRanks[e.Event.EventRankCode!].Precedence)
+                                    .FirstOrDefault()
+                                    ?.Event.EventRankCode))
+                {
+                    return false;
+                }
+
+                if (criteria.Criteria.IncludeFlags.Count > 0
+                        && !criteria.Criteria.IncludeFlags
+                            .Intersect(events.SelectMany(e => e.Event.Flags))
+                            .Any())
+                {
+                    return false;
+                }
+
+                if (criteria.ExcludeDates.Contains(date))
+                    return false;
+
+                if (criteria.Criteria.ExcludeFlags
+                        .Intersect(events.SelectMany(e => e.Event.Flags))
+                        .Any())
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
         }
     }
 }

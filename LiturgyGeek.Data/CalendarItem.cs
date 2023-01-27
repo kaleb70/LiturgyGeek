@@ -22,6 +22,9 @@ namespace LiturgyGeek.Data
         [DateColumn]
         public DateTime? TransferredFrom { get; set; }
 
+        public int? CalendarRuleId { get; set; }
+        public ChurchRule? CalendarRule { get; set; }
+
         [JsonArrayColumn<string>]
         public required List<string> Class { get; set; } = new();
     }

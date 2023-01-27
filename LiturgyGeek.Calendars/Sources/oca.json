@@ -8,6 +8,204 @@
   "paschalReckoning": "julian",
 
   //###########################################################################
+  // Rules
+
+  "ruleGroups": {
+
+    //---------------------------------------------------------------------------
+    // Fasting
+
+    "fast": {
+      "_monthViewHeadline": true,
+      "rules": {
+        "none": {
+          "summary": "No Fast",
+          "ruleFlags": [ "hide", "show-wednesday", "show-friday" ]
+        },
+        "dairy": {
+          "summary": "Fast 🧀🐟🏺🍷",
+          "elaboration": "Dairy, Fish, Oil, and Wine Permitted"
+        },
+        "fish": {
+          "summary": "Fast 🐟🏺🍷",
+          "elaboration": "Fish, Oil, and Wine Permitted"
+        },
+        "caviar": {
+          "summary": "Fast 🥄🏺🍷",
+          "elaboration": "Roe (Caviar), Oil, and Wine Permitted"
+        },
+        "oil": {
+          "summary": "Fast 🏺🍷",
+          "elaboration": "Oil and Wine Permitted"
+        },
+        "wine": {
+          "summary": "Fast 🍷",
+          "elaboration": "Wine Permitted"
+        },
+        "strict": {
+          "summary": "Fast",
+          "elaboration": "Strict Fast"
+        }
+      }
+    }
+  },
+
+  "commonRules": {
+
+    "ordinarySeason": {
+      "fast": [
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "ruleCode": "strict"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "greatFeast" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "vigil", "polyeleos" ],
+          "excludeFlags": [ "patron" ],
+          "ruleCode": "oil"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeFlags": [ "patron" ],
+          "ruleCode": "fish"
+        }
+      ]
+    },
+
+    "relaxedOrdinarySeason": {
+      "fast": [
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "ruleCode": "oil"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "greatFeast" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeFlags": [ "patron" ],
+          "ruleCode": "fish"
+        }
+      ]
+    },
+
+    "strictFastDay": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "oil"
+        },
+        {
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "strict"
+        }
+      ]
+    },
+
+    "strictFastSeason": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "oil"
+        },
+        {
+          "excludeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "strict"
+        },
+        {
+          "includeRanks": [ "greatFeast" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeFlags": [ "patron" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeRanks": [ "vigil", "polyeleos" ],
+          "excludeFlags": [ "patron" ],
+          "ruleCode": "oil"
+        }
+      ]
+    },
+
+    "relaxedFastSeason": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Saturday" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeDates": [ "Monday", "Wednesday", "Friday" ],
+          "ruleCode": "strict"
+        },
+        {
+          "includeDates": [ "Tuesday", "Thursday" ],
+          "ruleCode": "oil"
+        },
+        {
+          "includeRanks": [ "greatFeast", "vigil" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeFlags": [ "patron" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "includeDates": [ "Monday", "Tuesday", "Thursday" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeDates": [ "Wednesday", "Friday" ],
+          "includeRanks": [ "polyeleos", "doxology" ],
+          "excludeFlags": [ "patron" ],
+          "ruleCode": "oil"
+        }
+      ]
+    },
+
+    "relaxedFastNoFish": {
+      "fast": [
+        {
+          "includeDates": [ "Sunday", "Tuesday", "Thursday", "Saturday" ],
+          "ruleCode": "oil"
+        },
+        {
+          "includeDates": [ "Monday", "Wednesday", "Friday" ],
+          "ruleCode": "strict"
+        },
+        {
+          "includeRanks": [ "greatFeast" ],
+          "ruleCode": "fish"
+        },
+        {
+          "includeRanks": [ "vigil", "polyeleos", "doxology" ],
+          "ruleCode": "oil"
+        },
+        {
+          "includeFlags": [ "patron" ],
+          "ruleCode": "oil"
+        }
+      ]
+    },
+
+    "noFast": {
+      "fast": [
+        {
+          "ruleCode": "none"
+        }
+      ]
+    }
+  },
+
+  //###########################################################################
   // Event Ranks
 
   "eventRanks": {
@@ -35,18 +233,107 @@
 
   "defaultEventRankCode": "ordinary",
 
+  //###########################################################################
+  // Seasons
+
+  "seasons": {
+
+    //---------------------------------------------------------------------------
+    // Ordinary Time
+
+    "ordinary": {
+      "startDate": "1/1",
+      "endDate": "12/31",
+      "isDefault": true,
+      "commonRules": [ "ordinarySeason" ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Advent
+
+    "advent": {
+      "startDate": "11/15",
+      "endDate": "12/24",
+      "commonRules": [ "relaxedFastSeason" ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Lent
+
+    "lent": {
+      "startDate": "-7/Monday",
+      "endDate": "-2/Friday",
+      "commonRules": [ "strictFastSeason" ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Holy Week
+
+    "holyWeek": {
+      "startDate": "-1/Sunday",
+      "endDate": "-1/Saturday",
+      "ruleCriteria": {
+        "fast": [
+          {
+            "endDate": "-1/Friday", // through Holy Friday
+            "ruleCode": "strict"
+          },
+          {
+            "includeDates": [ "-1/Saturday" ], // Holy Saturday
+            "ruleCode": "wine"
+          },
+          {
+            "endDate": "-1/Thursday", // through Holy Thursday
+            "includeRanks": [ "greatFeast" ],
+            "ruleCode": "oil"
+          },
+          {
+            "startDate": "-1/Friday", // starting at Holy Friday
+            "includeRanks": [ "greatFeast" ],
+            "ruleCode": "wine"
+          }
+        ]
+      }
+    },
+
+    //---------------------------------------------------------------------------
+    // Apostles Fast
+
+    "peter-paul": {
+      "startDate": "9/Monday",
+      "endDate": "6/28",
+      "commonRules": [ "relaxedFastSeason" ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Dormition Fast
+
+    "dormitionTheotokos": {
+      "startDate": "8/1",
+      "endDate": "8/14",
+      "commonRules": [ "strictFastSeason" ]
+    }
+  },
+
   "events": [
 
     {
       "occasionCode": "palmSunday",
       "dates": [ "-1/Sunday" ],
-      "eventRankCode": "greatFeast"
+      "eventRankCode": "greatFeast",
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleCode": "fish"
+          }
+        ]
+      }
     },
     {
       "occasionCode": "pascha",
       "dates": [ "1/Sunday" ],
       "eventRankCode": "greatFeast",
-      "attachedSeasons": [ "pascha-afterfeast @1/Monday..7/Wednesday #hidden" ],
+      "attachedSeasons": [ "pascha-afterfeast @1/Monday..6/Wednesday #hide $relaxedOrdinarySeason" ],
       "attachedEvents": [ "pascha-leavetaking @6/Wednesday #highlight" ]
     },
     {
@@ -55,7 +342,7 @@
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
         "ascension-forefeast @6/Wednesday #highlight",
-        "ascension-afterfeast @6/Friday..7/Friday #highlight"
+        "ascension-afterfeast @6/Friday..7/Friday #highlight $relaxedOrdinarySeason"
       ],
       "attachedEvents": [ "ascension-leavetaking @7/Friday #highlight" ]
     },
@@ -63,10 +350,30 @@
       "occasionCode": "pentecost",
       "dates": [ "8/Sunday" ],
       "eventRankCode": "greatFeast",
-      "attachedSeasons": [ "pentecost-afterfeast @8/Monday..8/Saturday #highlight" ],
+      "attachedSeasons": [ "pentecost-afterfeast @8/Monday..8/Saturday #highlight $noFast" ],
       "attachedEvents": [ "pentecost-leavetaking @8/Saturday #highlight" ]
     },
 
+    {
+      "occasionCode": "christ-circumcision",
+      "dates": [ "1/1" ],
+      "eventRankCode": "greatFeast",
+      "commonRules": [ "noFast" ]
+    },
+    {
+      "occasionCode": "theophany",
+      "dates": [ "1/6" ],
+      "eventRankCode": "greatFeast",
+      "commonRules": [ "noFast" ],
+      "attachedSeasons": [
+        "theophany-forefeast @1/2..1/5 #highlight $noFast",
+        "theophany-afterfeast @1/7..1/14 #highlight"
+      ],
+      "attachedEvents": [
+        "theophany-eve @1/5 #highlight $strictFastDay",
+        "theophany-leavetaking @1/14 #highlight"
+      ]
+    },
     {
       "occasionCode": "christ-presentation",
       "dates": [ "2/2" ],
@@ -76,19 +383,6 @@
         "christ-presentation-afterfeast @2/3..2/9 #highlight"
       ],
       "attachedEvents": [ "christ-presentation-leavetaking @2/9 #highlight" ]
-    },
-    {
-      "occasionCode": "theophany",
-      "dates": [ "1/6" ],
-      "eventRankCode": "greatFeast",
-      "attachedSeasons": [
-        "theophany-forefeast @1/2..1/5 #highlight",
-        "theophany-afterfeast @1/7..1/14 #highlight"
-      ],
-      "attachedEvents": [
-        "theophany-eve @1/5 #highlight",
-        "theophany-leavetaking @1/14 #highlight"
-      ]
     },
     {
       "occasionCode": "annunciation",
@@ -139,6 +433,7 @@
       "occasionCode": "cross-elevation",
       "dates": [ "9/14" ],
       "eventRankCode": "greatFeast",
+      "commonRules": [ "strictFastDay" ],
       "attachedSeasons": [
         "cross-elevation-forefeast @9/13 #highlight",
         "cross-elevation-afterfeast @9/15..9/21 #highlight"
@@ -160,8 +455,8 @@
       "dates": [ "12/25" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "nativity-forefeast @12/20..12/24 #highlight",
-        "nativity-afterfeast @12/26..12/31 #highlight"
+        "nativity-forefeast @12/20..12/24 #highlight $relaxedFastNoFish",
+        "nativity-afterfeast @12/26..12/31 #highlight $noFast"
       ],
       "attachedEvents": [
         "nativity-eve @12/24 #highlight",

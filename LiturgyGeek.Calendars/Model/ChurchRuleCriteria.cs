@@ -18,13 +18,23 @@ namespace LiturgyGeek.Calendars.Model
 
         public ChurchDate? EndDate { get; private init; }
 
-        public IReadOnlyList<string> IncludeCustomFlags { get; private init; }
+        /// <remarks>
+        /// This criterion is evaluated according to the flags of all events on a given day.
+        /// </remarks>
+        public IReadOnlyList<string> IncludeFlags { get; private init; }
 
         public IReadOnlyList<ChurchDate> IncludeDates { get; private init; }
 
+        /// <remarks>
+        /// This criterion is evaluated according to highest-ranking event on a given day,
+        /// as determined by <see cref="ChurchEventRank.Precedence"/>.
+        /// </remarks>
         public IReadOnlyList<string> IncludeRanks { get; private init; }
 
-        public IReadOnlyList<string> ExcludeCustomFlags { get; private init; }
+        /// <remarks>
+        /// This criterion is evaluated according to the flags of all events on a given day.
+        /// </remarks>
+        public IReadOnlyList<string> ExcludeFlags { get; private init; }
 
         public IReadOnlyList<ChurchDate> ExcludeDates { get; private init; }
 
@@ -34,29 +44,29 @@ namespace LiturgyGeek.Calendars.Model
         public ChurchRuleCriteria(string ruleCode,
                                     ChurchDate? startDate,
                                     ChurchDate? endDate,
-                                    IReadOnlyList<string>? includeCustomFlags,
+                                    IReadOnlyList<string>? includeFlags,
                                     IReadOnlyList<ChurchDate>? includeDates,
                                     IReadOnlyList<string>? includeRanks,
-                                    IReadOnlyList<string>? excludeCustomFlags,
+                                    IReadOnlyList<string>? excludeFlags,
                                     IReadOnlyList<ChurchDate>? excludeDates)
         {
             RuleCode = ruleCode;
             StartDate = startDate;
             EndDate = endDate;
-            IncludeCustomFlags = includeCustomFlags ?? ReadOnlyListEx<string>.Empty;
+            IncludeFlags = includeFlags ?? ReadOnlyListEx<string>.Empty;
             IncludeDates = includeDates ?? ReadOnlyListEx<ChurchDate>.Empty;
             IncludeRanks = includeRanks ?? ReadOnlyListEx<string>.Empty;
-            ExcludeCustomFlags = excludeCustomFlags ?? ReadOnlyListEx<string>.Empty;
+            ExcludeFlags = excludeFlags ?? ReadOnlyListEx<string>.Empty;
             ExcludeDates = excludeDates ?? ReadOnlyListEx<ChurchDate>.Empty;
 
             var result = new HashCode();
             result.Add(RuleCode);
             result.Add(StartDate);
             result.Add(EndDate);
-            result.AddList(IncludeCustomFlags);
+            result.AddList(IncludeFlags);
             result.AddList(IncludeDates);
             result.AddList(IncludeRanks);
-            result.AddList(ExcludeCustomFlags);
+            result.AddList(ExcludeFlags);
             result.AddList(ExcludeDates);
             hashCode = result.ToHashCode();
         }
@@ -68,10 +78,10 @@ namespace LiturgyGeek.Calendars.Model
                         && RuleCode == other.RuleCode
                         && StartDate == other.StartDate
                         && EndDate == other.EndDate
-                        && IncludeCustomFlags.SequenceEqual(other.IncludeCustomFlags)
+                        && IncludeFlags.SequenceEqual(other.IncludeFlags)
                         && IncludeDates.SequenceEqual(other.IncludeDates)
                         && IncludeRanks.SequenceEqual(other.IncludeRanks)
-                        && ExcludeCustomFlags.SequenceEqual(other.ExcludeCustomFlags)
+                        && ExcludeFlags.SequenceEqual(other.ExcludeFlags)
                         && ExcludeDates.SequenceEqual(other.ExcludeDates));
         }
 
