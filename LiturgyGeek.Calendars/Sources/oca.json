@@ -299,7 +299,7 @@
     //---------------------------------------------------------------------------
     // Apostles Fast
 
-    "peter-paul": {
+    "apostlesFast": {
       "startDate": "9/Monday",
       "endDate": "6/28",
       "commonRules": [ "relaxedFastSeason" ]
@@ -308,7 +308,7 @@
     //---------------------------------------------------------------------------
     // Dormition Fast
 
-    "dormitionTheotokos": {
+    "dormitionFast": {
       "startDate": "8/1",
       "endDate": "8/14",
       "commonRules": [ "strictFastSeason" ]
@@ -427,7 +427,7 @@
         "theotokos-nativity-forefeast @9/7 #highlight",
         "theotokos-nativity-afterfeast @9/9..9/12 #highlight"
       ],
-      "attachedEvents": [ "theotokos-afterfeast-leavetaking @9/12 #highlight" ]
+      "attachedEvents": [ "theotokos-nativity-leavetaking @9/12 #highlight" ]
     },
     {
       "occasionCode": "cross-elevation",

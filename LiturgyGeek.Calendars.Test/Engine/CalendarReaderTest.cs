@@ -18,7 +18,7 @@ namespace LiturgyGeek.Calendars.Test.Engine
         {
             var json = File.ReadAllText(@"Engine\TestReadCalendar.json");
             var lines = File.ReadAllText(@"Engine\TestReadCalendar.txt");
-            var testCalendar = new CalendarReader().Read(json, lines);
+            var testCalendar = new CalendarReader().Read(json, lines, false);
 
             Assert.AreEqual(5, testCalendar.Events.Count);
 

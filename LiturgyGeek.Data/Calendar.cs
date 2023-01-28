@@ -17,9 +17,11 @@ namespace LiturgyGeek.Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CalendarId { get; set; }
         public ICollection<CalendarItem> CalendarItems { get; set; } = null!;
-        public ICollection<ChurchRule> CalendarRules { get; set; } = null!;
+        public ICollection<ChurchRule> ChurchRules { get; set; } = null!;
 
         [StringLength(10)]
         public required string CalendarCode { get; set; }
+
+        public required string Definition { get; set; }
     }
 }

@@ -17,13 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Calendars", "Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Calendars.Test", "LiturgyGeek.Calendars.Test\LiturgyGeek.Calendars.Test.csproj", "{4281B9F9-2457-44FD-992D-B768A11C8B60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Calendars.TestApp", "LiturgyGeek.Calendars.TestApp\LiturgyGeek.Calendars.TestApp.csproj", "{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LiturgyGeek.Calendars.TestApp", "LiturgyGeek.Calendars.TestApp\LiturgyGeek.Calendars.TestApp.csproj", "{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D921CF13-D32C-4243-BAD9-EDE6500E785B}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiturgyGeek.Tools", "LiturgyGeek.Tools\LiturgyGeek.Tools.csproj", "{FFB9C430-F443-4996-B0CE-D1FF4BD79023}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7949AEBA-51EB-4ACF-850E-41F875F6E9BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFB9C430-F443-4996-B0CE-D1FF4BD79023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFB9C430-F443-4996-B0CE-D1FF4BD79023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFB9C430-F443-4996-B0CE-D1FF4BD79023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFB9C430-F443-4996-B0CE-D1FF4BD79023}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

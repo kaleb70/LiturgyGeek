@@ -16,11 +16,10 @@ namespace LiturgyGeek.Calendars.Engine
     {
         private readonly ChurchCalendar churchCalendar;
         private readonly ChurchCalendarSystem calendarSystem;
-        private readonly CalendarReader calendarReader;
 
         private readonly Dictionary<int, CalendarYear> calendarYears = new Dictionary<int, CalendarYear>();
 
-        public CalendarEvaluator(ChurchCalendar churchCalendar, CalendarReader calendarReader)
+        public CalendarEvaluator(ChurchCalendar churchCalendar)
         {
             calendarSystem = new ChurchCalendarSystem(
                 churchCalendar.SolarReckoning switch
@@ -38,51 +37,6 @@ namespace LiturgyGeek.Calendars.Engine
                 });
 
             this.churchCalendar = churchCalendar.Clone();
-            this.calendarReader = calendarReader;
-
-            PreprocessCalendar();
-        }
-
-        private void PreprocessCalendar()
-        {
-            var movableEventQueue = new List<ChurchEvent>();
-            var fixedEventQueue = new List<ChurchEvent>();
-
-            // we need this because this method modifies the Events collection
-            var topLevelEvents = churchCalendar.Events.ToArray();
-            foreach (var churchEvent in topLevelEvents)
-            {
-                foreach (var attachedSeasonLine in churchEvent.AttachedSeasons)
-                {
-                    calendarReader.ParseSeasonLine(attachedSeasonLine, out var attachedSeasonCode, out var attachedSeason);
-                    attachedSeason.AttachedTo = churchEvent.OccasionCode;
-
-                    churchCalendar.Seasons.Add(attachedSeasonCode, attachedSeason);
-                }    
-                churchEvent.AttachedSeasons.Clear();
-
-                foreach (var attachedEventLine in churchEvent.AttachedEvents.AsEnumerable())
-                {
-                    var attachedEvent = calendarReader.ParseEventLine(attachedEventLine);
-                    attachedEvent.AttachedTo = churchEvent.OccasionCode;
-
-                    if (attachedEvent.Dates[0].IsMovable)
-                        movableEventQueue.Add(attachedEvent);
-                    else
-                        fixedEventQueue.Add(attachedEvent);
-                }
-                // adding movable events at the end makes the attached movable events appear after standalone movable events
-                churchCalendar.Events.AddRange(movableEventQueue);
-                // inserting fixed events at the beginning makes the attached fixed events appear before standalone fixed events
-                churchCalendar.Events.InsertRange(0, fixedEventQueue);
-
-                churchEvent.AttachedEvents.Clear();
-                movableEventQueue.Clear();
-                fixedEventQueue.Clear();
-            }
-
-            foreach (var churchEvent in churchCalendar.Events)
-                churchEvent.EventRankCode ??= churchCalendar.DefaultEventRankCode;
         }
 
         public Data.CalendarItem[] GetCalendarItems(DateTime date)
@@ -91,6 +45,7 @@ namespace LiturgyGeek.Calendars.Engine
             var dataCalendar = new Data.Calendar()
             {
                 CalendarCode = churchCalendar.CalendarCode,
+                Definition = "",
             };
             var dayEval = calendarYear.Days[date.DayOfYear];
 
@@ -148,9 +103,11 @@ namespace LiturgyGeek.Calendars.Engine
                 Calendar = dataCalendar,
                 Date = date,
                 DisplayOrder = 0,
-                CalendarRule = new Data.ChurchRule()
+                ChurchRule = new Data.ChurchRule()
                 {
-                    CalendarRuleCode = ruleCode,
+                    RuleGroupCode = ruleGroupCode,
+                    RuleCode = ruleCode,
+                    Summary = $"{ruleGroupCode}_{ruleCode}",
                 },
                 Class = ruleGroup.Flags.Concat(rule.RuleFlags).Concat(automaticFlags).ToList(),
             };

@@ -19,7 +19,7 @@ namespace LiturgyGeek.Calendars.Engine
             IgnoreReadOnlyFields = true,
         };
 
-        public ChurchCalendar Read(Stream jsonStream, Stream? lineStream = null)
+        public ChurchCalendar Read(Stream jsonStream, Stream? lineStream = null, bool preprocess = true)
         {
             var calendar = JsonSerializer.Deserialize<ChurchCalendar>(jsonStream, jsonOptions)!;
             if (lineStream != null)
@@ -27,10 +27,12 @@ namespace LiturgyGeek.Calendars.Engine
                 using (var lineReader  = new StreamReader(lineStream))
                     ApplyLines(calendar, lineReader);
             }
+            if (preprocess)
+                calendar.Preprocess(this);
             return calendar;
         }
 
-        public ChurchCalendar Read(string json, string? lines = null)
+        public ChurchCalendar Read(string json, string? lines = null, bool preprocess = true)
         {
             var calendar = JsonSerializer.Deserialize<ChurchCalendar>(json, jsonOptions)!;
             if (lines != null)
@@ -38,6 +40,8 @@ namespace LiturgyGeek.Calendars.Engine
                 using (var lineReader = new StringReader(lines))
                     ApplyLines(calendar, lineReader);
             }
+            if (preprocess)
+                calendar.Preprocess(this);
             return calendar;
         }
 

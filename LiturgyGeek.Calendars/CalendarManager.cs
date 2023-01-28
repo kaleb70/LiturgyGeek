@@ -25,7 +25,7 @@ namespace LiturgyGeek.Calendars
 
             var churchCalendar = calendarReader.Read(json, lines);
 
-            var evaluator = new CalendarEvaluator(churchCalendar, calendarReader);
+            var evaluator = new CalendarEvaluator(churchCalendar);
             return evaluator.GetCalendarItems(date);
         }
     }

@@ -4,6 +4,7 @@ using LiturgyGeek.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiturgyGeek.Data.Migrations
 {
     [DbContext(typeof(LiturgyGeekContext))]
-    partial class LiturgyGeekContextModelSnapshot : ModelSnapshot
+    [Migration("20230128154701_MinimalCalendar")]
+    partial class MinimalCalendar
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
