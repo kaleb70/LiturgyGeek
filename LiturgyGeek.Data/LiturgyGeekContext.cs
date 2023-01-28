@@ -16,7 +16,11 @@ namespace LiturgyGeek.Data
 
         public DbSet<Calendar> Calendars { get; set; }
 
+        public DbSet<CalendarDefinition> CalendarDefinitions { get; set; }
+
         public DbSet<CalendarItem> CalendarItems { get; set; }
+
+        public DbSet<ChurchRule> ChurchRules { get; set; }
 
         public LiturgyGeekContext() : base()
         {

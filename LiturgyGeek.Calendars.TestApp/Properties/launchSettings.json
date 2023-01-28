@@ -2,7 +2,7 @@
   "profiles": {
     "LiturgyGeek.Calendars.TestApp": {
       "commandName": "Project",
-      "commandLineArgs": "-internal oca 2023-1-4"
+      "commandLineArgs": "-internal oca 2023-1-6"
     }
   }
 }

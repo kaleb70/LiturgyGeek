@@ -4,20 +4,23 @@ using System.Text.Json;
 
 namespace LiturgyGeek.Calendars.TestApp
 {
-    internal class Program
+    internal class Program : IDisposable
     {
+        private Data.LiturgyGeekContext dbContext;
         private CalendarReader calendarReader;
         private CalendarManager calendarManager;
 
         static void Main(string[] args)
         {
-            Environment.Exit(new Program().Run(args));
+            using (var program = new Program())
+                Environment.Exit(program.Run(args));
         }
 
         public Program()
         {
             calendarReader = new CalendarReader();
-            calendarManager = new CalendarManager(calendarReader);
+            dbContext = new Data.DesignTimeContextFactory().CreateDbContext(new string[0]);
+            calendarManager = new CalendarManager(calendarReader, dbContext);
         }
 
         int Run(string[] args)
@@ -38,12 +41,17 @@ namespace LiturgyGeek.Calendars.TestApp
 
         void Internal(string calendarCode, DateTime date)
         {
-            var calendarItems = calendarManager.GetCalendarItems(calendarCode, date);
+            var calendarItems = calendarManager.GetCalendarItems(calendarCode, date).ToArray();
 
             Console.WriteLine(JsonSerializer.Serialize(calendarItems, new JsonSerializerOptions()
             {
                 WriteIndented = true,
             }));
+        }
+
+        public void Dispose()
+        {
+            dbContext.Dispose();
         }
     }
 }

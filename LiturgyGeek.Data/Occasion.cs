@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace LiturgyGeek.Data
 {
@@ -9,6 +10,7 @@ namespace LiturgyGeek.Data
     public class Occasion
     {
         public int OccasionId { get; set; }
+        [JsonIgnore]
         public ICollection<CalendarItem> CalendarItems { get; set; } = null!;
 
         [StringLength(40)]

@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiturgyGeek.Data.Migrations
 {
     [DbContext(typeof(LiturgyGeekContext))]
-    [Migration("20230128154701_MinimalCalendar")]
+    [Migration("20230128194415_MinimalCalendar")]
     partial class MinimalCalendar
     {
         /// <inheritdoc />
@@ -38,16 +38,26 @@ namespace LiturgyGeek.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<string>("Definition")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("CalendarId");
 
                     b.HasIndex("CalendarCode")
                         .IsUnique();
 
                     b.ToTable("Calendars");
+                });
+
+            modelBuilder.Entity("LiturgyGeek.Data.CalendarDefinition", b =>
+                {
+                    b.Property<int>("CalendarId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Definition")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CalendarId");
+
+                    b.ToTable("CalendarDefinitions");
                 });
 
             modelBuilder.Entity("LiturgyGeek.Data.CalendarItem", b =>
@@ -116,7 +126,7 @@ namespace LiturgyGeek.Data.Migrations
                     b.HasIndex("CalendarId", "RuleGroupCode", "RuleCode")
                         .IsUnique();
 
-                    b.ToTable("ChurchRule");
+                    b.ToTable("ChurchRules");
                 });
 
             modelBuilder.Entity("LiturgyGeek.Data.Occasion", b =>
@@ -142,6 +152,17 @@ namespace LiturgyGeek.Data.Migrations
                         .IsUnique();
 
                     b.ToTable("Occasions");
+                });
+
+            modelBuilder.Entity("LiturgyGeek.Data.CalendarDefinition", b =>
+                {
+                    b.HasOne("LiturgyGeek.Data.Calendar", "Calendar")
+                        .WithOne("CalendarDefinition")
+                        .HasForeignKey("LiturgyGeek.Data.CalendarDefinition", "CalendarId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Calendar");
                 });
 
             modelBuilder.Entity("LiturgyGeek.Data.CalendarItem", b =>
@@ -180,6 +201,8 @@ namespace LiturgyGeek.Data.Migrations
 
             modelBuilder.Entity("LiturgyGeek.Data.Calendar", b =>
                 {
+                    b.Navigation("CalendarDefinition");
+
                     b.Navigation("CalendarItems");
 
                     b.Navigation("ChurchRules");

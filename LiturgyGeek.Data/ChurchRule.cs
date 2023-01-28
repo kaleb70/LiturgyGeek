@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace LiturgyGeek.Data
@@ -15,9 +16,11 @@ namespace LiturgyGeek.Data
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ChurchRuleId { get; set; }
+        [JsonIgnore]
         public ICollection<CalendarItem> CalendarItems { get; set; } = null!;
 
         public int CalendarId { get; set; }
+        [JsonIgnore]
         public Calendar? Calendar { get; set; }
 
         [StringLength(20)]

@@ -44,12 +44,14 @@ namespace LiturgyGeek.Tools.UploadCalendar
                         Console.WriteLine($"    {occasionCode}");
                 }
 
-                var existingCalendar = context.Calendars.SingleOrDefault(
-                                        c => c.CalendarCode == churchCalendar.CalendarCode);
+                var existingCalendar = context.Calendars
+                                        .Where(c => c.CalendarCode == churchCalendar.CalendarCode)
+                                        .Include(c => c.CalendarDefinition)
+                                        .SingleOrDefault();
 
                 var jsonForDb = JsonSerializer.Serialize(churchCalendar);
 
-                if (existingCalendar?.Definition == jsonForDb)
+                if (existingCalendar?.CalendarDefinition?.Definition == jsonForDb)
                     Console.WriteLine($"Calendar {churchCalendar.CalendarCode} is already in the database.");
 
                 else
@@ -67,7 +69,10 @@ namespace LiturgyGeek.Tools.UploadCalendar
                     var dataCalendar = new Data.Calendar()
                     {
                         CalendarCode = churchCalendar.CalendarCode,
-                        Definition = JsonSerializer.Serialize(churchCalendar),
+                        CalendarDefinition = new()
+                        {
+                            Definition = JsonSerializer.Serialize(churchCalendar),
+                        },
 
                         ChurchRules = churchCalendar.RuleGroups
                                         .SelectMany(g => g.Value.Rules,

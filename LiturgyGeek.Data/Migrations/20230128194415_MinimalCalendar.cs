@@ -10,13 +10,6 @@ namespace LiturgyGeek.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<string>(
-                name: "Definition",
-                table: "Calendars",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "");
-
             migrationBuilder.AddColumn<int>(
                 name: "ChurchRuleId",
                 table: "CalendarItems",
@@ -24,7 +17,25 @@ namespace LiturgyGeek.Data.Migrations
                 nullable: true);
 
             migrationBuilder.CreateTable(
-                name: "ChurchRule",
+                name: "CalendarDefinitions",
+                columns: table => new
+                {
+                    CalendarId = table.Column<int>(type: "int", nullable: false),
+                    Definition = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CalendarDefinitions", x => x.CalendarId);
+                    table.ForeignKey(
+                        name: "FK_CalendarDefinitions_Calendars_CalendarId",
+                        column: x => x.CalendarId,
+                        principalTable: "Calendars",
+                        principalColumn: "CalendarId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChurchRules",
                 columns: table => new
                 {
                     ChurchRuleId = table.Column<int>(type: "int", nullable: false)
@@ -37,9 +48,9 @@ namespace LiturgyGeek.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChurchRule", x => x.ChurchRuleId);
+                    table.PrimaryKey("PK_ChurchRules", x => x.ChurchRuleId);
                     table.ForeignKey(
-                        name: "FK_ChurchRule_Calendars_CalendarId",
+                        name: "FK_ChurchRules_Calendars_CalendarId",
                         column: x => x.CalendarId,
                         principalTable: "Calendars",
                         principalColumn: "CalendarId",
@@ -52,16 +63,16 @@ namespace LiturgyGeek.Data.Migrations
                 column: "ChurchRuleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChurchRule_CalendarId_RuleGroupCode_RuleCode",
-                table: "ChurchRule",
+                name: "IX_ChurchRules_CalendarId_RuleGroupCode_RuleCode",
+                table: "ChurchRules",
                 columns: new[] { "CalendarId", "RuleGroupCode", "RuleCode" },
                 unique: true);
 
             migrationBuilder.AddForeignKey(
-                name: "FK_CalendarItems_ChurchRule_ChurchRuleId",
+                name: "FK_CalendarItems_ChurchRules_ChurchRuleId",
                 table: "CalendarItems",
                 column: "ChurchRuleId",
-                principalTable: "ChurchRule",
+                principalTable: "ChurchRules",
                 principalColumn: "ChurchRuleId");
         }
 
@@ -69,19 +80,18 @@ namespace LiturgyGeek.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_CalendarItems_ChurchRule_ChurchRuleId",
+                name: "FK_CalendarItems_ChurchRules_ChurchRuleId",
                 table: "CalendarItems");
 
             migrationBuilder.DropTable(
-                name: "ChurchRule");
+                name: "CalendarDefinitions");
+
+            migrationBuilder.DropTable(
+                name: "ChurchRules");
 
             migrationBuilder.DropIndex(
                 name: "IX_CalendarItems_ChurchRuleId",
                 table: "CalendarItems");
-
-            migrationBuilder.DropColumn(
-                name: "Definition",
-                table: "Calendars");
 
             migrationBuilder.DropColumn(
                 name: "ChurchRuleId",
