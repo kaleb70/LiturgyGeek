@@ -20,8 +20,8 @@ namespace LiturgyGeek.Api.Models
 
         public CalendarDay(string traditionKey, string calendarKey, int year, int month, int day, string monthName)
         {
-            TraditionKey= traditionKey;
-            CalendarKey= calendarKey;
+            TraditionKey = traditionKey;
+            CalendarKey = calendarKey;
             Year = year;
             Month = month;
             Day = day;

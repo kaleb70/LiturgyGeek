@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LiturgyGeek.Data.Migrations
 {
     [DbContext(typeof(LiturgyGeekContext))]
-    [Migration("20230128194415_MinimalCalendar")]
+    [Migration("20230128215429_MinimalCalendar")]
     partial class MinimalCalendar
     {
         /// <inheritdoc />
@@ -37,6 +37,11 @@ namespace LiturgyGeek.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
+
+                    b.Property<string>("TraditionCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("CalendarId");
 

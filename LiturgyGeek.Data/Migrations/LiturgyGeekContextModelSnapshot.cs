@@ -35,6 +35,11 @@ namespace LiturgyGeek.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<string>("TraditionCode")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
                     b.HasKey("CalendarId");
 
                     b.HasIndex("CalendarCode")

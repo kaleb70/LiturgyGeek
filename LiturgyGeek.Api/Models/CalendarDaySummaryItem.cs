@@ -1,5 +1,4 @@
-﻿using LiturgyGeek.Framework.Calendars;
-using Microsoft.OpenApi.Services;
+﻿using Microsoft.OpenApi.Services;
 
 namespace LiturgyGeek.Api.Models
 {
@@ -18,24 +17,11 @@ namespace LiturgyGeek.Api.Models
             Class = @class;
         }
 
-        public CalendarDaySummaryItem(ChurchRuleResult churchRuleResult)
+        public CalendarDaySummaryItem(Data.CalendarItem calendarItem)
         {
-            Summary = churchRuleResult.Rule.Value.Summary;
-            Elaboration = churchRuleResult.Rule.Value.Elaboration;
-            Class = $"rule_{churchRuleResult.RuleGroup.Key} rule_{churchRuleResult.RuleGroup.Key}_{churchRuleResult.Rule.Key}";
-        }
-
-        public CalendarDaySummaryItem(ChurchEventResult churchEventResult)
-        {
-            Summary = churchEventResult.Event.Name ?? churchEventResult.Event.LongName
-                        ?? churchEventResult.Event.OccasionKey ?? "[missing name]";
-            Class = (churchEventResult.Event.EventRankKey ?? "")
-                    + " "
-                    + (churchEventResult.Event.OccasionKey ?? "")
-                    + " "
-                    + (churchEventResult.TransferredFrom.HasValue ? "transferred" : "")
-                    + " "
-                    + string.Join(' ', churchEventResult.Event.CustomFlags);
+            Summary = calendarItem.ChurchRule?.Summary ?? calendarItem.Occasion?.DefaultName ?? string.Empty;
+            Elaboration = calendarItem.ChurchRule?.Elaboration;
+            Class = string.Join(' ', calendarItem.Class);
         }
     }
 }

@@ -4,6 +4,7 @@ using LiturgyGeek.Common.Collections;
 using LiturgyGeek.Common.Globalization;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -42,10 +43,6 @@ namespace LiturgyGeek.Calendars.Engine
         public Data.CalendarItem[] GetCalendarItems(Data.LiturgyGeekContext dbContext, DateTime date)
         {
             var calendarYear = GetCalendarYear(date.Year);
-            var dataCalendar = new Data.Calendar()
-            {
-                CalendarCode = churchCalendar.CalendarCode,
-            };
             var dayEval = calendarYear.Days[date.DayOfYear];
 
             var rules = dayEval.Rules
@@ -54,16 +51,19 @@ namespace LiturgyGeek.Calendars.Engine
 
             var movableEvents = dayEval.MovableEvents.Where(e => IsDisplayable(e.Event.Flags, date));
             var fixedEvents = dayEval.FixedEvents.Where(e => IsDisplayable(e.Event.Flags, date));
+            var allEvents = movableEvents.Concat(fixedEvents);
 
             IEnumerable<Data.CalendarItem> attachedSeasons = dayEval.Seasons.Select(s => calendarYear.Seasons[s])
-                .Where(s => s.IsDisplayable(this, date, movableEvents.Concat(fixedEvents)))
+                .Where(s => s.IsDisplayable(this, date, allEvents))
                 .Select(s => GetCalendarItem(dbContext, date, s));
 
-            var result = rules
-                            .Concat(movableEvents.Select(e => GetCalendarItem(dbContext, date, e)))
-                            .Concat(attachedSeasons)
-                            .Concat(fixedEvents.Select(e => GetCalendarItem(dbContext, date, e)))
-                            .ToArray();
+            var result = (rules.Any() || allEvents.Any() || attachedSeasons.Any())
+                            ? rules
+                                .Concat(movableEvents.Select(e => GetCalendarItem(dbContext, date, e)))
+                                .Concat(attachedSeasons)
+                                .Concat(fixedEvents.Select(e => GetCalendarItem(dbContext, date, e)))
+                                .ToArray()
+                            : new[] { GetFillerCalendarItem(dbContext, date) };
 
             for (int i = 0; i < result.Length; i++)
                 result[i].DisplayOrder = i;
@@ -88,12 +88,23 @@ namespace LiturgyGeek.Calendars.Engine
                     : flags.Contains($"show-{date.DayOfWeek.ToString().ToLower()}");
         }
 
+        private Data.CalendarItem GetFillerCalendarItem(Data.LiturgyGeekContext dbContext, DateTime date)
+        {
+            return new Data.CalendarItem()
+            {
+                Calendar = dbContext.Calendars.Single(c => c.CalendarCode == churchCalendar.CalendarCode),
+                Date = date,
+                DisplayOrder = 0,
+                Class = new(),
+            };
+        }
+
         private Data.CalendarItem GetCalendarItem(Data.LiturgyGeekContext dbContext, DateTime date, string ruleGroupCode, string ruleCode)
         {
             var automaticFlags = new[]
             {
-                ruleGroupCode,
-                $"{ruleGroupCode}_{ruleCode}",
+                $"rule_{ruleGroupCode}",
+                $"rule_{ruleGroupCode}_{ruleCode}",
             };
             var ruleGroup = churchCalendar.RuleGroups[ruleGroupCode];
             var rule = ruleGroup.Rules[ruleCode];
@@ -106,7 +117,7 @@ namespace LiturgyGeek.Calendars.Engine
                                 .Single(r => r.RuleGroupCode == ruleGroupCode
                                             && r.RuleCode == ruleCode
                                             && r.Calendar!.CalendarCode == churchCalendar.CalendarCode),
-                Class = ruleGroup.Flags.Concat(rule.RuleFlags).Concat(automaticFlags).ToList(),
+                Class = ruleGroup.Flags.Concat(rule.RuleFlags).Concat(automaticFlags).Distinct().ToList(),
             };
         }
 

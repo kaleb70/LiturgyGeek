@@ -23,6 +23,9 @@ namespace LiturgyGeek.Data
         [JsonIgnore]
         public CalendarDefinition? CalendarDefinition { get; set; }
 
+        [StringLength(20)]
+        public required string TraditionCode { get; set; }
+
         [StringLength(10)]
         public required string CalendarCode { get; set; }
     }

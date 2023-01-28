@@ -68,6 +68,7 @@ namespace LiturgyGeek.Tools.UploadCalendar
 
                     var dataCalendar = new Data.Calendar()
                     {
+                        TraditionCode = churchCalendar.TraditionCode,
                         CalendarCode = churchCalendar.CalendarCode,
                         CalendarDefinition = new()
                         {

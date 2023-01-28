@@ -20,7 +20,7 @@ namespace LiturgyGeek.Calendars.TestApp
         {
             calendarReader = new CalendarReader();
             dbContext = new Data.DesignTimeContextFactory().CreateDbContext(new string[0]);
-            calendarManager = new CalendarManager(calendarReader, dbContext);
+            calendarManager = new CalendarManager(dbContext);
         }
 
         int Run(string[] args)

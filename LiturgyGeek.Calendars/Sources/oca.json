@@ -16,7 +16,7 @@
     // Fasting
 
     "fast": {
-      "_monthViewHeadline": true,
+      "flags": [ "monthViewHeadline" ],
       "rules": {
         "none": {
           "summary": "No Fast",

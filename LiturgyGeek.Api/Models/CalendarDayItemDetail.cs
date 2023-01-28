@@ -1,6 +1,4 @@
-﻿using LiturgyGeek.Framework.Calendars;
-
-namespace LiturgyGeek.Api.Models
+﻿namespace LiturgyGeek.Api.Models
 {
     public class CalendarDayItemDetail
     {
@@ -17,24 +15,11 @@ namespace LiturgyGeek.Api.Models
             Class = @class;
         }
 
-        public CalendarDayItemDetail(ChurchRuleResult churchRuleResult)
+        public CalendarDayItemDetail(Data.CalendarItem calendarItem)
         {
-            Title = churchRuleResult.Rule.Value.Summary;
-            Elaboration = churchRuleResult.Rule.Value.Elaboration;
-            Class = $"rule_{churchRuleResult.RuleGroup.Key} rule_{churchRuleResult.RuleGroup.Key}_{churchRuleResult.Rule.Key}";
-        }
-
-        public CalendarDayItemDetail(ChurchEventResult churchEventResult)
-        {
-            Title = churchEventResult.Event.LongName ?? churchEventResult.Event.Name
-                    ?? churchEventResult.Event.OccasionKey ?? "[missing name]";
-            Class = (churchEventResult.Event.EventRankKey ?? "")
-                    + " "
-                    + (churchEventResult.Event.OccasionKey ?? "")
-                    + " "
-                    + (churchEventResult.TransferredFrom.HasValue ? "transferred" : "")
-                    + " "
-                    + string.Join(' ', churchEventResult.Event.CustomFlags);
+            Title = calendarItem.Occasion?.DefaultName ?? calendarItem.ChurchRule?.Summary ?? "[missing name]";
+            Elaboration = calendarItem.ChurchRule?.Elaboration ?? string.Empty;
+            Class = string.Join(' ', calendarItem.Class);
         }
     }
 }

@@ -10,6 +10,14 @@ namespace LiturgyGeek.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.AddColumn<string>(
+                name: "TraditionCode",
+                table: "Calendars",
+                type: "nvarchar(20)",
+                maxLength: 20,
+                nullable: false,
+                defaultValue: "");
+
             migrationBuilder.AddColumn<int>(
                 name: "ChurchRuleId",
                 table: "CalendarItems",
@@ -92,6 +100,10 @@ namespace LiturgyGeek.Data.Migrations
             migrationBuilder.DropIndex(
                 name: "IX_CalendarItems_ChurchRuleId",
                 table: "CalendarItems");
+
+            migrationBuilder.DropColumn(
+                name: "TraditionCode",
+                table: "Calendars");
 
             migrationBuilder.DropColumn(
                 name: "ChurchRuleId",
