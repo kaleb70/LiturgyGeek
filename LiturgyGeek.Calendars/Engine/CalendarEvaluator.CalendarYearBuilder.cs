@@ -170,7 +170,9 @@ namespace LiturgyGeek.Calendars.Engine
 
                     foreach (var eventEval in allEvents)
                     {
-                        var matchingCriteria = criteriaEval.Where(c => MeetsCriteria(c, date, allEvents)).ToArray();
+                        var matchingCriteria = criteriaEval
+                                                .Where(c => MeetsCriteria(c, date, new[] { eventEval }))
+                                                .ToArray();
                         eventEval.AddFlags.AddRange(matchingCriteria.SelectMany(c => c.Criteria.AddFlags));
                         eventEval.RemoveFlags.AddRange(matchingCriteria.SelectMany(c => c.Criteria.RemoveFlags));
                     }
