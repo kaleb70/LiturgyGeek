@@ -96,6 +96,7 @@ namespace LiturgyGeek.Calendars.Engine
                 Date = date,
                 DisplayOrder = 0,
                 Class = new(),
+                IsAttachedEvent = false,
             };
         }
 
@@ -118,6 +119,7 @@ namespace LiturgyGeek.Calendars.Engine
                                             && r.RuleCode == ruleCode
                                             && r.Calendar!.CalendarCode == churchCalendar.CalendarCode),
                 Class = ruleGroup.Flags.Concat(rule.RuleFlags).Concat(automaticFlags).Distinct().ToList(),
+                IsAttachedEvent = false,
             };
         }
 
@@ -138,6 +140,7 @@ namespace LiturgyGeek.Calendars.Engine
                 DisplayOrder = 0,
                 Occasion = dbContext.Occasions.Single(o => o.OccasionCode == eventEval.Event.OccasionCode),
                 Class = eventEval.GetAllFlags().Concat(eventRank.Flags).Concat(automaticFlags).ToList(),
+                IsAttachedEvent = eventEval.Event.AttachedTo != null,
             };
         }
 
@@ -156,6 +159,7 @@ namespace LiturgyGeek.Calendars.Engine
                 DisplayOrder = 0,
                 Occasion = dbContext.Occasions.Single(o => o.OccasionCode == seasonEval.SeasonCode),
                 Class = seasonEval.Season.Flags.Concat(automaticFlags).ToList(),
+                IsAttachedEvent = seasonEval.Season.AttachedTo != null,
             };
         }
 

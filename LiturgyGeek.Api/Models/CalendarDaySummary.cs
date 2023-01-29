@@ -49,9 +49,16 @@ namespace LiturgyGeek.Api.Models
                                         .Select(i => new CalendarDaySummaryItem(i))
                                         .ToArray();
 
-            Items = calendarItems.Where(i => i.Class.Contains("monthView") && !i.Class.Contains("monthViewHeadline"))
-                                        .Select(i => new CalendarDaySummaryItem(i))
-                                        .ToArray();
+            var monthViewItems = calendarItems.Where(i => i.Class.Contains("monthView")
+                                                            && !i.Class.Contains("monthViewHeadline"));
+            if (!monthViewItems.Any())
+            {
+                monthViewItems = calendarItems.Where(i => !i.Class.Contains("monthViewHeadline")
+                                                            && !i.IsAttachedEvent)
+                                                .Take(1);
+            }
+
+            Items = monthViewItems.Select(i => new CalendarDaySummaryItem(i)).ToArray();
         }
     }
 }

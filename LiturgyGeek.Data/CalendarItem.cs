@@ -28,5 +28,7 @@ namespace LiturgyGeek.Data
 
         [JsonArrayColumn<string>]
         public required List<string> Class { get; set; } = new();
+
+        public required bool IsAttachedEvent { get; set; }
     }
 }
