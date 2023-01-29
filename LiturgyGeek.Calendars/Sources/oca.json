@@ -234,6 +234,25 @@
   "defaultEventRankCode": "ordinary",
 
   //###########################################################################
+  // Computed Flags
+
+  "computedFlags": [
+    {
+      "includeRanks": [ "greatFeast", "vigil" ],
+      "addFlags": [ "monthView", "highlight" ]
+    },
+    {
+      "includeFlags": [ "highlight" ],
+      "excludeFlags": [ "forefeast", "afterfeast" ],
+      "addFlags": [ "monthView" ]
+    },
+    {
+      "includeFlags": [ "patron" ],
+      "addFlags": [ "monthView", "highlight" ]
+    }
+  ],
+
+  //###########################################################################
   // Seasons
 
   "seasons": {
@@ -333,25 +352,25 @@
       "occasionCode": "pascha",
       "dates": [ "1/Sunday" ],
       "eventRankCode": "greatFeast",
-      "attachedSeasons": [ "pascha-afterfeast @1/Monday..6/Wednesday #hide $relaxedOrdinarySeason" ],
-      "attachedEvents": [ "pascha-leavetaking @6/Wednesday #highlight" ]
+      "attachedSeasons": [ "pascha-afterfeast @1/Monday..6/Wednesday #afterfeast #hide $relaxedOrdinarySeason" ],
+      "attachedEvents": [ "pascha-leavetaking @6/Wednesday #leavetaking #highlight" ]
     },
     {
       "occasionCode": "ascension",
       "dates": [ "6/Thursday" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "ascension-forefeast @6/Wednesday #highlight",
-        "ascension-afterfeast @6/Friday..7/Friday #highlight $relaxedOrdinarySeason"
+        "ascension-forefeast @6/Wednesday #forefeast #highlight",
+        "ascension-afterfeast @6/Friday..7/Friday #afterfeast #highlight $relaxedOrdinarySeason"
       ],
-      "attachedEvents": [ "ascension-leavetaking @7/Friday #highlight" ]
+      "attachedEvents": [ "ascension-leavetaking @7/Friday #leavetaking #highlight" ]
     },
     {
       "occasionCode": "pentecost",
       "dates": [ "8/Sunday" ],
       "eventRankCode": "greatFeast",
-      "attachedSeasons": [ "pentecost-afterfeast @8/Monday..8/Saturday #highlight $noFast" ],
-      "attachedEvents": [ "pentecost-leavetaking @8/Saturday #highlight" ]
+      "attachedSeasons": [ "pentecost-afterfeast @8/Monday..8/Saturday #afterfeast #highlight $noFast" ],
+      "attachedEvents": [ "pentecost-leavetaking @8/Saturday #leavetaking #highlight" ]
     },
 
     {
@@ -366,12 +385,12 @@
       "eventRankCode": "greatFeast",
       "commonRules": [ "noFast" ],
       "attachedSeasons": [
-        "theophany-forefeast @1/2..1/5 #highlight $noFast",
-        "theophany-afterfeast @1/7..1/14 #highlight"
+        "theophany-forefeast @1/2..1/5 #forefeast #highlight $noFast",
+        "theophany-afterfeast @1/7..1/14 #afterfeast #highlight"
       ],
       "attachedEvents": [
-        "theophany-eve @1/5 #highlight $strictFastDay",
-        "theophany-leavetaking @1/14 #highlight"
+        "theophany-eve @1/5 #eve #highlight $strictFastDay",
+        "theophany-leavetaking @1/14 #leavetaking #highlight"
       ]
     },
     {
@@ -379,20 +398,20 @@
       "dates": [ "2/2" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "christ-presentation-forefeast @2/1 #highlight",
-        "christ-presentation-afterfeast @2/3..2/9 #highlight"
+        "christ-presentation-forefeast @2/1 #forefeast #highlight",
+        "christ-presentation-afterfeast @2/3..2/9 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "christ-presentation-leavetaking @2/9 #highlight" ]
+      "attachedEvents": [ "christ-presentation-leavetaking @2/9 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "annunciation",
       "dates": [ "3/25" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "annunciation-forefeast @3/24 #highlight",
-        "annunciation-afterfeast @3/26 #highlight"
+        "annunciation-forefeast @3/24 #forefeast #highlight",
+        "annunciation-afterfeast @3/26 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "annunciation-leavetaking @3/26 #highlight" ]
+      "attachedEvents": [ "annunciation-leavetaking @3/26 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "peter-paul",
@@ -404,30 +423,30 @@
       "dates": [ "8/6" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "transfiguration-forefeast @8/5 #highlight",
-        "transfiguration-afterfeast @8/7..8/13 #highlight"
+        "transfiguration-forefeast @8/5 #forefeast #highlight",
+        "transfiguration-afterfeast @8/7..8/13 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "transfiguration-leavetaking @8/13 #highlight" ]
+      "attachedEvents": [ "transfiguration-leavetaking @8/13 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "theotokos-dormition",
       "dates": [ "8/15" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "theotokos-dormition-forefeast @8/14 #highlight",
-        "theotokos-dormition-afterfeast @8/16..8/23 #highlight"
+        "theotokos-dormition-forefeast @8/14 #forefeast #highlight",
+        "theotokos-dormition-afterfeast @8/16..8/23 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "theotokos-dormition-afterfeast @8/23 #highlight" ]
+      "attachedEvents": [ "theotokos-dormition-leavetaking @8/23 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "theotokos-nativity",
       "dates": [ "9/8" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "theotokos-nativity-forefeast @9/7 #highlight",
-        "theotokos-nativity-afterfeast @9/9..9/12 #highlight"
+        "theotokos-nativity-forefeast @9/7 #forefeast #highlight",
+        "theotokos-nativity-afterfeast @9/9..9/12 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "theotokos-nativity-leavetaking @9/12 #highlight" ]
+      "attachedEvents": [ "theotokos-nativity-leavetaking @9/12 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "cross-elevation",
@@ -435,32 +454,32 @@
       "eventRankCode": "greatFeast",
       "commonRules": [ "strictFastDay" ],
       "attachedSeasons": [
-        "cross-elevation-forefeast @9/13 #highlight",
-        "cross-elevation-afterfeast @9/15..9/21 #highlight"
+        "cross-elevation-forefeast @9/13 #forefeast #highlight",
+        "cross-elevation-afterfeast @9/15..9/21 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "cross-elevation-leavetaking @9/21 #highlight" ]
+      "attachedEvents": [ "cross-elevation-leavetaking @9/21 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "theotokos-presentation",
       "dates": [ "11/21" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "theotokos-presentation-forefeast @11/20 #highlight",
-        "theotokos-presentation-afterfeast @11/22..11/25 #highlight"
+        "theotokos-presentation-forefeast @11/20 #forefeast #highlight",
+        "theotokos-presentation-afterfeast @11/22..11/25 #afterfeast #highlight"
       ],
-      "attachedEvents": [ "theotokos-presentation-leavetaking @11/25 #highlight" ]
+      "attachedEvents": [ "theotokos-presentation-leavetaking @11/25 #leavetaking #highlight" ]
     },
     {
       "occasionCode": "nativity",
       "dates": [ "12/25" ],
       "eventRankCode": "greatFeast",
       "attachedSeasons": [
-        "nativity-forefeast @12/20..12/24 #highlight $relaxedFastNoFish",
-        "nativity-afterfeast @12/26..12/31 #highlight $noFast"
+        "nativity-forefeast @12/20..12/24 #forefeast #highlight $relaxedFastNoFish",
+        "nativity-afterfeast @12/26..12/31 #afterfeast #highlight $noFast"
       ],
       "attachedEvents": [
-        "nativity-eve @12/24 #highlight",
-        "nativity-leavetaking @12/31 #highlight"
+        "nativity-eve @12/24 #eve #highlight",
+        "nativity-leavetaking @12/31 #leavetaking #highlight"
       ]
     }
   ]

@@ -49,7 +49,7 @@ namespace LiturgyGeek.Api.Models
                                         .Select(i => new CalendarDaySummaryItem(i))
                                         .ToArray();
 
-            Items = calendarItems.Where(i => !i.Class.Contains("monthViewHeadline"))
+            Items = calendarItems.Where(i => i.Class.Contains("monthView") && !i.Class.Contains("monthViewHeadline"))
                                         .Select(i => new CalendarDaySummaryItem(i))
                                         .ToArray();
         }

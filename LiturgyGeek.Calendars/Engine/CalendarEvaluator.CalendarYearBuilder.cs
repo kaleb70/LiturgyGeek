@@ -1,5 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Dates;
 using LiturgyGeek.Calendars.Model;
+using LiturgyGeek.Common.Collections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace LiturgyGeek.Calendars.Engine
                 FindAllSeasons(result);
                 FindAllEvents(result);
                 FindAllRules(result);
+                FindAllComputedFlags(result);
 
                 return result;
             }
@@ -154,7 +156,28 @@ namespace LiturgyGeek.Calendars.Engine
                 }
             }
 
-            private Dictionary<string, ChurchRuleCriteriaEval[]> Coalesce(
+            private void FindAllComputedFlags(CalendarYear calendarYear)
+            {
+                var criteriaEval = churchCalendar.ComputedFlags.Select(
+                                    cf => new CriteriaEval<ComputedFlags>(cf, context, calendarYear.Year));
+
+                for (int dayOfYear = 1; dayOfYear < calendarYear.Days.Length; dayOfYear++)
+                {
+                    var dayEval = calendarYear.Days[dayOfYear];
+                    var date = new DateTime(calendarYear.Year, 1, 1).AddDays(dayOfYear - 1);
+
+                    var allEvents = dayEval.MovableEvents.Concat(dayEval.FixedEvents);
+
+                    foreach (var eventEval in allEvents)
+                    {
+                        var matchingCriteria = criteriaEval.Where(c => MeetsCriteria(c, date, allEvents)).ToArray();
+                        eventEval.AddFlags.AddRange(matchingCriteria.SelectMany(c => c.Criteria.AddFlags));
+                        eventEval.RemoveFlags.AddRange(matchingCriteria.SelectMany(c => c.Criteria.RemoveFlags));
+                    }
+                }
+            }
+
+            private Dictionary<string, CriteriaEval<ChurchRuleCriteria>[]> Coalesce(
                     int basisYear,
                     IEnumerable<string> commonCriteria,
                     IEnumerable<KeyValuePair<string, ChurchRuleCriteria[]>> ruleCriteria,
@@ -165,39 +188,15 @@ namespace LiturgyGeek.Calendars.Engine
                 return allCriteria
                         .Reverse()
                         .GroupBy(g => g.Key, g => g.Value)
-                        .ToDictionary(g => g.Key, g=> g.First().Select(c =>
-                        {
-                            var startDate = context.GetSingleDateInstance(basisYear, c.StartDate, priorDate);
-                            var endDate = context.GetSingleDateInstance(basisYear, c.EndDate, priorDate);
-
-                            var specificity = ChurchRuleCriteriaSpecificity.None;
-                            if (c.StartDate != null || c.EndDate != null || c.ExcludeDates.Count > 0)
-                                specificity |= ChurchRuleCriteriaSpecificity.ExcludeDates;
-                            if (c.ExcludeFlags.Count > 0)
-                                specificity |= ChurchRuleCriteriaSpecificity.ExcludeFlags;
-                            if (c.IncludeDates.Count > 0)
-                                specificity |= ChurchRuleCriteriaSpecificity.IncludeDates;
-                            if (c.IncludeRanks.Count > 0)
-                                specificity |= ChurchRuleCriteriaSpecificity.IncludeRanks;
-                            if (c.IncludeFlags.Count > 0)
-                                specificity |= ChurchRuleCriteriaSpecificity.IncludeFlags;
-
-                            ChurchRuleCriteriaEval criteriaEval = new ChurchRuleCriteriaEval()
-                            {
-                                Criteria = c,
-                                StartDate = startDate,
-                                EndDate = endDate,
-                                IncludeDates = context.GetDateInstances(basisYear, c.IncludeDates, priorDate).ToArray(),
-                                ExcludeDates = context.GetDateInstances(basisYear, c.ExcludeDates, priorDate).ToArray(),
-                                Specificity = specificity,
-                            };
-                            return criteriaEval;
-                        }).ToArray());
+                        .ToDictionary(g => g.Key,
+                                        g=> g.First().Select(c => new CriteriaEval<ChurchRuleCriteria>(
+                                                        c, context, basisYear, priorDate)).ToArray());
             }
 
-            public bool MeetsCriteria(ChurchRuleCriteriaEval criteria,
-                                        DateTime date,
-                                        IEnumerable<ChurchEventEval> events)
+            public bool MeetsCriteria<TCriteria>(CriteriaEval<TCriteria> criteria,
+                                                    DateTime date,
+                                                    IEnumerable<ChurchEventEval> events)
+                    where TCriteria : AbstractCriteria<TCriteria>
             {
                 if (criteria.StartDate.HasValue && criteria.StartDate > date)
                     return false;

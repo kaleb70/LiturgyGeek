@@ -34,6 +34,8 @@ namespace LiturgyGeek.Calendars.Model
 
         public List<ChurchEvent> Events { get; set; } = new List<ChurchEvent>();
 
+        public HashSet<ComputedFlags> ComputedFlags { get; set; } = new HashSet<ComputedFlags>();
+
         public ChurchCalendar Clone()
         {
             var result = new ChurchCalendar()
@@ -49,6 +51,7 @@ namespace LiturgyGeek.Calendars.Model
                 CommonRules = new(CommonRules.WithValues(e => new(e.Value))),
                 Seasons = new(Seasons.WithValues(e => e.Value.Clone())),
                 Events = new(Events.Select(e => e.Clone())),
+                ComputedFlags = new(ComputedFlags),
             };
             return result;
         }
@@ -69,7 +72,8 @@ namespace LiturgyGeek.Calendars.Model
                         && DefaultEventRankCode == other.DefaultEventRankCode
                         && CommonRules.DictionaryEquals(other.CommonRules)
                         && Seasons.DictionaryEquals(other.Seasons)
-                        && Events.SequenceEqual(other.Events));
+                        && Events.SequenceEqual(other.Events)
+                        && ComputedFlags.SetEquals(other.ComputedFlags));
         }
 
         public override bool Equals(object? obj) => Equals(obj as ChurchCalendar);
@@ -88,6 +92,7 @@ namespace LiturgyGeek.Calendars.Model
             result.AddDictionary(CommonRules);
             result.AddDictionary(Seasons);
             result.AddList(Events);
+            result.Add(ComputedFlags);
             return result.ToHashCode();
         }
     }

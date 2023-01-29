@@ -49,8 +49,8 @@ namespace LiturgyGeek.Calendars.Engine
                         .Where(r => IsDisplayable(GetAllRuleFlags(r.Key, r.Value), date))
                         .Select(r => GetCalendarItem(dbContext, date, r.Key, r.Value));
 
-            var movableEvents = dayEval.MovableEvents.Where(e => IsDisplayable(e.Event.Flags, date));
-            var fixedEvents = dayEval.FixedEvents.Where(e => IsDisplayable(e.Event.Flags, date));
+            var movableEvents = dayEval.MovableEvents.Where(e => IsDisplayable(e.GetAllFlags(), date));
+            var fixedEvents = dayEval.FixedEvents.Where(e => IsDisplayable(e.GetAllFlags(), date));
             var allEvents = movableEvents.Concat(fixedEvents);
 
             IEnumerable<Data.CalendarItem> attachedSeasons = dayEval.Seasons.Select(s => calendarYear.Seasons[s])
@@ -137,7 +137,7 @@ namespace LiturgyGeek.Calendars.Engine
                 Date = date,
                 DisplayOrder = 0,
                 Occasion = dbContext.Occasions.Single(o => o.OccasionCode == eventEval.Event.OccasionCode),
-                Class = eventEval.Event.Flags.Concat(eventRank.Flags).Concat(automaticFlags).ToList(),
+                Class = eventEval.GetAllFlags().Concat(eventRank.Flags).Concat(automaticFlags).ToList(),
             };
         }
 
@@ -203,7 +203,13 @@ namespace LiturgyGeek.Calendars.Engine
 
             public required int BasisYear { get; init; }
 
-            public required IReadOnlyDictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; init; }
+            public required IReadOnlyDictionary<string, CriteriaEval<ChurchRuleCriteria>[]>? RuleCriteria { get; init; }
+
+            public HashSet<string> AddFlags { get; } = new HashSet<string>();
+
+            public HashSet<string> RemoveFlags { get; } = new HashSet<string>();
+
+            public IEnumerable<string> GetAllFlags() => Event.Flags.Union(AddFlags).Except(RemoveFlags);
         }
 
         private class ChurchSeasonEval
@@ -218,7 +224,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             public required DateTime endDate { get; init; }
 
-            public required IReadOnlyDictionary<string, ChurchRuleCriteriaEval[]>? RuleCriteria { get; init; }
+            public required IReadOnlyDictionary<string, CriteriaEval<ChurchRuleCriteria>[]>? RuleCriteria { get; init; }
 
             public int DaysInSeason => endDate.Subtract(startDate).Days + 1;
 
@@ -233,7 +239,7 @@ namespace LiturgyGeek.Calendars.Engine
         }
 
         [Flags]
-        private enum ChurchRuleCriteriaSpecificity
+        private enum CriteriaSpecificity
         {
             None = 0,
 
@@ -244,19 +250,40 @@ namespace LiturgyGeek.Calendars.Engine
             IncludeFlags = 0b0001_0000,
         }
 
-        private class ChurchRuleCriteriaEval
+        private class CriteriaEval<TCriteria> where TCriteria : AbstractCriteria<TCriteria>
         {
-            public required ChurchRuleCriteria Criteria { get; init; }
+            public TCriteria Criteria { get; private init; }
 
-            public DateTime? StartDate { get; init; }
+            public DateTime? StartDate { get; private init; }
 
-            public DateTime? EndDate { get; init; }
+            public DateTime? EndDate { get; private init; }
 
-            public IReadOnlyList<DateTime> IncludeDates { get; init; } = ReadOnlyListEx<DateTime>.Empty;
+            public IReadOnlyList<DateTime> IncludeDates { get; private init; }
 
-            public IReadOnlyList<DateTime> ExcludeDates { get; init; } = ReadOnlyListEx<DateTime>.Empty;
+            public IReadOnlyList<DateTime> ExcludeDates { get; private init; }
 
-            public required ChurchRuleCriteriaSpecificity Specificity { get; init; }
+            public CriteriaSpecificity Specificity { get; init; }
+
+            public CriteriaEval(TCriteria criteria, EvaluationContext context, int basisYear, ChurchDate? priorDate = null)
+            {
+                Criteria = criteria;
+                StartDate = context.GetSingleDateInstance(basisYear, criteria.StartDate, priorDate);
+                EndDate = context.GetSingleDateInstance(basisYear, criteria.EndDate, priorDate);
+                IncludeDates = context.GetDateInstances(basisYear, criteria.IncludeDates, priorDate).ToArray();
+                ExcludeDates = context.GetDateInstances(basisYear, criteria.ExcludeDates, priorDate).ToArray();
+
+                Specificity = CriteriaSpecificity.None;
+                if (criteria.StartDate != null || criteria.EndDate != null || criteria.ExcludeDates.Count > 0)
+                    Specificity |= CriteriaSpecificity.ExcludeDates;
+                if (criteria.ExcludeFlags.Count > 0)
+                    Specificity |= CriteriaSpecificity.ExcludeFlags;
+                if (criteria.IncludeDates.Count > 0)
+                    Specificity |= CriteriaSpecificity.IncludeDates;
+                if (criteria.IncludeRanks.Count > 0)
+                    Specificity |= CriteriaSpecificity.IncludeRanks;
+                if (criteria.IncludeFlags.Count > 0)
+                    Specificity |= CriteriaSpecificity.IncludeFlags;
+            }
         }
 
     }

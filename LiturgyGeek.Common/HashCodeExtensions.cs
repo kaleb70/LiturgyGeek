@@ -29,7 +29,7 @@ namespace LiturgyGeek.Common
                 hashCode.Add(array[i]);
         }
 
-        public static void AddSet<T>(this ref HashCode hashCode, ISet<T> set)
+        public static void AddSet<T>(this ref HashCode hashCode, IReadOnlySet<T> set)
         {
             foreach (var value in set.Order())
                 hashCode.Add(value);
