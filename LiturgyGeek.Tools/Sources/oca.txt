@@ -19,7 +19,7 @@ zosimus-athanasius @1/4
 eustathius1Serbia @1/4
 euthymiusVatopedi @1/4
 aquilaKiev @1/4
-onuphriusChilandari @1/4
+onuphriusHilandar @1/4
 
 theopemptus-theonas @1/5
 syncleticaAlexandria @1/5
@@ -32,6 +32,7 @@ romanusKarpenisi @1/5
 
 macariusAthos @1/6
 
+theophany-saturdayAfter @1/7/Saturday #highlight
 theophany-sundayAfter @1/7/Sunday #highlight
 johnBaptist-synaxis @1/7 #highlight +doxology
 
@@ -97,3 +98,61 @@ paulThebes-johnCalabytes @1/15 #highlight +sixStichera
 pansophiusAlexandria @1/15
 prochorusVranski @1/15
 gabrielLesnovo @1/15
+
+peter-chains @1/16 #highlight +sixStichera
+speusippus-eleusippus-meleusippus @1/16
+danaxReader @1/16
+honoratusArles @1/16
+maximusTotma @1/16
+damasceneHilandar @1/16
+
+anthonyGreat @1/17 #highlight +vigil
+anthonyDymsk @1/17
+anthonyChernoezero @1/17
+
+athanasius-cyril @1/18 +sixStichera
+marcianCyrrhus @1/18
+athanasiusSyandemsk @1/18
+athanasiusNovolotsk @1/18
+
+macariusGreat @1/19 +sixStichera
+euphrasiaNicomedia @1/19
+macariusAlexandria @1/19
+macariusStylite @1/19
+arseniusKerkyra @1/19
+macariusFaster @1/19
+theodoreNovgorod @1/19
+macariusDeacon @1/19
+markEphesus @1/19
+macariusRoman @1/19
+savaStorozhev-relicsOpening @1/19
+
+euthymiusGreat @1/20 #highlight +vigil
+innas-pinnas-rimmas @1/20
+bassos-eusebios-euthychios-basileides @1/20
+euthymius-lawrence @1/20
+euthymiusSyanzhemsk @1/20
+eptimosConfessor @1/20
+
+maximusConfessor @1/21
+neophytusNicaea @1/21
+eugene-candidus-valerian-aquila @1/21
+agnesRome @1/21
+anastasiusMaximus @1/21
+maximusGreek @1/21
+iconJoyConsolation @1/21
+
+synaxisNewMartyrsRussia @1/22/Sunday #highlight +vigil
+timothyEphesus @1/22
+anastasiusPersian @1/22
+martyrs377Bulgaria @1/22
+anastasiusKievNearCaves @1/22
+macariusZhabynsk @1/22
+
+clement-agathangelus @1/23 #highlight
+mausimasSyrian @1/23
+salamanesSilent	@1/23
+paulinusMerciful @1/23
+sixthCouncil @1/23
+gennadiusKostroma @1/23
+theoctistNovgorod-relicsTranslation @1/23
