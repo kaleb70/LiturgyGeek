@@ -11,4 +11,13 @@
     <ProjectReference Include="..\LiturgyGeek.Calendars\LiturgyGeek.Calendars.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Sources\oca.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Sources\oca.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

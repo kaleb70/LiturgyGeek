@@ -374,12 +374,6 @@
     },
 
     {
-      "occasionCode": "christ-circumcision",
-      "dates": [ "1/1" ],
-      "eventRankCode": "greatFeast",
-      "commonRules": [ "noFast" ]
-    },
-    {
       "occasionCode": "theophany",
       "dates": [ "1/6" ],
       "eventRankCode": "greatFeast",

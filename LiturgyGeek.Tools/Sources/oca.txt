@@ -1,0 +1,64 @@
+﻿theophany-sundayBefore @1/1/Sunday/5 @1/1/Monday/1 @1/1/Tuesday/1 #highlight
+christ-circumcision @1/1 +greatFeast $noFast
+basilGreat @1/1 #highlight
+basilAncyra @1/1
+
+theogenesParium @1/2
+seraphimSarov @1/2 +polyeleos #highlight
+sylvesterRome @1/2
+sylvesterKiev @1/2
+julianaLazarevo @1/2
+
+malachi @1/3 #highlight
+gordiusCaesarea @1/3
+genevieveParis @1/3
+
+synaxisSeventyApostles @1/4
+theoctistusSicily @1/4
+zosimus-athanasius @1/4
+eustathius1Serbia @1/4
+euthymiusVatopedi @1/4
+aquilaKiev @1/4
+onuphriusChilandari @1/4
+
+theopemptus-theonas @1/5
+syncleticaAlexandria @1/5
+micah @1/5
+apollinariaEgypt @1/5
+phosteriusHermit @1/5
+menasSinai @1/5
+gregoryCrete @1/5
+romanusKarpenisi @1/5
+
+macariusAthos @1/6
+
+theophany-sundayAfter @1/7/Sunday #highlight
+johnBaptist-synaxis @1/7 #highlight +doxology
+
+georgeChozebite @1/8 #highlight
+domnicaConstantinople @1/8 #highlight
+carteriusCaesarea @1/8
+julian-basilissa @1/8
+eliasHermit @1/8
+theophilus-helladius @1/8
+aboPerfumer @1/8
+emilianConfessor @1/8
+gregoryNearCaves @1/8
+gregoryFarCaves @1/8
+isidoreYuriev @1/8
+paisiusUglich @1/8
+
+polyeuctusMelitene @1/9 #highlight
+shemaiah @1/9
+peterSebaste @1/9
+eustratiusWonderworker @1/9
+philipMoscow @1/9 +polyeleos
+
+gregoryNyssa @1/10
+theosebiaNyssa @1/10
+marcianConstantinople @1/10
+dometianMelitene @1/10 #highlight
+macariusPisma @1/10
+paulObnora @1/10 +sixStichera
+antipasAthonite @1/10
+theophanRecluse @1/10 +polyeleos
