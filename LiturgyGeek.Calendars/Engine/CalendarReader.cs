@@ -12,6 +12,9 @@ namespace LiturgyGeek.Calendars.Engine
 {
     public class CalendarReader
     {
+        private static readonly char[] whitespace = { ' ', '\t' };
+        private const StringSplitOptions splitOptions = StringSplitOptions.RemoveEmptyEntries;
+
         private static readonly JsonSerializerOptions jsonOptions = new()
         {
             ReadCommentHandling = JsonCommentHandling.Skip,
@@ -57,13 +60,13 @@ namespace LiturgyGeek.Calendars.Engine
 
         public void ParseSeasonLine(string line, out string seasonCode, out ChurchSeason season)
         {
-            var parts = line.Split(new[] { ' ' }, 2);
+            var parts = line.Split(whitespace, 2, splitOptions);
             if (parts.Length < 2)
                 throw new InvalidDataException();
 
             seasonCode = parts[0];
 
-            parts = parts[1].Split(new[] { ' ' }, 2);
+            parts = parts[1].Split(whitespace, 2, splitOptions);
             if (parts.Length < 2 || parts[0].Length < 1 || parts[0][0] != '@')
                 throw new InvalidDataException();
 
@@ -81,7 +84,7 @@ namespace LiturgyGeek.Calendars.Engine
             {
                 do
                 {
-                    parts = parts[1].Split(new[] { ' ' }, 2);
+                    parts = parts[1].Split(whitespace, 2, splitOptions);
 
                     switch (parts[0][0])
                     {
@@ -103,7 +106,7 @@ namespace LiturgyGeek.Calendars.Engine
 
         public ChurchEvent ParseEventLine(string line)
         {
-            var parts = line.Split(new[] { ' ' }, 2);
+            var parts = line.Split(whitespace, 2, splitOptions);
             if (parts.Length < 2)
                 throw new InvalidDataException();
 
@@ -115,7 +118,7 @@ namespace LiturgyGeek.Calendars.Engine
 
             do
             {
-                parts = parts[1].Split(new[] { ' ' }, 2);
+                parts = parts[1].Split(whitespace, 2, splitOptions);
 
                 switch (parts[0][0])
                 {
