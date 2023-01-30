@@ -62,3 +62,38 @@ macariusPisma @1/10
 paulObnora @1/10 +sixStichera
 antipasAthonite @1/10
 theophanRecluse @1/10 +polyeleos
+
+theodosiusAntioch @1/11
+theodosiusCenobiarch @1/11 #highlight +polyeleos
+theodosiusTrebizond @1/11
+michaelKlops @1/11 +sixStichera
+iconYelets @1/11
+
+tatianaRome @1/12
+mertiusMauretania @1/12
+peterApselamus @1/12
+eupraxiaTabenna @1/12
+benedictBiscop @1/12
+sava1Serbia @1/12 +doxology
+martinianBelozersk @1/12
+iconAkathist @1/12
+iconMilkgiver @1/12
+
+hermylus-stratonicus @1/13
+peterAnium @1/13
+jamesNisibis @1/13
+hilaryPoitiers @1/13
+maximusKavsokalyvites @1/13
+irenarchusRostov @1/13
+eleazarAnzerskIsland @1/13
+
+sinai-raithu @1/14
+ninaGeorgia @1/14 +polyeleos
+josephAnalytinus @1/14
+theodulusSinai @1/14
+stephenChenolaklos @1/14
+
+paulThebes-johnCalabytes @1/15 #highlight +sixStichera
+pansophiusAlexandria @1/15
+prochorusVranski @1/15
+gabrielLesnovo @1/15
