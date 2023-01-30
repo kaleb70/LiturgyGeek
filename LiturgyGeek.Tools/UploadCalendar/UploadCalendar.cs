@@ -40,56 +40,60 @@ namespace LiturgyGeek.Tools.UploadCalendar
                 {
                     Console.WriteLine();
                     Console.WriteLine($"Undefined occasions found in calendar {args[0]}");
+                    Console.WriteLine();
                     foreach (var occasionCode in undefinedOccasions)
                         Console.WriteLine($"    {occasionCode}");
                 }
 
-                var existingCalendar = context.Calendars
-                                        .Where(c => c.CalendarCode == churchCalendar.CalendarCode)
-                                        .Include(c => c.CalendarDefinition)
-                                        .SingleOrDefault();
-
-                var jsonForDb = JsonSerializer.Serialize(churchCalendar);
-
-                if (existingCalendar?.CalendarDefinition?.Definition == jsonForDb)
-                    Console.WriteLine($"Calendar {churchCalendar.CalendarCode} is already in the database.");
-
                 else
                 {
-                    if (existingCalendar != null)
-                    {
-                        Console.WriteLine($"Existing calendar {churchCalendar.CalendarCode} will be replaced.");
-                        Console.Write("Confirm (Y/N): ");
-                        if (Console.ReadLine()!.ToLower() != "y")
-                            return;
+                    var existingCalendar = context.Calendars
+                                            .Where(c => c.CalendarCode == churchCalendar.CalendarCode)
+                                            .Include(c => c.CalendarDefinition)
+                                            .SingleOrDefault();
 
-                        context.Calendars.Remove(existingCalendar);
-                    }
+                    var jsonForDb = JsonSerializer.Serialize(churchCalendar);
 
-                    var dataCalendar = new Data.Calendar()
+                    if (existingCalendar?.CalendarDefinition?.Definition == jsonForDb)
+                        Console.WriteLine($"Calendar {churchCalendar.CalendarCode} is already in the database.");
+
+                    else
                     {
-                        TraditionCode = churchCalendar.TraditionCode,
-                        CalendarCode = churchCalendar.CalendarCode,
-                        CalendarDefinition = new()
+                        if (existingCalendar != null)
                         {
-                            Definition = JsonSerializer.Serialize(churchCalendar),
-                        },
+                            Console.WriteLine($"Existing calendar {churchCalendar.CalendarCode} will be replaced.");
+                            Console.Write("Confirm (Y/N): ");
+                            if (Console.ReadLine()!.ToLower() != "y")
+                                return;
 
-                        ChurchRules = churchCalendar.RuleGroups
-                                        .SelectMany(g => g.Value.Rules,
-                                                    (g, r) => new Data.ChurchRule()
-                                                    {
-                                                        RuleGroupCode = g.Key,
-                                                        RuleCode = r.Key,
-                                                        Summary = r.Value.Summary,
-                                                        Elaboration = r.Value.Elaboration,
-                                                    })
-                                        .ToArray(),
-                    };
+                            context.Calendars.Remove(existingCalendar);
+                        }
 
-                    context.Calendars.Add(dataCalendar);
+                        var dataCalendar = new Data.Calendar()
+                        {
+                            TraditionCode = churchCalendar.TraditionCode,
+                            CalendarCode = churchCalendar.CalendarCode,
+                            CalendarDefinition = new()
+                            {
+                                Definition = JsonSerializer.Serialize(churchCalendar),
+                            },
 
-                    context.SaveChanges();
+                            ChurchRules = churchCalendar.RuleGroups
+                                            .SelectMany(g => g.Value.Rules,
+                                                        (g, r) => new Data.ChurchRule()
+                                                        {
+                                                            RuleGroupCode = g.Key,
+                                                            RuleCode = r.Key,
+                                                            Summary = r.Value.Summary,
+                                                            Elaboration = r.Value.Elaboration,
+                                                        })
+                                            .ToArray(),
+                        };
+
+                        context.Calendars.Add(dataCalendar);
+
+                        context.SaveChanges();
+                    }
                 }
             }
         }
