@@ -337,6 +337,26 @@
   "events": [
 
     {
+      "occasionCode": "lazarusSaturday",
+      "dates": [ "-2/Saturday" ],
+      "flags": [ "highlight" ],
+      "ruleCriteria": {
+        "fast": [
+          {
+            "ruleCode": "caviar"
+          },
+          {
+            "includeRanks": [ "greatFeast" ],
+            "ruleCode": "fish"
+          },
+          {
+            "includeFlags": [ "patron" ],
+            "ruleCode": "fish"
+          }
+        ]
+      }
+    },
+    {
       "occasionCode": "palmSunday",
       "dates": [ "-1/Sunday" ],
       "eventRankCode": "greatFeast",
@@ -379,7 +399,7 @@
       "eventRankCode": "greatFeast",
       "commonRules": [ "noFast" ],
       "attachedSeasons": [
-        "theophany-forefeast @1/2..1/5 #forefeast #highlight $noFast",
+        "theophany-forefeast @1/1..1/5 #forefeast #highlight $noFast",
         "theophany-afterfeast @1/7..1/14 #afterfeast #highlight"
       ],
       "attachedEvents": [

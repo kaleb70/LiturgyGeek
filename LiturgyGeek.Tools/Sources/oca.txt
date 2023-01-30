@@ -1,5 +1,5 @@
 ﻿theophany-sundayBefore @1/1/Sunday/5 @1/1/Monday/1 @1/1/Tuesday/1 #highlight
-christ-circumcision @1/1 +greatFeast $noFast
+christ-circumcision @1/1 +greatFeast
 basilGreat @1/1 #highlight
 basilAncyra @1/1
 
