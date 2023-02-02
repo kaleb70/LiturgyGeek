@@ -4,6 +4,8 @@ using LiturgyGeek.Common.Text.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
+using System.Security;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,6 +15,8 @@ namespace LiturgyGeek.Calendars.Engine
     public class CalendarReader
     {
         private static readonly char[] whitespace = { ' ', '\t' };
+        private static readonly char[] quote = { '"' };
+
         private const StringSplitOptions splitOptions = StringSplitOptions.RemoveEmptyEntries;
 
         private static readonly JsonSerializerOptions jsonOptions = new()
@@ -48,6 +52,22 @@ namespace LiturgyGeek.Calendars.Engine
             return calendar;
         }
 
+        public Data.Occasion[] ReadOccasions(Stream lineStream)
+        {
+            var result = new List<Data.Occasion>();
+            using (var lineReader = new StreamReader(lineStream))
+                ApplyLines(result, lineReader);
+            return result.ToArray();
+        }
+
+        public Data.Occasion[] ReadOccasions(string lines)
+        {
+            var result = new List<Data.Occasion>();
+            using (var lineReader = new StringReader(lines))
+                ApplyLines(result, lineReader);
+            return result.ToArray();
+        }
+
         private void ApplyLines(ChurchCalendar calendar, TextReader lineReader)
         {
             string? line;
@@ -55,6 +75,16 @@ namespace LiturgyGeek.Calendars.Engine
             {
                 if (line.Length > 0 && !line.StartsWith(';'))
                     calendar.Events.Add(ParseEventLine(line));
+            }
+        }
+
+        private void ApplyLines(List<Data.Occasion> occasions, TextReader lineReader)
+        {
+            string? line;
+            while ((line = lineReader.ReadLine()?.Trim()) != null)
+            {
+                if (line.Length > 0 && !line.StartsWith(';'))
+                    occasions.Add(ParseOccasionLine(line));
             }
         }
 
@@ -148,6 +178,41 @@ namespace LiturgyGeek.Calendars.Engine
                 throw new InvalidDataException();
 
             return result;
+        }
+
+        public Data.Occasion ParseOccasionLine(string line)
+        {
+            var parts = line.Split(whitespace, 2, splitOptions);
+            if (parts.Length < 2)
+                throw new InvalidDataException();
+
+            var occasionCode = parts[0];
+
+            if (parts[1].Length < 3 || parts[1][0] != '"')
+                throw new InvalidDataException();
+
+            parts = parts[1].Substring(1).Split(quote, 2);
+            if (parts.Length < 2)
+                throw new InvalidDataException();
+
+            var defaultName = parts[0];
+            while (parts[1].Length > 0 && parts[1][0] == '"')
+            {
+                defaultName += '"';
+                parts = parts[1].Substring(1).Split(quote, 2);
+                if (parts.Length < 2)
+                    throw new InvalidDataException();
+                defaultName += parts[0];
+            }
+
+            if (parts[1].Length > 0)
+                throw new InvalidDataException();
+
+            return new Data.Occasion()
+            {
+                OccasionCode = occasionCode,
+                DefaultName = defaultName,
+            };
         }
     }
 }

@@ -12,6 +12,11 @@
                 case "uploadcalendar":
                     new UploadCalendar.UploadCalendar().Run(args.Skip(1).ToArray());
                     break;
+
+                case "uo":
+                case "uploadoccasions":
+                    new UploadOccasions.UploadOccasions().Run(args.Skip(1).ToArray());
+                    break;
             }
         }
     }

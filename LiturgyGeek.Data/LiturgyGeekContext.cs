@@ -26,7 +26,7 @@ namespace LiturgyGeek.Data
         {
         }
 
-        public LiturgyGeekContext(DbContextOptions<LiturgyGeekContext> options)
+        public LiturgyGeekContext(DbContextOptions options)
             : base(options)
         {
         }

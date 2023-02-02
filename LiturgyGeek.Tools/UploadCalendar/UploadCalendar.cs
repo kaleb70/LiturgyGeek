@@ -1,5 +1,6 @@
 ﻿using LiturgyGeek.Calendars.Engine;
 using LiturgyGeek.Calendars.Model;
+using LiturgyGeek.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,14 @@ namespace LiturgyGeek.Tools.UploadCalendar
 
         public void Run(string[] args)
         {
+            var connectionString = @"Server=dawn-treader-sql;Database=liturgygeek3_dev;User Id=sa;Password=devpw;TrustServerCertificate=True;";
+
             var jsonFilename = $"{args[0]}.json";
             var lineFilename = $"{args[0]}.txt";
+
+            if (args.Length >= 3 && args[1] == "-connection")
+                connectionString = args[2];
+
             ChurchCalendar churchCalendar;
             using (var jsonStream = new FileStream(jsonFilename, FileMode.Open))
             {
@@ -29,7 +36,9 @@ namespace LiturgyGeek.Tools.UploadCalendar
                 }
             }
 
-            using (var context = new Data.DesignTimeContextFactory().CreateDbContext(new string[0]))
+            var optionsBuilder = new DbContextOptionsBuilder();
+            optionsBuilder.UseSqlServer(connectionString);
+            using (var context = new LiturgyGeekContext(optionsBuilder.Options))
             {
                 var allOccasions = context.Occasions.ToArray();
 

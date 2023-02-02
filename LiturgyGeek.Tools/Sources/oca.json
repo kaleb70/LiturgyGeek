@@ -337,6 +337,11 @@
   "events": [
 
     {
+      "occasionCode": "zacchaeusSunday",
+      "dates": [ "-11/Sunday" ],
+      "flags": [ "highlight" ]
+    },
+    {
       "occasionCode": "lazarusSaturday",
       "dates": [ "-2/Saturday" ],
       "flags": [ "highlight" ],
@@ -393,6 +398,11 @@
       "attachedEvents": [ "pentecost-leavetaking @8/Saturday #leavetaking #highlight" ]
     },
 
+    {
+      "occasionCode": "christ-circumcision",
+      "dates": [ "1/1" ],
+      "eventRankCode": "greatFeast"
+    },
     {
       "occasionCode": "theophany",
       "dates": [ "1/6" ],
