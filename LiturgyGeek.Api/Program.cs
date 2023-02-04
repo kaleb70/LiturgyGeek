@@ -13,6 +13,8 @@ namespace LiturgyGeek.Api
 
             // Add services to the container.
 
+            builder.Configuration.AddEnvironmentVariables("LiturgyGeek_");
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -21,7 +23,7 @@ namespace LiturgyGeek.Api
             builder.Services.AddScoped<CalendarManager>();
 
             builder.Services.AddDbContext<LiturgyGeekContext>(options =>
-                    options.UseSqlServer("Server=dawn-treader-sql;Database=liturgygeek3_dev;User Id=sa;Password=devpw;TrustServerCertificate=True;"));
+                    options.UseSqlServer(builder.Configuration.GetConnectionString(builder.Environment.EnvironmentName)));
 
 #if DEBUG
             builder.Services.AddCors(options =>
