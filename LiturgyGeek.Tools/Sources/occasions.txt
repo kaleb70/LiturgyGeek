@@ -7,6 +7,9 @@ dormitionFast "Dormition Fast"
 
 zacchaeusSunday "Zacchaeus Sunday"
 
+publican-pharisee "The Publican and the Pharisee"
+publican-pharisee-week "Week of the Publican and the Pharisee"
+
 lazarusSaturday "Lazarus Saturday"
 palmSunday "Palm Sunday"
 
@@ -291,3 +294,41 @@ martyrsCorinth "Seven Martyrs at Corinth"
 nikitaKievCaves "St Nikita of the Kiev Caves"
 tryphaenaCyzicus "St Tryphaena of Cyzicus"
 arseniusParos "St Arsenius of Paros"
+
+tryphonCampsada "St Tryphon of Campsada"
+perpetua-felicitas "Ss Perpetua and Felicitas of Carthage, and those with them"
+peterGalatia "St Peter of Galatia"
+vendemianusBithynia "St Vendemianus of Bithynia"
+brigidKildare "St Brigid of Kildare"
+
+simeon-anna "Ss Simeon and Anna"
+azariah "Prophet Azariah"
+papias-diodorus-claudianus "Ss Papias, Diodorus, and Claudianus, of Perga"
+adrian-eubulus "Ss Adrian and Eubulus"
+romanUglich "St Roman of Uglich"
+
+isidorePelusium "St Isidore of Pelusium"
+jadorus "St Jadorus"
+abrahamArbela "St Abraham of Arbela"
+nicholasStudion "St Nicholas the Confessor, of Studion"
+georgeVladimir "St George the Great, Prince of Vladimir"
+abraham-coprius "Ss Abraham and Coprius of Pechenga"
+cyrilNovoezersk "St Cyril of Novoezersk"
+
+agathaSicily "St Agatha of Sicily"
+theodosiusChernigov "St Theodosius of Chernigov"
+theodula-helladius-macarius-evagrius "Ss Theodula, Helladius, Macarius, and Evagrius, of Anazarbus"
+iconSeekerPerishing "Seeker of the Perishing Icon of the Theotokos"
+
+bucolusSmyrna "St Bucolus of Smyrna"
+dorothy-sisters-theophilus "Ss Dorothy, Christina and Callista, and Theophilus, of Caesarea"
+julianEmesa "St Julian of Emesa"
+fausta-evilasius-maximus "Ss Fausta, Evilasius, and Maximus, of Cyzicus"
+barsanuphius-john "Ss Barsanuphius the Great and John the Prophet"
+photiusConstantinople "St Photius, Patriarch of Constantinople"
+martha-mary-lycarion "Ss Martha, Mary, and Lycarion"
+
+partheniusLampsacus "St Parthenius of Lampsacus"
+martyrs1003Nicomedia "1,003 Martyrs of Nicomedia"
+lukeHellas "St Luke of Hellas"
+peter-vasily-stephan-boris "Ss Peter of Voronezh, Vasily of Priluk, Stephan, and Boris"

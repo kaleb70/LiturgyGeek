@@ -342,6 +342,12 @@
       "flags": [ "highlight" ]
     },
     {
+      "occasionCode": "publican-pharisee",
+      "dates": [ "-10/Sunday" ],
+      "flags": [ "highlight" ],
+      "attachedSeasons": [ "publican-pharisee-week @-10/Sunday..-10/Saturday #hide $noFast" ]
+    },
+    {
       "occasionCode": "lazarusSaturday",
       "dates": [ "-2/Saturday" ],
       "flags": [ "highlight" ],

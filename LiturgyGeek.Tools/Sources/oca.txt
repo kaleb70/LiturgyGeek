@@ -211,3 +211,41 @@ martyrsCorinth @1/31
 nikitaKievCaves @1/31 +doxology
 tryphaenaCyzicus @1/31
 arseniusParos @1/31
+
+tryphonCampsada @2/1 +sixStichera
+perpetua-felicitas @2/1
+peterGalatia @2/1
+vendemianusBithynia @2/1
+brigidKildare @2/1
+
+simeon-anna @2/3 +sixStichera
+azariah @2/3
+papias-diodorus-claudianus @2/3
+adrian-eubulus @2/3
+romanUglich @2/3
+
+isidorePelusium @2/4
+jadorus @2/4
+abrahamArbela @2/4
+nicholasStudion @2/4
+georgeVladimir @2/4
+abraham-coprius @2/4
+cyrilNovoezersk @2/4
+
+agathaSicily @2/5
+theodosiusChernigov @2/5 +polyeleos
+theodula-helladius-macarius-evagrius @2/5
+iconSeekerPerishing @2/5
+
+bucolusSmyrna @2/6 #highlight
+dorothy-sisters-theophilus @2/6
+julianEmesa @2/6
+fausta-evilasius-maximus @2/6
+barsanuphius-john @2/6
+photiusConstantinople @2/6
+martha-mary-lycarion @2/6
+
+partheniusLampsacus @2/7 #highlight
+martyrs1003Nicomedia @2/7
+lukeHellas @2/7 #highlight
+peter-vasily-stephan-boris @2/7
