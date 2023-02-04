@@ -238,7 +238,8 @@ namespace LiturgyGeek.Calendars.Engine
             {
                 bool isAttached = Season.AttachedTo != null;
                 return calendarEvaluator.IsDisplayable(Season.Flags, date, isAttached)
-                        && !(isAttached && coincidingEvents.Any(e => e.Event.AttachedTo == Season.AttachedTo));
+                        && !(isAttached && coincidingEvents.Any(e => e.Event.AttachedTo == Season.AttachedTo
+                                                                    || e.Event.OccasionCode == Season.AttachedTo));
             }
         }
 

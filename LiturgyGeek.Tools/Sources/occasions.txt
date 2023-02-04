@@ -10,6 +10,9 @@ zacchaeusSunday "Zacchaeus Sunday"
 publican-pharisee "The Publican and the Pharisee"
 publican-pharisee-week "Week of the Publican and the Pharisee"
 
+cheesefare "Cheesefare Sunday"
+cheesefare-week "{dayOfWeek} of Cheesefare"
+
 lazarusSaturday "Lazarus Saturday"
 palmSunday "Palm Sunday"
 

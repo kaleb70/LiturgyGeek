@@ -1,4 +1,5 @@
-﻿using Microsoft.OpenApi.Services;
+﻿using LiturgyGeek.Calendars.Engine;
+using Microsoft.OpenApi.Services;
 
 namespace LiturgyGeek.Api.Models
 {
@@ -19,7 +20,9 @@ namespace LiturgyGeek.Api.Models
 
         public CalendarDaySummaryItem(Data.CalendarItem calendarItem)
         {
-            Summary = calendarItem.ChurchRule?.Summary ?? calendarItem.Occasion?.DefaultName ?? string.Empty;
+            Summary = calendarItem.ChurchRule?.Summary
+                        ?? calendarItem.Occasion?.FormatDefaultName(calendarItem.Date)
+                        ?? string.Empty;
             Elaboration = calendarItem.ChurchRule?.Elaboration;
             Class = string.Join(' ', calendarItem.Class);
         }

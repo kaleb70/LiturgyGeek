@@ -196,6 +196,14 @@
       ]
     },
 
+    "dairyFast": {
+      "fast": [
+        {
+          "ruleCode": "dairy"
+        }
+      ]
+    },
+
     "noFast": {
       "fast": [
         {
@@ -346,6 +354,12 @@
       "dates": [ "-10/Sunday" ],
       "flags": [ "highlight" ],
       "attachedSeasons": [ "publican-pharisee-week @-10/Sunday..-10/Saturday #hide $noFast" ]
+    },
+    {
+      "occasionCode": "cheesefare",
+      "dates": [ "-7/Sunday" ],
+      "flags": [ "highlight" ],
+      "attachedSeasons": [ "cheesefare-week @-8/Monday..-7/Sunday #highlight $dairyFast" ]
     },
     {
       "occasionCode": "lazarusSaturday",

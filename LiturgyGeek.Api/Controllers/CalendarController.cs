@@ -35,6 +35,7 @@ namespace LiturgyGeek.Api.Controllers
                                     cultureInfo.DateTimeFormat.MonthNames[month - 1])
             {
                 Items = items
+                        .Where(i => i.ChurchRule != null || i.Occasion != null)
                         .OrderBy(i => i.DisplayOrder)
                         .Select(i => new CalendarDayItemDetail(i))
                         .ToArray(),
