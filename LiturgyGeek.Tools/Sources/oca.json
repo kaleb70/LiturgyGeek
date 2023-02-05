@@ -356,6 +356,11 @@
       "attachedSeasons": [ "publican-pharisee-week @-10/Sunday..-10/Saturday #hide $noFast" ]
     },
     {
+      "occasionCode": "prodigalSon",
+      "dates": [ "-9/Sunday" ],
+      "flags": [ "highlight" ]
+    },
+    {
       "occasionCode": "cheesefare",
       "dates": [ "-7/Sunday" ],
       "flags": [ "highlight" ],

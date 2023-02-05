@@ -67,7 +67,7 @@ theodosiusAntioch @1/11
 theodosiusCenobiarch @1/11 #highlight +polyeleos
 theodosiusTrebizond @1/11
 michaelKlops @1/11 +sixStichera
-iconYelets @1/11
+iconYelets @1/11 #icon
 
 tatianaRome @1/12
 mertiusMauretania @1/12
@@ -76,8 +76,8 @@ eupraxiaTabenna @1/12
 benedictBiscop @1/12
 sava1Serbia @1/12 +doxology
 martinianBelozersk @1/12
-iconAkathist @1/12
-iconMilkgiver @1/12
+iconAkathist @1/12 #icon
+iconMilkgiver @1/12 #icon
 
 hermylus-stratonicus @1/13
 peterAnium @1/13
@@ -139,7 +139,7 @@ eugene-candidus-valerian-aquila @1/21
 agnesRome @1/21
 anastasiusMaximus @1/21
 maximusGreek @1/21
-iconJoyConsolation @1/21
+iconJoyConsolation @1/21 #icon
 
 synaxisNewMartyrsRussia @1/22/Sunday #highlight +vigil
 timothyEphesus @1/22
@@ -172,8 +172,8 @@ publiusSyria @1/25
 maresSinger @1/25
 mosesNovgorod @1/25
 vladimirKiev @1/25
-iconAssuageMySorrow @1/25
-iconUnexpectedJoy @1/25
+iconAssuageMySorrow @1/25 #icon
+iconUnexpectedJoy @1/25 #icon
 
 xenophon-family @1/26
 theodoreStudion-relicsTranslation @1/26
@@ -204,7 +204,7 @@ zenoAntioch @1/30
 theophilusNew @1/30
 peterBulgaria @1/30
 pelagiaDiveyevo @1/30
-iconTinos @1/30
+iconTinos @1/30 #icon
 
 cyrus-john-athanasia @1/31 +sixStichera
 martyrsCorinth @1/31
@@ -235,7 +235,7 @@ cyrilNovoezersk @2/4
 agathaSicily @2/5
 theodosiusChernigov @2/5 +polyeleos
 theodula-helladius-macarius-evagrius @2/5
-iconSeekerPerishing @2/5
+iconSeekerPerishing @2/5 #icon
 
 bucolusSmyrna @2/6 #highlight
 dorothy-sisters-theophilus @2/6
@@ -249,3 +249,48 @@ partheniusLampsacus @2/7 #highlight
 martyrs1003Nicomedia @2/7
 lukeHellas @2/7 #highlight
 peter-vasily-stephan-boris @2/7
+
+theodoreStratelates @2/8 +sixStichera
+zechariah @2/8 +sixStichera
+sava2Serbia @2/8
+
+nicephorusAntioch @2/9
+marcellus-philagrius-pancratius @2/9
+pancratiusFarCaves @2/9
+nicephorus-gennadius @2/9
+innocentIrkutsk-relicsUncovering @2/9
+
+haralambos-porphyrius-baptus @2/10
+ennatha-valentina-paula @2/10
+scholastica @2/10
+hierarchsNovgorod-synaxis @2/10
+annaNovgorod @2/10
+prochorusNearCaves @2/10
+longinusKoryazhemsk @2/10
+iconAreovindus @2/10 #icon
+
+blaiseSebaste @2/11
+theodora @2/11
+gabrielPskov @2/11 +sixStichera
+demetriusPriluki @2/11 +doxology
+
+meletiusAntioch @2/12
+mary-eugene @2/12
+anthonyConstantinople @2/12
+alexisMoscow @2/12 +polyeleos
+christosGardener @2/12
+meletiusKharkov @2/12
+iconIveron @2/12 #icon +vigil
+
+martinianCaesarea @2/13 #highlight
+zoe-photina @2/13
+eulogiusAlexandria @2/13
+simeonMyrrhgusher @2/13
+
+auxentiusBithynia @2/14 #highlight
+maronSyria @2/14
+abrahamCharres @2/14
+cyril @2/14 +polyeleos
+isaacRecluse @2/14
+dormitionCathedralBuilders @2/14
+michael-theodore-relicsTranslation @2/14
