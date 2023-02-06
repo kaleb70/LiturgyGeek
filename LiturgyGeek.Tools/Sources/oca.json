@@ -247,6 +247,7 @@
   "computedFlags": [
     {
       "includeRanks": [ "greatFeast", "vigil" ],
+      "excludeFlags": [ "icon" ],
       "addFlags": [ "monthView", "highlight" ]
     },
     {
