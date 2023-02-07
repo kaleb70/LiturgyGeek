@@ -73,7 +73,7 @@ namespace LiturgyGeek.Calendars.Engine
                     for (int basisYear = calendarYear.Year - 1; basisYear <= calendarYear.Year + 1; basisYear++)
                     {
                         var startDate = context.GetSingleDateInstance(basisYear, season.Value.StartDate);
-                        var endDate = context.GetSingleDateInstance(basisYear, season.Value.EndDate);
+                        var endDate = context.GetSingleDateInstance(basisYear, season.Value.EndDate, season.Value.StartDate);
 
                         if (startDate?.Year <= calendarYear.Year && endDate?.Year >= calendarYear.Year
                                 && startDate <= endDate)

@@ -291,7 +291,8 @@
     "lent": {
       "startDate": "-7/Monday",
       "endDate": "-2/Friday",
-      "commonRules": [ "strictFastSeason" ]
+      "commonRules": [ "strictFastSeason" ],
+      "flags": [ "show", "highlight" ]
     },
 
     //---------------------------------------------------------------------------
@@ -340,6 +341,15 @@
       "startDate": "8/1",
       "endDate": "8/14",
       "commonRules": [ "strictFastSeason" ]
+    },
+
+    //---------------------------------------------------------------------------
+    // Weeks After Pentecost
+
+    "pentecost-weeks": {
+      "startDate": "8/Monday",
+      "endDate": "-9/Sunday",
+      "flags": [ "show-sunday", "highlight" ]
     }
   },
 
@@ -403,7 +413,10 @@
       "occasionCode": "pascha",
       "dates": [ "1/Sunday" ],
       "eventRankCode": "greatFeast",
-      "attachedSeasons": [ "pascha-afterfeast @1/Monday..6/Wednesday #afterfeast #hide $relaxedOrdinarySeason" ],
+      "attachedSeasons": [
+        "pascha-afterfeast @1/Monday..6/Wednesday #afterfeast #hide $relaxedOrdinarySeason",
+        "pascha-weeks @1/Monday..7/Saturday #show-sunday #highlight"
+      ],
       "attachedEvents": [ "pascha-leavetaking @6/Wednesday #leavetaking #highlight" ]
     },
     {

@@ -15,6 +15,9 @@ namespace LiturgyGeek.Data
         [DateColumn]
         public required DateTime Date { get; set; }
 
+        [DateColumn]
+        public DateTime? ReferenceDate { get; set; }
+
         public required int DisplayOrder { get; set; }
 
         public int? OccasionId { get; set; }

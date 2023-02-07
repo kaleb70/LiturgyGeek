@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiturgyGeek.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace LiturgyGeek.Calendars.Engine
         private static readonly char[] lBrace = { '{' };
         private static readonly char[] rBrace = { '}' };
 
-        public static string FormatDefaultName(this Data.Occasion occasion, DateTime date)
+        public static string FormatDefaultName(this Data.Occasion occasion, DateTime date, DateTime? referenceDate = null)
         {
             var result = new StringBuilder();
 
@@ -33,10 +34,35 @@ namespace LiturgyGeek.Calendars.Engine
                         result.Append('{');
                     else
                     {
-                        switch (parts[0].Trim())
+                        string field = parts[0].Trim();
+                        switch (field)
                         {
                             case "dayOfWeek":
                                 result.Append(date.DayOfWeek.ToString());
+                                break;
+
+                            case "week":
+                                if (!referenceDate.HasValue)
+                                    goto default;
+                                result.Append(date.Subtract(referenceDate.Value).GetWeeks() + 1);
+                                break;
+
+                            case "weekOrdinal":
+                                if (!referenceDate.HasValue)
+                                    goto default;
+                                result.AppendOrdinal(date.Subtract(referenceDate.Value).GetWeeks() + 1);
+                                break;
+
+                            case "day":
+                                if (!referenceDate.HasValue)
+                                    goto default;
+                                result.Append(date.Subtract(referenceDate.Value).Days + 1);
+                                break;
+
+                            case "dayOrdinal":
+                                if (!referenceDate.HasValue)
+                                    goto default;
+                                result.AppendOrdinal(date.Subtract(referenceDate.Value).Days + 1);
                                 break;
 
                             default:

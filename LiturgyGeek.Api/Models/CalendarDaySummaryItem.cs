@@ -21,7 +21,7 @@ namespace LiturgyGeek.Api.Models
         public CalendarDaySummaryItem(Data.CalendarItem calendarItem)
         {
             Summary = calendarItem.ChurchRule?.Summary
-                        ?? calendarItem.Occasion?.FormatDefaultName(calendarItem.Date)
+                        ?? calendarItem.Occasion?.FormatDefaultName(calendarItem.Date, calendarItem.ReferenceDate)
                         ?? string.Empty;
             Elaboration = calendarItem.ChurchRule?.Elaboration;
             Class = string.Join(' ', calendarItem.Class);

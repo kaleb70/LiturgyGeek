@@ -14,9 +14,6 @@ namespace LiturgyGeek.Data
 {
     public class DesignTimeContextFactory : IDesignTimeDbContextFactory<LiturgyGeekContext>
     {
-        private readonly IConfiguration configuration;
-        private readonly IHostEnvironment hostEnvironment;
-
         public static void Configure(HostBuilderContext context, DbContextOptionsBuilder optionsBuilder)
             => Configure(context.Configuration, context.HostingEnvironment, optionsBuilder);
 
@@ -28,16 +25,15 @@ namespace LiturgyGeek.Data
             optionsBuilder.UseSqlServer(configuration.GetConnectionString(hostEnvironment.EnvironmentName));
         }
 
-        public DesignTimeContextFactory(IConfiguration configuration, IHostEnvironment hostEnvironment)
+        public static void Configure(DbContextOptionsBuilder optionsBuilder)
         {
-            this.configuration = configuration;
-            this.hostEnvironment = hostEnvironment;
+            optionsBuilder.UseSqlServer(Environment.GetEnvironmentVariable("LiturgyGeek_ConnectionStrings__Development"));
         }
 
         public LiturgyGeekContext CreateDbContext(string[] args)
         {
             var optionsBuilder = new DbContextOptionsBuilder<LiturgyGeekContext>();
-            Configure(configuration, hostEnvironment, optionsBuilder);
+            Configure(optionsBuilder);
 
             return new LiturgyGeekContext(optionsBuilder.Options);
         }

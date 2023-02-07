@@ -53,14 +53,18 @@ namespace LiturgyGeek.Calendars.Engine
             var fixedEvents = dayEval.FixedEvents.Where(e => IsDisplayable(e.GetAllFlags(), date));
             var allEvents = movableEvents.Concat(fixedEvents);
 
-            IEnumerable<Data.CalendarItem> attachedSeasons = dayEval.Seasons.Select(s => calendarYear.Seasons[s])
-                .Where(s => s.IsDisplayable(this, date, allEvents))
-                .Select(s => GetCalendarItem(dbContext, date, s));
+            var allSeasons = dayEval.Seasons.Select(s => calendarYear.Seasons[s])
+                                .Where(s => s.IsDisplayable(this, date, allEvents))
+                                .OrderByDescending(s => (s.endDate-s.startDate).Days);
+
+            var unattachedSeasons = allSeasons.Where(s => s.Season.AttachedTo == null);
+            var attachedSeasons = allSeasons.Where(s => s.Season.AttachedTo != null);
 
             var result = (rules.Any() || allEvents.Any() || attachedSeasons.Any())
                             ? rules
+                                .Concat(unattachedSeasons.Select(s => GetCalendarItem(dbContext, date, s)))
                                 .Concat(movableEvents.Select(e => GetCalendarItem(dbContext, date, e)))
-                                .Concat(attachedSeasons)
+                                .Concat(attachedSeasons.Select(s => GetCalendarItem(dbContext, date, s)))
                                 .Concat(fixedEvents.Select(e => GetCalendarItem(dbContext, date, e)))
                                 .ToArray()
                             : new[] { GetFillerCalendarItem(dbContext, date) };
@@ -156,6 +160,7 @@ namespace LiturgyGeek.Calendars.Engine
             {
                 Calendar = dbContext.Calendars.Single(c => c.CalendarCode == churchCalendar.CalendarCode),
                 Date = date,
+                ReferenceDate = seasonEval.startDate,
                 DisplayOrder = 0,
                 Occasion = dbContext.Occasions.Single(o => o.OccasionCode == seasonEval.SeasonCode),
                 Class = seasonEval.Season.Flags.Concat(automaticFlags).ToList(),

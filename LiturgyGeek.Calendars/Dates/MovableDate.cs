@@ -50,5 +50,15 @@ namespace LiturgyGeek.Calendars.Dates
             int week = Week > 0 ? Week - 1 : Week;
             return pascha.AddDays(week * 7 + (int)DayOfWeek);
         }
+
+        public override DateTime? GetInstanceFollowing(ChurchDate? priorDate, ChurchCalendarSystem calendarSystem, int year)
+        {
+            if (priorDate is MovableDate priorMovableDate
+                        && (Week < priorMovableDate.Week
+                            || (Week == priorMovableDate.Week && DayOfWeek < priorMovableDate.DayOfWeek)))
+                ++year;
+
+            return GetInstance(calendarSystem, year);
+        }
     }
 }

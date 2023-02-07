@@ -1,9 +1,11 @@
 ﻿ordinary "Ordinary Time"
 advent "Advent"
-lent "Great Lent"
+lent "{weekOrdinal} {dayOfWeek} of Lent"
 holyWeek "Holy Week"
 apostlesFast "Apostles' Fast"
 dormitionFast "Dormition Fast"
+
+pentecost-weeks "{weekOrdinal} {dayOfWeek} after Pentecost"
 
 zacchaeusSunday "Zacchaeus Sunday"
 
@@ -21,6 +23,7 @@ palmSunday "Palm Sunday"
 pascha "Holy Pascha"
 pascha-afterfeast "Afterfeast of Pascha"
 pascha-leavetaking "Leavetaking of Pascha"
+pascha-weeks "{weekOrdinal} {dayOfWeek} of Pascha"
 
 ascension "Ascension of Our Lord"
 ascension-forefeast "Forefeast of the Ascension"

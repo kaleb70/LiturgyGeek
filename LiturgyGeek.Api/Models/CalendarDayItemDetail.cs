@@ -19,7 +19,7 @@ namespace LiturgyGeek.Api.Models
 
         public CalendarDayItemDetail(Data.CalendarItem calendarItem)
         {
-            Title = calendarItem.Occasion?.FormatDefaultName(calendarItem.Date)
+            Title = calendarItem.Occasion?.FormatDefaultName(calendarItem.Date, calendarItem.ReferenceDate)
                     ?? calendarItem.ChurchRule?.Summary
                     ?? "[missing name]";
             Elaboration = calendarItem.ChurchRule?.Elaboration ?? string.Empty;
