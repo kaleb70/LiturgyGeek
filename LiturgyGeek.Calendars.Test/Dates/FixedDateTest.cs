@@ -168,6 +168,33 @@ namespace LiturgyGeek.Calendars.Test.Dates
             Assert.IsNull(GetInstance(fixedDate, westernCalendar, 2029));
         }
 
+        [TestMethod]
+        public void TestGetInstanceFollowing()
+        {
+            var febDate = new FixedDate(2, 1);
+
+            Assert.AreEqual(new DateTime(2020, 2, 1), febDate.GetInstanceFollowing(new FixedDate(1, 31), westernCalendar, 2020));
+            Assert.AreEqual(new DateTime(2021, 2, 1), febDate.GetInstanceFollowing(new FixedDate(2, 2), westernCalendar, 2020));
+        }
+
+        [TestMethod]
+        public void TestGetInstanceFollowingMovable()
+        {
+            // Christ the King Sunday after Pentecost
+            Assert.AreEqual(new DateTime(2038, 11, 21),
+                new FixedDate(11, 20, DayOfWeek.Sunday)
+                    .GetInstanceFollowing(new MovableDate(8, DayOfWeek.Sunday), westernCalendar, 2038));
+            Assert.AreEqual(new DateTime(1818, 11, 22),
+                new FixedDate(11, 20, DayOfWeek.Sunday)
+                    .GetInstanceFollowing(new MovableDate(8, DayOfWeek.Sunday), westernCalendar, 1818));
+
+            // Theophany after Pentecost
+            Assert.AreEqual(new DateTime(2079, 1, 6),
+                new FixedDate(1, 6).GetInstanceFollowing(new MovableDate(8, DayOfWeek.Sunday), easternNewCalendar, 2078));
+            Assert.AreEqual(new DateTime(2011, 1, 6),
+                new FixedDate(1, 6).GetInstanceFollowing(new MovableDate(8, DayOfWeek.Sunday), easternNewCalendar, 2010));
+        }
+
         private DateTime? GetInstance(FixedDate fixedDate, ChurchCalendarSystem calendarSystem, int year)
         {
             var result = fixedDate.GetInstance(calendarSystem, year);

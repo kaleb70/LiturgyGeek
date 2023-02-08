@@ -136,6 +136,13 @@ namespace LiturgyGeek.Calendars.Dates
             hashCode = hash.ToHashCode();
         }
 
+        /// <summary>
+        /// Guesses whether this fixed date falls before or after Pascha.
+        /// For years 1901-2099, this property will always return the
+        /// correct result for dates before March 22 or after May 8.
+        /// </summary>
+        internal bool IsBeforePascha => Month < 4 || (Month == 4 && Day < 15);
+
         public override bool Equals(object? obj)
         {
             return obj is FixedDate other
@@ -242,7 +249,23 @@ namespace LiturgyGeek.Calendars.Dates
             if (priorDate is FixedDate priorFixedDate
                         && (Month < priorFixedDate.Month
                             || (Month == priorFixedDate.Month && Day < priorFixedDate.Day)))
+            {
+                // If, ignoring the year, this date would fall before the prior date,
+                // then this date range spans multiple years.
                 ++year;
+            }
+            else if (priorDate is MovableDate priorMovableDate)
+            {
+                // If the prior date is a movable date before Pascha,
+                // then the date range is meaningless.
+                if (priorMovableDate.Week < 0)
+                    return null;
+
+                // If the prior date is movable and this date falls before Pascha in its calendar year,
+                // then this date is in the calendar year following the prior Pascha.
+                if (IsBeforePascha)
+                    ++year;
+            }
 
             return GetInstance(calendarSystem, year);
         }

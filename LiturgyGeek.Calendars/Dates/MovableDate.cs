@@ -56,7 +56,23 @@ namespace LiturgyGeek.Calendars.Dates
             if (priorDate is MovableDate priorMovableDate
                         && (Week < priorMovableDate.Week
                             || (Week == priorMovableDate.Week && DayOfWeek < priorMovableDate.DayOfWeek)))
+            {
+                // If, ignoring the year, this date would fall before the prior date,
+                // then this date range spans multiple years.
                 ++year;
+            }
+            else if (priorDate is FixedDate priorFixedDate)
+            {
+                // If the prior date is fixed and this date is after Pascha,
+                // then the date range is meaningless.
+                if (Week > 0)
+                    return null;
+
+                // If the prior date falls after Pascha in its calendar year,
+                // then this movable date falls before Pascha of the next calendar year.
+                if (!priorFixedDate.IsBeforePascha)
+                    ++year;
+            }
 
             return GetInstance(calendarSystem, year);
         }
