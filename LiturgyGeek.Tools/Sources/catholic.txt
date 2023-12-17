@@ -1,0 +1,296 @@
+﻿theophany-sundayBefore @1/1/Sunday/5 @1/1/Monday/1 @1/1/Tuesday/1 #highlight
+basilGreat @1/1 #highlight
+basilAncyra @1/1
+
+theogenesParium @1/2
+seraphimSarov @1/2 +polyeleos #highlight
+sylvesterRome @1/2
+sylvesterKiev @1/2
+julianaLazarevo @1/2
+
+malachi @1/3 #highlight
+gordiusCaesarea @1/3
+genevieveParis @1/3
+
+synaxisSeventyApostles @1/4
+theoctistusSicily @1/4
+zosimus-athanasius @1/4
+eustathius1Serbia @1/4
+euthymiusVatopedi @1/4
+aquilaKiev @1/4
+onuphriusHilandar @1/4
+
+theopemptus-theonas @1/5
+syncleticaAlexandria @1/5
+micah @1/5
+apollinariaEgypt @1/5
+phosteriusHermit @1/5
+menasSinai @1/5
+gregoryCrete @1/5
+romanusKarpenisi @1/5
+
+macariusAthos @1/6
+
+theophany-saturdayAfter @1/7/Saturday #highlight
+theophany-sundayAfter @1/7/Sunday #highlight
+johnBaptist-synaxis @1/7 #highlight +doxology
+
+georgeChozebite @1/8 #highlight
+domnicaConstantinople @1/8 #highlight
+carteriusCaesarea @1/8
+julian-basilissa @1/8
+eliasHermit @1/8
+theophilus-helladius @1/8
+aboPerfumer @1/8
+emilianConfessor @1/8
+gregoryNearCaves @1/8
+gregoryFarCaves @1/8
+isidoreYuriev @1/8
+paisiusUglich @1/8
+
+polyeuctusMelitene @1/9 #highlight
+shemaiah @1/9
+peterSebaste @1/9
+eustratiusWonderworker @1/9
+philipMoscow @1/9 +polyeleos
+
+gregoryNyssa @1/10
+theosebiaNyssa @1/10
+marcianConstantinople @1/10
+dometianMelitene @1/10 #highlight
+macariusPisma @1/10
+paulObnora @1/10 +sixStichera
+antipasAthonite @1/10
+theophanRecluse @1/10 +polyeleos
+
+theodosiusAntioch @1/11
+theodosiusCenobiarch @1/11 #highlight +polyeleos
+theodosiusTrebizond @1/11
+michaelKlops @1/11 +sixStichera
+iconYelets @1/11 #icon
+
+tatianaRome @1/12
+mertiusMauretania @1/12
+peterApselamus @1/12
+eupraxiaTabenna @1/12
+benedictBiscop @1/12
+sava1Serbia @1/12 +doxology
+martinianBelozersk @1/12
+iconAkathist @1/12 #icon
+iconMilkgiver @1/12 #icon
+
+hermylus-stratonicus @1/13
+peterAnium @1/13
+jamesNisibis @1/13
+hilaryPoitiers @1/13
+maximusKavsokalyvites @1/13
+irenarchusRostov @1/13
+eleazarAnzerskIsland @1/13
+
+sinai-raithu @1/14
+ninaGeorgia @1/14 +polyeleos
+josephAnalytinus @1/14
+theodulusSinai @1/14
+stephenChenolaklos @1/14
+
+paulThebes-johnCalabytes @1/15 #highlight +sixStichera
+pansophiusAlexandria @1/15
+prochorusVranski @1/15
+gabrielLesnovo @1/15
+
+peter-chains @1/16 #highlight +sixStichera
+speusippus-eleusippus-meleusippus @1/16
+danaxReader @1/16
+honoratusArles @1/16
+maximusTotma @1/16
+damasceneHilandar @1/16
+
+anthonyGreat @1/17 #highlight +vigil
+anthonyDymsk @1/17
+anthonyChernoezero @1/17
+
+athanasius-cyril @1/18 +sixStichera
+marcianCyrrhus @1/18
+athanasiusSyandemsk @1/18
+athanasiusNovolotsk @1/18
+
+macariusGreat @1/19 +sixStichera
+euphrasiaNicomedia @1/19
+macariusAlexandria @1/19
+macariusStylite @1/19
+arseniusKerkyra @1/19
+macariusFaster @1/19
+theodoreNovgorod @1/19
+macariusDeacon @1/19
+markEphesus @1/19
+macariusRoman @1/19
+savaStorozhev-relicsOpening @1/19
+
+euthymiusGreat @1/20 #highlight +vigil
+innas-pinnas-rimmas @1/20
+bassos-eusebios-euthychios-basileides @1/20
+euthymius-lawrence @1/20
+euthymiusSyanzhemsk @1/20
+eptimosConfessor @1/20
+
+maximusConfessor @1/21
+neophytusNicaea @1/21
+eugene-candidus-valerian-aquila @1/21
+agnesRome @1/21
+anastasiusMaximus @1/21
+maximusGreek @1/21
+iconJoyConsolation @1/21 #icon
+
+synaxisNewMartyrsRussia @1/22/Sunday #highlight +vigil
+timothyEphesus @1/22
+anastasiusPersian @1/22
+martyrs377Bulgaria @1/22
+anastasiusKievNearCaves @1/22
+macariusZhabynsk @1/22
+
+clement-agathangelus @1/23 #highlight
+mausimasSyrian @1/23
+salamanesSilent	@1/23
+paulinusMerciful @1/23
+sixthCouncil @1/23
+gennadiusKostroma @1/23
+theoctistNovgorod-relicsTranslation @1/23
+
+xeniaRome @1/24
+babylas-timothy-agapius @1/24
+macedoniusSyria @1/24
+anastasiusPersian-relicsTranslation @1/24
+gerasimusPerm @1/24
+johnKazan @1/24
+dionysiusOlympus @1/24
+philotheusAthos @1/24
+xeniaStPetersburg @1/24 +polyeleos
+
+gregoryTheologian @1/25 +polyeleos
+felicitas-sons @1/25
+publiusSyria @1/25
+maresSinger @1/25
+mosesNovgorod @1/25
+vladimirKiev @1/25
+iconAssuageMySorrow @1/25 #icon
+iconUnexpectedJoy @1/25 #icon
+
+xenophon-family @1/26
+theodoreStudion-relicsTranslation @1/26
+ananias-peter @1/26
+simeonAncient @1/26
+josephThessalonica @1/26
+davidBuilder @1/26
+xenophonRobeika @1/26
+
+johnChrysostom-translationRelics @1/27 +polyeleos
+
+ephraimSyrian @1/28 +sixStichera
+palladiusHermit @1/28
+isaacSyrian @1/28
+ephraimNovotorzhsk @1/28
+ephraimKievCaves @1/28
+theodosiusTotma @1/28
+
+ignatiusAntioch-relicsTranslation @1/29 #highlight +sixStichera
+martyrsSamosata @1/29
+silvanus-luke-mocius @1/29
+lawrenceTurov @1/29
+gerasimus-pitirim-jonah @1/29
+
+threeHierarchs-synaxis @1/30 #highlight +vigil
+hippolytus-others @1/30
+zenoAntioch @1/30
+theophilusNew @1/30
+peterBulgaria @1/30
+pelagiaDiveyevo @1/30
+iconTinos @1/30 #icon
+
+cyrus-john-athanasia @1/31 +sixStichera
+martyrsCorinth @1/31
+nikitaKievCaves @1/31 +doxology
+tryphaenaCyzicus @1/31
+arseniusParos @1/31
+
+tryphonCampsada @2/1 +sixStichera
+perpetua-felicitas @2/1
+peterGalatia @2/1
+vendemianusBithynia @2/1
+brigidKildare @2/1
+
+simeon-anna @2/3 +sixStichera
+azariah @2/3
+papias-diodorus-claudianus @2/3
+adrian-eubulus @2/3
+romanUglich @2/3
+
+isidorePelusium @2/4
+jadorus @2/4
+abrahamArbela @2/4
+nicholasStudion @2/4
+georgeVladimir @2/4
+abraham-coprius @2/4
+cyrilNovoezersk @2/4
+
+agathaSicily @2/5
+theodosiusChernigov @2/5 +polyeleos
+theodula-helladius-macarius-evagrius @2/5
+iconSeekerPerishing @2/5 #icon
+
+bucolusSmyrna @2/6 #highlight
+dorothy-sisters-theophilus @2/6
+julianEmesa @2/6
+fausta-evilasius-maximus @2/6
+barsanuphius-john @2/6
+photiusConstantinople @2/6
+martha-mary-lycarion @2/6
+
+partheniusLampsacus @2/7 #highlight
+martyrs1003Nicomedia @2/7
+lukeHellas @2/7 #highlight
+peter-vasily-stephan-boris @2/7
+
+theodoreStratelates @2/8 +sixStichera
+zechariah @2/8 +sixStichera
+sava2Serbia @2/8
+
+nicephorusAntioch @2/9
+marcellus-philagrius-pancratius @2/9
+pancratiusFarCaves @2/9
+nicephorus-gennadius @2/9
+innocentIrkutsk-relicsUncovering @2/9
+
+haralambos-porphyrius-baptus @2/10
+ennatha-valentina-paula @2/10
+scholastica @2/10
+hierarchsNovgorod-synaxis @2/10
+annaNovgorod @2/10
+prochorusNearCaves @2/10
+longinusKoryazhemsk @2/10
+iconAreovindus @2/10 #icon
+
+blaiseSebaste @2/11
+theodora @2/11
+gabrielPskov @2/11 +sixStichera
+demetriusPriluki @2/11 +doxology
+
+meletiusAntioch @2/12
+mary-eugene @2/12
+anthonyConstantinople @2/12
+alexisMoscow @2/12 +polyeleos
+christosGardener @2/12
+meletiusKharkov @2/12
+iconIveron @2/12 #icon +vigil
+
+martinianCaesarea @2/13 #highlight
+zoe-photina @2/13
+eulogiusAlexandria @2/13
+simeonMyrrhgusher @2/13
+
+auxentiusBithynia @2/14 #highlight
+maronSyria @2/14
+abrahamCharres @2/14
+cyril @2/14 +polyeleos
+isaacRecluse @2/14
+dormitionCathedralBuilders @2/14
+michael-theodore-relicsTranslation @2/14
